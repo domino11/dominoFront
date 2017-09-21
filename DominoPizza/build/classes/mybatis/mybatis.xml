@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+
+
+
+
+<mapper namespace="mybatis.mybatis">
+	<resultMap id="PizzaMenuListResult" type="PizzaMenuList">
+	    <result property="p_name" column="p_name"/>
+	    <result property="p_lprice" column="p_lprice"/>
+	    <result property="p_sprice" column="p_sprice"/>
+	    <result property="p_img" column="p_img"/>
+ 	</resultMap>
+ 	
+ 		<resultMap id="SideMenuListResult" type="SideMenuList">
+	    <result property="s_name" column="s_name"/>
+	    <result property="s_price" column="s_price"/>
+	    <result property="s_img" column="s_img"/>
+ 	</resultMap>
+
+	
+
+<insert id="mybatisTest" parameterType="java.util.Map" >
+	insert into test values(#{id})
+</insert>
+
+
+	<!-- 어진 --> 
+ <select id="mybatisMenu" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
+ select ${sel} FROM  ${fro} where  ${whe}
+ </select>
+ 
+  <select id="mybatisSideMenu" parameterType="java.util.Map" resultMap="SideMenuListResult" >
+ select ${sel} FROM  ${fro}
+ </select>
+ 
+<!--  <insert id="mybatisaddrselect" parameterType="java.util.Map" >
+ 	insert into 
+ </insert> -->
+ 
+ <select id="mybatisPizzaview" parameterType="java.util.Map" resultType="PizzaDTO" >
+ 	SELECT * FROM PIZZA WHERE P_NO = ${p_no}
+ 	<!-- 
+ 	 JOIN PIZZA_DOUGH PD ON PD.P_NO = P.P_NO JOIN DOUGH D ON D.DOUGH_NO=PD.DOUGH_NO 
+ 	 -->
+ </select>
+ 
+  <select id="mybatisDoughlist" parameterType="java.util.Map" resultType="DoughDTO" >
+  	SELECT * FROM PIZZA_DOUGH PD JOIN DOUGH D ON D.DOUGH_NO = PD.DOUGH_NO WHERE P_NO = ${p_no}
+ </select> 
+ 
+  <select id="mybatispnutrient" parameterType="java.util.Map" resultType="PNutrientDTO" >
+ SELECT P.P_NAME,DOUGH_NAME,PN.* FROM PIZZA P JOIN PIZZA_DOUGH PD ON PD.P_NO=P.P_NO JOIN P_NUTRIENT PN ON PN.D_NO = PD.D_NO JOIN DOUGH D ON D.DOUGH_NO = PD.DOUGH_NO WHERE P.P_NO=${p_no}
+  </select> 
+ 
+ <insert id="mybatissinsert" parameterType="java.util.Map" >
+ 	INSERT INTO SALES VALUES(SEQ_SALES_SA_NO.NEXTVAL,#{id},3,#{sa_addr},SYSDATE,DEFAULT)
+ </insert>
+
+ 
+ <insert id="mybatisstinsert" parameterType="BasketDTO" >
+ 	INSERT INTO SALES_MENU VALUES(SEQ_SALES_MENU_SM_NO.NEXTVAL,SEQ_SALES_SA_NO.CURRVAL,'${doughno}','${kind}','${name}','${qty}','${size}','${price}')
+ </insert>
+   <select id="mybatisDeladdrsel" parameterType="java.util.Map" resultType="StoresDTO" >
+   select s.* , sqrt(power(ABS(st_xpos-${xpos})*100000,2)+power(ABS(st_ypos-${ypos})*100000,2)) st from stores s where sqrt(power(ABS(st_xpos-${xpos})*100000,2)+power(ABS(st_ypos-${ypos})*100000,2)) <![CDATA[ < ]]> 1200 and rownum=1 order by st
+  </select> 
+
+	<insert id="mybatisDeladdrin"  parameterType="java.util.Map" >
+		INSERT INTO DELADDR VALUES(SEQ_DELADDR_DE_NO.NEXTVAL,#{id},#{st_no},#{addr},#{kind})
+	</insert>
+	
+	<select id="mybatisdeladdrprint" parameterType="java.util.Map" resultType="StoresDTO" >
+		SELECT S.*,DE_ADDR,DE_NO FROM STORES S JOIN DELADDR D ON D.ST_NO = S.ST_NO WHERE ID='${id}'
+	</select>
+
+	<select id="mybatissessionInDel" parameterType="java.util.Map" resultType="StoresDTO" >
+		SELECT S.*,DE_ADDR,DE_NO FROM STORES S JOIN DELADDR D ON D.ST_NO = S.ST_NO WHERE DE_NO='${de_no}'
+	</select>
+	
+	<select id="mybatiscallUser" parameterType="java.lang.String" resultType="pizza.service.impl.UserDto" >
+		select name,r.r_name r_name,tel,
+	(select count(*) from customer c join my_cupon mc on c.id=mc.id where c.id='${id}') coupon
+	 from customer c join cr_join cj on c.id=cj.id 
+	join rating r on r.r_no=cj.r_no
+	where c.id='${id}'
+	</select>
+	
+	
+		<select id="mybatisSideMenuView" parameterType="java.util.Map" resultType="SideMenuList" >
+		SELECT * FROM SIDE WHERE S_NO=${s_no}
+		</select>
+	
+		<select id="mybatissnprint" parameterType="java.util.Map" resultType="SNutrientDTO" >
+		SELECT * FROM S_NUTRIENT WHERE S_NO=${s_no}
+		</select>
+	
+		<select id="mybatiscallcoupon" parameterType="java.util.Map" resultType="SaileCouponDTO" >
+		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE ID='${id}'
+		</select>
+
+		<select id="mybatisgetdpns" parameterType="java.util.Map" resultType="DrPnsDTO" >
+		select * FROM  ${from}  where  ${where}  ${no}
+		</select>
+		
+		<insert id="mybatissetsrc" parameterType="java.util.Map"  >
+		INSERT INTO IMGSRC VALUES('${src}')
+		</insert>
+		
+		<delete id="mybatisdelsrc">
+		delete imgsrc
+		</delete>
+		
+		<select id="mybatiscallTopping" parameterType="java.util.Map" resultType="ToppingDTO" >
+		SELECT * FROM TOPPING_SIZE TS JOIN TOPPING T ON T.T_CODE = TS.T_CODE WHERE TS_NO='${ts_no}'
+		</select>
+		
+
+ <!--  어진 끝 -->
+ 
+  <!--  동준 -->
+<insert id="UserInsert" parameterType="pizza.service.impl.UserDto" >
+	INSERT INTO CUSTOMER VALUES(#{id},#{pwd},#{name},#{gender},#{birth},#{post},#{addr},#{email},#{tel})
+</insert>
+ 
+ <select id="UserSelectOne" parameterType="pizza.service.impl.UserDto" resultType="java.lang.String" >
+	SELECT name FROM CUSTOMER WHERE id = #{id} and pass = #{pwd}
+</select>
+ 
+ 
+ 
+ 
+ <!--  미나 -->
+ 
+<!-- 하프앤하프페이지 - 첫 번째 피자 목록 출력용 -->
+<select id="pizzaSelectList" resultType="MyPizzaDTO">
+	SELECT * FROM PIZZA
+</select>
+ 
+<!-- 하프앤하프페이지 - 첫번째 피자 선택에 따른 두 번째 피자 목록 출력용 -->
+<select id="pizzaSecondSelectList" parameterType="MyPizzaDTO" resultType="MyPizzaDTO">
+	SELECT * FROM PIZZA WHERE P_KIND=(SELECT P_KIND FROM PIZZA WHERE P_NAME='${p_name}') AND P_NAME != '${p_name}'
+</select> 
+ 
+<!-- 도우 출력용 -->
+<select id="doughSelectList" resultType="DoughDTO">
+	SELECT * FROM DOUGH
+</select>
+ 
+<!-- 피자_소스 출력용 -->
+<select id="pizzaSauceSelectList" resultType="PizzaSauceDTO">
+	SELECT * FROM PIZZA_SAUCE
+</select>
+ 
+<!-- 토핑 알레르기 유발성분 출력용 -->
+<select id="toppingAllergySelectList" resultType="ToppingDTO">
+	SELECT T_NAME, T_ALLERGY FROM TOPPING WHERE T_ALLERGY IS NOT NULL
+</select>
+
+<!-- 마이키친] 토핑 영양성분 출력용 - 피자 부분-->
+<select id="pizzaDoughNutrientSelectList" resultType="PNutrientDTO">
+	SELECT P.P_NAME,D.DOUGH_NAME,PN.*
+	FROM PIZZA P JOIN PIZZA_DOUGH PD ON PD.P_NO=P.P_NO
+	JOIN DOUGH D ON D.DOUGH_NO = PD.DOUGH_NO
+	JOIN P_NUTRIENT PN ON PN.D_NO=PD.D_NO
+	WHERE P.P_NO=2
+</select>
+
+<!-- 마이키친] 토핑 영양성분 출력용 - 토핑 부분-->
+<select id="toppingNutrientSelectList" resultType="ToppingDTO">
+	SELECT T_NAME, TN.* FROM T_NUTRIENT TN JOIN TOPPING T ON TN.T_CODE = T.T_CODE
+</select>
+
+<!-- 토핑 분류 출력용 -->
+<select id="toppingKindSelectList" resultType="ToppingDTO">
+	SELECT T_KIND FROM TOPPING GROUP BY T_KIND ORDER BY T_KIND
+</select>
+
+<!-- 토핑 분류에 해당하는 토핑명 출력용 -->
+<select id="toppingNameSelectList" parameterType="java.util.Map" resultType="ToppingDTO">
+	SELECT T_NAME FROM TOPPING WHERE T_KIND='${toppingKind}'
+</select> 
+ 
+<!-- 토핑 추가하기&토핑정량 확인하기 출력용 -->
+<select id="addToppingSelectList" parameterType="java.util.Map" resultType="ToppingDTO">
+	SELECT T_NAME, T_SIZE, T_PRICE, T_GRAM, T_IMG, T_KIND, TS_NO
+	FROM TOPPING T JOIN TOPPING_SIZE S ON T.T_CODE = S.T_CODE
+	<if test="toppingName != null">
+		WHERE T_NAME='${toppingName}'
+		ORDER BY T_NAME, T_SIZE DESC
+	</if>
+</select>
+ 
+<!-- 추가토핑안내 페이지 출력용 -->
+<select id="ToppingSelectList" resultType="ToppingDTO">
+	SELECT T_NAME, T_SIZE, T_PRICE, T_GRAM, T_ALLERGY
+	FROM TOPPING T JOIN TOPPING_SIZE S ON T.T_CODE = S.T_CODE
+	WHERE T_SIZE != 'S'
+	ORDER BY T_NAME
+</select>
+ 
+<!-- 사이드 디쉬-음료리스트 출력용 -->
+<select id="sideDishBvrgSelectList" resultType="SideDish_BeverageDTO">
+	SELECT * FROM DRINK
+</select>
+ 
+<!-- 사이드 디쉬-피클 출력용 -->
+<select id="sideDishPickleSelectList" resultType="SideDish_PickleDTO">
+	SELECT * FROM PICKLE
+</select>
+ 
+<!-- 사이드 디쉬-소스 출력용 -->
+<select id="sideDishSauceSelectList" resultType="SideDish_SauceDTO">
+	SELECT * FROM SAUCE
+</select>
+ 
+<!-- 하프앤하프페이지 - 피자2개, 도우, 사이즈 선택에 따른 피자 가격 -->
+<select id="addHalfNHalfPriceSelectOne" parameterType="java.util.Map" resultType="String">
+	SELECT SUM(${price}+(SELECT D_PRICE FROM DOUGH WHERE DOUGH_NAME='${dough}'))/2
+	FROM PIZZA
+	WHERE P_NAME='${fstPizza}' OR P_NAME='${scdPizza}'
+</select>
+ 
+ 
+ <!-- 연주 -->
+ 
+<!-- 이벤트메인페이지 출력용 -->
+<select id="eventSelectMain" parameterType="java.util.Map" resultType="EventDTO">
+	SELECT * FROM EVENT
+</select>
+ 
+ 
+ 
+</mapper>

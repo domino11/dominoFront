@@ -1,0 +1,77 @@
+/*********** Print 2017 ***********/
+
+@media print{
+
+	/********** 실제 프린트가 됬을 때 **********/ 
+	/* common */
+	html {background:#fff; background:#666;}
+	body{font-size:8pt; line-height:150%; background:none;}
+	a:link, a:visited{text-decoration:underline; color:#444;}
+	h1, h2, h3, h4, h5, h6, code, pre{color:#444; text-transform:none;}
+	h1{font-size:11pt}
+	h2{font-size:10pt}
+	h3{font-size:9pt}
+	h4, h5, h6{font-size:8pt}
+	blockquote{background-image:none;}
+	header, footer{display:none;}
+	.grab{padding:0;}
+	h1,h2,h3,h4,h5,dl,dt,dd,ul,li,ol,th,td,p,blockquote,form,fieldset,legend,div,body
+	{-webkit-print-color-adjust: exact;}
+	
+	/* style */
+	.Almanac #almanac_contents .photo .slider_wrap .bxslider li img {/*max-height: 700px; max-width: 100%;*/}
+	.Almanac #almanac_contents .photo .slider_wrap li {max-width:720px !important; overflow:hidden; clear:both; float:none;}
+	
+	/* layout */
+	.main .container,
+	.content_body_right,
+	#container,
+	.content
+	.almanac_contents,
+	.tit_nav
+	{width:1130px; min-width:1000px; margin-left:0;}
+	.almanac_contents {padding-left:0;}
+	
+	
+	/* display:none */
+	#header_wrap,
+	#header_wrap .header,
+	#location_wrap,
+	#footer, 
+	#nav_title,
+	#location_wrap .location,
+	#location_wrap .sns_box,
+	.category_box,
+	.depth_3,
+	#almanac_nav,
+	.Almanac #almanac_nav .nav_tab,
+	.almanac_mobile_nav,
+	.left_nav,
+	.tab,
+	.mobile_topInfo
+	{display:none !important;}
+	
+	@page {
+	/*size: 360mm 427mm;*/
+	size: 270mm 290mm;
+	margin: 0 5mm;
+	}
+	
+}
+
+
+	/********** 실제 프린트가 됬을 때 **********/ 
+	/* common */
+	#printPreview .grab{padding:0;}
+	#printPreview .btn_print{position:relative; z-index:100; margin:15px 0;}
+	#printPreview .content_body_right, #printPreview .tit_nav {margin-left: 0;}
+	html {background:#fff;}
+	
+	/* layout */
+	#printPreview{width:1130px; margin:30px auto 0;}
+	#printPreview .printCont {overflow:hidden; padding:20px 0;}
+	#printPreview #container, #printPreview .grab {width:1130px; min-width:auto; max-width:none;}
+	
+	/* display:none */
+	#printPreview .left_nav, #printPreview .upDateinfo{display:none !important;}
+	

@@ -1,0 +1,1485 @@
+/******** Korea Content 2017 *********/
+
+
+/***** Content Type *****/
+/*.container a {text-decoration:underline;}*/
+.container a.btn {text-decoration:none;}
+.container .tab a{text-decoration:none;}
+
+/* text type */
+.txt_bold {font-weight:700;}
+.txt_lg_red_point {font-weight:700; font-size:15px; color:#e81e25;}
+.txt_area_18{font-size:18px; color:#222; line-height:1.8;}
+.txt_area{/*! font-size:1.15em; */ color:#666; line-height:1.8; word-wrap:break-word; word-break:keep-all;}
+.txt_area > a{color:#00499c; text-decoration:underline;}
+.txt_area > a:focus,.txt_area > a:hover{color:#00499c; text-decoration:underline;}
+.txt_area em{color:#E40419;}
+.txt_summary{font-size:1.84em; color:#333; font-weight:400;}
+.footnote {color:#a3a3a3; font-size:12px; margin-top:20px;}
+
+/* title */
+.title_btn .btn_right {margin-bottom: 10px;}
+
+/* border */
+.border_dashed_b{border-bottom:1px dashed #ddd; padding-bottom: 30px; margin-bottom: 30px;}
+
+/* list */
+.ul_list,.ul_list_multi,.ul_list_red,.ul_list_dot,.ul_list_line{text-align:left;}
+.ul_list li{margin-top:5px; padding-left:12px; background:url("https://astro.kasi.re.kr:444/resources/images/ico/square.gif") 0 8px no-repeat; color:#222; font-size:13px; line-height:1.7; word-wrap: break-word; word-break: keep-all;}
+.ul_list li.fir{margin:0;}
+.list_square {margin-top:5px; padding-left:12px; background:url("https://astro.kasi.re.kr:444/resources/images/ico/square.gif") 0 8px no-repeat; color:#222; font-size:13px; line-height:1.7; word-wrap: break-word; word-break: keep-all;}
+.list_none {margin-top:5px;margin-bottom:10px;letter-spacing:-0.5px}
+.list_none li{margin-top:5px; padding-left:5px; color:#222;font-size:1.2em; line-height:1.8; word-wrap: break-word; word-break: keep-all;}
+.list_none li.fir{margin:0;}
+.list_none.num{list-style-type: decimal;} 
+.list_none.roman {list-style-type:upper-roman;}
+.list_none li li {font-size:0.95em}
+.ul_list_multi li{margin-top:10px; padding-left:12px; background:url(https://astro.kasi.re.kr:444/resources/images/ico/square.gif) 0 8px no-repeat; color:#222; font-size:14px; line-height:1.8;word-wrap: break-word;
+word-break: keep-all;}
+.ul_list_multi li.fir{margin:0;}
+.ul_num_list li{position:relative; margin-top:20px; padding-left:35px; font-size:13px;}
+.ul_num_list li .num{position:absolute; top:-13px; left:0; font-size:13px; color:#747474; font-weight:bold;}
+.ul_num_list li em{color:#EA0B0B;}
+.ul_num_list li.fir{margin:0;}
+.ul_list_red li{margin-top:5px; padding-left:10px; background:url(https://astro.kasi.re.kr:444/resources/images/ico/dot_circle_red.png) 0 8px no-repeat; color:#777; font-size:13px; line-height:1.5;}
+.ul_list_red li.fir{margin:0;}
+.ul_list_gray li{margin-top:5px; padding-left:10px; background:url(https://astro.kasi.re.kr:444/resources/images/ico/dot_circle.png) 0 8px no-repeat; color:#777; font-size:13px; line-height:1.5;}
+.ul_list_gray li.fir{margin:0;}
+.ul_list_dot li{margin-top:5px; padding-left:8px; background:url("https://astro.kasi.re.kr:444/resources/images/ico/dot.gif") 0 11px no-repeat; color:#777; font-size:13px; line-height:1.5;}
+.ul_list_dot li.fir{margin:0;}
+.ul_list_line li{margin-top:5px; padding-left:8px; background:url("https://astro.kasi.re.kr:444/resources/images/ico/line.gif") 0 12px no-repeat; color:#777; font-size:13px; line-height:1.5;}
+.ul_list_line li.fir{margin:0;}
+.ul_list a, .ul_list_multi a,.ul_num_list a,.ul_list_dot a,.ul_list_line a{color:#00499c;text-decoration: underline;}
+.ul_list a:focus ,.ul_list a:hover,.ul_list_multi a:focus, .ul_list_multi a:hover,.ul_num_list a:focus, .ul_num_list a:hover,.ul_list_dot a:focus, .ul_list_dot a:hover
+.ul_list_line a:focus, .ul_list_line a:hover{color:#00499c; text-decoration:underline;}
+.ul_title.ult_20 li{padding:0 0 0 20px;}
+.ul_title li{position:relative; margin:0; background:none;}
+.ul_title li span{position:absolute; top:0; left:0;}
+
+.ul_search {overflow:hidden; border-bottom: 1px solid #ebebeb;}
+.ul_search li {border-bottom: 1px solid #ebebeb;}
+.ul_search li:last-child {border-bottom:0;}
+.ul_search li strong {font-size: 13px; background: url(https://astro.kasi.re.kr:444/resources/images/ico/dot_circle_red.png) 0px 18px no-repeat; padding-left: 20px; display:inline-block;color: #000; padding: 10px 0px 0px 15px; max-width:155px; margin-bottom: -1px; display:block;}
+.ul_search li > span {padding: 3px 0 10px 15px; display:inline-block; color: #707070;}
+
+
+/* photo caption */
+.photo_caption{text-align:center;font-size: 1.1em;color: #747474;line-height: 1.5;}
+.photo_caption p{margin-top:10px;word-wrap: break-word;word-break: keep-all;}
+.photo_caption .twoblock span {display: block; margin-top: 10px; color: #707070;}
+.photo_caption .threeblock {margin-bottom:15px;}
+/*.photo_caption .threeblock > img {width:100%;}*/
+
+/* box */
+.box{padding:8px; background:url(https://astro.kasi.re.kr:444/resources/images/content/infobox_bg.gif) 0 0 repeat;}
+.box .cont{position:relative; padding:18px; background:#fff; color:#222; line-height:1.8;}
+.box > .cont {width:100% !important;}
+.box .cont.fsn{font-size:inherit;}
+.box .cont .copy{display:block; margin-bottom:10px; color:#090909; font-size:24px; line-height:1.45; letter-spacing: -0.5px; word-wrap: break-word; word-break: keep-all;}
+.box .cont .copy em{color:#fc3333;}
+.box_img{padding:8px; background:url(https://astro.kasi.re.kr:444/resources/images/content/infobox_bg.gif) 0 0 repeat; margin-bottom: 15px; /*overflow: hidden; 천문학습관 논문 검색 짤림*/}
+.box_img .cont{padding:18px; background:#fff;word-break: keep-all;}
+.box_img .cont .img{margin-bottom:15px; width:100%; height:200px;}
+.box_img .cont .img.h150{height:150px;}
+.box_img .cont .img img{max-width:none; height:auto;}
+.box_img .cont .txt{color:#222; line-height:1.8;}
+.box .cont .copy, .box_img .cont .txt .copy
+{display:block; margin-bottom:10px; color:#090909; font-size:18px; line-height:1.5; letter-spacing: -0.5px; font-weight: normal;}
+.box_img .cont .txt .copy em{color:#ea0b0b;}
+.box_img .cont .txt p em{color:#fc3333;}
+.box_img.icons .img{height:auto; text-align:center;}
+.box_img.icons .img img{max-width:40%; width:auto;}
+.box_img .search_write .icon_popover, .box .search_write .icon_popover {margin-bottom: 12px; margin-top: 7px;}
+.box_img .search_write, .box .search_write {padding: 0; background: none; border: 0;}
+.box_img .search_write .purple, .box .search_write .purple {display: block;width: 100%;}
+
+.search_box {border:1px solid #d0d0d0; padding:7px 15px;}
+ 
+
+/* step */
+.step{margin-top:-40px; line-height:1.5;}
+.step:after{content:''; display:block; clear:both;}
+.step li{float:left; width:100%; background:url(https://astro.kasi.re.kr:444/resources/images/content/step_arrow_down.gif) 50% 15px no-repeat;}
+.step li.fir{background:none;}
+.step li.active .cont{border:3px solid #fb3838;}
+.step li .cont{padding:10px; border:2px solid #FB6060; margin-top:40px; text-align:center; word-wrap:break-word; word-break:keep-all;}
+.step li .cont strong{display:block; color:#1a1a1a; font-size:1em; font-weight:400; letter-spacing:0;}
+.step li .cont span {display:block; margin-top:5px;margin-bottom:5px; font-size:1.1em; font-weight:bold; color:#EA0B0B;}
+.step li .cont p{font-size:1.1em; color:#222;}
+
+.step_text{border-top:1px solid #e0dbdb; border-bottom:1px solid #e0dbdb; line-height:1.8;}
+.step_text > li{position:relative; padding:10px 10px 15px; border-top:1px dashed #e0dbdb;}
+.step_text > li:after{content:''; display:block; clear:both;}
+.step_text > li.fir{border:0;}
+.step_text > li > strong{font-size:1.30em; color:#1a1a1a; font-weight:bold; line-height:1;}
+.step_text > li > strong span{display:inline-block; padding:0 20px 5px 0; vertical-align:middle;color:#666;font-size: 129%;font-weight:300;}
+.step_text > li > .cnt{margin-top:10px; width:auto; font-size:1.15em; color:#222;}
+.step_text > li > .cnt .sub{position:absolute; top:10px; right:10px; color:#666;}
+
+/* table */
+/*
+.table-responsive{border:0; text-transform: capitalize;}
+.table-responsive a {text-transform:none;}*/
+.tbl_cnt{margin:0; border-top:1px solid #b3b3b3; font-size:12px; line-height:1.6;}
+.tbl_cnt thead tr th{background:#f3f3f3; border-bottom:1px solid #e6e6e6; color:#000; text-align:center; vertical-align:middle;}
+.tbl_cnt tbody tr th,.tbl_cnt tbody tr td,.tbl_cnt tfoot tr th,.tbl_cnt tfoot tr td{border-bottom:1px solid #e6e6e6; vertical-align:middle; color:#666} 
+.tbl_cnt tbody tr th{text-align:center; color: #000; vertical-align: middle;} 
+.tbl_cnt a{color:#0c52a1;text-decoration: underline;}
+.tbl_cnt a:focus, .tbl_cnt a:hover{text-decoration:underline;}
+
+.tbl_border thead tr th, .tbl_border tbody tr th, .tbl_border tbody tr td,.tbl_cnt tfoot tr th,.tbl_cnt tfoot tr td{border:1px solid #e6e6e6; border-top:0;}
+.tbl_border thead tr th, .tbl_border tbody tr th, .tbl_cnt tfoot tr th{background:#f8f8f8;}
+.tbl_border thead tr th{border-bottom: 1px solid #CAC9C9;}
+
+.tbl_center tbody tr td,.tbl_cnt tfoot tr td{text-align:center}
+
+.tbl_list {margin-top: -1px;}
+.tbl_list tr {border-color:#eee;}
+.tbl_list tr:first-child {border:0;}
+.tbl_list th, .tbl_list tbody tr th {font-size:13px; background:url(https://astro.kasi.re.kr:444/resources/images/ico/dot_circle_red.png) 0px 18px no-repeat;text-align: left;padding-left: 10px;border-bottom: 1px solid #ccc; vertical-align: top;}
+.tbl_list th, .tbl_list td {padding-top: 10px !important;padding-bottom: 10px !important;}
+.tbl_list td {font-size:13px; color:#8f8f8f;}
+
+
+
+/***** Sub main *****/
+/* 공통 */
+.body_submain .mobile_topInfo, .body_submain .mobile_tit_nav {display:none;}
+.submain {background:none;}
+.submain_pc {display:none;}
+.submain {position: relative; z-index: 1;}
+.submain .mobile-nav-link {background: url(https://astro.kasi.re.kr:444/resources/images/common/mobile_nav_ico_w.png) no-repeat;}
+.submain #header_wrap {background: none; border-bottom: 1px solid rgba(255,255,255,0.2);}
+.submain #header_wrap img.mobile_logo {display:none !important;}
+.submain #header_wrap img.mobile_logo_w {display:block !important;}
+.submain_life .footer {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_mobile_bottom1.jpg); background-repeat: no-repeat; background-position: center top; background-size: cover;}
+.submain_learning .footer {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_mobile_bottom2.jpg); background-repeat: no-repeat; background-position: center top; background-size: cover;}
+.submain_almanac .footer {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_mobile_bottom3.jpg); background-repeat: no-repeat; background-position: center top; background-size: cover;}
+.submain .submain_tit {position: relative; z-index: 1; text-align: center; color: #fff; letter-spacing: -0.5px;padding: 50px 15px 90px 15px;height: 245px;}
+.submain .submain_tit dt {font-size: 21px;font-weight: bold;margin-bottom: 10px; position: relative;}
+.submain .submain_tit dt strong {display:block;width: 100%;text-align: center;margin-top: 12px; text-shadow: 1px 1px 1px rgba(0,0,0,0.2);}
+.submain .submain_tit dd {line-height: 1.6;}
+.submain .submain_tit dd p {color: rgba(255,255,255,0.8);  font-size: 14px; display: inline;letter-spacing: -0.2px;}
+.submain .submain_nav {background: #fff;}
+.submain .submain_nav > li {border-bottom: 1px solid #e9e9e9; }
+.submain .submain_nav > li > a {display: block;padding: 20px 15px;background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_nav_plus.png); background-repeat: no-repeat; background-position: 95%; padding-right: 60px;}
+.submain .submain_nav > li:hover, .submain_m .submain_nav > li:focus, .submain_m .submain_nav > li:active {background:#f7f7f7;}
+.submain .submain_nav > li > a > strong {display: block;font-size: 15px;color: #000;margin-bottom: 2px;}
+.submain .submain_nav > li > a > span {display: block;font-size: 13px;color: #999999; display:none;}
+.submain .submain_nav > li > ul > li > a {display:block;}
+.submain .submain_nav_list > li {padding: 20px;}
+.submain .submain_nav_list > li > a {padding: 0; margin-bottom:12px; background-position: right;}
+.submain .submain_nav_list > li > ul {padding:0;overflow: hidden;}
+.submain .submain_nav_list > li > ul > li {display:inline-block;}
+.submain .submain_nav_list > li > ul > li > a {display: inline-block; padding: 3px 7px; border: 1px solid #dadada; border-radius: 2px;margin: 2px 0;color: #666;}
+.submain .submain_nav_list > li > ul > li > a:hover, .submain_m .submain_nav_list > li > ul > li > a:active, .submain_m .submain_nav_list > li > ul > li > a:focus {border-color: #999; color: #333;}
+
+
+/***** Content *****/
+/* 일출일몰시각계산 */
+.Timebox .blcok {height:250px;text-align: center;position: relative;}
+.Timebox .blcok .watch {line-height: 210px;}
+.Timebox .blcok .watch img {line-height: 250px;}
+/*.Timebox .blcok .watch svg {float:left;}*/
+.Timebox .blcok .tit {position: absolute;width: 100%;bottom: 0;font-size:13px;  text-align: left;}
+.Timebox .blcok .tit strong {font-size: 13px; background: url(https://astro.kasi.re.kr:444/resources/images/ico/dot_circle_red.png) 0px 18px no-repeat; padding-left: 20px; display:inline-block;color: #000; padding: 12px 0px 12px 15px;  margin-bottom: -1px;}
+.Timebox .blcok .tit span {padding: 12px 0 12px 5px; display:inline-block; color: #707070;}
+
+/* 태양 고도 방위각 계산 */
+.Graphbox {border: aliceblue; text-align: center; margin-top: 20px; position: relative;}
+.Graphbox .graph {padding:0;}
+.Graphbox .tit {font-size: 13px;}
+.Graphbox .tit strong {display: inline-block; margin-right:5px; color: #000;}
+
+/* 월별 해/달 출몰시각 */
+.sunMoonMap {border:1px solid #d0d0d0;height:100%;}
+.sunMoonMap .Modal { width:100%; padding:15px;}
+.sunMoonMap .Modal .tit {}
+.sunMoonMap .Modal .tit strong {display: block;font-size: 16px;color: #000;}
+.sunMoonMap .Modal .tit strong > em {color:#eb0c0c; display:inline-block; margin-left:5px;}
+.sunMoonMap .Modal .tit .info {padding-left:20px; background: url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_icon.png) no-repeat;background-position: left; margin-top: 3px; color: #888;}
+.sunMoonMap .Modal .list {border-top:1px solid #898989; margin-top:15px;}
+.sunMoonMap .Modal .list li a {padding:11px 15px; display:block; border-bottom:1px solid #e0e0e0; color:#606060; cursor: pointer;}
+.sunMoonMap .Modal .list li a:hover, .sunMoonMap .Modal .list li a:active, .sunMoonMap .Modal .list li a:focus 
+{background:#f4f4f4; color:#000; text-decoration: underline;}
+.sunMoonMap .Modal .list li a .icon_modal {margin-left:7px;}
+/*.sunMoonMap_list {display:none;}*/
+.sunMoonMap_list {display: block;margin-bottom: 50px;}
+.sunMoonMap_list .tit strong {display: block;font-size: 21px;color: #000;}
+.sunMoonMap_list .tit strong > em {color:#eb0c0c; display:inline-block; margin-left:5px;}
+.sunMoonMap_list .tit .info {padding-left:20px; background: url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_icon.png) no-repeat;background-position: left; margin-top: 7px; color: #888; font-size: 14px;}
+.sunMoonMap_list .list {border-top:1px solid #898989; margin-top:15px;overflow: hidden;border-left: 1px solid #f0f0f0; display:block;}
+.sunMoonMap_list .list li {}
+.sunMoonMap_list .list li a {padding:11px 15px; display:block; border-bottom:1px solid #e0e0e0; color:#606060; cursor: pointer;float: left;width: 50%;border-right: 1px solid #f0f0f0;text-align: center; font-size: 13px;}
+.sunMoonMap_list .list li a:hover, .sunMoonMap .Modal .list li a:active, .sunMoonMap .Modal .list li a:focus 
+{background:#f4f4f4; color:#000; font-weight: bold;}
+.sunMoonMap_list .list li a .icon_modal {margin-left:7px;}
+.sunMoonMap .Map_wrap {display: none;}
+
+/* 월별천문현상 */
+.calendar{/*margin-top:50px;*/}
+.calendar .title_btn .btn_right {display:none;}
+.calendar .mark{background:none; text-align:right;}
+.calendar .ul_list li strong:after {display:inline-block; content:":"; margin:0 5px;}
+.calendar .box {text-align:center;margin-bottom: 10px;}
+.calendar .box .control{/*margin-bottom:20px;*/}
+.calendar .box .control button{width:16px; height:27px; vertical-align:middle;}
+.calendar .box .control button.prev{background:url(https://astro.kasi.re.kr:444/resources/images/content/calendar_control_prev.png) no-repeat; background-position:left 7px;}
+.calendar .box .control button.prev:hover, .calendar .box .control button.prev:focus {background:url(https://astro.kasi.re.kr:444/resources/images/content/calendar_control_prev_on.png) no-repeat; background-position:left 6px;}
+.calendar .box .control button.next{background:url(https://astro.kasi.re.kr:444/resources/images/content/calendar_control_next.png) no-repeat; background-position:right 6px;}
+.calendar .box .control button.next:hover, .calendar .box .control button.next:focus {background:url(https://astro.kasi.re.kr:444/resources/images/content/calendar_control_next_on.png) no-repeat; background-position:right 6px;}
+.calendar .box .control strong{display:inline-block; margin:0 5px; vertical-align:middle; font-size:15px; color:#000; font-weight:bold;}
+.calendar .box .control strong .point {color:#e81e25;}
+.calendar .box .month_txt {font-size:30px;margin-bottom: 5px;font-weight: bold;}
+.calendar .box .month_btn {overflow:hidden;}
+.calendar .box .month_btn li {display:block;float: left;width: 32.8%;margin-right: 0.5%;margin-bottom: 0.5%;}
+.calendar .box .month_btn li a {display:block; width:100%; height:35px; line-height:35px; border-radius:0; background:#ededed; text-align:center; color:#666; font-size: 13px; margin:0px;}
+.calendar .box .month_btn li a:hover {background: #323a45; color: #fff;}
+.calendar .box .month_btn li.active a {background:#e81e25; color:#fff; font-weight:bold;}
+.calendar .table-responsive{border-right:0}
+.calendar .table{margin:0; border-bottom:1px solid #d2d2d2}
+.calendar .table thead{display:none;}
+.calendar .table tbody tr{display:block; width:100%;}
+.calendar .table tbody td{position:relative; display:block; width:100%; border-top:1px solid #e5e5e5; color:#4d4c4c; font-size:13px;}
+.calendar .table tbody td > strong{}
+.calendar .table tbody td > a{display:block; width:100%; height:100%; color:#4d4c4c;}
+.calendar .table tbody td a:focus, .calendar .table tbody td a:hover{text-decoration:underline;}
+.calendar .table tbody td .day strong {color:#000; font-size:13px;}
+.calendar .table tbody td .day span {font-size: 13px; font-weight: bold; color: #000;letter-spacing: -0.6px;}
+.calendar .table tbody td .moon {margin-top: 10px;}
+.calendar .table tbody td .moon img {position:absolute; right:0;top: 15px;}
+.calendar .table tbody td .moon span {font-size:12px; display:inline-block; color:#000;}
+.calendar .table tbody td .moon .data {font-weight:bold;}
+.calendar .table tbody td .moon .phase {margin-left: 3px;}
+.calendar .table tbody td .notice {color:#32004b; font-size:11px; margin: 3px 0 5px;}
+.calendar .table tbody td .notice li {padding-left:8px; background: url(https://astro.kasi.re.kr:444/resources/images/content/dot_purple.jpg) no-repeat; background-position: left 5px; line-height: 1.3; letter-spacing: -0.3px;}
+.calendar .table tbody td .sunmoonData {font-size:11px; color:#555;overflow: hidden;bottom: 15px; left: 13px;}
+.calendar .table tbody td .sunmoonData span {display:inline-block;letter-spacing: -0.3px; background: url(https://astro.kasi.re.kr:444/resources/images/content/calendar_bar.jpg) no-repeat; background-position: 3px 2px; padding-left:8px;}
+.calendar .table tbody td .sunmoonData span:first-child {background:none; padding-left:0;}
+.calendar .table tbody td .sunmoonData span strong {display:inline-block; margin-right:4px;}
+.calendar .table .sun {color:#e81e25;}
+.calendar .table .holiday .day {font-weight:bold; color:#e81e25;}
+.calendar .table .holiday .day strong {font-size:13px; color:#e81e25;}
+.calendar .table .holiday .day .specialday {display:inline-block; font-size:13px; margin-left:3px; color:#e81e25;}
+.calendar .table .sta{color:#0c52a1;}
+.calendar .table .sta .day strong {color:#0c52a1;}
+
+.calendar_column .table{min-width: 700px;}
+.calendar_column .table tbody tr{display:table-row;}
+.calendar_column .table tbody td{display:table-cell; width: auto; padding:5px 20px;}
+.calendar_column .table .holiday .day .specialday {display: block;margin: 0; font-size:12px;}
+.calendar_column .table tbody td .sunmoonData span {background: none; padding-left:0}
+
+
+/* 티커서비스 
+.ticker_body .btn_wrap {text-align: center; margin-top: 30px;}
+.tickerLoc {overflow:hidden; margin:30px 0; border-right: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6;}
+.tickerLoc li {float:left; height: 38px; width:11.11111%; padding:8px; border-left:1px solid #e6e6e6; border-top:1px solid #e6e6e6;text-align: center;color: #666;}
+.ticker_btn {text-align:center;}
+.ticker_service h5 {margin-bottom: 20px;}
+.ticker_service .box_ticker{overflow: hidden;border: 1px solid #e5e5e5; border-radius: 2px; padding: 15px 25px 25px;}
+.ticker_service .box_ticker .ticker {margin-top:20px; padding-top:20px; border-top:1px solid #eee;clear: both;overflow: hidden;}
+.ticker_service .box_ticker .fir {margin-top:0; padding-top:0; border-top:0;}
+.ticker_service .box_ticker .ticker .ticker_table {float:left; margin-right:30px;}
+.ticker_service .box_ticker .ticker .info {float:left; margin-left:0;}
+.ticker_service .box_ticker .ticker .info strong {font-size: 16px;color: #000;display: block;margin-bottom: 5px;}
+.ticker_service .box_ticker .ticker .info p {color: #888;}
+
+.ticker_chice {overflow: hidden;margin-top: 20px;}
+.ticker_chice .chiceList {border-right: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6;overflow: hidden;}
+.ticker_chice .chiceList li {float:left; width:50%; border-left: 1px solid #e6e6e6; border-top: 1px solid #e6e6e6;padding-top: 20px;}
+.ticker_chice .chiceList li > table {margin:0 auto;}
+.ticker_chice .chiceList li .tit {background: #f6f6f6;padding: 15px;text-align: center;margin-top: 20px;}*/
+
+/* 티커서비스 */
+.ticker_body .btn_wrap {text-align: center; margin-top: 30px;}
+.tickerLoc {overflow:hidden; margin:30px 0; border-right: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6;}
+.tickerLoc li {float:left; height: 38px; width:25%; padding:8px; border-left:1px solid #e6e6e6; border-top:1px solid #e6e6e6;text-align: center;color: #666;}
+.ticker_btn {text-align:center;}
+.ticker_service h5 {margin-bottom: 20px;}
+.ticker_service .box_ticker{overflow: hidden;border: 1px solid #e5e5e5; border-radius: 2px; padding: 15px 25px 25px;}
+.ticker_service .box_ticker .ticker {margin-top:20px; padding-top:20px; border-top:1px solid #eee;clear: both;overflow: hidden;}
+.ticker_service .box_ticker .fir {margin-top:0; padding-top:0; border-top:0;}
+.ticker_service .box_ticker .ticker .ticker_table {margin-bottom:10px;}
+.ticker_service .box_ticker .ticker .ticker_table table {margin:0 auto;}
+.ticker_service .box_ticker .ticker .info {text-align: center;}
+.ticker_service .box_ticker .ticker .info strong {font-size: 14px;color: #000;display: block;margin-bottom:0;}
+.ticker_service .box_ticker .ticker .info p {color: #888;}
+
+.ticker_chice {overflow: hidden; margin-top: 7px;}
+.ticker_chice .chiceList {overflow: hidden;width: 95%; margin-bottom: 20px;}
+.ticker_chice .chiceList li {padding-top: 20px;text-align: left;padding: 10px 0;border-top: 1px solid #e9e9e9;}
+.ticker_chice .chiceList li > table {/*! margin:0 auto; */float: left;}
+.ticker_chice .chiceList li .tit {padding: 0;text-align: left;padding-top: 10px;font-weight: bold; clear:both;}
+
+
+/* 이용안내 : RSS  */
+.rss .rnd_rss {text-align:center; padding-bottom: 60px;}
+.rss .rnd_rss strong {font-size:1.2em; top:200px; line-height: 140%; color:#4e4e4e;}
+.rss .rnd_rss strong span {display:block; color:#666; font-weight:300;}
+.rss [class^="arrow_"] {font-size: 1.5em; top:210px;}
+.rss .arrow_left {bottom:auto;}
+
+
+/* error */
+#body-404{background:url("https://astro.kasi.re.kr:444/resources/images/content/bg_night.jpg") 50% 50% no-repeat #34495e;}
+#body-500{background:url("https://astro.kasi.re.kr:444/resources/images/content/bg_night.jpg") 50% 50% no-repeat #424d69;}
+.error #wrap{padding:0 5px; height:100%;}
+.error .content{text-align:center;}
+.error .content .txt{margin:30px 0 0; color:#dadee7;}
+.error .content .txt strong{font-size:1.84em; font-weight:300;}
+.error .content .txt p{margin:15px 0 0; font-size:1.15em; line-height:1.8;}
+.error .but{margin-top:40px;}
+.error .but button{padding:8px 15px; background:none; border:0; border-radius:4px; color:#fff; font-size:1.15em;}
+.error .but button.prev{margin-right:25px; background:#2ca5b2}
+.error .but button.prev .icon-angle-left{display:inline-block; margin-right:5px; font-size:107%}
+.error .but button.home{background:#06ad8c}
+.error .but button:focus,.but button:hover{text-decoration:underline;}
+.error .but button:focus .icon-angle-left,.but button:hover .icon-angle-left{text-decoration:none;}
+
+
+/***** 천문학습관 *****/
+.content_wrap{word-wrap: break-word; word-break: keep-all; line-height: 1.7; /* text-align: justify; */ letter-spacing: -0.5px;}
+.content_wrap figure { float: left; width: 50%;}
+.content_wrap figure.full_W { width: 100%;}
+.content_wrap figure figcaption {font-size:12px; font-weight:bold; color:#0c52a1; margin-top:5px; margin-bottom:10px;}
+.content_wrap:after{clear:both; content:""; display:block;}
+.content_wrap h5 {color: #000; margin-bottom: 15px; font-size: 25px; }
+.content_wrap h5:first-child {padding-top: 0;}
+.content_wrap h6 {clear: both; margin-bottom: 12px; font-size: 21px; color: #000; margin-top: 40px;}
+.content_wrap h6.first, .content_wrap strong.first, .content_wrap p.first{margin-top: 0px; padding-top: 0px;}
+.content_wrap strong { display: inline-block; clear: both; padding-bottom: 13px; font-size: 16px; color: #000; margin-top:30px; }
+.content_wrap strong :first-child {margin-top: 0;}
+.content_wrap .more_tit { display:block; clear:both; padding-bottom:5px; font-size:14px; font-weight:bold;  color:#0c52a1; margin-bottom:0;  padding-top:20px;}
+.content_wrap .more_tit :first-child {padding-top: 0;}
+.content_wrap p{margin-bottom:15px;}
+.content_wrap img {cursor:pointer;}
+.content_wrap img:hover {opacity: 0.8; /* -webkit-transition: 0.4s ease-in-out; -o-transition: 0.4s ease-in-out; transition: 0.4s ease-in-out;*/}
+.content_wrap .bg_000{background:#000; cursor:pointer;}
+.content_wrap .bg_000:hover { opacity: 0.8;  -webkit-transition: 0.4s ease-in-out; -o-transition: 0.4s ease-in-out; transition: 0.4s ease-in-out;}
+.content_wrap .lea_img{float: left; overflow: hidden; display: block; margin-bottom:25px; margin-right: 35px;}
+.content_wrap .w_310 {width: 310px;}
+.content_wrap .lea_img img, .content_wrap .lea_img_r img{display:block; margin:0 auto;}
+.content_wrap .lea_img_m{display:block; text-align:center; margin:15px 0; overflow:hidden;}
+.content_wrap .img_blank{padding:20px 0;  background:#f5f5f5;}
+.content_wrap .lea_img_r{float: right; overflow: hidden; display: block; margin-bottom:25px; margin-left: 35px;}
+.content_wrap .h_260 {height: 260px;}
+.content_wrap .wrap_01 { clear: both; overflow: hidden; margin-bottom: 40px;}
+.content_wrap .wrap_02 { clear: both; overflow: hidden; margin-bottom: 0;}
+.content_wrap .wrap_01 strong, .content_wrap .wrap_02 strong{ margin-top: 0; }
+.content_wrap .wrap_01 .lea_img,
+.content_wrap .wrap_01 .lea_img_r,
+.content_wrap .wrap_02 .lea_img_r,
+.content_wrap .wrap_02 .lea_img,
+.content_wrap .wrap_02 .lea_img_m{ margin-bottom:0;}
+.content_wrap .wrap_01 .h_260 { margin-bottom:0;}
+.content_wrap .table-responsive{clear:both;}	
+.content_wrap .table-responsive .tbl_border_none,
+.content_wrap .table-responsive .tbl_border_none th,
+.content_wrap .table-responsive .tbl_border_none td{border:0;}
+.content_wrap .lea_modal{}
+.content_wrap .lea_modal .modal-dialog{min-height:auto; text-align:center; padding:55px 20px 20px 20px;}
+.content_wrap .lea_modal .modal-dialog .close{top:15px; right:18px}
+.content_wrap .lea_modal .modal-dialog img:hover {opacity: 1; cursor: unset;}
+.content_wrap .lea_list {/*margin-top:10px;*/}
+.content_wrap .lea_list li{margin-top:5px; padding-left:8px; background:url("https://astro.kasi.re.kr:444/resources/images/ico/dot.gif") 0 8px no-repeat; line-height:1.5;}
+.content_wrap .lea_list li.fir{margin:0;}
+
+/***** 천문학습관 리스트 버튼 *****/
+.learning_return{float:right; padding:4px 10px;}
+
+
+/***** 배경 *****/
+#vr {z-index: -1; height:370px; position: absolute; left: 0; top: 0; width:100%; right: 0; bottom: 0; overflow: hidden;}
+#vr div {height:100%;}
+/* #vr div.img-1 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_life.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center;} */
+/* #vr div.img-2 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_life.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center;} */
+/* #vr div.img-3 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_life.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center;} */
+/*
+  배경이미지
+*/
+	/*
+	KEY=메인페이지 배경이미지
+	*/
+.vr_main div.img-1 {
+		background: url("http://192.168.0.66:8080/JSPProject/cof.jpg");
+	 background-size: cover; background-repeat: no-repeat; 
+	 background-position: center center;
+	transition-duration:7s;
+	
+	}
+
+ 
+        .vr_main:hover{
+        background: url("http://192.168.0.66:8080/JSPProject/cof.jpg");
+            background-size: cover; background-repeat: no-repeat; 
+	 background-position: center center;
+        }
+
+
+
+.vr_main div.img-2 {background: url("http://192.168.0.66:8080/JSPProject/cof2.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_main div.img-3 {background: url("http://192.168.0.66:8080/JSPProject/cof3.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_main div.img-4 {background: url("http://192.168.0.66:8080/JSPProject/cof4.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_main div.img-5 {background: url("http://192.168.0.66:8080/JSPProject/cof5.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_main div.img-6 {background: url("http://192.168.0.66:8080/JSPProject/cof6.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_main div.img-7 {background: url("http://192.168.0.66:8080/JSPProject/cof7.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center;}
+
+
+
+
+
+
+
+.vr_life div.img-1 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_life.jpg) #332c7c; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_life div.img-2 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_life2.jpg) #332c7c; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_life div.img-3 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_life3.jpg) #332c7c; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_learning div.img-1 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning.jpg) #ff7e09; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_learning div.img-2 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning2.jpg) #ff7e09; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_learning div.img-3 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning3.jpg) #ff7e09; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_almanac div.img-1 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_almanac.jpg) #46433e; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_almanac div.img-2 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_almanac2.jpg) #46433e; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+.vr_almanac div.img-3 {background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_almanac3.jpg) #46433e; background-size: cover; background-repeat: no-repeat; background-position: center center;}
+
+#vr div img {height: 100%;}
+#vr div.on {display: block;}
+#vr div {
+	opacity: 0; width: 100%; position: absolute; left: 0; top: 0;
+	-webkit-transition-duration: 0.5s; transition-duration: 0.5s;
+	-webkit-transition-timing-function: ease-out; transition-timing-function: ease-out;
+}
+#vr div.fadeIn {opacity: 1;}
+#vr div.on.paused {-webkit-animation-play-state: paused !important; animation-play-state: paused !important;}
+#vr div.on.running {-webkit-animation-play-state: running !important; animation-play-state: running !important;}
+/*
+ 배경이미지 사이즈변환 / 크기변경 key=자동화면변환
+*/
+#vr div.on {
+	-webkit-animation: bgScale 7000ms 1 ease-out; -o-animation: bgScale 7000ms 1 ease-out; animation: bgScale 7000ms 1 ease-out;
+	-webkit-transform: scale(1); -o-transform: scale(1); transform: scale(1);
+}
+@-webkit-keyframes bgScale {
+	0% { -webkit-transform: scale(1); }
+	100% { -webkit-transform: scale(1.5); }
+}
+@-o-keyframes bgScale {
+	0% { -o-transform: scale(1); }
+	100% { -o-transform: scale(1.5); }
+}
+@keyframes bgScale {
+	0% { transform: scale(1); }
+	100% { transform: scale(1.5) rotate(0.02deg); }
+}
+	
+
+
+/** >360px **/
+@media (min-width:360px){
+	
+	
+	/***** Content Type *****/
+	/* box */
+	.box_right .imgbox{padding-bottom:30px;}
+	.box_right .cont{padding-top:270px;}
+	
+
+	/***** Sub main *****/
+	
+
+	/***** Content *****/
+
+
+}
+
+
+@media (min-width:540px){
+	
+	
+	/***** Content Type *****/
+
+
+	/***** Sub main *****/
+	/*공통*/
+	.submain .submain_tit p:last-child {display:block;}
+	.submain_m .submain_nav > li > a > span {display:block;}
+	.submain_m .submain_nav > li > a > strong {font-size: 16px;}
+	.submain_m .submain_tit dd p {display:block;}
+	
+	/*역서*/
+	.submain_almanac .vr_almanac {/*height:100% !important;*/}
+	.submain_almanac .almanacLink dd {float: left;width: 25%;}
+	
+	
+	/***** Content *****/
+	/* 월별천문현상 */
+	.calendar .box .month_btn li {width: 24.5%;}
+	
+	/* 티커서비스 신청 */
+	.ticker_chice .chiceList li {float:left; width:50%;} 
+	
+	/* 월별 해/달 출몰시각 */
+	.sunMoonMap_list .list li a {width: 33.333333%;}
+	
+	/* 티커서비스 */
+	.tickerLoc li {width:16.6666%;}
+	
+}
+
+/**  480px (천문학습관) **/
+@media (max-width:480px){
+	
+	.tab ul li{width:100%;}
+}
+	
+/**  768px (천문학습관) **/
+@media (max-width:767px){
+	
+	.modal-open {overflow-y: auto; padding-right: 0 !important;}
+	
+	/* 이미지 넓이 100%, 높이값 초기화, 상하 마진 조절*/
+   .content_wrap .lea_img, .content_wrap .lea_img_r {margin:0 0 15px 0!important; clear: both; width:100% !important; height: auto !important; text-align:center;}
+   .content_wrap .lea_img img, .content_wrap .lea_img_r img, .content_wrap .lea_img_m img {width:initial !important; height: auto !important; margin:0 auto !important;}
+   .content_wrap .h_260 {height:initial !important;}
+   .content_wrap figure { width: 100% !important; margin: 0 !important;}
+   .content_wrap .lea_img_m{margin-top:15px ; margin-bottom:15px ; height: initial !important;}
+   .content_wrap .lea_img_m>img:nth-child(2){margin:15px 0 0 0!important;}
+   .content_wrap .wrap_02 .lea_img_m{ margin-bottom:0 !important;}
+   .content_wrap .img_two{ width: 100% !important;}
+   
+   /*타이틀 사이즈 및 패딩 마진 조절*/
+   .content_wrap h5{font-size:18px; margin-bottom:10px;}
+   .content_wrap h6{font-size:16px; margin-bottom:8px; margin-top:25px;}
+   .content_wrap strong.m_first{margin-top:0 !important;}
+   .content_wrap strong{font-size:14px; padding-bottom:8px; margin-top:18px !important }
+   .content_wrap .more_tit {font-size:13px;}
+   
+   /* 추가 사용한 div 마진값 초기화 */
+   .content_wrap .wrap_01 { margin:initial !important;}
+   .content_wrap .wrap_02 { margin:initial !important;}
+   
+
+   .content_wrap .bottom_none{margin-bottom:0 !important;}
+   
+   .tab ul li a{ vertical-align:top;}
+   
+    /* mobile 에서 modal 안뜨게 하기 */
+   .content_wrap img {cursor:unset;}
+   .content_wrap img:hover {opacity: 1; }
+   .content_wrap .bg_000{background:#000; cursor:unset;}
+   .content_wrap .bg_000:hover { opacity: 1;}
+   .content_wrap .modal{ display: none !important;  visibility: hidden !important;}
+   
+   /* 월별천문현상 */
+   .calendar_wrap .btn_right {display:none;}
+   
+   /* 음양력변환계산  */
+   #convertPage3 .search_write .col-xs-6 {width:100%;}
+   #convertPage3 .search_write .btn-radio {margin-top:10px;} 
+   
+   	.star_search{padding:25px 15px; overflow:hidden;}
+	.star_search .star_btn{color:#000; padding:10px 20px; margin-bottom:30px; border:1px solid #e5e5e5; background:#f6f6f6;}
+	.star_search div{text-align:center;}
+	.star_search div img{cursor:pointer; border:1px solid #fff;}
+	.star_search div img:hover{ border:1px solid #000; }
+	.star_search div span{display:block; font-weight:bold; font-size:16px; color:#000; padding-top:5px;}
+	.star_search div button{display:block; width:100px; }
+	.star_search div.star_right{margin-top:20px; }
+
+}
+
+
+/** > 768px **/
+@media (min-width:768px){
+	
+	/***** Content Type *****/
+	/* text type */
+	.txt_lg_red_point {font-size:18px;}
+		
+	/* photo caption */
+	.photo_caption .twoblock {margin-right: 0.4%; margin-top: 0; margin-bottom: 5px; display: inline-block;}
+	.photo_caption .threeblock {margin-right: 0.4%; margin-top: 0; margin-bottom: 5px; display: inline-block; max-width:230px;}
+	
+	/* title */
+	.title_total, .title_btn {overflow: hidden;}
+	.title_total h4, .title_btn h4 {float: left;}
+	.title_total .board_top, .title_btn .btn_right {float: right;margin-top: 10px;}
+	.board_top .total, .board_top .page {line-height:50px;}
+	
+	/* box */
+	.box .cont, .box_img .cont{padding:30px;}
+	.box .cont .copy, .box_img .cont .txt .copy
+	{font-size:21px;}
+	.box_right .imgbox{width:auto; padding:0 30px 0 0;}
+	.box_right .img{width:352px; height:auto; overflow:hidden;}
+	.box_right .img img{width:auto; height:100%;}
+	.box_right .cont{padding:30px 40px 30px 400px;}
+	.infobox .cont .more{position:absolute; top:26px; right:18px; margin:0;}
+	.box_img .search_write .group, .box .search_write .group {margin-top:15px;margin-bottom: -10px; margin-right: 3px;}
+	.box_img .search_write .btn-popover, .box .search_write .btn-popover {margin-right:7px;}
+	.box_img .search_write .purple, .box .search_write .purple {padding: 5.5px 12px;   display: inline-block; width: auto;vertical-align: bottom;margin-bottom: -10px;}
+	.box_img .search_write .icon_popover, .box .search_write .icon_popover {margin-top: -10px; margin-bottom:0; vertical-align: bottom;}
+	
+	.search_box {padding: 15px 25px;}
+	
+	/* step */
+	.step{margin:0 0 0 -50px;}
+	.step li{background:url(https://astro.kasi.re.kr:444/resources/images/content/step_arrow.gif) 20px 50% no-repeat;}
+	.step li .cont{padding:15px; margin:0 0 0 50px;}
+	.step.w7 li{width:14.28%;}
+	.step.w6 li{width:16.66%;}
+	.step.w5 li{width:20%;}
+	.step.w4 li{width:25%;}
+	
+	/* table */
+	.tbl_cnt{font-size:13px;}
+	
+	/* list */
+	.ul_search li strong {display:inline-block; padding-bottom:10px;  font-size:14px;}
+	.ul_search li.block strong {vertical-align: top;}
+	.ul_search li > span {padding: 10px}
+	
+	
+	/***** Content *****/
+	/* 일출일몰시각계산 */
+	.Timebox .blcok .tit strong {font-size:14px;}
+	
+	/* 일출일몰시각계산 */
+	.Timebox .blcok {float: left;width: 33.3333%;}
+	.Timebox .blcok:first-child .watch svg {float:left;}
+	.Timebox .blcok:first-child .tit {text-align: left;}
+	
+	/* 월별 해/달 출몰시각 */
+	.sunMoonMap .Modal {display:none;}
+	.sunMoonMap_list .list li a {width: 25%; font-size: 14px;}
+	.sunMoonMap .Map_wrap {background:#eaeaea;  width:100%; height: 100%;position: relative; display: block;padding: 55px 0 30px 0;}
+	.sunMoonMap .Map_View {padding-top:70px;}
+	.sunMoonMap .Map_wrap .Map {margin: 0 auto; position: relative;}
+	.sunMoonMap .Map_wrap .Map li {display: inline-block;position: absolute;}
+	.sunMoonMap .Map_wrap .Map li a {display: inline-block;padding: 5px; color: #222;font-size: 14px; background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_ico_sun.png) no-repeat;background-position: left center; padding-left:25px;font-weight: bold; font-size: 15px;}
+	.sunMoonMap .Map_wrap .Map li a:hover, .sunMoonMap .Map_wrap .Map li a:active, .sunMoonMap .Map_wrap .Map li a:focus
+	 {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_ico_sun_on.png) no-repeat;background-position: left center; font-weight: bold; text-decoration: underline;}
+	.sunMoonMap .Map_nav {background: #fff;padding: 13px 25px;overflow: hidden;font-size: 13px; margin-bottom: 30px;position: absolute;top: 0;left: 0;width: 100%;}
+	.sunMoonMap .Map_nav .location {float: left;}
+	.sunMoonMap .Map_nav .location li {display: inline-block;color: #585858;}
+	.sunMoonMap .Map_nav .location li.active {padding-left: 20px; background: url(https://astro.kasi.re.kr:444/resources/images/ico/almanac_arr.gif) no-repeat; background-position: 6px;}
+	.sunMoonMap .Map_nav .location li.active strong {font-weight: bold;color: #000;background: url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_ico_sun.png) no-repeat;background-position: left center;padding-left: 23px;}
+	.sunMoonMap .Map_nav .btn_return {float: right;color: #000;font-weight: bold;padding-right: 20px; background: url(https://astro.kasi.re.kr:444/resources/images/ico/arr_return.png) no-repeat; background-position: right;}
+	.sunMoonMap .Map_nav .btn_return:hover, .sunMoonMap .Map_nav .btn_return:active, .sunMoonMap .Map_nav .btn_return:focus {text-decoration: underline;}
+		 
+		/*대한민국*/
+		.sunMoonMap .Map_wrap .Korea {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_bg.png) no-repeat; background-position: center; width:514px; height:524px;}
+		.sunMoonMap .Map_wrap .Korea .area1 {left: 220px;top: 60px;}
+		.sunMoonMap .Map_wrap .Korea .area2 {top: 80px;left: 145px;}
+		.sunMoonMap .Map_wrap .Korea .area3 {left: 127px;top: 100px;}
+		.sunMoonMap .Map_wrap .Korea .area4 {top: 100px;left: 194px;}
+		.sunMoonMap .Map_wrap .Korea .area5 {right: 30px;top: 50px;}
+		.sunMoonMap .Map_wrap .Korea .area6 {right: 5px;top: 90px;}
+		.sunMoonMap .Map_wrap .Korea .area7 {top: 190px;right: 185px;}
+		.sunMoonMap .Map_wrap .Korea .area8 {left: 100px;top: 190px;}
+		.sunMoonMap .Map_wrap .Korea .area8_2 {left: 183px; top: 145px;}
+		.sunMoonMap .Map_wrap .Korea .area9 {left: 175px;top: 203px;}
+		.sunMoonMap .Map_wrap .Korea .area9_2 {left: 161px; top: 171px;}
+		.sunMoonMap .Map_wrap .Korea .area10 {right: 190px;top: 250px;}
+		.sunMoonMap .Map_wrap .Korea .area11 {left: 138px;bottom: 240px;}
+		.sunMoonMap .Map_wrap .Korea .area12 {left: 130px;bottom: 175px;}
+		.sunMoonMap .Map_wrap .Korea .area13 {right: 135px;bottom: 215px;}
+		.sunMoonMap .Map_wrap .Korea .area14 {right: 148px;bottom: 185px;}
+		.sunMoonMap .Map_wrap .Korea .area15 {right: 212px;bottom: 190px;}
+		.sunMoonMap .Map_wrap .Korea .area16 {left: 130px;bottom: 150px;}
+		.sunMoonMap .Map_wrap .Korea .area17 {left: 100px;bottom: 5px;}
+		
+		/*경기도*/
+		.sunMoonMap .Map_View .Gyeonggi {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Gyeonggi.png) no-repeat; background-position: center; width:360px; height:465px;}
+		.sunMoonMap .Map_View .Gyeonggi .area1 {left: 55px;top: 160px;}
+		.sunMoonMap .Map_View .Gyeonggi .area2 {top: 185px;left: 80px;}
+		.sunMoonMap .Map_View .Gyeonggi .area3 {left: 58px;top: 240px;}
+		.sunMoonMap .Map_View .Gyeonggi .area4 {top: 245px;right: 40px;}
+		.sunMoonMap .Map_View .Gyeonggi .area5 {left: 65px;bottom: 135px;}
+		.sunMoonMap .Map_View .Gyeonggi .area6 {left: 120px;top: 285px;}
+		.sunMoonMap .Map_View .Gyeonggi .area7 {top: 285px;right: 80px;}
+		.sunMoonMap .Map_View .Gyeonggi .area8 {left: 88px;top: 320px;}
+		.sunMoonMap .Map_View .Gyeonggi .area9 {left: 88px; top: 345px;}
+		.sunMoonMap .Map_View .Gyeonggi .area10 {left: 155px;top: 345px;}
+		.sunMoonMap .Map_View .Gyeonggi .area11 {right: 35px; bottom: 100px;}
+		.sunMoonMap .Map_View .Gyeonggi .area12 {left: 88px;top: 370px;}
+		.sunMoonMap .Map_View .Gyeonggi .area13 {left: 150px;bottom: 30px;}
+		
+		/*인천*/
+		.sunMoonMap .Map_View .Incheon {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_incheon.png) no-repeat; background-position: center; width:495px; height:352px;}
+		.sunMoonMap .Map_View .Incheon .area1 {right: 130px;top: 37px;}
+		.sunMoonMap .Map_View .Incheon .area2 {right: 33px;top: 132px;}
+		
+		/*강원도*/
+		.sunMoonMap .Map_View .Gangwon {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Gangwon.png) no-repeat; background-position: center; width:448px; height:389px;}
+		.sunMoonMap .Map_View .Gangwon .area1 {right: 110px;top: 50px;}
+		.sunMoonMap .Map_View .Gangwon .area2 {right: 120px;top: 102px;}
+		.sunMoonMap .Map_View .Gangwon .area3 {right: 110px;top: 125px;}
+		.sunMoonMap .Map_View .Gangwon .area4 {left: 125px;top: 155px;}
+		.sunMoonMap .Map_View .Gangwon .area5 {right: 55px;top: 170px; }
+		.sunMoonMap .Map_View .Gangwon .area6 {right: 50px;top: 192px;}
+		.sunMoonMap .Map_View .Gangwon .area7 {right: 90px;top: 225px;}
+		.sunMoonMap .Map_View .Gangwon .area8 {right: 15px;top: 240px;}
+		.sunMoonMap .Map_View .Gangwon .area9 {right: 1px;top: 268px;}
+		.sunMoonMap .Map_View .Gangwon .area10 {left: 160px;bottom: 70px;}
+		.sunMoonMap .Map_View .Gangwon .area11 {left: 270px;bottom: 27px;}
+		.sunMoonMap .Map_View .Gangwon .area12 {right: 35px;bottom: 27px;}
+		
+		/*충청남도*/
+		.sunMoonMap .Map_View .Chungnam {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Chungnam.png) no-repeat; background-position: center; width:561px; height:411px;}
+		.sunMoonMap .Map_View .Chungnam .area1 {left: 245px;top: 72px;}
+		.sunMoonMap .Map_View .Chungnam .area2 {left: 215px;top: 100px;}
+		.sunMoonMap .Map_View .Chungnam .area3 {left: 190px;top: 130px;}
+		.sunMoonMap .Map_View .Chungnam .area4 {right: 125px;top: 95px;}
+		.sunMoonMap .Map_View .Chungnam .area5 { right: 145px;top: 125px;}
+		.sunMoonMap .Map_View .Chungnam .area6 {left: 265px;bottom: 115px;}
+		.sunMoonMap .Map_View .Chungnam .area7 {left: 275px;bottom: 30px;}
+		.sunMoonMap .Map_View .Chungnam .area8 {right: 110px;bottom: 55px;}
+		.sunMoonMap .Map_View .Chungnam .area9 {right: 1px;top: 268px;}
+		.sunMoonMap .Map_View .Chungnam .area10 {left: 160px;bottom: 70px;}
+		.sunMoonMap .Map_View .Chungnam .area11 {left: 270px;bottom: 27px;}
+		.sunMoonMap .Map_View .Chungnam .area12 {right: 35px;bottom: 27px;}
+		
+		/*충청북도*/
+		.sunMoonMap .Map_View .Chungbuk {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Chungbuk.png) no-repeat; background-position: center; width:378px; height:414px;}
+		.sunMoonMap .Map_View .Chungbuk .area1 {right: 105px;top: 35px;}
+		.sunMoonMap .Map_View .Chungbuk .area2 {right: 165px;top: 80px;}
+		.sunMoonMap .Map_View .Chungbuk .area3 {right: 40px;top: 68px;}
+		.sunMoonMap .Map_View .Chungbuk .area4 {left: 55px;top: 165px;}
+		.sunMoonMap .Map_View .Chungbuk .area5 { left: 40px;top: 190px;}
+		.sunMoonMap .Map_View .Chungbuk .area6 {right: 150px;bottom: 57px;}
+		
+		/*경상남도*/
+		.sunMoonMap .Map_View .Gyeongnam {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Gyeongnam.png) no-repeat; background-position: center; width:479px; height:470px;}
+		.sunMoonMap .Map_View .Gyeongnam .area1 {left: 70px;top: 70px;}
+		.sunMoonMap .Map_View .Gyeongnam .area2 {right: 100px;top: 140px;}
+		.sunMoonMap .Map_View .Gyeongnam .area3 {left: 125px;bottom: 190px;}
+		.sunMoonMap .Map_View .Gyeongnam .area4 {left: 235px;bottom: 185px;}
+		.sunMoonMap .Map_View .Gyeongnam .area5 { right: 132px;bottom: 205px;}
+		.sunMoonMap .Map_View .Gyeongnam .area6 {right: 95px;bottom: 180px;}
+		.sunMoonMap .Map_View .Gyeongnam .area7 {right: 70px;bottom: 205px;}
+		.sunMoonMap .Map_View .Gyeongnam .area8 {left: 145px;bottom: 120px;}
+		.sunMoonMap .Map_View .Gyeongnam .area9 {left: 83px;bottom: 52px;}
+		.sunMoonMap .Map_View .Gyeongnam .area10 {right: 190px;bottom: 75px;}
+		.sunMoonMap .Map_View .Gyeongnam .area11 {right: 120px;bottom: 75px;}
+		.sunMoonMap .Map_View .Gyeongnam .area12 {right: 178px;top: 210px;}
+		.sunMoonMap .Map_View .Gyeongnam .area13 {left: 170px;bottom: 160px;}
+		.sunMoonMap .Map_View .Gyeongnam .area14 {left: 206px;bottom: 105px;}
+		.sunMoonMap .Map_View .Gyeongnam .area15 {left: 100px;bottom: 140px;}
+		.sunMoonMap .Map_View .Gyeongnam .area16 {left: 0px;bottom: 180px;}
+		
+		/*경상북도*/
+		.sunMoonMap .Map_View .Gyeongbuk{background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Gyeongbuk.png) no-repeat; background-position: center; width:402px; height:430px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area1 {right: 50px;top: 45px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area2 {left: 165px;top: 85px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area3 {left: 200px;top: 150px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area4 {left: 75px;top: 190px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area5 { left: 180px;top: 215px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area6 {right: 45px;top: 180px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area7 {left: 70px;top: 255px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area8 {left: 115px;top: 275px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area9 {right: 75px;top: 255px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area10 {right: 105px;bottom: 90px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area11 {right: 15px;bottom: 110px;}
+		.sunMoonMap .Map_View .Gyeongbuk .area12 {right: 55px;bottom: 50px;}
+		
+		/*전라남도*/
+		.sunMoonMap .Map_View .Jeonnam {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Jeonnam.png) no-repeat; background-position: center; width:493px; height:449px;}
+		.sunMoonMap .Map_View .Jeonnam .area1 {left: 165px;top: 50px;}
+		.sunMoonMap .Map_View .Jeonnam .area2 {left: 160px;top: 120px;}
+		.sunMoonMap .Map_View .Jeonnam .area3 {left: 156px;top: 170px;}
+		.sunMoonMap .Map_View .Jeonnam .area4 {left: 240px;top: 145px;}
+		.sunMoonMap .Map_View .Jeonnam .area5 { right: 85px;top: 100px;}
+		.sunMoonMap .Map_View .Jeonnam .area6 {right: 55px;top: 130px;}
+		.sunMoonMap .Map_View .Jeonnam .area7 {right: -5px;top: 130px;}
+		.sunMoonMap .Map_View .Jeonnam .area8 {right: -18px;top: 170px;}
+		.sunMoonMap .Map_View .Jeonnam .area9 {right: -3px;top: 188px;}
+		.sunMoonMap .Map_View .Jeonnam .area10 {right: 85px;top: 235px;}
+		.sunMoonMap .Map_View .Jeonnam .area11 {right: 145px;top: 185px;}
+		.sunMoonMap .Map_View .Jeonnam .area12 {right: 178px;top: 210px;}
+		.sunMoonMap .Map_View .Jeonnam .area13 {left: 170px;bottom: 160px;}
+		.sunMoonMap .Map_View .Jeonnam .area14 {left: 206px;bottom: 105px;}
+		.sunMoonMap .Map_View .Jeonnam .area15 {left: 100px;bottom: 140px;}
+		.sunMoonMap .Map_View .Jeonnam .area16 {left: 0px;bottom: 180px;}
+		
+		
+		/*전라북도*/
+		.sunMoonMap .Map_View .Jeonbuk {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Jeonbuk.png) no-repeat; background-position: center; width:480px; height:338px;}
+		.sunMoonMap .Map_View .Jeonbuk .area1 {left: 100px;top: 65px;}
+		.sunMoonMap .Map_View .Jeonbuk .area2 {left: 165px;top: 70px;}
+		.sunMoonMap .Map_View .Jeonbuk .area3 {left: 230px;top: 110px;}
+		.sunMoonMap .Map_View .Jeonbuk .area4 {left: 85px;top: 160px;}
+		.sunMoonMap .Map_View .Jeonbuk .area5 { left: 30px;top: 182px;}
+		.sunMoonMap .Map_View .Jeonbuk .area6 {left: 125px;bottom: 85px;}
+		.sunMoonMap .Map_View .Jeonbuk .area7 {right: 160px;bottom: 100px;}
+		.sunMoonMap .Map_View .Jeonbuk .area8 {right: 100px;bottom: 120px;}
+		.sunMoonMap .Map_View .Jeonbuk .area9 {right: 120px;bottom: 35px;}
+		
+		/*제주도*/
+		.sunMoonMap .Map_View .Jeju {background:url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_Jeju.png) no-repeat; background-position: center; width:380px; height:197px;}
+		.sunMoonMap .Map_View .Jeju .area1 {left: 160px;top: 40px;}
+		.sunMoonMap .Map_View .Jeju .area2 {right: -83px;top: 43px;}
+		.sunMoonMap .Map_View .Jeju .area3 {left: 170px;bottom: 35px;}
+		.sunMoonMap .Map_View .Jeju .area4 {left: 20px;bottom: 80px;}
+	
+	
+	/* 월별 천문현상 */
+	.calendar .box .control strong{margin:0 15px;font-size:20px;}
+	.calendar .box .control button.prev {background-position: left 6px;}
+	.calendar .box .control button.next {background-position: right 6px;}
+	.calendar .box .month_txt {font-size: 38px;	margin-bottom: 8px; font-weight: bold;}
+	.calendar .box .month_btn li {display: inline-block; float: none; width: auto;margin: 0;}
+	.calendar .box .month_btn li a {display:inline-block; width:43px; height:43px; line-height:43px; border-radius:43px; background:#ededed; text-align:center; color:#666; font-size: 15px; margin:0 9px;}.calendar .box .month_btn li a {display:inline-block; width:43px; height:43px; line-height:43px; border-radius:43px;    font-size: 15px; margin:0 3px;}
+	.calendar .table thead th, .calendar .table tbody td{width:14%;}
+	.calendar .table thead th{padding:10px; text-align:center; background:#eee; border-bottom:0; color:#000; font-size:14px;}
+	.calendar .table tbody td{height: auto; padding: 15px;width: 100%;}
+	.calendar .table tbody td .moon .phase {margin-left:25px;}
+	.calendar .table tbody td.empty {background: #f9f9f9;position: inherit;}
+	.calendar_column .table {border:0; border-top:1px solid #b3b3b3;}
+	.calendar_column .table thead th, .calendar_column .table tbody td{width:auto;}
+	.calendar_column .table th, .calendar_column .table td{border:0; border-bottom:1px solid #e6e6e6;}
+	.calendar_column tbody td {padding:5px;}
+	.calendar_column tbody td .moon .phase {margin-left: 0px; margin-right: 10px;}
+	
+	
+	/* 세계의 망원경 */
+	.box_img .cont .ico_opt {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_radio_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px; margin: 0 3px; font-size: 13px; color: #000; font-weight: bold;}
+	.box_img .cont .ico_radio {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px; margin: 0 3px; font-size: 13px; color: #000; font-weight: bold; margin-left:10px;}
+	
+	.telescopeMap {}
+	.telescopeMap .Map_wrap {overflow-x: auto;}
+	.telescopeMap .Map_nav .location li.ico_opt_radio strong {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_radio_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 35px;}
+	.telescopeMap .Map_nav .location li.ico_radio strong {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_radio_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px;}
+	.telescopeMap .Map_nav .location li.ico_universe strong {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_universe_tit.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px;}
+	.telescopeMap .Map_wrap .Map li a {}
+	.telescopeMap .Map_wrap .Map li a.ico_opt {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_opt:hover {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_off.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_opt_right {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_on.png) no-repeat; background-position: right; display: inline-block; padding-right: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_opt_right:hover {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_off.png) no-repeat; background-position: right; display: inline-block; padding-right: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_radio {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_radio_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_radio:hover {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_radio_off.png) no-repeat; background-position: left; display: inline-block; padding-left: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_radio_right {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_radio_on.png) no-repeat; background-position: right; display: inline-block; padding-right: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_radio_right:hover {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_radio_off.png) no-repeat; background-position: right; display: inline-block; padding-right: 18px;}
+	.telescopeMap .Map_wrap .Map li a.ico_opt_radio {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_radio_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 35px;}
+	.telescopeMap .Map_wrap .Map li a.ico_opt_radio:hover {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_opt_radio_off.png) no-repeat; background-position: left; display: inline-block; padding-left: 35px;}
+	.telescopeMap .Map_wrap .Map li a.ico_universe {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_universe.png) no-repeat; background-position: left; display: inline-block; padding-left:28px;}
+	.telescopeMap .Map_wrap .Map li a.ico_universe:hover {background: url(https://astro.kasi.re.kr:444/resources/images/content/ico_universe_on.png) no-repeat; background-position: left; display: inline-block; padding-left: 28px;}
+	
+	
+		/*세계지도*/
+		.telescopeMap .Map_wrap .world {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_world.png) no-repeat; background-position: center; width: 948px; height: 560px;}
+		.telescopeMap .Map_wrap .world .area1 {left: 40px; top: 30px;}
+		.telescopeMap .Map_wrap .world .area2 {left: 93px;top: 165px;}
+		.telescopeMap .Map_wrap .world .area3 {left: 52px;top: 207px;}
+		.telescopeMap .Map_wrap .world .area4 {left: 83px;top: 227px;}
+		.telescopeMap .Map_wrap .world .area5 {left: 140px;top: 227px;}
+		.telescopeMap .Map_wrap .world .area6 {left: 48px;top: 263px;}
+		.telescopeMap .Map_wrap .world .area7 {left: 110px;bottom: 72px;}
+		.telescopeMap .Map_wrap .world .area8 {left: 300px;top: 280px;}
+		.telescopeMap .Map_wrap .world .area9 {left: 380px;top: 270px;}
+		.telescopeMap .Map_wrap .world .area10 {left: 420px;top: 245px;}
+		.telescopeMap .Map_wrap .world .area11 {left: 380px;bottom: 87px;}
+		.telescopeMap .Map_wrap .world .area12 {right: 200px;top: 265px;}
+		.telescopeMap .Map_wrap .world .area13 {right: 170px;top: 315px;}
+		.telescopeMap .Map_wrap .world .area14 {right: 105px;bottom: 65px;}
+		
+		/*미국*/
+		.telescopeMap .Map_wrap .USA {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_USA.png) no-repeat; background-position: center; width: 710px; height: 348px;}
+		.telescopeMap .Map_wrap .USA .area1 {left:20px; top:250px;}
+		.telescopeMap .Map_wrap .USA .area2 {left: 20px;top:275px;}
+		.telescopeMap .Map_wrap .USA .area3 {left: 200px;top: 255px;}
+		.telescopeMap .Map_wrap .USA .area4 {left: 220px;bottom: 35px;}
+		.telescopeMap .Map_wrap .USA .area5 {left: 550px;bottom: 180px;}
+		.telescopeMap .Map_wrap .USA .area6 {left: 110px;top: 300px;}
+		.telescopeMap .Map_wrap .USA .area7 {left: 300px;top: 78px;}
+		.telescopeMap .Map_wrap .USA .area8 {left: 300px;top: 100px;}
+		.telescopeMap .Map_wrap .USA .area9 {left: 240px;top: 145px;}
+		.telescopeMap .Map_wrap .USA .area10 {left: 328px;top: 150px;}
+		.telescopeMap .Map_wrap .USA .area11 {left: 395px;top: 175px;}
+		.telescopeMap .Map_wrap .USA .area12 {right: 15px; top: 263px;}
+		.telescopeMap .Map_wrap .USA .area13 {right: 15px;top: 90px;}
+		.telescopeMap .Map_wrap .USA .area14 {right: 60px;top: 50px;}
+		
+		.telescopeMap .Map_wrap .USA .area15 {left: 200px;bottom:10px;}
+		.telescopeMap .Map_wrap .USA .area16 {left: 315px;top: 130px;}
+		
+		/*칠레*/
+		.telescopeMap .Map_wrap .Chile {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Chile.png) no-repeat; background-position: center; width: 183px; height: 390px;}
+		.telescopeMap .Map_wrap .Chile li a {font-size: 14px;}
+		.telescopeMap .Map_wrap .Chile .area1 {left: 47px; top: 33px; width:150px}
+		.telescopeMap .Map_wrap .Chile .area2 {left: 43px;top: 53px;}
+		.telescopeMap .Map_wrap .Chile .area3 {left: 38px;top: 74px;}
+		.telescopeMap .Map_wrap .Chile .area4 {left: 35px;top: 93px; width:220px}
+		.telescopeMap .Map_wrap .Chile .area5 {left: 35px;top: 110px;width: 220px;}
+		.telescopeMap .Map_wrap .Chile .area6 {left: 28px;top: 145px;width: 200px;}
+		.telescopeMap .Map_wrap .Chile .area7 {left: 25px;top: 164px;width: 170px;}
+		.telescopeMap .Map_wrap .Chile .area8 {left: 23px;top: 182px;}
+		.telescopeMap .Map_wrap .Chile .area8 a {width:220px;}
+		.telescopeMap .Map_wrap .Chile .area9 {left: 22px;top: 200px;width: 100%;}
+		
+		/*멕시코*/
+		.telescopeMap .Map_wrap .Mexico {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Mexico.png) no-repeat; background-position: center; width: 483px; height: 316px;}
+		.telescopeMap .Map_wrap .Mexico .area1 {left: 180px; top: 70px; width:150px}
+		.telescopeMap .Map_wrap .Mexico .area2 {left: 170px;top: 92px;}
+		
+		/*호주*/
+		.telescopeMap .Map_wrap .Australia {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Australia.png) no-repeat; background-position: center; width: 438px; height: 344px;}
+		.telescopeMap .Map_wrap .Australia .area1 {right: 35px; bottom: 100px; width:250px;}
+		.telescopeMap .Map_wrap .Australia .area2 {right: -30px;bottom: 50px;}
+		
+		/*대한민국*/
+		.telescopeMap .Map_wrap .Korea {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Korea.png) no-repeat; background-position: center; width: 366px; height: 400px;}
+		.telescopeMap .Map_wrap .Korea .area1 {left: 65px; top: 70px; width:200px;}
+		.telescopeMap .Map_wrap .Korea .area2 {left: 65px;top: 88px;right: -30px; bottom: 50px;}
+		.telescopeMap .Map_wrap .Korea .area3 {left: 75px;top: 105px;right: -30px; bottom: 50px;}
+		.telescopeMap .Map_wrap .Korea .area4 {left: 85px;top: 135px;right: -30px; bottom: 50px;}
+		
+		/*일본*/
+		.telescopeMap .Map_wrap .Japan {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Japen.png) no-repeat; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .Japan .area1 {right: 92px; bottom: 118px;}
+		.telescopeMap .Map_wrap .Japan .area2 {right: 75px; bottom: 140px;}
+		
+		/*남아공*/
+		.telescopeMap .Map_wrap .Africa {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Africa.png) no-repeat; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .Africa .area1 {right: 70px; bottom: 80px;}
+		
+		/*독일*/
+		.telescopeMap .Map_wrap .Germany {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Germany.png) no-repeat; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .Germany .area1 {right: 70px; bottom:220px;}
+
+		/*스웨덴*/
+		.telescopeMap .Map_wrap .Sweden {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Sweden.png) no-repeat; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .Sweden .area1 {right: 125px; bottom:40px;}
+
+		/*스페인*/
+		.telescopeMap .Map_wrap .Spain {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Spain.png) no-repeat; background-position: center; width: 450px; height: 402px;}
+		.telescopeMap .Map_wrap .Spain .area1 {right: 180px; bottom:55px;}
+
+		/*영국*/
+		.telescopeMap .Map_wrap .UnitedKingdom {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_UnitedKingdom.png) no-repeat; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .UnitedKingdom .area1 {right:-60px; bottom:150px;}
+		
+		/*유럽*/
+		.telescopeMap .Map_wrap .Europe {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_Europe.png) no-repeat; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .Europe .area1 {right:150px; bottom:130px;}
+
+		/*중국*/
+		.telescopeMap .Map_wrap .China {background: url(https://astro.kasi.re.kr:444/resources/images/content/telescopeMap_China.png) no-repeat; background-position: center; width: 460px; height: 402px;}
+		.telescopeMap .Map_wrap .China .area1 {right:170px; bottom:90px;}
+				
+		/*우주*/
+		.telescopeMap .Map_wrap .universe {background:; background-position: center; width: 366px; height: 402px;}
+		.telescopeMap .Map_wrap .universe .area1 {left:80px; top:110px;}
+		.telescopeMap .Map_wrap .universe .area2 {left:80px; top:160px;}
+	
+	/* 티커서비스 신청 */
+	.ticker_chice .chiceList li {padding: 20px 0;}
+	.ticker_service .box_ticker .ticker .ticker_table {float:left; margin-right:15px; margin-bottom: 0;}
+	.ticker_service .box_ticker .ticker .info {float:left; margin-left:0;text-align: left; width: 34%;}
+	.ticker_service .box_ticker .ticker .info strong {font-size: 14px;color: #000;display: block;margin-bottom: 5px;}
+	
+	
+	/* sitemap */
+	.sitemap li ul li ul .list {width:18%;}
+	
+	
+	/***** submain *****/
+	/*공통*/
+	.submain_m .submain_tit {padding: 70px 15px 115px 15px; height: 305px;}
+	.submain_m .submain_nav > li > a {padding: 30px 20px; background-position: right; padding-right: 65px;}
+	.submain_m .submain_tit dt {font-size:24px;}
+	.submain_m .submain_tit dd p {font-size:14px;}
+	.submain_m .submain_nav_list > li > a {width:auto; padding:0;}
+	.submain_m .submain_nav_list > li > ul > li > a {width:auto;}
+	
+	/***** 배경 *****/
+	#vr {height:380px;}
+	
+	.star_search{padding:25px 15px; overflow:hidden;}
+	.star_search .star_btn{color:#000; padding:10px 20px; margin-bottom:30px; border:1px solid #e5e5e5; background:#f6f6f6;}
+	.star_search div{text-align:center;}
+	.star_search div img{cursor:pointer; border:1px solid #fff;}
+	.star_search div img:hover{ border:1px solid #000; }
+	.star_search div span{display:block; font-weight:bold; font-size:16px; color:#000; padding-top:5px;}
+	.star_search div button{display:block; width:100px; }
+	.star_search div.star_right{margin-top:20px;}
+	
+	
+}
+
+
+/** < 1000px **/ 
+@media (max-width:999px){
+	
+	/* 월별천문현상 */
+	.calendar .table tbody td.empty {display:none;}
+	
+}
+
+
+/** > 1000px **/
+@media (min-width:1000px){
+	
+	/***** Content Type *****/
+	/* list */
+	.ul_list li, .list_square {font-size:14px; line-height:1.8;}
+	.ul_list li,.ul_list_multi li{background-position: 0 11px;}
+	.ul_list_red li{background-position: 0 9px;}
+	.ul_list li,.ul_list_multi li,.ul_num_list li,.ul_list_red li{font-size:14px;}
+	.ul_num_list li, .ul_num_list li .num, .ul_list_dot li,.ul_list_line li, .ul_list_red li, .ul_list_gray li, .ul_list_dot li {font-size:14px;line-height: 1.65;margin-top: 0;}
+	.ul_search li strong {padding: 10px 5px 10px 15px; min-width: 155px; font-size: 15px; letter-spacing: -0.2px;}
+	
+	/* title */
+	.title_btn .btn_right {margin-top: 15px !important;}
+
+	/* box */
+	.box .cont, .box_img .cont{padding:25px 30px 30px 30px;}
+	.box_img {margin-bottom: 25px;}
+	.box_img .b-dot {margin: 3px !important;}
+	.box_img .cont:after{content:''; display:block; clear:both;}
+	.box_img .cont .img{float:left; margin:0; width:25%; overflow:hidden;}
+	.box_img .cont .img img{height:auto;}
+	.box_img .cont .txt{float:left; width:75%; padding-left:30px;}
+	.box .cont .copy, .box_img .cont .txt .copy {font-size:22px;}
+	.box_img.icons .img{width:22%; height:auto; text-align:center;}
+	.box_img.icons .img img{max-width:100%; width:auto;}
+	.box_img.icons .height {margin-top: 3%;}
+	.box_img.icons .txt{width:78%;}
+	.box_img .simple {padding:30px 20px;}
+	.box_img .simple .txt {padding-top: 20px;}
+	.box_img .search_write .purple, .box .search_write .purple {margin-bottom: -8px;}
+	.infobox .cont .img{position:absolute; top:32px; left:30px; width:245px; height:200px;}
+	.infobox .cont{padding:25px 30px 30px 320px;}
+	.infobox .cont .btn_area{position:absolute; bottom:30px; right:30px;}
+	
+	.search_box {padding:15px;}
+	
+	.step_text > li{padding:20px;}
+	.step_text.w240 > li > strong{width:240px;}
+	.step_text > li > strong{float:left;}
+	.step_text > li > strong span{padding:0 40px 5px 0;}
+	.step_text > li > .cnt{margin:0; float:left;}
+	.step_text > li > .cnt .sub{top:20px; right:20px;}
+	
+	/* text type */
+	.txt_lg_red_point {font-size:20px;}
+	
+	/* photo caption */
+	.photo_caption .threeblock {max-width:300px;}
+	
+	/* table */
+	.table-responsive {border:0;}
+	.tbl_cnt{font-size:13px; line-height:1.8;}
+	
+	.tbl_list th, .tbl_list tbody tr th {font-size:15px; background:url(https://astro.kasi.re.kr:444/resources/images/ico/dot_circle_red.png) 5px 23px no-repeat;padding-left: 20px;}
+	.tbl_list th, .tbl_list td {padding-top: 15px !important;padding-bottom: 15px !important;}
+	.tbl_list td {font-size:14px}
+
+	
+	/***** Sub main *****/
+	/*공통*/
+	.body_submain {overflow-y: auto; height:100%;}
+	.body_submain #wrap {height:100%;}
+	.body_submain #printbody {/*height:100%;*/}
+	.submain {height:100%;}
+	/*.body_submain, .body_submain #wrap, .body_submain #printbody, .submain {height:100%;}*/
+	.body_submain .mobile_topInfo, .body_submain .mobile_tit_nav, .body_submain .topInfo {display:none;}
+		
+	.submain {color:#fff; margin-top:0; position: relative; top: 0;width: 100%;/*margin-top: -35px; */float:left;}
+	.submain #header_wrap {background: #231f20; border-bottom:0;}
+	.submain_pc {display:block; padding-top: 30px;}
+	.submain .submain_tit {text-align:center; padding:60px 0px 60px 0px; text-shadow: 1px 1px 2px rgba(0,0,2,0.5);}
+	.submain .submain_tit img {display:inline-block; margin-bottom:20px; max-width: 20%;}
+	.submain .submain_tit p {font-size:30px;line-height: 1.4;font-weight: bold; letter-spacing:-0.5px; padding:0 5px 0 0; margin-left:-5px;}
+	.submain .submain_tit p:last-child {display:block; letter-spacing:-0.5px; padding:0 5px 0 0; margin-left:-5px;}
+	
+	.submain_life_m, .submain_learning_m, .submain_almanac_m {display:none;}
+	.submain_life, .submain_learning, .submain_almanac {display:block;}
+	
+	/*생활천문관*/
+	.submain_life .grab{z-index:5;}
+	
+	/* 생활천문관 달 & 버튼 */
+	#mainVisual {position:relative; width:980px; height:400px; overflow:hidden; z-index:500; margin:0 auto; margin-top: 50px;}
+	#visualArea { position:relative; z-index:10; width:980px; height:400px; overflow:hidden; margin:0 auto; }
+	#visualArea ul li { position:relative; width:980px; height:403px; margin:0 auto; overflow:hidden; }
+	#visualArea ul li h1 { position:absolute; font-size:0; text-indent:-1000px; }
+	#visualArea ul li p { position:absolute; font-size:0; text-indent:-1000px; }
+	#visualArea ul li span { position:absolute; }
+	#vis01 .moon01,
+	#vis01 .moon02,
+	#vis01 .moon03,
+	#vis01 .moon04,
+	#vis01 .moon05,
+	#vis01 .moon06,
+	#vis01 .moon07,
+	#vis01 .moon08,
+	#vis01 .moon09,
+	#vis01 .moon10{opacity:0;}
+	#vis01 .moon10 .link_wrap {position: relative; z-index: 10;}
+	#vis01 .moon01 {display:block; width:161px; height:161px; background:url("http://192.168.0.66:8080/JSPProject/cof.jpg") 0 0 no-repeat;}
+	#vis01 .moon02 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon2.png) 0 0 no-repeat;}
+	#vis01 .moon03 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon3.png) 0 0 no-repeat;}
+	#vis01 .moon04 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon4.png) 0 0 no-repeat;}
+	#vis01 .moon05 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon5.png) 0 0 no-repeat;}
+	#vis01 .moon06 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon6.png) 0 0 no-repeat;}
+	#vis01 .moon07 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon7.png) 0 0 no-repeat;}
+	#vis01 .moon08 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon8.png) 0 0 no-repeat;}
+	#vis01 .moon09 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_life_moon9.png) 0 0 no-repeat;}
+	#vis01 .moon10 {display:block; position: relative; width:1770px;}
+	#vis01 .moon10 .link_wrap {margin:80px auto 0 auto;}
+	#vis01 .moon10 .link_wrap li {text-align: center; width:126px; float:left;}
+	#vis01 .moon10 .link_wrap li p {text-align:center; font-size:auto !important;  position:relative !important; text-indent:0 !important;}
+	#vis01 .moon10 .link_wrap li p img {}
+	#vis01 .moon10 .link_wrap li a {display: inline-block;font-size: 12px;font-weight: bold;padding: 5px 6px;border: 1px solid #fff;border-radius: 3px;color: #fff; letter-spacing: -0.6px;}
+	#vis01 .moon10 .link_wrap li a:hover, .submain_life .link_wrap li a:active, .submain_life .link_wrap li a:focus {background:rgba(255,255,255,0.93); color:#432e88 !important;}
+	#vis01 .moon06, #vis01 .moon07, #vis01 .moon08, #vis01 .moon09 {display:none;}
+	
+	/*천문학습관*/
+	.submain_learning .grab{z-index:5;}
+	.submain_learning .submain_tit {padding-bottom:50px; margin-bottom: 30px;}
+	.submain_learning .mindMap {width:960px;height: 359px;position: relative; background: url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning_mindmap_bg.png) no-repeat; background-position: left 0px;margin: 0 auto; margin-bottom: 50px;}
+	
+	.submain_learning #mainVisual {position:relative; width:960px; height:390px; overflow:hidden; z-index:500; margin:0 auto; margin-top:}
+	.submain_learning #visualArea {position:relative; z-index:10; width:960px; height:390px; overflow:hidden; margin:0 auto; }
+	.submain_learning #visualArea ul li {position:relative; width:100%; height:403px; margin:0 auto; overflow:hidden;}
+	.submain_learning #visualArea ul li h1 {position:absolute; font-size:0; text-indent:-1000px;}
+	.submain_learning #visualArea ul li p {position:absolute; font-size:0; text-indent:-1000px;}
+	.submain_learning #visualArea ul li span {position:absolute; }
+	
+	.submain_learning #visualArea ul li span span a{text-align:center; border-radius:70px;}
+	.submain_learning #visualArea ul li span span a {color:#fff; font-weight:bold; display:block;
+	-webkit-transition: all 0.1s ease-out 0s;
+	-moz-transition: all 0.1s ease-out 0s;
+	-ms-transition: all 0.1s ease-out 0s;
+	-o-transition: all 0.1s ease-out 0s;
+	transition: all 0.1s ease-out 0s;
+	}
+	.submain_learning #visualArea ul li span span a:hover, 
+	.submain_learning #visualArea ul li span span a:active, 
+	.submain_learning #visualArea ul li span span a:focus{color:#000; background:#fff;
+	-webkit-transform:scale(1.1, 1.1); 
+	-moz-transform:scale(1.1, 1.1); 
+	-ms-transform:scale(1.1, 1.1); 
+	-o-transform:scale(1.1, 1.1); 
+	transform:scale(1.1, 1.1); 
+	-webkit-transition: all 0.1s ease-in-out 0s; 
+	-moz-transition: all 0.1s ease-in-out 0s; 
+	-ms-transition: all 0.1s ease-in-out 0s; 
+	-o-transition: all 0.1s ease-in-out 0s; 
+	transition: all 0.1s ease-in-out 0s;
+	}
+	#vis01 a {letter-spacing: -0.3px;}
+	#vis01 .lea01,
+	#vis01 .lea02,
+	#vis01 .lea03,
+	#vis01 .lea04,
+	#vis01 .lea05{opacity:0; width:0; height:0;}
+	
+	#vis01 .lea01 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning_bg_2.png) 0 0 no-repeat; left: 340px !important;}
+	#vis01 .lea02 {width: 455px !important;}
+	#vis01 .lea02 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning_bg_1.png) 0 0 no-repeat;}
+	#vis01 .lea03 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning_bg_4.png) 0 0 no-repeat; left: 735px !important;background-size: 180px;}
+	#vis01 .lea04 {display:block; width:161px; height:161px; left: 215px !important;}
+	#vis01 .lea05 {display:block; width:161px; height:161px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_learning_bg_3.png) 0 0 no-repeat; left: 515px !important;height: 175px !important;background-size: 330px;}
+	
+	#vis01 .lea01 .link01 {font-size:30px; left:10px; top:10px;}
+	#vis01 .lea01 .link02 {font-size:15px; left:190px; top:74px;}
+	#vis01 .lea01 .link03 {font-size:18px; left:105px; top:85px;}
+	#vis01 .lea01 .link01 a{border:3px solid #fff; padding:2px 25px;}
+	#vis01 .lea01 .link02 a{border:2px solid #fff; padding:3px 15px; width:72px;}
+	#vis01 .lea01 .link03 a{border:2px solid #fff; padding:3px 20px; width: 78px;}
+	
+	#vis01 .lea02 .link08 {font-size:24px; left:325px; top:127px;}
+	#vis01 .lea02 .link09 {font-size:18px; left:160px; top:170px;}
+	#vis01 .lea02 .link10 {font-size:15px; left:130px; top:195px;}
+	#vis01 .lea02 .link11 {font-size:18px; left:10px; top:50px;}
+	#vis01 .lea02 .link12 {font-size:15px; left:115px; top:10px;}
+	#vis01 .lea02 .link08 a{border:2px solid #fff; padding:2px 20px; width:112px;}
+	#vis01 .lea02 .link09 a{border:2px solid #fff; padding:3px 20px;}
+	#vis01 .lea02 .link10 a{border:2px solid #fff; padding:3px 20px;}
+	#vis01 .lea02 .link11 a{border:3px solid #fff; padding:3px 20px;}
+	#vis01 .lea02 .link12 a{border:2px solid #fff; padding:3px 20px;}
+	
+	#vis01 .lea03 .link04 {font-size:24px; left:10px; top:10px;}
+	#vis01 .lea03 .link05 {font-size:15px; left:50px; top:70px;}
+	#vis01 .lea03 .link04 a{border:2px solid #fff; padding:2px 25px;}
+	#vis01 .lea03 .link05 a{border:2px solid #fff; padding:3px 20px;}
+	
+	#vis01 .lea04 .link13 {font-size:15px; left:10px; top:10px;}
+	#vis01 .lea04 .link13 a{border:2px solid #fff; padding:3px 15px; width:100px;}
+	
+	#vis01 .lea05 .link06 {font-size:15px; left:230px; top:135px;}
+	#vis01 .lea05 .link07 {font-size:42px; left:15px; top:10px;}
+	#vis01 .lea05 .link06 a{border:2px solid #fff; padding:3px 20px; width: 85px;}
+	#vis01 .lea05 .link07 a{border:4px solid #fff; padding:3px 15px; width: 215px;}
+	
+	/* 역서 */
+	.submain_almanac .grab {width:1090px; z-index:5;}
+	.submain_almanac .almanacLink {padding-left:50px;padding-right:50px;overflow: hidden;margin: 0 15px 30px;margin-bottom: 110px;}
+	.submain_almanac .almanacLink.fir {padding-bottom:35px; margin-top:80px; margin-bottom:50px;border-bottom: 1px solid rgba(255,255,255,0.2);}
+	.submain_almanac .almanacLink a:hover {text-decoration:underline;}
+	.submain_almanac .almanacLink dt {margin-bottom: 5px;padding-right:30px; float: left;width: 18%;}
+	.submain_almanac .almanacLink dt .ico_arr {display:inline-block; width:23px; height:22px; background:url(https://astro.kasi.re.kr:444/resources/images/content/submain_almanac_arr.png) no-repeat; background-position: right 0px; vertical-align: middle; margin-left:8px; margin-top: -1px;background-size: 15px;}
+	.submain_almanac .almanacLink dt a {font-size: 18px; color: #ef9235;}
+	.submain_almanac .almanacLink dd {float: left;width: 20.5%;}
+	.submain_almanac .almanacLink dd ul li a {font-size: 13px;color:#fff;line-height: 2;letter-spacing: -0.5px;display: block;}
+
+	
+	/***** Content *****/
+	/* 일출일몰시각계산 */
+	.Timebox {margin-top:20px;}
+	.Timebox .blcok .tit {font-size:14px;/*background: #f9f9f9;*/ text-align:center;}
+	.Timebox .blcok {height: 285px;}
+	.Timebox .blcok .watch {padding-top: 15px;}
+	.Timebox .blcok .tit span {font-size: 13px;}
+	
+	/* 태양 고도 방위각 계산 */
+	.Graphbox .graph {}
+	.Graphbox .tit {font-size: 14px;}
+	
+	/* 월별 해/달 출몰시각 */
+	.sunMoonMap {}
+	.sunMoonMap_list {padding: 15px;}
+	.sunMoonMap_list .tit strong {font-size:26px;}
+	.sunMoonMap_list .tit .info {padding: 0; background: no-repeat; margin-top: 0px; font-size: 15px;}
+	.sunMoonMap_list .list li a {padding: 15px 10px;font-size: 15px;color: #333;}
+	
+	
+	/* 월별 천문현상 */
+	.calendar .title_btn .btn_right {display:block;}
+	.calendar .box .month_txt {font-size: 42px;}
+	.calendar .box .month_btn li a {margin: 0 2px;}
+	.calendar .table-responsive {border-right:1px solid #ddd;}
+	.calendar .table {min-width: 1010px; border:0; border-top: 1px solid #b3b3b3; border-bottom: 0;}  
+	.calendar .table thead{display:table-row-group;}
+	.calendar .table tbody tr{display:table-row;}
+	.calendar .table tbody td{display:table-cell; width: auto;}
+	.calendar .table th, .calendar .table td{border:1px solid #e5e5e5;}
+	.calendar .table tbody td{height:230px; padding: 15px;}
+	.calendar .table tbody td .day strong {font-size:14px;}
+	.calendar .table .holiday .day strong {font-size: 18px;}
+	.calendar .table .holiday .day .specialday {}
+	.calendar .table tbody td .notice {margin: 10px 0;margin-top: 20px;}
+	.calendar .table tbody td .notice li {text-align:left;}
+	.calendar .table tbody td .sunmoonData {font-size:11px; color:#555;overflow: hidden;position: absolute;bottom: 15px; left: 13px;}
+	.calendar .table tbody td .sunmoonData span {display:inline-block;letter-spacing: -0.3px; background:none; padding-left:0}
+	.calendar .table tbody td .sunmoonData span.bar {background: url(https://astro.kasi.re.kr:444/resources/images/content/calendar_bar.jpg) no-repeat; background-position: 3px 2px; padding-left:8px;}
+	.calendar .table tbody td .sunmoonData span strong {display:inline-block; margin-right:4px; color: #222;}
+	.calendar .table tbody td .moon {margin-top:0;}
+	.calendar .table tbody td .moon span {font-size:12px; display: block;}
+	.calendar .table tbody td .moon .phase {margin-left: 0;}
+	.calendar .table tbody td .moon img {float:left; margin-right:10px;position: relative; top: 0;}
+
+	.calendar_column .table-responsive {border:0;}
+	.calendar_column .table {/*min-width: auto; */border:0; border-top:1px solid #b3b3b3;}
+	.calendar_column .table th, .calendar_column .table td {}
+	.calendar_column .table tbody td{height:auto;}
+	.calendar_column .table tbody td .notice {margin: 0;}
+	.calendar_column .table tbody td .notice li {font-size: 12px;}
+	.calendar_column .table tbody td .moon span {margin-top:7px;}
+	.calendar_column .table tbody td .sunmoonData span.bar {background: none; padding: 0;}
+	.calendar_column .table tbody td .sunmoonData {position: relative; font-size: 12px;left: 0; bottom: auto;}
+	.calendar_column .table tbody td .sunmoonData span {display: inline-block; background: none;padding-left: 0;}
+	.calendar_column .table .holiday .day .specialday {font-size:13px;}
+	
+	/* 티커서비스 */
+	.ticker_service .box_ticker .ticker .info {width: 33%;}
+	
+	/* 이용안내 : RSS  */
+	.rss .rnd_rss strong {font-size:1.2em; top:195px;}
+	.rss [class^="arrow_"]{margin-left:-95px;}
+	.rss .rnd_kasi img {width:auto;}
+	.rss .rnd_rss {padding-bottom: 60px;}
+	.rss .rnd_rss img {width:auto;}
+	.rss .arrow_right {top:25px;}
+	.rss .arrow_left {top:130px;}
+	
+	
+	/***** 배경 *****/
+	#vr {height:100%;}
+	.vr_main {min-height: 920px;}
+	.vr_life {min-height: 900px;}
+	.vr_learning {min-height: 885px;}
+	.vr_almanac {min-height: 910px;}
+}
+
+
+
+
+/** > 1100px **/
+@media (min-width:1100px){
+	
+	
+	/***** Content Type *****/
+	/* box */
+	.search_box {padding:20px 30px;}
+
+	/***** Sub main *****/
+	.submain_almanac .almanacLink dd ul li a {font-size: 15px;}
+
+	/***** Content *****/
+	
+	.star_search{padding:35px 30px; overflow:hidden;}
+	.star_search .star_btn{color:#000; padding:10px 20px; margin-bottom:30px; border:1px solid #e5e5e5; background:#f6f6f6;}
+	.star_search div{text-align:center;}
+	.star_search div img{cursor:pointer; border:1px solid #fff;}
+	.star_search div img:hover{ border:1px solid #000; }
+	.star_search div span{display:block; font-weight:bold; font-size:16px; color:#000; padding-top:15px;}
+	.star_search div button{display:block; width:100px; }
+	.star_search div.star_left{padding-left:100px;}
+	.star_search div.star_right{margin-top:5px; padding-right:100px;}
+	
+}
+
+
+/** > 1200px **/
+@media (min-width:1200px){
+	
+	/***** Content Type *****/
+	/* box */
+	.box_img .b-dot {margin: 0px !important;}l
+	
+	/* list */
+	.ul_search li {float: left; width: 50%;}
+	.ul_search li.block {float:none; width:100%;clear: both;}
+	.ul_search li > span {padding-left:5px; padding-right:0;}
+	
+	
+	/***** Sub main *****/
+	/* 생활천문관 달 & 버튼 */
+	
+
+	/***** Content *****/
+	/* 일출일몰시각계산 */
+	.Timebox .blcok {float: left;width: 35%;}
+	.Timebox .blcok:first-child {float: left;width: 30%;}
+	
+	/* 월별 해/달 출몰시각 */
+	.sunMoonMap .Map_wrap {/*width: 70%;*/}
+	.sunMoonMap .Modal {/*width: 30%; */padding: 25px;}
+	.sunMoonMap .Modal .tit .info {padding-left:20px; background: url(https://astro.kasi.re.kr:444/resources/images/content/sunMoonMap_icon.png) no-repeat;background-position: left; margin-top: 7px;}
+	
+	/* 월별 천문현상 */
+	.calendar_column .table tbody td .sunmoonData span.bar {background: url(https://astro.kasi.re.kr:444/resources/images/content/calendar_bar.jpg) no-repeat; background-position: 2px 4px;}
+
+	/* 티커서비스 신청 */
+	.ticker_chice .chiceList li .tit {float: left;margin-left: 20px; padding-top:0; clear: none;}
+	.tickerLoc li {width:11.111111%;}
+}
+
+
+/**  1220px (천문학습관) **/
+@media (max-width:1220px){
+	
+	.content_wrap .lea_img{margin-bottom:5px !important; margin-right: 15px;}
+	.content_wrap .lea_img_r{margin-bottom:5px !important; margin-left: 15px;}
+	.content_wrap .wrap_01 { margin-bottom: 20px;}
+	
+	 /*타이틀 사이즈 및 패딩 마진 조절*/
+    .content_wrap h5{margin-bottom:15px;}
+    .content_wrap h6{margin-bottom:8px; margin-top:20px;}
+    .content_wrap strong.m_first{margin-top:0 !important;}
+    .content_wrap strong{ padding-bottom:8px; margin-top:20px;}
+   
+	.content_wrap .lea_img_m{margin:15px 0; clear: both; width:100% ; height: auto ; text-align:center;}
+	.content_wrap .lea_img_m img{margin-top:0 !important;}
+	
+}
+/**  1300px (천문학습관) **/
+@media ( min-width:1201px ) and ( max-width:1300px ){
+	
+	.content_wrap .lea_img{margin-bottom:5px !important; margin-right: 23px;}
+	.content_wrap .lea_img_r{margin-bottom:5px !important; margin-left: 23px;}	
+}
+
+
+/** > 1300px **/
+@media (min-width:1300px){
+	
+	
+	/***** Content Type *****/
+	/* box */
+	.search_box {padding:15px 30px;}
+	.box .cont .copy, .box_img .cont .txt .copy {font-size:24px;}
+	
+	.star_search{padding:35px 30px; overflow:hidden;}
+	.star_search .star_btn{color:#000; padding:10px 20px; margin-bottom:30px; border:1px solid #e5e5e5; background:#f6f6f6;}
+	.star_search div{text-align:center;}
+	.star_search div img{cursor:pointer; border:1px solid #fff;}
+	.star_search div img:hover{ border:1px solid #000; }
+	.star_search div span{display:block; font-weight:bold; font-size:16px; color:#000; padding-top:15px;}
+	.star_search div button{display:block; width:100px; }
+	.star_search div.star_left{padding-left:100px;}
+	.star_search div.star_right{margin-top:5px; padding-right:100px;}
+	
+	/* list */
+	.ul_search li strong {padding: 10px 10px 10px 15px; min-width: 165px;}
+	
+
+	/***** Sub main *****/
+	/* 배경 */
+	#vr {/*min-width: 1280px;*/}
+	
+	/* 생활천문관 달 & 버튼 */
+	#vis01 .moon10 .link_wrap li {width:126px;}
+	#vis01 .moon10 .link_wrap li a {font-size: 13px;padding: 5px 6px;}
+
+
+	/***** Content *****/
+	/* 일출일몰시각계산 */
+	.Timebox .blcok .tit strong {font-size: 15px;}
+	
+	/* 월별천문현상 */
+	.calendar .box .month_btn li a {margin: 0 9px;}
+	.calendar .table-responsive {border-right:0;}
+	.calendar_column .table tbody td {height:auto;}
+	.calendar_column .table tbody td .moon span {display: inline-block;}
+	.calendar_column .table tbody td .moon .data {margin-right: 3px;}
+	
+	
+}
+
+
+/** > 1500px **/
+@media (min-width:1500px){
+	
+	/***** Sub main *****/
+	/* 배경 */
+	#vr {/*min-width: 1280px;*/}
+	
+	/* 생활천문관 달 & 버튼 */
+	#mainVisual {width:1470px;}
+	#visualArea {width:1470px;}
+	#visualArea ul li {width:1470px;}
+	#vis01 .moon10 .link_wrap {width: 1270px;}
+	#vis01 .moon10 .link_wrap li {width:133px;}
+	#vis01 .moon10 .link_wrap li a {font-size: 14px;padding: 5px 4px;}
+	
+	#vis01 .moon01 {display:none;}
+	#vis01 .moon06, #vis01 .moon07, #vis01 .moon08 {display:block;}
+	#vis01 .moon09 {display:none;}
+	
+}
+
+
+/** > 1800px **/
+@media (min-width:1800px){
+	
+	
+	/***** Content Type *****/
+
+
+	/***** Sub main *****/
+	/* 생활천문관 달 & 버튼 */
+	#mainVisual {width:1770px;}
+	#visualArea {width:1770px;}
+	#visualArea ul li {width:1770px;}
+	#vis01 .moon10 .link_wrap {width: 1270px;}
+	#vis01 .moon10 .link_wrap li {width:158px;}
+	#vis01 .moon10 .link_wrap li a {font-size: 15px;padding: 5px 10px;}
+	#vis01 .moon01, #vis01 .moon08, #vis01 .moon09 {display:block;}
+	
+
+	/***** Content *****/
+	
+}
