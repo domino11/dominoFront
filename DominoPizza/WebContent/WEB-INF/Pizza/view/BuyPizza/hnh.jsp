@@ -274,14 +274,14 @@ $(document).ready(function() {
 		var price = $("#totalAmt").data("price");
 		var qty = qtyVal;
 		var dough = $("#dough").val();
-		var img = "<c:url value='/Pizza/Image/pizzalist/하프앤하프.jpg'/>";
+		var img = "하프앤하프.jpg";
 		var size = $("#size").val();
 		//var doughno = ;
 		//var kind = ;
 		var topping = choiceToppingsize_no;
  		window.setTimeout( function() {
 			$(".loading").css("display","none");
-			location.href="<c:url value='/AddrSelect.pz' />?na="+name+"&size="+size+"&dough="+dough+"&price="+price+"&qty="+qty+"&topping="+topping+"&img="+img;
+			location.href="<c:url value='/AddrSelect.pz' />?kind=1&na="+name+"&size="+size+"&dough="+dough+"&price="+price+"&qty="+qty+"&topping="+topping+"&img="+img;
 		}, 800); 
 		$(".loading").css("display","block");
 /* 		

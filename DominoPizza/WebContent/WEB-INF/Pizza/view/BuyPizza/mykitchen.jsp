@@ -187,16 +187,17 @@ $(document).ready(function() {
 	};
 	
 	var addBasketComplete = function() {
+		
 		var dough = $("#dough").val();
 		var size = $("#size").val();
 		var mkSauce = $("#source").val();
-		var img = "<c:url value='/Pizza/Image/pizzalist/마이키친.jpg'/>";
+		var img = "마이키친.jpg";
 		var qty = 1; //마이키친은 수량 없음.
 		var price = $("#totalAmt").data("price");
 		var topping = $("#toppingSize_no").val();
  		window.setTimeout( function() {
 			$(".loading").css("display","none");
-		location.href="<c:url value='/AddrSelect.pz' />?size="+size+"&dough="+dough+"&mkSauce="+mkSauce+"&price="+price+"&img="+img+"&qty="+qty+"&topping="+topping;
+		location.href="<c:url value='/AddrSelect.pz' />?kind=1&size="+size+"&dough="+dough+"&mkSauce="+mkSauce+"&price="+price+"&img="+img+"&qty="+qty+"&topping="+topping;
 		}, 800); 
 		$(".loading").css("display","block");
 	};

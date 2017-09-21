@@ -68,6 +68,9 @@ public class Order {
             dto.setSize(map.get("size").toString().toUpperCase().contains("L")?"L":"M");
          System.out.println("size2: "+dto.getSize());
          
+         if(map.get("mkSauce")!=null&&map.get("mkSauce").toString().trim().length()>0) {
+        	 dto.setMkSauce(map.get("mkSauce").toString());
+         }
          if(map.get("topping")!=null&&map.get("topping").toString().trim().length()>0) {
             String toppings[] = map.get("topping").toString().split(",");
             //String toppings[] = req.getParameterValues("topping");

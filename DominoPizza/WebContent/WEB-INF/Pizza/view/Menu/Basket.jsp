@@ -305,7 +305,7 @@ function alertBranch(){
                                           ${map.name}</div>
                                        <div class="prd_kinds">
                                        ${map.dough }
-                                       <c:if test="${map.kind=='1' }" >
+                                       <c:if test="${map.kind!='2'&&map.kind!='3'&&map.kind!='4'&& map.kind!='5'}" >
                                           <c:if test="${map.size=='L' }" var="sizes" >
                                              <span class="ico ico_s_large"></span></div>
                                           </c:if>
@@ -322,9 +322,9 @@ function alertBranch(){
                                     <ul>
                                     <c:if test="${!empty map.toppingList}">
                                     <c:forEach items="${map.toppingList }" var="tdto" varStatus="tloop" >
-  <%--                                   <c:if test="${!empty tdto.mkSauce}">
-                                         <li>${tdto.mkSauce}"/></li>
-                                    </c:if> --%>
+                                    <c:if test="${!empty map.mkSauce}">
+                                         <li>${map.mkSauce}</li>
+                                    </c:if> 
                                  <li>${tdto.t_name } (${tdto.t_size}) <fmt:formatNumber value="${tdto.t_price }" />원</li>
                                     </c:forEach>
                                     </c:if>
