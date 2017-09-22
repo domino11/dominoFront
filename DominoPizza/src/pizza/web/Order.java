@@ -421,6 +421,7 @@ public class Order {
 	   map.put("id", session.getAttribute("ID").toString());
 	   map.put("st_no", st_no);
 	   map.put("sa_addr", del_addr);
+	   
 	   int i = service.insal(map);
 	   for(BasketDTO dto : list) {
 	   int b = service.insalmenu(dto);
