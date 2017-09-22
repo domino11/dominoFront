@@ -31,5 +31,40 @@ public class UserDao implements UserService {
 		return template.selectOne("UserSelectOne",dto);
 	}
 
+	@Override
+	public int showMember(UserDto dto) throws SQLException {		
+		return template.selectOne("ShowMember",dto);
+	}
+
+	@Override
+	public String SearchId(UserDto dto) throws SQLException {
+		return template.selectOne("SearchId",dto);
+	}
+
+	@Override
+	public int SearchPwd(UserDto dto) throws SQLException {
+		return template.update("SearchPwd",dto);
+	}
+
+	@Override
+	public int UpdateCustomer(UserDto dto) throws SQLException {
+		return template.update("UpdateCustomer",dto);
+	}
+
+	@Override
+	public int Couponnum(UserDto dto) throws SQLException {
+		return template.selectOne("CountCoupon",dto);
+	}
+
+	@Override
+	public int UpdatePwd(UserDto dto) throws SQLException {
+		return template.update("UpdatePwd",dto);
+	}
+	
+	
+	
+	
+	
+	
 	
 }

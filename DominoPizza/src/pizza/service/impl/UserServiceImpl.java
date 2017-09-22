@@ -26,6 +26,39 @@ public class UserServiceImpl implements UserService {
 		return dao.loginCheck(dto);
 	}
 
+	@Override
+	public int showMember(UserDto dto) throws SQLException {
+		
+		return dao.showMember(dto);
+	}
+
+	@Override
+	public String SearchId(UserDto dto) throws SQLException {
+		return dao.SearchId(dto);
+	}
+
+	@Override
+	public int SearchPwd(UserDto dto) throws SQLException {
+		return dao.SearchPwd(dto);
+	}
+
+	@Override
+	public int UpdateCustomer(UserDto dto) throws SQLException {
+		return dao.UpdateCustomer(dto);
+	}
+
+	@Override
+	public int Couponnum(UserDto dto) throws SQLException {
+		return dao.Couponnum(dto);
+	}
+
+	@Override
+	public int UpdatePwd(UserDto dto) throws SQLException {
+		return dao.UpdatePwd(dto);
+	}
+
+	
+
 	
 	
 	
