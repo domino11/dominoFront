@@ -5,13 +5,13 @@
 	<!-- wrap  -->
 
 
+
 		<!-- header -->
 		<div id="header" style="background-color: white">
 				<div class="logo_area">
 					<div class="util_left">
 						<a href="javascript:;" class="btn_ico btn_menu">GNB</a>
 						<ul class="util_menu">
-		
 							<li style=""><a href="/mypage/myCoupon">쿠폰 <span id="gnbCoupon"></span></a></li>
 							<li><a href="/mypage/myOrderList">주문조회 <span id="gnbOrderCnt"></span></a></li>
 						</ul>
@@ -25,7 +25,7 @@
 						</c:if>
 						<c:if test="${!login}" >
 						<li><a href="<c:url value='/User/Logout.pz'/>">로그아웃</a></li>
-							<li><a href="<c:url value='/User/MyPageMania.pz'/>">나의정보</a></li>
+							<li><a href="<c:url value='/User/MyPage_Mania.pz'/>">나의정보</a></li>
 						</c:if>
 							</ul>
 							

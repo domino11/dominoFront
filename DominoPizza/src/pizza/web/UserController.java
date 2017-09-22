@@ -64,7 +64,7 @@ public class UserController {
 	}	
 	
 	//나의정보_매니아 폼으로
-	@RequestMapping("/User/MyPageMania.pz")
+	@RequestMapping("/User/MyPage_Mania.pz")
 	public String Mania(HttpServletRequest req) throws Exception{
 		System.out.println("컨트롤러");
 		req.getSession().getAttribute("NAME");
