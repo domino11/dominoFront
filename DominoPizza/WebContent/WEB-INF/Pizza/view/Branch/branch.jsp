@@ -64,6 +64,7 @@
 		$('#region_code_'+sido).show();
 	}
 	
+	
 	function setBasketCnt() {
 		var basketCnt = cookieManager.getCookie("BASKETCNT");
 		var basket = cookieManager.getCookie("BASKET");
