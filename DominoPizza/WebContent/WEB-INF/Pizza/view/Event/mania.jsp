@@ -128,8 +128,8 @@ $(document).ready(function() {
 				<!-- sub_title -->
 				<div class="sub_title">
 					<ul class="sub_nav">
-						<li><a href="/main">HOME</a></li>
-						<li><a href="/event/list?gubun=E0200">이벤트&amp;혜택</a></li>
+						<li><a href="<c:url value='/Pizza/MainPage.pz'/>">HOME</a></li>
+						<li><a href="<c:url value='/EventMain.pz'/>">이벤트&amp;혜택</a></li>
 						<li><span>매니아 혜택</span></li>
 					</ul>
 					<div class="sub_title_wrap">
@@ -141,8 +141,8 @@ $(document).ready(function() {
 				<!-- tab -->
 				<div class="tab_type4 event">
 					<ul class="btn_tab">
-						<li><a href="/event/list?gubun=E0200">오늘의 이벤트</a></li>
-						<li class="active"><a href="/event/mania">매니아 혜택</a></li>
+						<li class="E1"><a href="<c:url value='/EventMain.pz'/>?e=E101">오늘의 이벤트</a></li>
+						<li class="active"><a href="<c:url value='/mania.pz'/>">매니아 혜택</a></li>
 					</ul>
 				</div>
 				<!-- //tab -->

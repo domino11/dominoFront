@@ -231,6 +231,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="eventSelectMain" parameterType="java.util.Map" resultType="EventDTO">
 	SELECT * FROM EVENT
 </select>
+
+<!-- 공지사항 도미노뉴스 출력용 -->
+<select id="newsListSelect" parameterType="java.util.Map" resultType="NewsListDTO">
+	SELECT * FROM NOTICE WHERE N_TYPE='1' ORDER BY N_NO DESC 
+</select>
+
+<!-- 공지사항 press 출력용 -->
+<select id="pressListSelect" parameterType="java.util.Map" resultType="NewsListDTO">
+	SELECT * FROM NOTICE WHERE N_TYPE='2' ORDER BY N_NO DESC 
+</select>
+
+<!-- 공지사항 전체 글 갯수 출력용 -->
+<select id="newsListTotal" resultType="int" parameterType="hashmap">
+	SELECT COUNT(*) FROM NOTICE WHERE N_TYPE='1'
+</select>
+
+<!-- 프레스 전체 글 갯수 출력용 -->
+<select id="pressListTotal" resultType="int" parameterType="hashmap">
+	SELECT COUNT(*) FROM NOTICE WHERE N_TYPE='2'
+</select>
+
+<!-- 매장찾기 전체 -->
+<select id="branch" parameterType="java.util.Map" resultType="BranchDTO">
+	SELECT * FROM STORES 
+</select>
+
+<!-- 매장정보 -->
+<!-- <select id="branchShow" parameterType="java.util.Map" resultType="BranchDTO">
+	SELECT * FROM STORES WHERE ST_NO = '${st_no}'
+</select>
+ -->
+
+<!-- 같은 '구/군'에 위치한 매장 출력용 -->
+<select id="shoplist" resultType="BranchDTO" parameterType="String">
+	SELECT * FROM STORES WHERE ST_ADDR LIKE '%${sido2}%'
+</select>
+
  
  
  

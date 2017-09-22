@@ -86,15 +86,12 @@
 							<ul class="list_depth2">
 								<!-- li><a href="/event/list?gubun=E0100">오늘의 핫딜</a></li-->
 								<li><a href="<c:url value='/EventMain.pz'/>?e=E101">오늘의 이벤트</a></li>
-								<li><a href="<c:url value='/Pizza/Event/mania.pz'/>">매니아 혜택</a></li>
+								<li><a href="<c:url value='/mania.pz'/>">매니아 혜택</a></li>
 <!-- 								<li><a href="/event/pizzaSchoolView">피자교실</a></li> -->
 							</ul>
 						</div>
 					</li>
 					
-					<li>
-						<a href="<c:url value='/Pizza/event/discount.pz'/>" class="menu06">할인</a>
-					</li>
 					<li>
 						<a href="/contents/present" class="menu07">선물하기</a>
 						<div class="depth2">
@@ -141,7 +138,7 @@
 							<ul class="list_depth2">
 								<!-- li><a href="#">오늘의 핫딜</a></li-->
 								<li><a href="<c:url value='/EventMain.pz'/>?e=E101">오늘의 이벤트</a></li>
-								<li><a href="<c:url value='/Pizza/event/mania.pz'/>">매니아 혜택</a></li>
+								<li><a href="<c:url value='/mania.pz'/>">매니아 혜택</a></li>
 							</ul>
 						</li>
 						<li>
@@ -170,10 +167,10 @@
 							</ul>
 						</li>
 						<li>
-							<a href="/bbs/newsList?type=N">공지사항</a>
+							<a href="<c:url value='/NewsList.pz'/>">공지사항</a>
 							<ul class="list_depth2">
-								<li><a href="/bbs/newsList?type=N">도미노 뉴스</a></li>
-								<li><a href="/bbs/newsList?type=P">Press</a></li>
+								<li><a href="<c:url value='/NewsList.pz?type=1'/>">도미노 뉴스</a></li>
+								<li><a href="<c:url value='/NewsList.pz?type=2'/>">Press</a></li>
 							</ul>
 						</li>
 					</ul>

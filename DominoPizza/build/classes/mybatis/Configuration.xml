@@ -44,8 +44,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    
       <!-- 연주 -->
    
-      <typeAlias alias="EventDTO" type="pizza.service.EventDTO"/>
-   
+      	<typeAlias alias="EventDTO" type="pizza.service.EventDTO"/>
+		<typeAlias alias="NewsListDTO" type="pizza.service.NewsListDTO"/>
+		<typeAlias alias="BranchDTO" type="pizza.service.BranchDTO"/>
    
    
    </typeAliases>

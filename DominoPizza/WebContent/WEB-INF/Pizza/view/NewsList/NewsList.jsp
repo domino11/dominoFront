@@ -15,8 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/Pizza/css/font.css' />">
 	
 	<!-- Style - 모든 예제 공통 사용하는 css-->
-<link rel="stylesheet" type="text/css" href="<c:url value='/Pizza/css/style.css'/>" />
-<!--  basic 용 css -->
+	<link rel="stylesheet" type="text/css" href="<c:url value='/Pizza/css/style.css'/>" />
+	<!--  basic 용 css -->
 	
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value='https://cdn.dominos.co.kr/renewal2016/ko/w/css/layout.css' />">
@@ -107,71 +107,128 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		</div>
 	</div>
 	<!-- //top_event_bnr -->
-
+	
 	<!-- wrap  -->
 	<div id="wrap">
-		<!-- header -->
-			<jsp:include page="/WEB-INF/Pizza/template/Top.jsp" />
-		<!-- //header -->
-		
+	<!-- header -->
+		<jsp:include page="/WEB-INF/Pizza/template/Top.jsp" />
+	<!-- //header -->
+	
 
-<script>
-$(document).ready(function() {
-
-	$(".gnb_menu .menu05").addClass("on");
-
-});
-</script>
-		<!-- container -->
+<!-- container -->
 		<div id="container">
 			<!-- content -->
-			<div id="content" class="event">
+			<div id="content" class="notice">
 
-			<!-- sub_title -->
+				<!-- sub_title -->
 				<div class="sub_title">
 					<ul class="sub_nav">
 						<li><a href="<c:url value='/Pizza/MainPage.pz'/>">HOME</a></li>
-						<li><span>이벤트&amp;혜택</span></li>
+						<li><a href="<c:url value='/NewsList.pz'/>">공지사항</a></li>
+						<li><span>도미노뉴스</span></li>
 					</ul>
 					<div class="sub_title_wrap">
-						<h2>이벤트&amp;혜택</h2>
+						<h2>공지사항</h2>
 					</div>
 				</div>
 				<!-- //sub_title -->
-			<div class="event_datail">
-					<div class="event_detail_card">
-						<div class="event_title">
-							<div class="title">카카오톡 금액권 우와하게 반값</div>
-							<div class="desc">2017-09-11 ~ 2017-09-17</div>
+
+				<div class="notice_area">
+					<div class="tab_type">
+						<ul class="btn_tab">
+							<c:if test="${type == 1 }" var="1">
+								<li class="active"><a href="<c:url value='/NewsList.pz?type=1'/>">도미노뉴스</a></li>
+								<li><a href="<c:url value='/NewsList.pz?type=2'/>">PRESS</a></li>
+							</c:if>
+							<c:if test="${type == 2 }" >
+								<li><a href="<c:url value='/NewsList.pz?type=1'/>">도미노뉴스</a></li>
+								<li class="active"><a href="<c:url value='/NewsList.pz?type=2'/>">PRESS</a></li>
+							</c:if>
+						</ul>
+						<div class="tab_content_wrap">
+							<div class="tab_content active">
+								<form id="searchForm" name="searchForm" action="<c:url value='/NewsList.pz?type=${type}'/>" method="post">
+									<input type="hidden" id="type" name="type" value="${type }" />
+									<input type="hidden" id="pageNo" name="pageNo" value="1" />
+									<div class="form_group" style="width:530px;">
+										<div class="form_field">
+											<div class="sel_box">
+												<select id="search" name="search">
+													<option value="subject">제목</option>
+													<option value="content">내용</option>
+													<option value="all">제목+내용</option>
+												</select>
+											</div>
+										</div>
+										<div class="form_field">
+											<div class="form_item">
+												<input type="text" id="conditionTemp" name="conditionTemp" class="i_text" value="">
+												<input type="hidden" id="condition" name="condition" class="i_text" value="">
+											</div>
+										</div>
+										<div class="form_field">
+											<a href="javascript:fncSearch();" class="btn btn_srch"><span class="btn_txt">검색</span></a>
+										</div>
+									</div>
+								<c:if test="${type == 1 }">
+									<p class="srch_result">총 <span>${newsTotal }</span> 건</p>
+								</c:if>
+								<c:if test="${type == 2 }">
+									<p class="srch_result">총 <span>${pressTotal }</span> 건</p>
+								</c:if>
+								
+								<table class="tbl_lst">
+									<colgroup>
+										<col width="100px">
+										<col>
+										<col width="150px">
+										<col width="105px">
+									</colgroup>
+									<thead>
+										<tr>
+											<th class="tbl_num">번호</th>
+											<th class="tbl_name">제목</th>
+											<th class="tbl_date">등록일</th>
+											<th class="tbl_views">조회수</th>
+										</tr>
+									</thead>
+									
+									<c:forEach items="${newslist }" var="newslist" varStatus="loop">
+									<tbody>
+									<tr>
+										<td class="no_list" >${newslist.n_no }</td>
+										<td><a href="#none" onclick="goView('1964'); return false;">${newslist.n_title }</a></td>
+										<td>${newslist.n_date }</td>
+										<td>${newslist.n_count }</td>
+									</tr>
+									</tbody>
+									</c:forEach>
+								</table>
+							<!-- 	
+								페이징 아직.
+									<div class="page_nav">
+									<a href='javascript:;' class='btn_ico btn_first'>처음</a>
+									<a href='javascript:;' class='btn_ico btn_prev2'>이전</a>
+										<ul>
+											<li><strong>1</strong></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(2); return false;'>2</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(3); return false;'>3</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(4); return false;'>4</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(5); return false;'>5</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(6); return false;'>6</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(7); return false;'>7</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(8); return false;'>8</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(9); return false;'>9</a></li>  
+											<li><a href='javascript:;' onclick='javascript:paging(10); return false;'>10</a></li>
+										</ul>
+									<a href='javascript:;' class='btn_ico btn_next2' onclick='javascript:paging(11, 1); return false;'>다음</a>
+									<a href='javascript:;' class='btn_ico btn_last' onclick='javascript:paging(26); return false;'>마지막</a>
+								</div> -->
+							</form>
+							</div>
 						</div>
-						<!-- //event_title -->
-						<div class="event_detail_view">
-							<div class="event_detail_view">
-	<div class="img_box">
-		<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/specials_event/event_list64.jpg" alt="">
-	</div>
-</div>
-<div class="event_guide">
-    <dl>
-        <dt>유의사항</dt>
-        <dd>
-            <ul>
-                <li>-25,000원 이상 주문시 사용 가능합니다. </li> 
-                <li>-금액할인권은 1주문 당 1장만 사용 가능합니다. </li>
-                <li>-주문 후 남은 잔액에 대해서는 환불이 불가합니다. </li>
-<li>-세트제품 및 여타할인과 중복할인은 불가합니다. (단, 반값 사이드디시 예외)</li>
-            </ul>
-        </dd>
-    </dl>
-</div></div>
-					</div>
-					<!-- //event_detail_card -->
-					<div class="btn_wrap">
-						<a href="/event/list?gubun=E0200" class="btn btn_mdle btn_gray btn_basic"><span class="btn_txt">목록</span></a>
 					</div>
 				</div>
-				<!-- //event_detail -->
-
 			</div>
 			<!-- //content -->
 		</div>
@@ -207,6 +264,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<!-- //장바구니(e) -->
+
 		<jsp:include page="/WEB-INF/Pizza/template/foot.jsp"></jsp:include>
 		<!-- //footer -->
 	</div>
@@ -267,3 +325,58 @@ $(document).ready(function() {
 cookieManager.makePCID("PCID", 10);
 </script>
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+	var condition = $('#condition').val();
+	if(condition.indexOf('[[')>-1) {
+		condition = condition.replace('[[','[');
+	}
+
+	if(condition.indexOf(']]')>-1) {
+		condition = condition.replace(']]',']');
+	}
+	$('#conditionTemp').val(condition);
+});
+
+$('#conditionTemp').keyup(function(e){
+	if(e.keyCode == 13) {
+		if($('#conditionTemp').val() == '') {
+			alert('검색어를 입력해주세요');
+			return;
+		}
+
+		fncSearch();
+	}
+});
+
+function paging(n_no){
+	$("#pageNo").val(n_no);
+	$("#searchForm").submit();
+}
+
+function fncSearch() {
+	if($('#conditionTemp').val() == '') {
+		alert('검색어를 입력해주세요');
+		return;
+	}
+
+	var condition = $('#conditionTemp').val();
+	condition = condition.replace('[','[[');
+	condition = condition.replace(']',']]');
+
+	$('#condition').val(condition);
+	$('#pageNo').val(1);
+
+	$("#searchForm").attr("action", "/bbs/newsList");
+	$('#searchForm').submit();
+}
+
+var queryString;
+function setQueryString() {
+	queryString = $('#searchForm').serialize();
+}
+
+function goView(idx) {
+	$("#searchForm").attr("action", "/bbs/newsView?idx="+idx).submit();
+}
+</script>

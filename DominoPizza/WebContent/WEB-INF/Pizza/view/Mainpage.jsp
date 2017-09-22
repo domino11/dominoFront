@@ -294,7 +294,7 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 				</c:if>
 
 				<li>
-					<a href="/branch">
+					<a href="<c:url value='/branch.pz'/>">
 						<div class="img_info">
 							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info3_2.png" alt="">
 						</div>

@@ -130,7 +130,7 @@ $(document).ready(function() {
 			<!-- sub_title -->
 				<div class="sub_title">
 					<ul class="sub_nav">
-						<li><a href="/main">HOME</a></li>
+						<li><a href="<c:url value='/Pizza/MainPage.pz'/>">HOME</a></li>
 						<li><a href="<c:url value='/EventMain.pz'/>">이벤트&amp;혜택</a></li>
 						<li><span>오늘의 이벤트</span></li>
 					</ul>
@@ -144,8 +144,8 @@ $(document).ready(function() {
 
 				<div class="tab_type4 event">
 					<ul class="btn_tab">
-						<li class="E1"><a href="<c:url value='/eventMain.pz'/>?e=E101">오늘의 이벤트</a></li>
-						<li class="E2"><a href="/event/mania">매니아 혜택</a></li>
+						<li class="E1"><a href="<c:url value='/EventMain.pz'/>?e=E101">오늘의 이벤트</a></li>
+						<li class="E2"><a href="<c:url value='/mania.pz'/>">매니아 혜택</a></li>
 					</ul>
 				</div>
 				<!-- //tab -->
@@ -161,8 +161,8 @@ $(document).ready(function() {
 								    box-shadow: 1px 2px 3px rgba(69,52,27,0.56);">
 							<div class="event_card" id="${pageNo }_${eventmain.e_no}">
 								<div class="img_box">
-									<img style="width: 100%" src="<c:url value='/Pizza/Image/EventImage' />/${eventmain.e_timg}" alt="현대카드ZERO/M Edition2 신규발급시 피자할인쿠폰 증정!">
-									</div> 
+									<img src="https://cdn.dominos.co.kr/admin/upload/event/20170831_1OkQ02WS.jpg" alt="현대카드ZERO/M Edition2 신규발급시 피자할인쿠폰 증정!">
+								</div> 
 								<!-- //img_box -->
 								<div class="card_content" style="padding: 20px ">
 									<div class="title" style="font-weight: 500; margin-bottom: 5px; font-size: 20px">${eventmain.e_title }</div>
