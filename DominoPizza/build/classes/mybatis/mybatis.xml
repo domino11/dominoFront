@@ -117,6 +117,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<select id="mybatiscallTopping" parameterType="java.util.Map" resultType="ToppingDTO" >
 		SELECT * FROM TOPPING_SIZE TS JOIN TOPPING T ON T.T_CODE = TS.T_CODE WHERE TS_NO='${ts_no}'
 		</select>
+			 
+		  <insert id="mybatisinsal" parameterType="java.util.Map" >
+		 INSERT INTO SALES VALUES(seq_sales_sa_no.nextval,#{id},#{st_no},#{sa_addr},sysdate,default,#{sa_recipt},#{sa_rectel},#{sa_request},#{pay_no})
+		 </insert>
+		 
+		 <insert id="mybasketinsalmenu" parameterType="BasketDTO" >
+		 INSERT INTO SALES_MENU VALUES(SEQ_SALES_MENU_SM_NO.NEXTVAL,SEQ_SALES_SA_NO.CURRVAL,#{no},#{kind},#{name},#{qty},#{size},#{price})
+		 </insert>
+		 
+		 <insert id="mybatiss_topping" parameterType="ToppingDTO" >
+		 INSERT INTO S_TOPPING VALUES(SEQ_SALES_MENU_SM_NO.CURRVAL,#{ts_no})
+		 </insert>  
+		
 		
 
  <!--  어진 끝 -->
@@ -158,6 +171,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <select id="SelectMyCoupon_Name" parameterType="pizza.service.impl.UserDto">
  SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = #{id}
  </select>
+
  
  
  

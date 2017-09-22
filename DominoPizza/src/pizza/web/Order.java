@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +38,7 @@ public class Order {
    
    @RequestMapping("/AddrSelect.pz")
    public String AddrSelect(@RequestParam Map map, Model model,HttpServletRequest req , HttpSession session) throws Exception{
+	  
       String id = session.getAttribute("ID").toString();
       map.put("id", id);
       String url="";
@@ -59,15 +59,17 @@ public class Order {
          }
          System.out.println(price);
          dto.setPrice(price);
+         dto.setNo(map.get("no").toString());
          int totprice = 0;
          if(session.getAttribute("TOTALPRICE")!=null)
             totprice = Integer.parseInt(session.getAttribute("TOTALPRICE").toString());
          dto.setQty(map.get("qty").toString());
-         System.out.println("size1: "+map.get("size").toString());
-         if(map.get("size")!=null)
-            dto.setSize(map.get("size").toString().toUpperCase().contains("L")?"L":"M");
-         System.out.println("size2: "+dto.getSize());
          
+         if(map.get("size")!=null&&map.get("size").toString().trim().length()>0)
+            dto.setSize(map.get("size").toString().toUpperCase().contains("L")?"L":"M");
+         else dto.setSize("");
+         System.out.println("size2: "+dto.getSize());
+
          if(map.get("mkSauce")!=null&&map.get("mkSauce").toString().trim().length()>0) {
         	 dto.setMkSauce(map.get("mkSauce").toString());
          }
@@ -204,6 +206,7 @@ public class Order {
             bdto.setNo(dto.getDr_no());
             bdto.setName(dto.getD_name());
             bdto.setImg(dto.getD_img());
+            bdto.setSize("");
             bdto.setKind(map.get("kind").toString());
             bdto.setPrice(Integer.parseInt(dto.getD_price())*Integer.parseInt(map.get("qty").toString())+"");
             req.setAttribute("SUC_URL", "/Pizza/Menu/sidedish_beverage.pz");
@@ -215,6 +218,7 @@ public class Order {
             bdto.setNo(dto.getPc_no());
             bdto.setName(dto.getPc_name());
             bdto.setImg(dto.getPc_img());
+            bdto.setSize("");
             bdto.setKind(map.get("kind").toString());
             bdto.setPrice(Integer.parseInt(dto.getPc_price())*Integer.parseInt(map.get("qty").toString())+"");
             req.setAttribute("SUC_URL", "/Pizza/Menu/sidedish_pickleNSouce.pz");
@@ -225,6 +229,7 @@ public class Order {
             bdto.setNo(dto.getSc_no());
             bdto.setName(dto.getSc_name());
             bdto.setImg(dto.getSc_img());
+            bdto.setSize("");
             bdto.setKind(map.get("kind").toString());
             bdto.setPrice(Integer.parseInt(dto.getSc_price())*Integer.parseInt(map.get("qty").toString())+"");
             req.setAttribute("SUC_URL", "/Pizza/Menu/sidedish_pickleNSouce.pz");
@@ -402,6 +407,41 @@ public class Order {
       
       return dto;
    }
+   
+   
+   @RequestMapping("/finalsa.pz")
+   public String finalsa(@RequestParam Map map,HttpServletRequest req, HttpSession session) {
+	   List<BasketDTO> list = new Vector<>();
+	  String de_addr = session.getAttribute("DE_ADDR").toString();
+	   if(session.getAttribute("BUYLIST")!=null)
+           list = (List<BasketDTO>)session.getAttribute("BUYLIST");
+	   String st_no = session.getAttribute("ST_NO").toString();
+	   String del_addr = session.getAttribute("DE_ADDR").toString();
+
+	   map.put("id", session.getAttribute("ID").toString());
+	   map.put("st_no", st_no);
+	   map.put("sa_addr", del_addr);
+	   int i = service.insal(map);
+	   for(BasketDTO dto : list) {
+	   int b = service.insalmenu(dto);
+	   if(dto.getToppingList()!=null)
+	   for(ToppingDTO tdto : dto.getToppingList()) {
+		   int c =service.s_topping(tdto);
+		   
+	   }
+	   }
+	   
+	   session.setAttribute("BUYLIST",null);
+	   session.setAttribute("BUYNUM",null);
+
+	   
+      return "/Pizza/MainPage.pz";
+   }
+   
+   
+   
+   
+   
    
    
    

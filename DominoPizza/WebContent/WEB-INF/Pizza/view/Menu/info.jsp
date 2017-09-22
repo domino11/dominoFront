@@ -886,7 +886,7 @@ var goBranch = function(){
 									<div class="form_group">
 										<div class="form_field">
 											<div class="form_item">
-												<span class="i_label" style="position: absolute;">${calluser.name }</span>
+												<span class="i_label"   id="c_name" style="position: absolute;">${calluser.name }</span>
 												<input type="text" id="customerName" name="customerName" value="" maxlength="30" class="i_text">
 											</div>
 										</div>
@@ -929,7 +929,7 @@ var goBranch = function(){
 										<dt>선물 메시지</dt>
 										<dd>
 											<div class="form_item">
-												<span class="i_label" style="position: absolute;">최대 25자까지 입력가능</span>
+												<span class="i_label" id="c_request" style="position: absolute;">최대 25자까지 입력가능</span>
 												<textarea name="sms_msg" id="sms_msg" onkeyup="checkByte(this, 50)" class="i_text" title="선물메시지"></textarea>
 											</div>
 										</dd>
@@ -963,8 +963,8 @@ var goBranch = function(){
 							<dd>
 								<div class="tab tab_type3">
 									<ul class="btn_tab">
-										<li class="" value="1" ><a href="javascript:;" id="pay_method_4" data-hidedefault="2" data-value="9|4|Y" onclick="clickPayType('radio', this);">신용카드 바로결제</a></li>
-										<li class="" value="1" ><a href="javascript:;" id="pay_method_6" data-hidedefault="" data-value="A|6|Y" onclick="clickPayType('radio', this);">휴대전화 바로결제</a></li>
+										<li class="payck" value="1" ><a href="javascript:;" id="pay_method_4" data-hidedefault="2" data-value="9|4|Y"  ">신용카드 바로결제</a></li>
+										<li class="payck" value="2" ><a href="javascript:;" id="pay_method_6" data-hidedefault="" data-value="A|6|Y"  ">휴대전화 바로결제</a></li>
 										</ul>
 									<div class="pay_method_sub_default" id="pay_method_sub_default_2" style="display: block;">
 										<p class="txt_payment"><!-- <span class="ico ico_payment_normal"></span> --></p><!-- 클릭시 아래 문구 뜸 -->
@@ -992,8 +992,8 @@ var goBranch = function(){
 							<dd>
 								<div class="tab tab_type3">
 									<ul class="btn_tab">
-										<li class="" value="2" ><a href="#" id="pay_method_3" data-hidedefault="" data-value="2|3|Y" onclick="clickPayType('radio', this);">신용카드 현장결제</a></li>
-										<li class="" value="2" ><a href="3" id="pay_method_1" data-hidedefault="" data-value="1|1|Y" onclick="clickPayType('radio', this);">현금으로 현장결제</a></li>
+										<li class="payck" value="3" ><a href="#" id="pay_method_3" data-hidedefault="" data-value="2|3|Y"  ">신용카드 현장결제</a></li>
+										<li class="payck" value="4" ><a href="3" id="pay_method_1" data-hidedefault="" data-value="1|1|Y"  ">현금으로 현장결제</a></li>
 										</ul>
 									<div class="pay_method_sub_default" id="pay_method_sub_default_3" style="display: block;">
 										<p class="txt_payment"><!-- <span class="ico ico_payment_spot"></span> --></p>
@@ -1063,7 +1063,7 @@ var goBranch = function(){
 						<input type="hidden" name="sa_price" id="sa_price" value="0" />
 						<input type="hidden" name="sa_pay" id="sapay" value="0" />
 						<input type="hidden" name="sa_payType" id="sapayType" value="0" />
-						<a href="javascript:;" id="doOrder" onclick="doOrder()" class="btn btn_mdle btn_red btn_basic"><span class="btn_txt">결제 및 주문완료</span></a>
+						<a href="javascript:;" id="doOrder" onclick="finalsa()" class="btn btn_mdle btn_red btn_basic"><span class="btn_txt">결제 및 주문완료</span></a>
 						</form>
 					</div>
 				</div>
@@ -1078,6 +1078,39 @@ var goBranch = function(){
 // 결제 완료 버튼 눌렀을 때
 
 </script>
+
+<script>
+ var pay_no ="";
+ $('.payck').click(function(){
+	 pay_no=this.value;
+	 
+ });
+
+function finalsa(){
+	
+		var fprice = document.getElementById("infofprice").innerHTML;
+		
+		var minpr = $(".minprice").html();
+		var fpr = $(".fprice").html();
+		var sname = $(".sname").html();
+		var mc_no = $("#mc_no").val();
+		var sa_pr = $("#sa_price").val();
+		var nam = document.getElementById('customerName').value;
+		var tel1 = $("#tel1").val();
+		var tel2 = $("#tel2").val();
+		var tel3 = $("#tel3").val();
+		var req = $("#c_request").html();
+		alert(req);
+		alert(tel1);
+		alert(nam);
+		location.href="<c:url value='/finalsa.pz' />?sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no;
+		
+}
+
+
+
+</script>
+
 
 
 <!-- 배달주소 등록 팝업 -->

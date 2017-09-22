@@ -508,7 +508,7 @@ function share(optn) {
 						img = img.replace("&","%26");
 						var price = priceDom.innerHTML;
 						var qty = qtyDom.value;
-						location.href="<c:url value='/AddrSelect.pz' />?kind=2&na="+na+"&price="+price+"&img="+img+"&no=${dto.s_no}&qty="+qty;					
+						location.href="<c:url value='/AddrSelect.pz' />?size=&kind=2&na="+na+"&price="+price+"&img="+img+"&no=${dto.s_no}&qty="+qty;					
 						
 						</c:if>
 					}

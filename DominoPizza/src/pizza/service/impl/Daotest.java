@@ -144,6 +144,22 @@ public class Daotest {
 			return template.selectOne("mybatiscallTopping",map);
 		}
 
+		public int insal(Map map) {
+			 System.out.println("id="+map.get("id")+"no="+map.get("st_no")+"addr="+map.get("sa_addr")+" rec="+map.get("sa_recipt")+"retel="+map.get("sa_rectel")+" request="+map.get("sa_request")+"   "+map.get("pay_no") );
+			
+			return template.insert("mybatisinsal",map);
+		}
+
+		public int insalmenu(BasketDTO dto) {
+			System.out.println("no="+dto.getNo()+" kind="+dto.getKind()+" name="+dto.getName()+" qty="+dto.getQty()+" size="+dto.getSize()+" price="+dto.getPrice());
+			
+			 return template.insert("mybasketinsalmenu",dto);
+		}
+
+		public int s_topping(ToppingDTO tdto) {
+			return template.insert("mybatiss_topping",tdto);
+		}
+
 	
 	
 }

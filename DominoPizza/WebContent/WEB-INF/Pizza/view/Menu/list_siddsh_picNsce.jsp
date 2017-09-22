@@ -363,7 +363,7 @@ var chocolatChk = function() {
 							<c:if test="${empty DE_ADDR }" var="idc" >
 							location.href="<c:url value='/AddrSelect.pz' />";
 							</c:if>
-							location.href="<c:url value='/DrinkPncBuy.pz'/>?no="+ids+"&qty="+qty+"&kind=5";
+							location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=5";
 							</c:if>
 						}
 			function pbasket(ids){
@@ -377,7 +377,7 @@ var chocolatChk = function() {
 				<c:if test="${empty DE_ADDR }" var="idc" >
 				location.href="<c:url value='/AddrSelect.pz' />";
 				</c:if>
-				location.href="<c:url value='/DrinkPncBuy.pz'/>?no="+ids+"&qty="+qty+"&kind=4";
+				location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=4";
 				</c:if>
 			}
 			

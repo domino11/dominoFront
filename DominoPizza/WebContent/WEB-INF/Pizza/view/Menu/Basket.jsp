@@ -321,10 +321,10 @@ function alertBranch(){
                                  <div class="lst_type v5">
                                     <ul>
                                     <c:if test="${!empty map.toppingList}">
-                                    <c:forEach items="${map.toppingList }" var="tdto" varStatus="tloop" >
                                     <c:if test="${!empty map.mkSauce}">
                                          <li>${map.mkSauce}</li>
                                     </c:if> 
+                                    <c:forEach items="${map.toppingList }" var="tdto" varStatus="tloop" >
                                  <li>${tdto.t_name } (${tdto.t_size}) <fmt:formatNumber value="${tdto.t_price }" />원</li>
                                     </c:forEach>
                                     </c:if>

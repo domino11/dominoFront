@@ -132,6 +132,20 @@ public class ServiceImpl implements pizza.service.Service {
 		
 	}
 
+	public int insal(Map map) {
+		return dao.insal(map);
+	}
+
+	public int insalmenu(BasketDTO dto) {
+		return dao.insalmenu(dto);
+	}
+
+	public int s_topping(ToppingDTO tdto) {
+		return dao.s_topping(tdto);
+	}
+
+	
+
 	
 	
 	
