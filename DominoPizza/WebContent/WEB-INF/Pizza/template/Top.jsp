@@ -5,6 +5,7 @@
 	<!-- wrap  -->
 
 
+
 		<!-- header -->
 		<div id="header" style="background-color: white">
 				<div class="logo_area">
@@ -24,7 +25,7 @@
 						</c:if>
 						<c:if test="${!login}" >
 						<li><a href="<c:url value='/User/Logout.pz'/>">로그아웃</a></li>
-							<li><a href="<c:url value='/User/MyPage.pz'/>">나의정보</a></li>
+							<li><a href="<c:url value='/User/MyPage_Mania.pz'/>">나의정보</a></li>
 						</c:if>
 							</ul>
 							

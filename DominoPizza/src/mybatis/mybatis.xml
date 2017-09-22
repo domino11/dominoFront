@@ -122,6 +122,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <!--  어진 끝 -->
  
   <!--  동준 -->
+<update id="UpdatePwd" parameterType="pizza.service.impl.UserDto">
+	UPDATE CUSTOMER SET pass = #{pwd} WHERE id = #{id}
+</update>
+
+<update id="UpdateCustomer" parameterType="pizza.service.impl.UserDto">
+	UPDATE CUSTOMER SET birth = #{birth},tel = #{tel},email = #{email} WHERE id = #{id}
+</update>
+
+
 <insert id="UserInsert" parameterType="pizza.service.impl.UserDto" >
 	INSERT INTO CUSTOMER VALUES(#{id},#{pwd},#{name},#{gender},#{birth},#{post},#{addr},#{email},#{tel})
 </insert>
@@ -129,6 +138,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <select id="UserSelectOne" parameterType="pizza.service.impl.UserDto" resultType="java.lang.String" >
 	SELECT name FROM CUSTOMER WHERE id = #{id} and pass = #{pwd}
 </select>
+  
+<select id="ShowMember" parameterType="pizza.service.impl.UserDto" resultType="int" >
+	SELECT count(*) FROM CUSTOMER WHERE id = #{id} 
+</select>
+  
+<select id="SearchId" parameterType="pizza.service.impl.UserDto" resultType="java.lang.String">
+	SELECT ID FROM CUSTOMER WHERE EMAIL = #{email} and name = #{name} and tel = #{tel} and birth = #{birth}
+</select>  
+ 
+<update id="SearchPwd" parameterType="pizza.service.impl.UserDto">
+	UPDATE CUSTOMER SET pass = #{pwd} WHERE id = #{id} and name = #{name}
+</update>
+
+<select id="CountCoupon" parameterType="pizza.service.impl.UserDto" resultType="int">
+	SELECT COUNT(*) FROM MY_CUPON WHERE id = #{id}
+</select>
+ 
+ <select id="SelectMyCoupon_Name" parameterType="pizza.service.impl.UserDto">
+ SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = #{id}
+ </select>
  
  
  

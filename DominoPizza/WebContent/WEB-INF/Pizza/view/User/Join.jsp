@@ -4,7 +4,6 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-
 	 <!-- CSS 파일 불러오기 -->
     <link rel="stylesheet" href="<c:url value='/Pizza/css/JoinForm.css'/>">
     <link rel="stylesheet" href="<c:url value='/Pizza/css/JoinForm_Size.css'/>">
@@ -21,9 +20,9 @@
 	<link rel="stylesheet" type="text/css" href="/resources/css/font.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.dominos.co.kr/renewal2016/ko/w/css/layout.css?v1.0">
 	<!-- 2] CDN(Content Deliver Network)주소 사용-->
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-<!-- Deprecated 된 함수사용 -->
-<script src="http://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<!-- Deprecated 된 함수사용 -->
+	<script src="http://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 	<script type="text/javascript" src="https://cdn.dominos.co.kr/renewal2016/ko/w/js/ui.js"></script>
 	<script type="text/javascript" src="https://cdn.dominos.co.kr/renewal2016/ko/w/js/jquery.flexslider.js"></script>
 	<script type="text/javascript" src="/resources/js/selectbox.js"></script><!-- js 수정함. -->
@@ -50,10 +49,15 @@
 		
 		if(pwd != cpwd){
 			$("#CheckPwd").get(0).innerHTML = "비밀번호 가 일치하지 않습니다.";
+			$("#CheckPwd2").get(0).innerHTML = "";
 			a=0;
+			
 		}
 		else{
-			$("#CheckPwd").get(0).innerHTML = "비밀번호 가 일치 합니다.";
+			
+			$("#CheckPwd").get(0).innerHTML = "";
+			$("#CheckPwd2").get(0).innerHTML = "비밀번호 가 일치 합니다.";
+			
 			a=1;
 		}
 	}
@@ -79,6 +83,7 @@
 		var email = $("#email").val();
 		if(email.length == 0){
 			$("#Checkemail").get(0).innerHTML = "이메일을 입력 하세요.";
+			
 			c=0;
 		}
 		else if(email.length > 50){
@@ -91,6 +96,7 @@
 		}
 		else{
 			$("#Checkemail").get(0).innerHTML = "";
+			
 			c=1;
 			
 		}
@@ -111,28 +117,26 @@
 			
 			d=1;
 		}
+		
+		
 	}
 	
 	function CheckTel(){
-		var tel = $("#tel").val();
-		if(tel.length == 0){
-			$("#CheckTel").get(0).innerHTML = "번호를 입력해 주세요.";
-			e=0;
-		}
-		else if(tel.indexOf('-') == -1){
-			$("#CheckTel").get(0).innerHTML = "- 를 포함해서 입력해 주세요.";
-			e=0;
-		}
+		var tel2 = $('#tel2').val();
+		var tel3 = $('#tel3').val();
+		if(tel2 == '' || tel3 == ''){
+			$("#CheckTel").get(0).innerHTML = "휴대전화번호 를 입력 하세요.";
+			}
 		else{
 			$("#CheckTel").get(0).innerHTML = "";
-
-			e=1;
-		}
-	}
+			c = 1;
+			}
+		}// CheckTel()
+		
 	function clicks(){
-
-		if(a+b+c+d+e===5){
-			alert("가입이 완료되었습니다.");
+		
+		if($("#Checkemail").get(0).innerHTML.length+$("#CheckTel").get(0).innerHTML.length+$("#CheckName").get(0).innerHTML.length+
+				$("#CheckPwd").get(0).innerHTML.length+$("#CheckId").get(0).innerHTML.length ==0){
 			signup.submit();
 		}
 		else{
@@ -140,8 +144,6 @@
 		}
 	}
 	
-	
-
 	
 
 	</script>
@@ -215,6 +217,7 @@
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
               <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="비밀번호 확인" value="" onkeyup="javascript:CheckPwd()">
               <span id="CheckPwd" style="color: red; font-weight: 600;"></span>
+              <span id="CheckPwd2" style="color: red; font-weight: 600;"></span>
             </div>  
           </div>
         </div>
@@ -291,6 +294,7 @@
             여성 </label>
           </div>
         </div>
+        <!-- 
         <div class="form-group">
           <label class="control-label col-sm-3">휴대전화 번호<span class="text-danger">*</span></label>
           <div class="col-md-5 col-sm-8">
@@ -301,8 +305,34 @@
             </div>
           </div>
         </div>
-        
-        
+         -->
+							<div class="form_group">       
+							<label class="control-label col-sm-3">휴대전화 번호<span class="text-danger">*</span></label>
+								<div class="form_field">
+									<div class="sel_box">
+										<select name="tel1" id="tel1">
+											<option value="010"/>010</option>
+											<option value="011"/>011</option>
+											<option value="016"/>016</option>
+											<option value="017"/>017</option>
+											<option value="018"/>018</option>
+											<option value="019"/>019</option>
+										</select>
+									</div>
+								</div>
+								<div class="form_field">
+									<div class="form_item">
+										<input type="text" name="tel2" id="tel2" maxlength="4" class="i_text" onkeyup="javascript:CheckTel()">
+									</div>
+								</div>
+								<div class="form_field">
+									<div class="form_item">
+										<input type="text" name="tel3" id="tel3" maxlength="4" class="i_text" onkeyup="javascript:CheckTel()">
+									</div>
+								</div>
+								<span id="CheckTel" style="color: red; font-weight: 600;"></span>
+							</div>
+						
         <div class="form-group">
           <label class="control-label col-sm-3">이메일 인증번호 입력</label>
           <div class="col-md-5 col-sm-8">
@@ -382,7 +412,7 @@ function openDaumPostcode() {
         }
     }).open({
         left : (window.screen.width / 2 ) - ( width / 2), //팝업창이 실행될때 위치지정
-        top : (window.screen.height / 2 ) - ( height / 2) //팝업창이 실행될때 위치지정
+        top : (window.screen.height / 2 ) - ( height /2) //팝업창이 실행될때 위치지정
     });
 }
 </script>

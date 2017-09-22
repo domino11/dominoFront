@@ -289,6 +289,12 @@ function doLoginSSL() {
 					"pwd" : loginPwd,
 					},
 					success:function(data) {
+						if(data == "http://localhost:8080/DominoPizza/User/Login.pz"){
+							alert('존재하지 않는 계정 입니다');
+						}
+						else{
+							
+						}
 						location.href=data;
 					}
 		});
@@ -297,64 +303,6 @@ function doLoginSSL() {
 	
 	
 	
-	/* 
-	//자동 로그인 체크(앱)
-	var autoLogin = 'N';
-	if ($('#autoLogin').prop('checked')) {
-		autoLogin = 'Y';
-	}
-	
-	var saveId = "N";
-	//아이디 저장 체크	
-	if ($('input:checkbox[id="idcheck"]').is(":checked") == true) { // 아이디 저장을 체크하였을때
-		//cookieManager.setCookie("user_id", $('#id').val(), 365); // 쿠키이름을 id로 form.mb_id.value 값을 7일동안 저장
-		saveId = "Y";
-	} else { // 아이디 저장을 체크하지 않았을때
-		//cookieManager.clearCookie("user_id"); // 날짜를 0으로 저장하여 쿠키 삭제
-	}
-
-	
-	$.ajax({
-		type: "POST",
-		url: "/global/loginAjax",
-		data: { "id" : loginId,
-				"passwd" : $('#passwd').val(),
-				"saveId" : saveId,
-				"redirectUrl" : $('#redirectUrl').val()
-		},
-		dataType : "json",
-		success:function(data) {			
-		 	if (data.resultData.status == "success") {
-		 		if (data.resultData.msg == "changePwd"){
-		 			$("#redirect_url").val(data.resultData.redirectUrl);
-					$("#chgPasswdFrm").submit();
-		 		}else{
-		 			location.href = data.resultData.redirectUrl;
-		 		}
-			} else {
-				if (data.resultData.msg == "noId" || data.resultData.msg == "noPasswd" || data.resultData.msg == "noPasswd1" || data.resultData.msg == "noPasswd2") {
-					$('#login_fail').addClass("open");
-					var top = $(window).scrollTop();
-					$('#login_fail').find('.pop_wrap').css('top',top+30+'px');
-				} else if (data.resultData.msg == "noPasswd3" || data.resultData.msg == "noPasswd4"){
-					var cnt = data.resultData.msg.replace("noPasswd", "");
-					alert("로그인 "+cnt+"회 실패하셨습니다.\n5회 이상 로그인 실패 시 로그인이 불가하며,\n비밀번호 찾기 페이지에서 비밀번호 변경 후 이용 가능합니다.");
-				} else if (data.resultData.msg == "block"){
-					alert("로그인 5회 이상 실패하셨습니다.\n5회 이상 로그인 실패 시 로그인이 불가하며,\n비밀번호 찾기 페이지에서 비밀번호 변경 후 이용 가능합니다.");
-					location.href = "/member/findIdPw";
-				}  else {
-					alert(decodeURIComponent(data.resultData.msg));
-					if (data.resultData.redirectUrl) {
-						location.href = data.resultData.redirectUrl;
-					}
-				}
-			}
-		},
-		error: function (error){
-			alert("다시 시도해주세요.");
-		}
-	});
-	*/
 	
 }
 
@@ -367,7 +315,11 @@ function doLoginSSL() {
 
 </script>
 
+		
 
+		
+		
+		<%@include file="/WEB-INF/Pizza/template/foot.jsp" %>
 		
 	
 
