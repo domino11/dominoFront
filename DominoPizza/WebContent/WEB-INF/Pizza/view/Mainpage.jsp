@@ -292,7 +292,6 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 				
 				
 				</c:if>
-
 				<li>
 					<a href="<c:url value='/branch.pz'/>">
 						<div class="img_info">
