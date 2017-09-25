@@ -1080,7 +1080,7 @@ var goBranch = function(){
 </script>
 
 <script>
- var pay_no ="";
+ var pay_no ="0";
  $('.payck').click(function(){
 	 pay_no=this.value;
 	 
@@ -1093,6 +1093,7 @@ function finalsa(){
 		var minpr = $(".minprice").html();
 		var fpr = $(".fprice").html();
 		var sname = $(".sname").html();
+		var sno = $(".sno").html();
 		var mc_no = $("#mc_no").val();
 		var sa_pr = $("#sa_price").val();
 		var nam = document.getElementById('customerName').value;
@@ -1100,10 +1101,11 @@ function finalsa(){
 		var tel2 = $("#tel2").val();
 		var tel3 = $("#tel3").val();
 		var req = $("#c_request").html();
-		alert(req);
-		alert(tel1);
-		alert(nam);
-		location.href="<c:url value='/finalsa.pz' />?sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no;
+		if(pay_no=="0"){
+			alert('결제수단을 선택해주세요!!');
+		}
+		else
+		location.href="<c:url value='/finalsa.pz' />?sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no+"&sa_sname="+sname+"&mc_no="+mc_no;
 		
 }
 

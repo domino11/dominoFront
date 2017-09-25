@@ -144,6 +144,14 @@ public class ServiceImpl implements pizza.service.Service {
 		return dao.s_topping(tdto);
 	}
 
+	public String getd_no(Map map) {
+		return dao.getd_no(map);
+	}
+
+	public void usecoupon(Map map) {
+		dao.usecoupon(map);
+	}
+
 	
 
 	
