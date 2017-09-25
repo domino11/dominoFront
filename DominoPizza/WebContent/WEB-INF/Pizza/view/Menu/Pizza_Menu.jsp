@@ -302,7 +302,7 @@ var chocolatChk = function() {
 							<a href="<c:url value='/PizzaView.pz' />?p_no=${dtos.p_no}&gok=${gok}">
 								<div class="prd_img">
 										<div class="prd_tag">
-										<span class="ico ico_tag">NEW</span>
+										<!-- <span class="ico ico_tag">NEW</span> -->
 										</div>
 										
 										<div class="prd_img_view"><img src="<c:url value='/Pizza/Image/pizzalist'/>/${fn:replace(dtos.p_img,' ','')}" alt="꽃게 온더 피자 곡물도우"></div>

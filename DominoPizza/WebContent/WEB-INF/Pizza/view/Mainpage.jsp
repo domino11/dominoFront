@@ -168,10 +168,9 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 
         <div class="wrapper" style="width: 100%" >
            
-            <div class="connected-carousels" style="width: 100% ;height:500px" >
-                <div class="stage" style="width: 100%; height:500px" >
-                
-                    <div class="carousel carousel-stage" style="width: 100%; height:500px" >
+            <div class="connected-carousels" style="width: 100% ;height:500px; border: none; background: none;  " >
+                <div class="stage" style="width: 100%; height:500px; border: none; background: none; " >
+                    <div class="carousel carousel-stage" style="width: 100%; height:500px; border: none; background: none; " >
                         <ul>
                             <li><a href="#"><img src="<c:url value='/Pizza/Image/1.jpg' />"  style="width:100%" height="500" alt=""></a></li>
                             <li><a href="#"><img src="<c:url value='/Pizza/Image/2.jpg' />"  style="width:100%" height="500" alt=""></a></li>
@@ -181,12 +180,11 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
                         
                         </ul>
                     </div>
-                    <p class="photo-credits">
-                        Photos by <a href="http://www.mw-fotografie.de">Marc Wiegelmann</a>
+                    <p class="photo-credits" style="border: none;" >
                     </p>
-                    <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
-                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
-                </div>
+                     <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a> 
+	                </div>
 
                 <div class="navigation">
                   
@@ -261,7 +259,7 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 							
 					<c:if test="${!idc }">
 					<li>
-					<a href="/mypage/myLevel">
+					<a href="<c:url value='/User/MyPage_Mania.pz'/>">
 						<div class="img_info">
 							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info.png" alt="">
 						</div>
@@ -274,7 +272,7 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 					</a>
 				</li>
 					<li class="exist_coupon">
-					<a href="/mypage/myCoupon">
+					<a href="<c:url value='/User/Mypage_coupon.pz' />">
 						<div class="img_info">
 							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info2.png" alt="">
 						</div>

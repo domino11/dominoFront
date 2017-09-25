@@ -444,11 +444,10 @@ public class Order {
 		   
 		   
 	   }
-	   if(map.get("mc_no")!=null && map.get("mc_no").toString().trim().length()>0) {
+	   if(map.get("mc_no")!=null && !map.get("mc_no").toString().trim().equals('0')) {
 		   System.out.println(map.get("mc_no")+"mc no");
 		   System.out.println(map.get("st_no")+"stno");
-		   service.usecoupon(map);
-		   
+		   service.usecoupon(map);  
 	   }
 	   
 	   }

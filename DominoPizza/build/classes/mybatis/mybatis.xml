@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 어진 --> 
  <select id="mybatisMenu" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
- select ${sel} FROM  ${fro} where  ${whe}
+ select ${sel} FROM  ${fro} where  ${whe} 
  </select>
  
   <select id="mybatisSideMenu" parameterType="java.util.Map" resultMap="SideMenuListResult" >

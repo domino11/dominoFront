@@ -569,10 +569,12 @@ function share(optn) {
 					</div>
 					<!-- SNS 공유  -->
 					<div class="prd_sns">
-						<span class="ico ico_sns_facebook" onclick="share('facebook'); return false;"></span>
+						<!-- <span class="ico ico_sns_facebook" onclick="share('facebook'); return false;"></span>
 						<span class="ico ico_sns_twitter" onclick="share('twitter'); return false;"></span>
-						<span class="ico ico_sns_kakaostory" onclick="share('kakaostory'); return false;"></span>
+						<span class="ico ico_sns_kakaostory" onclick="share('kakaostory'); return false;"></span> -->
 					</div>
+
+
 
 					<div class="allergy_info">
 						<a href="javascript:showLayerAllegic();">알레르기 유발 가능 식품 안내</a>

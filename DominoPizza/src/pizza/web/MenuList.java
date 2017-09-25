@@ -80,7 +80,7 @@ public class MenuList {
 		if(ty==101) {
 			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,D_PRICE ";
 			fro = " pizza p join pizza_dough pd on p.p_no = pd.p_no join dough d on d.dough_no = pd.dough_no ";
-			whe = " d.dough_no=4 ";
+			whe = " d.dough_no=4 AND P_KIND != '마이키친' AND P_KIND != '하프앤하프' ";
 			req.setAttribute("gok", 1);
 			req.setAttribute("bimg", "곡물베너.png");
 		}
