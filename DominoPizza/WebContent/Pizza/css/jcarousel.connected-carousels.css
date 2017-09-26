@@ -49,6 +49,7 @@
 
 /** Stage carousel specific styles **/
 
+/* 테두리 제거
 .connected-carousels .carousel-stage {
     height: 400px;
     border: 10px solid #fff;
@@ -59,7 +60,7 @@
        -moz-box-shadow: 0 0 2px #999;
             box-shadow: 0 0 2px #999;
 }
-
+ */
 /** Navigation carousel specific styles **/
 
 .connected-carousels .carousel-navigation {

@@ -181,9 +181,11 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
                         
                         </ul>
                     </div>
+<!--                     
                     <p class="photo-credits">
                         Photos by <a href="http://www.mw-fotografie.de">Marc Wiegelmann</a>
                     </p>
+                     -->
                     <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
                     <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
                 </div>
