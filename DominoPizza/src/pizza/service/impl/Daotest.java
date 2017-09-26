@@ -39,6 +39,7 @@ public class Daotest {
 		return count;
 	}
 	
+	
 	public List<PizzaMenuList> menuList(Map map){
 		System.out.println("dao 내부");
 		
