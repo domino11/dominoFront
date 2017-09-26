@@ -63,24 +63,73 @@ public class Android {
 			throws Exception{
 		
 
-		String sel = " S_NAME,S_PRICE,S_IMG,S_NO ";
-		String fro = " SIDE S ";
+		String sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,P.P_HIMG ";
+		String fro = " PIZZA P ";
+		String whe = " P_KIND != '하프앤하프' AND P_KIND != '마이키친' ";
 		map.put("sel", sel);
 		map.put("fro", fro);
-		
+		map.put("whe", whe);
 		List<Map> list = new Vector<>();
 		System.out.println("들어는 오냐");
-		map.put("ty", "104");
+		map.put("ty", "103");
 		List<PizzaMenuList> plist = service.menuList(map);
 		
 		int lidx=req.getRequestURL().toString().lastIndexOf("/");
 		String url = req.getRequestURL().toString().substring(0,lidx);
 		System.out.println(url+"/Pizza/Image/pizzalist/");
+		System.out.println("??");
+		System.out.println(plist.get(0).getP_name());
+		String name="";
 		for(PizzaMenuList dto : plist) {
-			
+			name = dto.getP_name()+"\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+		//	System.out.println(name);
 			Map map2 = new HashMap<>();
-			map.put("name", dto.getP_name());
-			map.put("url", url+dto.getP_img());
+			map2.put("name", name);
+			map2.put("url", url+"/Pizza/Image/pizzalist/"+dto.getP_himg());
+			list.add(map2);
+		}
+		//URL url = new URL(req.getServletContext().getRealPath("/Pizza/Image"));
+		//System.out.println(url);
+		
+		
+		
+		System.out.println(JSONArray.toJSONString(list));
+		return JSONArray.toJSONString(list);
+	
+	}
+	
+	
+
+	@ResponseBody
+	@RequestMapping(value="/AndroidMenu2.pz",produces="text/html;charset=UTF-8")
+	public String androidMenu2(@RequestParam Map map,HttpServletRequest req) 
+			throws Exception{
+		
+
+		String sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,P.P_HIMG ";
+		String fro = " PIZZA P ";
+		String whe = " P_KIND != '하프앤하프' AND P_KIND != '마이키친' ";
+		map.put("sel", sel);
+		map.put("fro", fro);
+		map.put("whe", whe);
+		List<Map> list = new Vector<>();
+		System.out.println("들어는 오냐2");
+		map.put("ty", "103");
+		List<PizzaMenuList> plist = service.menuRank(map);
+		
+		int lidx=req.getRequestURL().toString().lastIndexOf("/");
+		String url = req.getRequestURL().toString().substring(0,lidx);
+		System.out.println(url+"/Pizza/Image/pizzalist/");
+		System.out.println("??");
+		System.out.println(plist.get(0).getP_name());
+		String name="";
+		for(PizzaMenuList dto : plist) {
+			name = dto.getP_name()+"\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+			System.out.println(name);
+			Map map2 = new HashMap<>();
+			map2.put("name", name);
+			map2.put("url", url+"/Pizza/Image/pizzalist/"+dto.getP_img());
+			list.add(map2);
 		}
 		//URL url = new URL(req.getServletContext().getRealPath("/Pizza/Image"));
 		//System.out.println(url);

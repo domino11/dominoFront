@@ -60,6 +60,17 @@ public class MenuList {
 		return "/WEB-INF/Pizza/view/Mainpage.jsp";
 	}
 	
+	@RequestMapping("/BestList.pz")
+	public String BestList(Model model, HttpServletRequest req) throws Exception{
+		
+		String sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,P.P_HIMG ";
+		Map map = new HashMap<>();
+		map.put("sel", sel);
+		model.addAttribute("bimg", "BestMenu.png");
+		List<PizzaMenuList> list = service.menuRank(map);
+		model.addAttribute("dto",list);
+		return "/WEB-INF/Pizza/view/Menu/Pizza_Best.jsp";
+	}
 	
 	
 	@RequestMapping("/menuList.pz")
@@ -115,6 +126,17 @@ public class MenuList {
 			pl.setP_lprice((Integer.parseInt(pl.getP_lprice())+Integer.parseInt(pl.getD_price()))+"");
 			pl.setP_sprice((Integer.parseInt(pl.getP_sprice())+Integer.parseInt(pl.getD_price()))+"");
 			}
+			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,P.P_HIMG ";
+			map.put("sel", sel);
+			List<PizzaMenuList> plist = service.menuRank(map);
+			for(PizzaMenuList best : plist) {
+				if(best.getP_no().equals(pl.getP_no())) {
+					pl.setBest("1");
+				}
+				
+			}
+			
+			
 		}
 			model.addAttribute("dto",list);
 			System.out.println("사이즈 : "+list.size());

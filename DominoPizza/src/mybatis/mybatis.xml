@@ -34,6 +34,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select ${sel} FROM  ${fro} where  ${whe} 
  </select>
  
+  <select id="mybatismenuRank" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
+ 		SELECT ${sel} FROM PIZZA P WHERE P.P_NO IN (
+		(SELECT P_NO FROM (SELECT PR.P_NO,COUNT(PR.P_NO) CT FROM PIZZA P JOIN PIZZARANK PR ON PR.P_NO = P.P_NO WHERE ROWNUM BETWEEN 1 AND 10 GROUP BY PR.P_NO
+		ORDER BY CT DESC))) AND P_KIND != '마이키친' AND P_KIND != '하프앤하프'
+ </select>
+ 
   <select id="mybatisSideMenu" parameterType="java.util.Map" resultMap="SideMenuListResult" >
  select ${sel} FROM  ${fro}
  </select>
@@ -139,6 +145,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<insert id="mybatisusecoupon" parameterType="java.util.Map" >
 		 INSERT INTO USE_SAILCUPPON VALUES(#{mc_no},#{st_no},sysdate)
 		 </insert>  
+		
+		<insert id="mybatisinPizzaRank" parameterType="BasketDTO" >
+		INSERT INTO PIZZARANK VALUES((SELECT P.P_NO FROM PIZZA P JOIN PIZZA_DOUGH PD ON P.P_NO = PD.P_NO WHERE D_NO = #{no} ),SYSDATE)
+		 </insert>
 		
 
  <!--  어진 끝 -->

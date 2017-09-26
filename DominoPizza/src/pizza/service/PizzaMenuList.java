@@ -9,6 +9,8 @@ public class PizzaMenuList {
 	private String p_lprice;
 	private String p_sprice;
 	private String d_price;
+	private String p_himg;
+	private String best;
 	
 	public String getId() {
 		return id;
@@ -51,6 +53,18 @@ public class PizzaMenuList {
 	}
 	public void setD_price(String d_price) {
 		this.d_price = d_price;
+	}
+	public String getP_himg() {
+		return p_himg;
+	}
+	public void setP_himg(String p_himg) {
+		this.p_himg = p_himg;
+	}
+	public String getBest() {
+		return best;
+	}
+	public void setBest(String best) {
+		this.best = best;
 	}
 	
 

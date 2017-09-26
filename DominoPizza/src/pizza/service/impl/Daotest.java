@@ -169,6 +169,17 @@ public class Daotest {
 			return template.insert("mybatisusecoupon",map);
 		}
 
+
+		public int inPizzaRank(BasketDTO dto) {
+			return template.insert("mybatisinPizzaRank",dto);
+		}
+
+
+		public List<PizzaMenuList> menuRank(Map map) {
+			System.out.println(map.get("sel"));
+			return template.selectList("mybatismenuRank",map);
+		}
+
 	
 	
 }

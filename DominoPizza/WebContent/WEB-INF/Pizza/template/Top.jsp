@@ -94,12 +94,12 @@
 					</li>
 					
 					<li>
-						<a href="/contents/present" class="menu07">선물하기</a>
+						<a href="<c:url value='/BestList.pz' />" class="menu07">베스트 메뉴</a>
 						<div class="depth2">
-							<ul class="list_depth2">
+							<!-- <ul class="list_depth2">
 								<li><a href="/contents/present">전체</a></li>
 								<li><a href="/voucher/list?gubun=M">모바일상품권</a></li>
-							</ul>
+							</ul> -->
 						</div>
 					</li>
 				</ul>

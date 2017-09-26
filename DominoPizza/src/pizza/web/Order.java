@@ -438,13 +438,13 @@ public class Order {
 	   int i = service.insal(map);
 	   for(BasketDTO dto : list) {
 	   int b = service.insalmenu(dto);
+	   if(dto.getKind().equals("1"))
+		   service.inPizzaRank(dto);
 	   if(dto.getToppingList()!=null)
 	   for(ToppingDTO tdto : dto.getToppingList()) {
 		   int c =service.s_topping(tdto);
-		   
-		   
 	   }
-	   if(map.get("mc_no")!=null && !map.get("mc_no").toString().trim().equals('0')) {
+	   if(map.get("mc_no")!=null && !map.get("mc_no").toString().trim().equals("0")) {
 		   System.out.println(map.get("mc_no")+"mc no");
 		   System.out.println(map.get("st_no")+"stno");
 		   service.usecoupon(map);  

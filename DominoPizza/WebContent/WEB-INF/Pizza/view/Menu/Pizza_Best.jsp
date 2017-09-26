@@ -158,7 +158,8 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 <script>
 $(document).ready(function() {
 
-	$(".gnb_menu .menu01").addClass("on");
+	$(".gnb_menu .menu07").addClass("on");
+	
 	$(".tab_category > ul > .C${code}").addClass("active");
 	$(".minus").click(function() {
 		var obj = $(this).next().find("input");
@@ -256,21 +257,18 @@ var chocolatChk = function() {
 		<!-- sub_title -->
 		<div class="sub_title">
 			<ul class="sub_nav">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/goods/list?dsp_ctgr=C0101">피자</a></li>
-				<li><span>곡물도우</span></li>
+				<li><a href="<c:url value= '/Pizza/MainPage.pz' />">HOME</a></li>
+				<li><a href="<c:url value='/BestList.pz' /> ">베스트 메뉴</a></li>
 				</ul>
 			<div class="sub_title_wrap">
-				<h2>피자</h2>
+				<h2>베스트 메뉴</h2>
 			</div>
 		</div>
 		<!-- //sub_title -->
 		<div class="tab_category">
 			<ul class="btn_tab">
 
-	<li class="C101"><a href="<c:url value='/menuList.pz?ty=101' />">곡물도우</a></li>
-				<li class="C102"><a href="<c:url value='/menuList.pz?ty=102' />">프리미엄</a></li>
-				<li class="C103"><a href="<c:url value='/menuList.pz?ty=103' />">클래식</a></li>
+	<li class="C101"><a href="<c:url value='/BestList.pz' />">베스트 메뉴</a></li>
 		</ul>
 			<div class="tab_content_wrap">
 			
@@ -302,9 +300,9 @@ var chocolatChk = function() {
 							<a href="<c:url value='/PizzaView.pz' />?p_no=${dtos.p_no}&gok=${gok}">
 								<div class="prd_img">
 										<div class="prd_tag">
-										<c:if test="${!empty dtos.best }">
+										
 										<span class="ico ico_tag2">BEST</span>
-										</c:if>
+										
 										<!-- <span class="ico ico_tag">NEW</span> -->
 										</div>
 										

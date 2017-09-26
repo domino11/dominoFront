@@ -152,6 +152,14 @@ public class ServiceImpl implements pizza.service.Service {
 		dao.usecoupon(map);
 	}
 
+	public int inPizzaRank(BasketDTO dto) {
+		return dao.inPizzaRank(dto);
+	}
+
+	public List<PizzaMenuList> menuRank(Map map) {
+		return dao.menuRank(map);
+	}
+
 	
 
 	
