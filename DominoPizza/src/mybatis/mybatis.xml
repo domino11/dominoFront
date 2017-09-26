@@ -35,9 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </select>
  
   <select id="mybatismenuRank" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
- 		SELECT ${sel} FROM PIZZA P WHERE P.P_NO IN (
-		(SELECT P_NO FROM (SELECT PR.P_NO,COUNT(PR.P_NO) CT FROM PIZZA P JOIN PIZZARANK PR ON PR.P_NO = P.P_NO WHERE ROWNUM BETWEEN 1 AND 10 GROUP BY PR.P_NO
-		ORDER BY CT DESC))) AND P_KIND != '마이키친' AND P_KIND != '하프앤하프'
+ 	SELECT ${sel} FROM PIZZA P
+	WHERE P.P_NO IN (SELECT P_NO FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC))
+	AND P.P_KIND!='하프앤하프' AND P.P_KIND!='마이키친'
  </select>
  
   <select id="mybatisSideMenu" parameterType="java.util.Map" resultMap="SideMenuListResult" >

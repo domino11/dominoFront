@@ -81,7 +81,13 @@ public class Android {
 		System.out.println(plist.get(0).getP_name());
 		String name="";
 		for(PizzaMenuList dto : plist) {
-			name = dto.getP_name()+"\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+			String best="";
+			List<PizzaMenuList> blist = service.menuRank(map);
+			for(PizzaMenuList bdto:blist) {
+				if(bdto.getP_no().equals(dto.getP_no()))
+					best=" [BEST]";
+			}
+			name = dto.getP_name()+best+"\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
 		//	System.out.println(name);
 			Map map2 = new HashMap<>();
 			map2.put("name", name);
@@ -124,7 +130,7 @@ public class Android {
 		System.out.println(plist.get(0).getP_name());
 		String name="";
 		for(PizzaMenuList dto : plist) {
-			name = dto.getP_name()+"\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+			name = dto.getP_name()+" [BEST]\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
 			System.out.println(name);
 			Map map2 = new HashMap<>();
 			map2.put("name", name);

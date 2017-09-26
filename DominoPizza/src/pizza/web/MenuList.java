@@ -167,6 +167,16 @@ public class MenuList {
 			req.setAttribute("listval", 4);
 		
 		PizzaDTO dto = service.pizzaview(map);
+		String sel = " P.P_NO ";
+		map.put("sel", sel);
+		List<PizzaMenuList> listdto = service.menuRank(map);
+		
+		for(PizzaMenuList mdto : listdto) {
+			if(dto.getP_no().equals(mdto.getP_no()))
+				req.setAttribute("best", "1");
+			
+		}
+		
 		
 		List<DoughDTO> list = new Vector<DoughDTO>();
 		List<PNutrientDTO> listpn = new Vector<PNutrientDTO>();
