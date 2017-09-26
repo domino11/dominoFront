@@ -199,118 +199,117 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
             </div>
         </div>
    
-   
-   <!-- content -->
-   
-   
-   <div id="content" class="main">
-      <!-- delivery_tracker -->
-      <div class="delivery_tracker" style="display:none;" id="ingOrderInfo">
-         <input type="hidden" id="tracker_order_no" value="">
-         <p class="customer_tracker">현재 <strong></strong> 님의<br>주문상태는?</p>
-         <ul class="list_tracker">
-            <li>
-               <span class="tracker_step" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
-               <p>접수완료</p>
-            </li>
-            <li>
-               <span class="tracker_step2" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
-               <p>요리 중</p>
-            </li>
-            <li>
-               <span class="tracker_step3" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
-               <p>배달 중</p>
-            </li>
-            <li>
-               <span class="tracker_step4" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
-               <p>배달완료</p>
-            </li>
-         </ul>
-      </div>
-      <!-- //delivery_tracker -->
+   	<!-- content -->
+	
+	
+	<div id="content" class="main">
+		<!-- delivery_tracker -->
+		<div class="delivery_tracker" style="display:none;" id="ingOrderInfo">
+			<input type="hidden" id="tracker_order_no" value="">
+			<p class="customer_tracker">현재 <strong></strong> 님의<br>주문상태는?</p>
+			<ul class="list_tracker">
+				<li>
+					<span class="tracker_step" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
+					<p>접수완료</p>
+				</li>
+				<li>
+					<span class="tracker_step2" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
+					<p>요리 중</p>
+				</li>
+				<li>
+					<span class="tracker_step3" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
+					<p>배달 중</p>
+				</li>
+				<li>
+					<span class="tracker_step4" style="cursor: pointer;" onclick="javascript:myOrderDetail();"></span>
+					<p>배달완료</p>
+				</li>
+			</ul>
+		</div>
+		<!-- //delivery_tracker -->
 
-      <!-- customer_info -->
-      <div class="customer_info">
-      <ul>
-         <c:if test="${empty ID }" var="idc" >
-               <li>
-                  <a href="<c:url value='/User/Login.pz' />">
-                     <div class="img_info">
-                        <img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info_2.png" alt="">
-                     </div>
-                     
-                     <div class="txt_info">
-                        <p>로그인하시면<br>풍성한 혜택이 가득!</p>
-                        <div class="txt_info_right">
-                           <span class="blue_box">로그인</span>
-                        </div>
-                     </div>
-                     
-                  </a>
-               </li>
-                           <li>
-               <a href="/event/mania">
-                  <div class="img_info">
-                     <img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info2_2.png" alt="">
-                  </div>
-                  <div class="txt_info">
-                     <p>온라인 회원만의<br>매니아 혜택</p>
-                     <div class="txt_info_right">
-                        <span class="ico ico_mania"></span>
-                     </div>
-                  </div>
-               </a>
-            </li>      
-                     
-                     </c:if>
-                     
-               <c:if test="${!idc }">
-               <li>
-               <a href="/mypage/myLevel">
-                  <div class="img_info">
-                     <img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info.png" alt="">
-                  </div>
-                  <div class="txt_info">
-                     <p><span id="myMonth"></span> ${dto.name }님은<br><strong class="txt_royal" id="myLevel">${dto.r_name }</strong> 등급입니다.</p>
-                     <div class="txt_info_right">
-                        <span class="blue_box">혜택보기</span>
-                     </div>
-                  </div>
-               </a>
-            </li>
-               <li class="exist_coupon">
-               <a href="/mypage/myCoupon">
-                  <div class="img_info">
-                     <img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info2.png" alt="">
-                  </div>
-                  <div class="txt_info">
-                     <p><span>${dto.name }</span> 님의<br>사용 가능한 쿠폰은?</p>
-                     <div class="txt_info_right bar_line">
-                        <p class="coupon_info" id="myCouponCnt">${dto.coupon }</p>
-                        <span class="bar"></span>
+		<!-- customer_info -->
+		<div class="customer_info">
+		<ul>
+			<c:if test="${empty ID }" var="idc" >
+					<li>
+						<a href="<c:url value='/User/Login.pz' />">
+							<div class="img_info">
+								<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info_2.png" alt="">
+							</div>
+							
+							<div class="txt_info">
+								<p>로그인하시면<br>풍성한 혜택이 가득!</p>
+								<div class="txt_info_right">
+									<span class="blue_box">로그인</span>
+								</div>
+							</div>
+							
+						</a>
+					</li>
+									<li>
+					<a href="<c:url value='/mania.pz' />">
+						<div class="img_info">
+							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info2_2.png" alt="">
+						</div>
+						<div class="txt_info">
+							<p>온라인 회원만의<br>매니아 혜택</p>
+							<div class="txt_info_right">
+								<span class="ico ico_mania"></span>
+							</div>
+						</div>
+					</a>
+				</li>		
+							
+							</c:if>
+							
+					<c:if test="${!idc }">
+					<li>
+					<a href="<c:url value='/User/MyPage_Mania.pz'/>">
+						<div class="img_info">
+							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info.png" alt="">
+						</div>
+						<div class="txt_info">
+							<p><span id="myMonth"></span> ${dto.name }님은<br><strong class="txt_royal" id="myLevel">${dto.r_name }</strong> 등급입니다.</p>
+							<div class="txt_info_right">
+								<span class="blue_box">혜택보기</span>
+							</div>
+						</div>
+					</a>
+				</li>
+					<li class="exist_coupon">
+					<a href="<c:url value='/User/Mypage_coupon.pz' />">
+						<div class="img_info">
+							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info2.png" alt="">
+						</div>
+						<div class="txt_info">
+							<p><span>${dto.name }</span> 님의<br>사용 가능한 쿠폰은?</p>
+							<div class="txt_info_right bar_line">
+								<p class="coupon_info" id="myCouponCnt">${dto.coupon }</p>
+								<span class="bar"></span>
 
-                     </div>
-                  </div>
-               </a>
-            </li>
-            </c:if>
-            <li>
-               <a href="<c:url value='/branch.pz'/>">
-                  <div class="img_info">
-                     <img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info3_2.png" alt="">
-                  </div>
-                  <div class="txt_info">
-                     <p>내 주변<br>이벤트 매장 찾기</p>
-                     <div class="txt_info_right">
-                        <span class="ico ico_store"></span>
-                     </div>
-                  </div>
-               </a>
-            </li>
-         </ul>
-         </div>
-      </div>
-      <!-- //customer_info -->
+							</div>
+						</div>
+					</a>
+				</li>
+				</c:if>
+				<li>
+					<a href="<c:url value='/branch.pz'/>">
+						<div class="img_info">
+							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info3_2.png" alt="">
+						</div>
+						<div class="txt_info">
+							<p>내 주변<br>이벤트 매장 찾기</p>
+							<div class="txt_info_right">
+								<span class="ico ico_store"></span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+		<!-- //customer_info -->
 
 
 
