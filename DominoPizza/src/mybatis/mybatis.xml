@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 어진 --> 
  <select id="mybatisMenu" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
- select ${sel} FROM  ${fro} where  ${whe}
+ select ${sel} FROM  ${fro} where  ${whe} 
  </select>
  
   <select id="mybatisSideMenu" parameterType="java.util.Map" resultMap="SideMenuListResult" >
@@ -83,7 +83,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="mybatiscallUser" parameterType="java.lang.String" resultType="pizza.service.impl.UserDto" >
 		select name,r.r_name r_name,tel,
-	(select count(*) from customer c join my_cupon mc on c.id=mc.id where c.id='${id}') coupon
+	(select count(*) from customer c join my_cupon mc on c.id=mc.id where c.id='${id}' and
+	mc.mc_no not in ( SELECT mc.mc_no FROM my_cupon mc join use_sailcuppon uc on uc.mc_no=mc.mc_no where id=#{id} )
+	) coupon
 	 from customer c join cr_join cj on c.id=cj.id 
 	join rating r on r.r_no=cj.r_no
 	where c.id='${id}'
@@ -99,7 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</select>
 	
 		<select id="mybatiscallcoupon" parameterType="java.util.Map" resultType="SaileCouponDTO" >
-		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE ID='${id}'
+		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE MC.MC_NO NOT IN (SELECT MC.MC_NO FROM USE_SAILCUPPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id})
 		</select>
 
 		<select id="mybatisgetdpns" parameterType="java.util.Map" resultType="DrPnsDTO" >
@@ -130,6 +132,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 INSERT INTO S_TOPPING VALUES(SEQ_SALES_MENU_SM_NO.CURRVAL,#{ts_no})
 		 </insert>  
 		
+		<select id="mybatisgetd_no" parameterType="java.util.Map" resultType="java.lang.String" >
+		SELECT D_NO FROM PIZZA_DOUGH PD JOIN PIZZA P ON P.P_NO = PD.P_NO JOIN DOUGH D ON D.DOUGH_NO=PD.DOUGH_NO WHERE P.P_NO=#{no} and D.dough_name=#{dough}
+		</select>
+		
+		<insert id="mybatisusecoupon" parameterType="java.util.Map" >
+		 INSERT INTO USE_SAILCUPPON VALUES(#{mc_no},#{st_no},sysdate)
+		 </insert>  
 		
 
  <!--  어진 끝 -->
@@ -224,7 +233,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 토핑 분류에 해당하는 토핑명 출력용 -->
 <select id="toppingNameSelectList" parameterType="java.util.Map" resultType="ToppingDTO">
-	SELECT T_NAME FROM TOPPING WHERE T_KIND='${toppingKind}'
+	SELECT T_NAME,T_CODE FROM TOPPING WHERE T_KIND='${toppingKind}'
 </select> 
  
 <!-- 토핑 추가하기&토핑정량 확인하기 출력용 -->

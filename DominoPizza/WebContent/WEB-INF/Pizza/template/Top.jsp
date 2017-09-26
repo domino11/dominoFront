@@ -12,7 +12,7 @@
 					<div class="util_left">
 						<a href="javascript:;" class="btn_ico btn_menu">GNB</a>
 						<ul class="util_menu">
-							<li style=""><a href="/mypage/myCoupon">쿠폰 <span id="gnbCoupon"></span></a></li>
+							<li style=""><a href="<c:url value='/User/Mypage_coupon.pz' />">쿠폰 <span id="gnbCoupon"></span></a></li>
 							<li><a href="/mypage/myOrderList">주문조회 <span id="gnbOrderCnt"></span></a></li>
 						</ul>
 					</div>
@@ -152,9 +152,9 @@
 
 						</li>
 						<li>
-							<a href="/branch">매장찾기</a>
+							<a href="<c:url value='/branch' />">매장찾기</a>
 							<ul class="list_depth2">
-								<li><a href="/branch">매장찾기</a></li>
+								<li><a href="<c:url value='/branch' />">매장찾기</a></li>
 							</ul>
 						</li>
 			

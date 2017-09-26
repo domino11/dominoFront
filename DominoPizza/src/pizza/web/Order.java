@@ -48,7 +48,14 @@ public class Order {
          System.out.println("매장선택 되어 있을경우 장바구니에 저장");
          //매장선택 되어 있을경우 장바구니에 저장
          BasketDTO dto = new BasketDTO();
-         if(map.get("dough")!=null) dto.setDough(map.get("dough").toString());
+         dto.setNo(map.get("no").toString());
+         if(map.get("dough")!=null) {
+        	 //피자류는 p_no 대신 d_no를 sal테이블에 저장
+        	 dto.setDough(map.get("dough").toString());
+        	 String d_no = service.getd_no(map);
+        	 if(d_no!=null&&d_no.trim().length()>0)
+        	 dto.setNo(d_no);
+         }
          if(map.get("img")!=null) dto.setImg(map.get("img").toString());
          if(map.get("na")!=null) dto.setName(map.get("na").toString());
          String price="";
@@ -59,7 +66,6 @@ public class Order {
          }
          System.out.println(price);
          dto.setPrice(price);
-         dto.setNo(map.get("no").toString());
          int totprice = 0;
          if(session.getAttribute("TOTALPRICE")!=null)
             totprice = Integer.parseInt(session.getAttribute("TOTALPRICE").toString());
@@ -89,8 +95,8 @@ public class Order {
             dto.setToppingList(tlist);
          }
          if(map.get("kind")!=null) dto.setKind(map.get("kind").toString());
-         if(map.get("doughno")!=null) dto.setDoughno(map.get("doughno").toString());
          List<BasketDTO> list = new Vector<>();
+         
          if(session.getAttribute("BUYLIST")!=null)
             list = (List<BasketDTO>)session.getAttribute("BUYLIST");
          
@@ -423,6 +429,12 @@ public class Order {
 
 	   map.put("sa_addr", del_addr);
 	   
+	   
+	   
+	   if(map.get("sa_request")!=null&&map.get("sa_request").toString().trim().equals("최대 25자까지 입력가능".trim())){
+		   map.put("sa_request", "없음");
+	   }
+		   
 	   int i = service.insal(map);
 	   for(BasketDTO dto : list) {
 	   int b = service.insalmenu(dto);
@@ -432,6 +444,12 @@ public class Order {
 		   
 		   
 	   }
+	   if(map.get("mc_no")!=null && !map.get("mc_no").toString().trim().equals('0')) {
+		   System.out.println(map.get("mc_no")+"mc no");
+		   System.out.println(map.get("st_no")+"stno");
+		   service.usecoupon(map);  
+	   }
+	   
 	   }
 	   
 	   session.setAttribute("BUYLIST",null);

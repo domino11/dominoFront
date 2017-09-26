@@ -160,6 +160,14 @@ public class Daotest {
 			return template.insert("mybatiss_topping",tdto);
 		}
 
+		public String getd_no(Map map) {
+			return template.selectOne("mybatisgetd_no",map);
+		}
+
+		public Object usecoupon(Map map) {
+			return template.insert("mybatisusecoupon",map);
+		}
+
 	
 	
 }
