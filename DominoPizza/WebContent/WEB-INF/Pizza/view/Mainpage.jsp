@@ -180,7 +180,7 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
                         
                         </ul>
                     </div>
-<!--                     
+<!--                      
                     <p class="photo-credits">
                         Photos by <a href="http://www.mw-fotografie.de">Marc Wiegelmann</a>
                     </p>
