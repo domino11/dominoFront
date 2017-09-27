@@ -1100,12 +1100,12 @@ function finalsa(){
 		var tel1 = $("#tel1").val();
 		var tel2 = $("#tel2").val();
 		var tel3 = $("#tel3").val();
-		var req = $("#c_request").html();
+		var req = $("#more_req").val();
 		if(pay_no=="0"){
 			alert('결제수단을 선택해주세요!!');
 		}
 		else
-		location.href="<c:url value='/finalsa.pz' />?sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no+"&sa_sname="+sname+"&mc_no="+mc_no;
+		location.href="<c:url value='/finalsa.pz' />?totalprice=${totalprice}&sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no+"&sa_sname="+sname+"&mc_no="+mc_no;
 		
 }
 

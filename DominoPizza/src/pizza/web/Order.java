@@ -430,27 +430,54 @@ public class Order {
 	   map.put("sa_addr", del_addr);
 	   
 	   
-	   
-	   if(map.get("sa_request")!=null&&map.get("sa_request").toString().trim().equals("최대 25자까지 입력가능".trim())){
+	   System.out.println(map.get("sa_request"));
+	   if(map.get("sa_request")!=null&&map.get("sa_request").toString().trim().length()<2){
 		   map.put("sa_request", "없음");
 	   }
 		   
 	   int i = service.insal(map);
 	   for(BasketDTO dto : list) {
 	   int b = service.insalmenu(dto);
-	   if(dto.getKind().equals("1"))
+	   if(dto.getKind().equals("1")) {
+		   dto.setDe_no(st_no);
 		   service.inPizzaRank(dto);
+	   }
+		   
 	   if(dto.getToppingList()!=null)
 	   for(ToppingDTO tdto : dto.getToppingList()) {
 		   int c =service.s_topping(tdto);
 	   }
+	   		
+	   }
+	   
 	   if(map.get("mc_no")!=null && !map.get("mc_no").toString().trim().equals("0")) {
 		   System.out.println(map.get("mc_no")+"mc no");
 		   System.out.println(map.get("st_no")+"stno");
 		   service.usecoupon(map);  
+	   }else {
+		   map.put("mc_no", "0");
+		   map.put("minprice", map.get("0"));
+	   }
+	   System.out.println(map.get("totalprice"));
+	   System.out.println(map.get("mc_no"));
+	   System.out.println(map.get("minprice"));
+	   String minprice = "";
+			   
+	   for (char c : map.get("minprice").toString().toCharArray()) {
+		   if(c>='0' && c<='9')
+		   minprice += c;
+	   }
+	   System.out.println("fpr = "+map.get("fprice"));
+	   String fprice ="";
+	   for(char c : map.get("fprice").toString().toCharArray()) {
+		   if(c>='0' && c<='9')
+		   fprice += c;
 	   }
 	   
-	   }
+	   System.out.println(minprice);
+	   map.put("minprice", minprice);
+	   map.put("fprice", fprice);
+	   int a = service.inSalesPrice(map);
 	   
 	   session.setAttribute("BUYLIST",null);
 	   session.setAttribute("BUYNUM",null);

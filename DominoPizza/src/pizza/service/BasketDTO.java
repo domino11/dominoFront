@@ -15,6 +15,9 @@ public class BasketDTO {
 	private String kind;
 	private String mkSauce;
 	
+	//
+	private String de_no;
+	
 	private List<ToppingDTO> toppingList;
 	
 	public String getName() {
@@ -82,5 +85,11 @@ public class BasketDTO {
 	}
 	public void setMkSauce(String mkSauce) {
 		this.mkSauce = mkSauce;
+	}
+	public String getDe_no() {
+		return de_no;
+	}
+	public void setDe_no(String de_no) {
+		this.de_no = de_no;
 	}
 }

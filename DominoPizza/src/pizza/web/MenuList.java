@@ -174,7 +174,6 @@ public class MenuList {
 		for(PizzaMenuList mdto : listdto) {
 			if(dto.getP_no().equals(mdto.getP_no()))
 				req.setAttribute("best", "1");
-			
 		}
 		
 		

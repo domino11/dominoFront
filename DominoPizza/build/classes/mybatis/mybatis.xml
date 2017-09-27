@@ -35,9 +35,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </select>
  
   <select id="mybatismenuRank" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
- 	SELECT ${sel} FROM PIZZA P
-	WHERE P.P_NO IN (SELECT P_NO FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC))
-	AND P.P_KIND!='하프앤하프' AND P.P_KIND!='마이키친'
+ 	SELECT ${sel}  FROM PIZZA P
+ WHERE P.P_NO IN (SELECT P_NO FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) WHERE  ROWNUM BETWEEN  0 AND 10  )
+ AND P.P_KIND!='하프앤하프' AND P.P_KIND!='마이키친'
+ ORDER BY CASE
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 1) THEN 1
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 2) THEN 2
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 3) THEN 3
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 4) THEN 4
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 5) THEN 5
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 6) THEN 6
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 7) THEN 7
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 8) THEN 8
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 9) THEN 9
+  WHEN P_NO= 
+(SELECT P_NO FROM (SELECT P_NO,ROWNUM R FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) R )
+WHERE R = 10) THEN 10
+END
+
  </select>
  
   <select id="mybatisSideMenu" parameterType="java.util.Map" resultMap="SideMenuListResult" >
@@ -64,9 +97,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select> 
  
  <insert id="mybatissinsert" parameterType="java.util.Map" >
- 	INSERT INTO SALES VALUES(SEQ_SALES_SA_NO.NEXTVAL,#{id},3,#{sa_addr},SYSDATE,DEFAULT)
+ 	INSERT INTO SALES VALUES(SEQ_SALES_SA_NO.NEXTVAL,'${id}','${st_no}',#{sa_addr},SYSDATE,DEFAULT)
  </insert>
-
  
  <insert id="mybatisstinsert" parameterType="BasketDTO" >
  	INSERT INTO SALES_MENU VALUES(SEQ_SALES_MENU_SM_NO.NEXTVAL,SEQ_SALES_SA_NO.CURRVAL,'${doughno}','${kind}','${name}','${qty}','${size}','${price}')
@@ -107,7 +139,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</select>
 	
 		<select id="mybatiscallcoupon" parameterType="java.util.Map" resultType="SaileCouponDTO" >
-		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE MC.MC_NO NOT IN (SELECT MC.MC_NO FROM USE_SAILCUPPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id})
+		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE MC.MC_NO NOT IN (SELECT MC.MC_NO FROM USE_SAILCUPPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) AND S.C_CON IN (0,1)
 		</select>
 
 		<select id="mybatisgetdpns" parameterType="java.util.Map" resultType="DrPnsDTO" >
@@ -127,7 +159,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</select>
 			 
 		  <insert id="mybatisinsal" parameterType="java.util.Map" >
-		 INSERT INTO SALES VALUES(seq_sales_sa_no.nextval,#{id},#{st_no},#{sa_addr},sysdate,default,#{sa_recipt},#{sa_rectel},#{sa_request},#{pay_no})
+		 INSERT INTO SALES VALUES(seq_sales_sa_no.nextval,'${id}','${st_no}',#{sa_addr},sysdate,default,#{sa_recipt},#{sa_rectel},#{sa_request},#{pay_no})
 		 </insert>
 		 
 		 <insert id="mybasketinsalmenu" parameterType="BasketDTO" >
@@ -147,9 +179,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 </insert>  
 		
 		<insert id="mybatisinPizzaRank" parameterType="BasketDTO" >
-		INSERT INTO PIZZARANK VALUES((SELECT P.P_NO FROM PIZZA P JOIN PIZZA_DOUGH PD ON P.P_NO = PD.P_NO WHERE D_NO = #{no} ),SYSDATE)
+		INSERT INTO PIZZARANK VALUES((SELECT P.P_NO FROM PIZZA P JOIN PIZZA_DOUGH PD ON P.P_NO = PD.P_NO WHERE D_NO = #{no} ),#{de_no},SYSDATE)
 		 </insert>
 		
+		<insert id="mybatisinSalesPrice" parameterType="java.util.Map" >
+		INSERT INTO SALES_PRICE VALUES(
+		SEQ_SALES_SA_NO.CURRVAL,#{totalprice},
+		(select c_saile from saile_coupon sc join my_cupon mc on mc.c_no = sc.c_no where mc_no=#{mc_no}),
+		#{minprice},
+		#{fprice})
+		 </insert>
 
  <!--  어진 끝 -->
  

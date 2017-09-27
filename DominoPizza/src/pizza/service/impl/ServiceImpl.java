@@ -160,6 +160,10 @@ public class ServiceImpl implements pizza.service.Service {
 		return dao.menuRank(map);
 	}
 
+	public int inSalesPrice(Map map) {
+		return dao.inSalesPrice(map);
+	}
+
 	
 
 	

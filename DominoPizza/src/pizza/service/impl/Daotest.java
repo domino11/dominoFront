@@ -147,7 +147,7 @@ public class Daotest {
 
 		public int insal(Map map) {
 			 System.out.println("id="+map.get("id")+"no="+map.get("st_no")+"addr="+map.get("sa_addr")+" rec="+map.get("sa_recipt")+"retel="+map.get("sa_rectel")+" request="+map.get("sa_request")+"   "+map.get("pay_no") );
-			
+			System.out.println("수정되나?");
 			return template.insert("mybatisinsal",map);
 		}
 
@@ -178,6 +178,11 @@ public class Daotest {
 		public List<PizzaMenuList> menuRank(Map map) {
 			System.out.println(map.get("sel"));
 			return template.selectList("mybatismenuRank",map);
+		}
+
+
+		public int inSalesPrice(Map map) {
+			return template.insert("mybatisinSalesPrice",map);
 		}
 
 	

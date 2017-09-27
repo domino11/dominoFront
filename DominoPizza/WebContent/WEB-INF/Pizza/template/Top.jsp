@@ -7,7 +7,7 @@
 
 
 		<!-- header -->
-		<div id="header" style="background-color: white">
+		<div id="header" style="background-color: white" >
 				<div class="logo_area">
 					<div class="util_left">
 						<a href="javascript:;" class="btn_ico btn_menu">GNB</a>
@@ -143,31 +143,30 @@
 							</ul>
 						</li>
 						<li>
-							<a href="/contents/present">선물하기</a>
+							<a href="<c:url value='/BestList.pz' />">베스트 메뉴</a>
 							<ul class="list_depth2">
-								<li><a href="/contents/present">전체</a></li>
-								<li><a href="/voucher/list?gubun=M">모바일상품권</a></li>
+								<li><a href="<c:url value='/BestList.pz' />">베스트 메뉴</a></li>
 							</ul>
 
 
 						</li>
 						<li>
-							<a href="<c:url value='/branch' />">매장찾기</a>
+							<a href="<c:url value='/branch.pz' />">매장찾기</a>
 							<ul class="list_depth2">
-								<li><a href="<c:url value='/branch' />">매장찾기</a></li>
+								<li><a href="<c:url value='/branch.pz' />">매장찾기</a></li>
 							</ul>
 						</li>
 			
 
-						<li>
+						<!-- <li>
 							<a href="/bbs/faqList?view_gubun=W&bbs_cd=online">고객센터</a>
 							<ul class="list_depth2">
 								<li>
 									<a href="/bbs/faqList?view_gubun=W&bbs_cd=online">FAQ</a>
 								</li>
 							</ul>
-						</li>
-						<li>
+						</li>-->
+						<li> 
 							<a href="<c:url value='/NewsList.pz'/>">공지사항</a>
 							<ul class="list_depth2">
 								<li><a href="<c:url value='/NewsList.pz?type=1'/>">도미노 뉴스</a></li>

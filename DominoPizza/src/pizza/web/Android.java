@@ -76,6 +76,7 @@ public class Android {
 		
 		int lidx=req.getRequestURL().toString().lastIndexOf("/");
 		String url = req.getRequestURL().toString().substring(0,lidx);
+		
 		System.out.println(url+"/Pizza/Image/pizzalist/");
 		System.out.println("??");
 		System.out.println(plist.get(0).getP_name());
@@ -129,12 +130,14 @@ public class Android {
 		System.out.println("??");
 		System.out.println(plist.get(0).getP_name());
 		String name="";
+		int i=0;
 		for(PizzaMenuList dto : plist) {
-			name = dto.getP_name()+" [BEST]\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+			i++;
+			name = dto.getP_name()+" [BEST "+i+" ]\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
 			System.out.println(name);
 			Map map2 = new HashMap<>();
 			map2.put("name", name);
-			map2.put("url", url+"/Pizza/Image/pizzalist/"+dto.getP_img());
+			map2.put("url", url+"/Pizza/Image/pizzalist/"+dto.getP_himg());
 			list.add(map2);
 		}
 		//URL url = new URL(req.getServletContext().getRealPath("/Pizza/Image"));
