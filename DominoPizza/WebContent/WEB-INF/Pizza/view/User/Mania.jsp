@@ -206,11 +206,11 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 						온라인등급은 <em>REGULAR</em>입니다.
 					</p>
 					<ul class="my_status">
-						<li><p class="title"><span class="ico ico_purchase"></span>구매건수 : </p><p class="value">0건</p></li>
-						<li><p class="title"><span class="ico ico_date"></span>산정기준 : </p><p class="value">2017.06~2017.08</p></li>
+						<li><p class="title"><span class="ico ico_purchase"></span>구매건수 : </p><p class="value">${count }건</p></li>
+						<li><p class="title"><span class="ico ico_date"></span>산정기준 : </p><p class="value">${date1 }~${date2 }</p></li>
 					
 						<!-- 2017-04-26 // 문구 추가 (s)-->
-						<li class="status_num"><p class="title"><span class="ico ico_calculator"></span>총 구매금액 : </p><p class="value">0원</p><em>(2010년 이후 ~ 2017.08 까지의 총 구매금액)</em></li>
+						<li class="status_num"><p class="title"><span class="ico ico_calculator"></span>총 구매금액 : </p><p class="value">${price }원</p><em>(2010년 이후 ~ ${date1 } 까지의 총 구매금액)</em></li>
 						<!-- 2017-04-26 // 문구 추가 (e)-->					
 					</ul>
 				</div>

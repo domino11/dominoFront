@@ -202,7 +202,14 @@ END
 		SELECT sp_fprice from sales_price WHERE SA_NO = #{sa_no}
 		</select>
 		
+		<select id="bybatisgetsalescount" parameterType="java.util.Map" resultType="TargetDTO" >
+		SELECT R_TARGET target,
+		(SELECT COUNT(*) FROM SALES WHERE ID=#{id}) count,
+		(SELECT SUM(MENU_PRICE) FROM SALES_MENU SM JOIN SALES S ON S.SA_NO = SM.SA_NO WHERE ID =#{id}) price 
+		 FROM RATING R JOIN CR_JOIN CR ON CR.R_NO = R.R_NO WHERE ID = #{id}
+		</select>
 		
+				
 		
 	
 	

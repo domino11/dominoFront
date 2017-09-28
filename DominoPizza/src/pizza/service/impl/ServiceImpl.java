@@ -20,6 +20,7 @@ import pizza.service.SaileCouponDTO;
 import pizza.service.SalesListDTO;
 import pizza.service.SideMenuList;
 import pizza.service.StoresDTO;
+import pizza.service.TargetDTO;
 import pizza.service.ToppingDTO;
 
 
@@ -176,6 +177,10 @@ public class ServiceImpl implements pizza.service.Service {
 
 	public String getfprice(Map map) {
 		return dao.getfprice(map);
+	}
+
+	public TargetDTO getsalescount(Map map) {
+		return dao.getsalescount(map);
 	}
 
 

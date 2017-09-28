@@ -21,6 +21,7 @@ import pizza.service.SaileCouponDTO;
 import pizza.service.SalesListDTO;
 import pizza.service.SideMenuList;
 import pizza.service.StoresDTO;
+import pizza.service.TargetDTO;
 import pizza.service.ToppingDTO;
 
 
@@ -202,6 +203,11 @@ public class Daotest {
 
 		public String getfprice(Map map) {
 			return template.selectOne("mybatisgetfprice",map);
+		}
+
+
+		public TargetDTO getsalescount(Map map) {
+			return template.selectOne("bybatisgetsalescount",map);
 		}
 
 	
