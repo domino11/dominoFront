@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+      <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -200,17 +202,17 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<div class="container">
 			<div class="wrapper">
 				<div class="grade_intro">
-					<span class="ico_grade regular">REGULAR</span>
+					<span class="ico_grade ${fn:toLowerCase(dto.r_name) }">${dto.r_name }</span>
 					<p class="grade_desc">
 						9월, <strong>${NAME} 님</strong>의<br>
-						온라인등급은 <em>REGULAR</em>입니다.
+						온라인등급은 <em>${dto.r_name }</em>입니다.
 					</p>
 					<ul class="my_status">
 						<li><p class="title"><span class="ico ico_purchase"></span>구매건수 : </p><p class="value">${count }건</p></li>
-						<li><p class="title"><span class="ico ico_date"></span>산정기준 : </p><p class="value">${date1 }~${date2 }</p></li>
+						<li><p class="title"><span class="ico ico_date"></span>산정기준 : </p><p class="value">${date2 }~${date1 }</p></li>
 					
 						<!-- 2017-04-26 // 문구 추가 (s)-->
-						<li class="status_num"><p class="title"><span class="ico ico_calculator"></span>총 구매금액 : </p><p class="value">${price }원</p><em>(2010년 이후 ~ ${date1 } 까지의 총 구매금액)</em></li>
+						<li class="status_num"><p class="title"><span class="ico ico_calculator"></span>총 구매금액 : </p><p class="value"><fmt:formatNumber>${price }</fmt:formatNumber>원</p><em>(2010년 이후 ~ ${date1 } 까지의 총 구매금액)</em></li>
 						<!-- 2017-04-26 // 문구 추가 (e)-->					
 					</ul>
 				</div>
@@ -223,7 +225,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 					<li>
 						<p class="grade_title"><em>${NAME}</em> <strong>님</strong>께서 받으실 수 있는<br> 스페셜한 혜택은?</p>
 						<ul class="ico_benefit_list">
-							<li class="pizza">배달주문 20% 할인쿠폰 2매</li>
+							<li class="pizza">${MyRatingCoupon}</li>
 							</ul>
 						<div class="btn_wrap">
 							<div class="btn_fix_rgt">
@@ -252,14 +254,14 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<div class="container grade 등급">
 			<div class="wrapper">
 				<div class="grade_upgrade">
-					 <div class="upgrade_title">다음 달, <em>${NAME}</em> 님은 <em>등급</em> 등급으로 업그레이드 가능합니다.</div>
+					 <div class="upgrade_title">다음 달, <em>${NAME}</em> 님은 <em>${r_name }등급</em> 으로 업그레이드 가능합니다.</div>
 					 <ul class="upgarde_condition">
 					 	<li class="condition_list">
 					 		<p class="title"><em>등급</em>으로 업그레이드 하려면?</p>
 					 		
 					 		<div class="lst_type">
 								<ul>
-									<li>필요구매건수&nbsp;<em>2건</em></li>
+									<li>필요구매건수&nbsp;<em>${target-count}건</em></li>
 								</ul>
 								<div class="lst_notice">
 									※ 위 조건은 최근 2개월+ 당일 주문내역 기준입니다.
@@ -267,11 +269,11 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 							</div>
 							</li>
 					 	<li class="upgrade_benefit">
-					 		<p class="title">다음 달, <em>${NAME} 님</em>이 <strong>등급</strong> 업그레이드 후<br>받을 수 있는 혜택</p>
+					 		<p class="title"> 다음달, <em>${NAME} 님</em>이 <strong>${r_name }등급</strong> 업그레이드 후<br>받을 수 있는 혜택</p>
 					 		<ul class="ico_benefit_list">
-					 		<li class="pizza">배달주문 20% 할인쿠폰 1매</li>
-								<li class="pizza">배달주문 25% 할인쿠폰 1매</li>
-								<li class="pizza">방문포장 35% 할인쿠폰 1매</li>							
+					 		<c:forEach items="${clist }" var="dto" >
+					 		<li class="pizza">${dto.c_name }</li>					
+					 		</c:forEach>
 							</ul>
 					 	</li>
 					 </ul>
@@ -289,37 +291,25 @@ $(document).ready(function(){
 });
 
 var ajaxCupnRequest = null;
+
 //쿠폰 다운로드
 function myCouponDown(){
-	if(ajaxCupnRequest != null) {
-		alert("처리중인 작업이 있습니다. 잠시후에 다시 시도해 주세요.");
-		return;
-	}
 	
 	$.ajax({
 		type: "POST",
-		url: "/mypage/myCouponDownAjax",
-		dataType : "json",
-		success:function(data) {
-			if(data.msg == "SUCCESS"){
-				alert("쿠폰이 발급되었습니다. 나의 정보 > 쿠폰 페이지에서 확인 가능합니다.");
-			}else {
-				alert("당월 쿠폰을 이미 받으셨습니다. 나의 정보 > 쿠폰 페이지에서 확인해주시기 바랍니다.");
-			}
-		},
-		error: function (error){
-			alert("다시 시도해주세요.");
-		},
-		beforeSend: function() {
-			ajaxCupnRequest = "Y";
-			$("#defaultLoading").show();
-	    },
-	    complete: function() {
-	    	ajaxCupnRequest = null;
-	    	$("#defaultLoading").hide();
-	    }
+		url: "<c:url value='/User/CouponDownLoad.pz'/>",
+		data : "id",
+				success:function(data) {
+					if(data == "Get"){
+						alert("당월 쿠폰을 이미 받으셨습니다. 나의 정보 > 쿠폰 페이지에서 확인해주시기 바랍니다.");
+					}
+					else{
+						alert("쿠폰이 발급되었습니다. 나의 정보 > 쿠폰 페이지에서 확인 가능합니다.");
+					}
+				}	
 	});
-}
+	
+}//myCouponDown()
 </script>
 <!-- 로딩 이미지 -->
 		<div class="loading" id="defaultLoading" style="display:none;">

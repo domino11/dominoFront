@@ -28,8 +28,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pizza.resource.UserDao;
+import pizza.service.TargetDTO;
 import pizza.service.impl.CouponDto;
 import pizza.service.impl.OrderDto;
+import pizza.service.impl.ServiceImpl;
 import pizza.service.impl.UserDto;
 
 import pizza.service.impl.UserServiceImpl;
@@ -39,6 +41,11 @@ public class UserController {
 	
 	@Resource(name="userServiceImpl")
 	private UserServiceImpl service;
+	
+	@Resource(name="service")
+	private ServiceImpl service2;
+	   
+	
 	
 	
 	//회원가입 폼으로 
@@ -67,23 +74,54 @@ public class UserController {
 		return "/WEB-INF/Pizza/view/User/Message.jsp";
 	}	
 	
-	//나의정보_매니아 폼으로
-	@RequestMapping("/User/MyPage_Mania.pz")
-	public String Mania(HttpServletRequest req) throws Exception{
-		
-		req.getSession().getAttribute("NAME");
-		req.getSession().getAttribute("ID");
-		
-			Map map = new HashMap();
-			String id = req.getession.getAttribute("ID").toString();
-			map.put("id", id);
-			Map map2 = service.getsalescount(map);
-		   req.setAttribute("count", map2.get("count"));
-		   req.setAttribute("target", map2.get("target"));
-		   
-		
-		return "/WEB-INF/Pizza/view/User/Mania.jsp";
-	}
+	  //나의정보_매니아 폼으로
+	   @RequestMapping("/User/MyPage_Mania.pz")
+	   public String Mania(HttpServletRequest req,CouponDto dto) throws Exception{
+	      
+	      req.getSession().getAttribute("NAME");
+	      String id = (String)req.getSession().getAttribute("ID");
+	      System.out.println("아이디 : "+id);
+	      dto.setId(id);
+	      
+	      //유저의 현 정보
+	      Map map = new HashMap();
+	      UserDto udto = new UserDto();
+	      map.put("id", id);
+	      udto = service2.callUser(map);
+	      
+	      // 유저의 구매횟수 및 다음등급 필요조건
+	      TargetDTO dto2 = service2.getsalescount(map);
+	      req.setAttribute("count", dto2.getCount());
+	      req.setAttribute("target", dto2.getTarget());
+	      req.setAttribute("price", dto2.getPrice());
+	      req.setAttribute("r_no", dto2.getR_no());
+	      req.setAttribute("r_name", dto2.getR_name());
+	      
+	         Date date = new Date();
+	         SimpleDateFormat smpl = new SimpleDateFormat("YYYY-MM");
+	         String date1 = smpl.format(date);
+	         int yy=Integer.parseInt((date1.split("-")[0]));
+	         int mm=Integer.parseInt((date1.split("-")[1]));
+	         if(Integer.parseInt((date1.split("-")[1]))<=3) {
+	               yy+=-1;
+	               mm=12+(Integer.parseInt((date1.split("-")[1]))-3);
+	         }
+	         String date2 = String.valueOf(yy)+"-";
+	         date2 += mm-3>9?String.valueOf(mm-3):"0"+String.valueOf(mm-3);
+	         req.setAttribute("date1", date1);
+	         req.setAttribute("date2", date2);
+	         req.setAttribute("dto", udto);
+	      
+	      List<CouponDto> clist = service2.nextRating(dto2);
+	      
+	      //다음등급 쿠폰명들 저장
+	      req.setAttribute("clist", clist);
+	      
+	      List<String> MyRatingCoupon = service.MyRatingCoupon(dto);
+	      req.setAttribute("MyRatingCoupon",MyRatingCoupon);
+	      System.out.println("레이팅 쿠폰: "+MyRatingCoupon);
+	      return "/WEB-INF/Pizza/view/User/Mania.jsp";
+	   }
 	
 	//설정변경 게이트 폼으로
 	@RequestMapping("/User/Mypage_ChangeSetting.pz")
@@ -419,5 +457,52 @@ public class UserController {
 		return "/WEB-INF/Pizza/view/User/Message.jsp";
 	}
 	
+	//등급별 쿠폰 다운로드
+	@RequestMapping("/User/CouponDownLoad.pz")
+	public void CouponDownLoad(HttpServletRequest req,CouponDto dto,HttpServletResponse resp) throws Exception{
+		PrintWriter pw = resp.getWriter();
+		
+		//한글깨짐 방지
+		JSONObject json = new JSONObject();
+		
+		req.getSession().getAttribute("NAME");
+		String id = (String)req.getSession().getAttribute("ID");
+		dto.setId(id);
+		
+		List<String> MyRatingCoupon = service.MyRatingCoupon(dto);
+		List<CouponDto> MyCouponList = service.coupons(dto);
+		
+		boolean get = true;
+		for(CouponDto cdto  : MyCouponList) {
+			
+			for(String mrc : MyRatingCoupon) {
+				if(cdto.getC_name().trim().equals(mrc.trim()))
+					get=false;
+				if(!get)
+					break;
+			}
+			if(!get) break;
+		}
+		
+		
+		if(get == true) {
+			System.out.println("@@@");
+			dto.setId(id);
+			System.out.println(dto.getId());
+			List<CouponDto> cdlist = service.getrcoupon(dto);
+			for(CouponDto cdto  : cdlist) {
+				cdto.setId(id);
+				System.out.println(cdto.getC_no());
+			service.MyCouponByRatingForDownLoad(cdto);
+			}
+		}
+		else {
+			pw.write("Get");
+		}
+		pw.flush();
+		pw.close();
+		System.out.println("쿠폰다운됨");
+		
+	}
 	
 }//// class

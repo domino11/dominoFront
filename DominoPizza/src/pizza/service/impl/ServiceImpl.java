@@ -183,6 +183,14 @@ public class ServiceImpl implements pizza.service.Service {
 		return dao.getsalescount(map);
 	}
 
+	public List<CouponDto> nextRating(TargetDTO dto) {
+		return dao.nextRating(dto);
+	}
+
+	public void nextRatingUpd(Map map) {
+		dao.nextRatingUpd(map);
+	}
+
 
 	
 

@@ -123,7 +123,7 @@ END
 		select name,r.r_name r_name,tel,
 	(select count(*) from customer c join my_cupon mc on c.id=mc.id where c.id='${id}' and
 	mc.mc_no not in ( SELECT mc.mc_no FROM my_cupon mc join USE_SAILECOUPON uc on uc.mc_no=mc.mc_no where id=#{id} )
-	) coupon
+	AND <![CDATA[  C_EDATE > SYSDATE  ]]> ) coupon
 	 from customer c join cr_join cj on c.id=cj.id 
 	join rating r on r.r_no=cj.r_no
 	where c.id='${id}'
@@ -139,8 +139,29 @@ END
 		</select>
 	
 		<select id="mybatiscallcoupon" parameterType="java.util.Map" resultType="SaileCouponDTO" >
-		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE MC.MC_NO NOT IN (SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) AND S.C_CON IN (0,1)
+		SELECT * FROM SAILE_COUPON S JOIN 
+		MY_CUPON MC ON MC.C_NO=S.C_NO 
+		WHERE MC.MC_NO NOT IN 
+		(SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) AND S.C_CON IN (0,1) AND <![CDATA[ C_EDATE > SYSDATE  ]]> 
 		</select>
+		
+		 
+		 <select id="SelectMyCoupon_Name" parameterType="java.util.Map" resultType="pizza.service.impl.CouponDto">
+		 SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M 
+		 JOIN SAILE_COUPON S ON M.C_NO = S.C_NO 
+		 WHERE ID = '${id}' AND<![CDATA[  C_EDATE > SYSDATE  ]]>
+		 AND M.MC_NO NOT IN 
+		(SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) 
+		 </select>
+
+ 
+		 <select id="SelectUncoupon" parameterType="java.util.Map" resultType="pizza.service.impl.CouponDto">
+		 SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = '${id}' AND<![CDATA[  C_EDATE < SYSDATE  ]]>
+		 OR M.MC_NO IN 
+		(SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) 
+		 </select>
+		
+		
 
 		<select id="mybatisgetdpns" parameterType="java.util.Map" resultType="DrPnsDTO" >
 		select * FROM  ${from}  where  ${where}  ${no}
@@ -203,15 +224,21 @@ END
 		</select>
 		
 		<select id="bybatisgetsalescount" parameterType="java.util.Map" resultType="TargetDTO" >
-		SELECT R_TARGET target,
+		SELECT R_TARGET target, R.R_NO,  R.R_NAME, 
 		(SELECT COUNT(*) FROM SALES WHERE ID=#{id}) count,
 		(SELECT SUM(MENU_PRICE) FROM SALES_MENU SM JOIN SALES S ON S.SA_NO = SM.SA_NO WHERE ID =#{id}) price 
-		 FROM RATING R JOIN CR_JOIN CR ON CR.R_NO = R.R_NO WHERE ID = #{id}
+		 FROM RATING R WHERE
+		 R.R_NO > (SELECT R.R_NO FROM RATING R JOIN CR_JOIN CR ON CR.R_NO = R.R_NO WHERE ID = #{id})
+		 AND ROWNUM=1
 		</select>
 		
+		<select id="mybatisnextRating" parameterType="TargetDTO" resultType="pizza.service.impl.CouponDto" >
+		SELECT C_NAME FROM SAILE_COUPON SC JOIN RATING_CUPPON RC ON RC.C_NO = SC.C_NO WHERE R_NO = #{r_no}
+		</select>		
 				
-		
-	
+		<update id="mybatisnextRatingUpd" parameterType="java.util.Map" >
+		UPDATE CR_JOIN SET R_NO=#{r_no}, R_NAME=#{r_name}
+		</update>	
 	
  <!--  어진 끝 -->
  
@@ -246,21 +273,16 @@ END
 </update>
 
 <select id="CountCoupon" parameterType="pizza.service.impl.UserDto" resultType="int">
-   SELECT COUNT(*) FROM MY_CUPON WHERE id = #{id} AND<![CDATA[ C_EDATE > SYSDATE  ]]>
+   SELECT COUNT(*) FROM MY_CUPON M WHERE id = #{id} AND<![CDATA[ C_EDATE > SYSDATE  ]]>
+   AND M.MC_NO NOT IN 
+		(SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) 
 </select>
  
 <select id="CountUnCoupon" parameterType="pizza.service.impl.UserDto" resultType="int">
-   SELECT COUNT(*) FROM MY_CUPON WHERE id = #{id} AND<![CDATA[ C_EDATE < SYSDATE  ]]>
+   SELECT COUNT(*) FROM MY_CUPON M WHERE id = #{id} AND<![CDATA[ C_EDATE < SYSDATE  ]]>
+   OR M.MC_NO IN 
+		(SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) 
 </select>
- 
- <select id="SelectMyCoupon_Name" parameterType="java.util.Map" resultType="pizza.service.impl.CouponDto">
- SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = '${id}' AND<![CDATA[  C_EDATE > SYSDATE  ]]>
- </select>
-
- 
- <select id="SelectUncoupon" parameterType="java.util.Map" resultType="pizza.service.impl.CouponDto">
- SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = '${id}' AND<![CDATA[  C_EDATE < SYSDATE  ]]>
- </select>
 
  <select id="SelectOrder" parameterType="java.util.List" resultType="pizza.service.impl.OrderDto">
  SELECT S.SA_PRO,M.MENU_NAME,M.MENU_KIND,M.MENU_QTY,M.MENU_PRICE FROM SALES S JOIN SALES_MENU M ON S.SA_NO = M.SA_NO WHERE ID = '${id}'
@@ -272,6 +294,24 @@ END
  
  <select id="Total" parameterType="java.util.List" resultType="pizza.service.impl.OrderDto">
  SELECT SP_TOTALPRICE FROM SALES_PRICE WHERE ID = '${id}';
+ </select>
+ 
+ <select id="MyCouponByRating" parameterType="pizza.service.impl.CouponDto" resultType="String">
+ SELECT C_NAME FROM SAILE_COUPON SC JOIN RATING_CUPPON RC ON RC.C_NO = SC.C_NO
+ JOIN RATING R ON R.R_NO = RC.R_NO 
+ JOIN CR_JOIN CJ ON CJ.R_NO = RC.R_NO
+ WHERE ID='${id}' 
+ </select>
+ 
+ <insert id="MyCouponByRatingForDownLoad" parameterType="pizza.service.impl.CouponDto">
+ INSERT INTO MY_CUPON VALUES(SEQ_MY_CUPON_MC_NO.NEXTVAL,'${id}',SYSDATE,SYSDATE+31,#{c_no})
+ </insert>
+ 
+ <select id="mybatisgetrcoupon" parameterType="pizza.service.impl.CouponDto" resultType="pizza.service.impl.CouponDto">
+ SELECT SC.C_NO c_no FROM SAILE_COUPON SC JOIN RATING_CUPPON RC ON RC.C_NO = SC.C_NO
+ JOIN RATING R ON R.R_NO = RC.R_NO
+ JOIN CR_JOIN CJ ON CJ.R_NO = RC.R_NO
+ WHERE ID='${id}'
  </select>
  
  

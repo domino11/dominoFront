@@ -6,6 +6,7 @@ public class CouponDto  {
 	private String c_name;
 	private String c_sdate;
 	private String c_edate;
+	private String c_no;
 	
 	
 	//Getter/Setter
@@ -32,6 +33,12 @@ public class CouponDto  {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getC_no() {
+		return c_no;
+	}
+	public void setC_no(String c_no) {
+		this.c_no = c_no;
 	}
 	
 	

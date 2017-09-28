@@ -209,6 +209,16 @@ public class Daotest {
 			return template.selectOne("bybatisgetsalescount",map);
 		}
 
+
+		public List<CouponDto> nextRating(TargetDTO dto) {
+			return template.selectList("mybatisnextRating",dto);
+		}
+
+
+		public void nextRatingUpd(Map map) {
+			template.update("mybatisnextRatingUpd",map);
+		}
+
 	
 	
 }

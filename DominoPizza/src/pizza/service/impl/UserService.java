@@ -37,4 +37,9 @@ public interface UserService {
 	List coupons(CouponDto dto) throws SQLException;
 
 	List Order(OrderDto dto) throws SQLException;
+	//내 등급 쿠폰 출력
+	public List<String> MyRatingCoupon(CouponDto dto) throws SQLException;
+	
+	//내 등급 쿠폰 다운
+	public int MyCouponByRatingForDownLoad(CouponDto dto) throws SQLException;
 }

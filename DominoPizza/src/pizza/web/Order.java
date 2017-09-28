@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
+
 import javafx.geometry.Side;
 import pizza.service.BasketDTO;
 import pizza.service.DelAddrDTO;
@@ -26,6 +28,7 @@ import pizza.service.PizzaMenuList;
 import pizza.service.SMenuDTO;
 import pizza.service.SaileCouponDTO;
 import pizza.service.StoresDTO;
+import pizza.service.TargetDTO;
 import pizza.service.ToppingDTO;
 import pizza.service.impl.Daotest;
 import pizza.service.impl.ServiceImpl;
@@ -474,10 +477,24 @@ public class Order {
 		   fprice += c;
 	   }
 	   
+	   //등급 업그레이드 여부
+	   TargetDTO dto2 = service.getsalescount(map);
+	   int cnt = Integer.parseInt(dto2.getCount());
+	   int tar = Integer.parseInt(dto2.getTarget());
+	   map.put("r_no", dto2.getR_no());
+	   map.put("r_name", dto2.getR_name());
+	   
+	   if(tar-cnt<=0) {
+		   service.nextRatingUpd(map);
+		   
+	   }
+	   
+	   
 	   System.out.println(minprice);
 	   map.put("minprice", minprice);
 	   map.put("fprice", fprice);
 	   int a = service.inSalesPrice(map);
+	   
 	   
 	   session.setAttribute("BUYLIST",null);
 	   session.setAttribute("BUYNUM",null);

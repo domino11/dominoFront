@@ -89,6 +89,20 @@ public class UserDao implements UserService {
 		return template.selectOne("CountSales",map);
 	}
 
+	@Override
+	public List<String> MyRatingCoupon(CouponDto dto) throws SQLException {
+		return template.selectList("MyCouponByRating",dto);
+	}
+
+	@Override
+	public int MyCouponByRatingForDownLoad(CouponDto dto) throws SQLException {
+		return template.insert("MyCouponByRatingForDownLoad",dto);
+	}
+
+	public List<CouponDto> getrcoupon(CouponDto dto) {
+		return template.selectList("mybatisgetrcoupon",dto);
+	}
+
 	
 	
 	
