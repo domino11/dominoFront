@@ -1,6 +1,16 @@
+<%@page import="java.util.Random"%>
+<%@page import="com.sun.javafx.binding.SelectBinding.AsDouble"%>
+<%@page import="java.util.Properties" %>
+<%@page import="javax.mail.Message" %>
+<%@page import="javax.mail.MessagingException" %>
+<%@page import="javax.mail.Session" %>
+<%@page import="javax.mail.Transport" %>
+<%@page import="javax.mail.internet.InternetAddress" %>
+<%@page import="javax.mail.internet.MimeMessage" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -85,18 +95,20 @@
 			$("#Checkemail").get(0).innerHTML = "이메일을 입력 하세요.";
 			
 			c=0;
+			
 		}
 		else if(email.length > 50){
 			$("#Checkemail").get(0).innerHTML = "이메일 은 50자 이내로 입력 하세요.";
 			c=0;
+			
 		}
 		else if(email.indexOf('@') == -1){
 			$("#Checkemail").get(0).innerHTML = "@ 를 포함해서 입력해 주세요.";
 			c=0;
+			
 		}
 		else{
-			$("#Checkemail").get(0).innerHTML = "";
-			
+			$("#Checkemail").get(0).innerHTML = "";			
 			c=1;
 			
 		}
@@ -133,10 +145,45 @@
 			}
 		}// CheckTel()
 		
+		function getCookie(cname) {
+        	    var name = cname + "=";
+        	    var decodedCookie = decodeURIComponent(document.cookie);
+        	    var ca = decodedCookie.split(';');
+        	    for(var i = 0; i <ca.length; i++) {
+        	        var c = ca[i];
+        	        while (c.charAt(0) == ' ') {
+        	            c = c.substring(1);
+        	        }
+        	        if (c.indexOf(name) == 0) {
+        	            return c.substring(name.length, c.length);
+        	        }
+        	    }
+        	    return "";
+        	}
+		
+		
+	function CheckEmailNum(){
+			var randomnum = getCookie("NO");
+			var CheckEmailNum = $("#captcha").val()
+	          if($("#captcha").val().length==4){
+	        	if(randomnum == $("#captcha").val()){
+	        		$("#CheckEmailNum").get(0).innerHTML = "인증번호 와 일치 합니다.";
+	        	  }//if
+	        	  else{
+	        		  $("#CheckEmailNum").get(0).innerHTML = "인증번호 와 일치하지 않습니다.";
+	        		  }//else
+	        		 }///if
+	        		 
+	        	 }///function
+	        	 
+	 
+			
+		
+		
 	function clicks(){
 		
 		if($("#Checkemail").get(0).innerHTML.length+$("#CheckTel").get(0).innerHTML.length+$("#CheckName").get(0).innerHTML.length+
-				$("#CheckPwd").get(0).innerHTML.length+$("#CheckId").get(0).innerHTML.length ==0){
+				$("#CheckPwd").get(0).innerHTML.length+$("#CheckId").get(0).innerHTML.length+$("#CheckEmailNum").get(0).innerHTML.length ==14){
 			signup.submit();
 		}
 		else{
@@ -228,9 +275,10 @@
             <span id="CheckName" style="color: red; font-weight: 600;"></span>
           </div>
         </div>
-              <label class="ontrol-label col-sm-3"  for="email">생년월일</label>
-            <div class="form-inline">
+              <label class="control-label col-sm-3"  for="email">생년월일</label>
                <div class="form-group">
+            <div class="form-inline">
+            &nbsp;
                   <select name="yyyy" class="form-control">
                      <option value="0">년도</option>
                      <c:forEach begin="1920" end="2017" var="i">
@@ -294,18 +342,6 @@
             여성 </label>
           </div>
         </div>
-        <!-- 
-        <div class="form-group">
-          <label class="control-label col-sm-3">휴대전화 번호<span class="text-danger">*</span></label>
-          <div class="col-md-5 col-sm-8">
-          	<div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-            <input type="text" class="form-control" name="tel" id="tel" placeholder="휴대전화 번호 입력" value="" onkeyup="javascript:CheckTel()">
-            <span id="CheckTel" style="color: red; font-weight: 600;"></span>
-            </div>
-          </div>
-        </div>
-         -->
 							<div class="form_group">       
 							<label class="control-label col-sm-3">휴대전화 번호<span class="text-danger">*</span></label>
 								<div class="form_field">
@@ -332,18 +368,28 @@
 								</div>
 								<span id="CheckTel" style="color: red; font-weight: 600;"></span>
 							</div>
-						
+							
+						<br/>
         <div class="form-group">
           <label class="control-label col-sm-3">이메일 인증번호 입력</label>
+         	
+         	
           <div class="col-md-5 col-sm-8">
-            <div >
+            <div>
                 
-                <input type="text" name="captcha" id="captcha" class="form-control label-warning"  />                
+                <input type="text" name="captcha" id="captcha" class="form-control label-warning" maxlength="4" onkeyup="javascript:CheckEmailNum()" />
+                 <span id="CheckEmailNum" style="color: red; font-weight: 600;"></span>               
               </div>
+              
+         	&nbsp;<br/>
+              <input type="button" name="emailcode" value="인증번호 전송" class="btn btn-primary" onclick="sendEmail();"/>
+              
           </div>
+          
         </div>
         <div class="form-group">
           <div class="col-xs-offset-3 col-md-8 col-sm-9"><span class="text-muted"><span class="label label-danger">Memo</span>가입 완료를 누르실 경우 모든 약관에 모두 동의합니다.</a>.</span> </div>
+        
         </div>
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-10">
@@ -360,9 +406,49 @@
 <%@include file="/WEB-INF/Pizza/template/foot.jsp" %>
 
          <script>
+         
         
          
          
+         
+         
+         function sendEmail(){
+        	 
+        	 if($("#email").val() == ""){
+        		 alert('먼저 이메일을 입력해 주세요');
+        		 return false;
+        	 }
+        	 
+        	 var result = confirm('인증 메일을 발송하실 경우 이메일 은 수정하지 못합니다.'); 
+        	  if(result) {  
+        		 
+        		 $("#email").attr("readonly",true).attr("disabled",false); //입력불가
+        		 
+        	 } else { 
+        		 
+        		 return false;
+        	 }
+
+
+        	  
+        	 $.ajax(
+        			 {url: '<c:url value="/SendEmail.jsp"/>',
+        		        type: 'POST',
+        		        data:"email="+$("#email").val(),
+        		        contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+        		        
+        		        success: function (result) {
+        		        	alert("입력하신 이메일로 인증번호를 전송하였습니다.");
+        		        }        			 
+        		 
+        			
+        		 
+        		 
+        			 });
+        	
+        	
+        	
+         }
          
          
          
@@ -375,7 +461,7 @@ function openDaumPostcode() {
         width : width, //팝업창이 실행될때 위치지정
         height : height, //팝업창이 실행될때 위치지정
         oncomplete: function(data) {
-             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
  
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.

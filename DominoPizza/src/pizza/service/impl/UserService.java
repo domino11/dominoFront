@@ -2,6 +2,7 @@ package pizza.service.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -26,4 +27,14 @@ public interface UserService {
 	public int Couponnum(UserDto dto) throws SQLException;
 	
 	public int UpdatePwd(UserDto dto) throws SQLException;
+
+	Map CountSales(Map map) throws SQLException;
+
+	int UnCouponnum(CouponDto dto) throws SQLException;
+
+	List Uncoupons(CouponDto dto) throws SQLException;
+
+	List coupons(CouponDto dto) throws SQLException;
+
+	List Order(OrderDto dto) throws SQLException;
 }

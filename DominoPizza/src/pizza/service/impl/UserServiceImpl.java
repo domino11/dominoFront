@@ -2,6 +2,7 @@ package pizza.service.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -56,6 +57,33 @@ public class UserServiceImpl implements UserService {
 	public int UpdatePwd(UserDto dto) throws SQLException {
 		return dao.UpdatePwd(dto);
 	}
+
+	@Override
+	public List coupons(CouponDto dto) throws SQLException {
+		return dao.coupons(dto);
+	}
+
+	@Override
+	public List Uncoupons(CouponDto dto) throws SQLException {
+		return dao.Uncoupons(dto);
+	}
+
+	@Override
+	public int UnCouponnum(CouponDto dto) throws SQLException {
+		return dao.UnCouponnum(dto);
+	}
+
+	@Override
+	public List Order(OrderDto dto) throws SQLException {
+		return dao.Order(dto);
+	}
+
+	@Override
+	public Map CountSales(Map map) throws SQLException {
+		return dao.CountSales(map);
+	}
+
+	
 
 	
 

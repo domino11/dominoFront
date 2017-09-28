@@ -14,8 +14,10 @@ import pizza.service.DrPnsDTO;
 import pizza.service.PNutrientDTO;
 import pizza.service.PizzaDTO;
 import pizza.service.PizzaMenuList;
+import pizza.service.SMenuDTO;
 import pizza.service.SNutrientDTO;
 import pizza.service.SaileCouponDTO;
+import pizza.service.SalesListDTO;
 import pizza.service.SideMenuList;
 import pizza.service.StoresDTO;
 import pizza.service.ToppingDTO;
@@ -163,6 +165,19 @@ public class ServiceImpl implements pizza.service.Service {
 	public int inSalesPrice(Map map) {
 		return dao.inSalesPrice(map);
 	}
+
+	public List<SalesListDTO> salesList(Map map) {
+		return dao.salesList(map);
+	}
+
+	public List<SMenuDTO> callSalesMenu(Map map) {
+		return dao.callSalesMenu(map);
+	}
+
+	public String getfprice(Map map) {
+		return dao.getfprice(map);
+	}
+
 
 	
 

@@ -456,7 +456,7 @@ public class Order {
 		   service.usecoupon(map);  
 	   }else {
 		   map.put("mc_no", "0");
-		   map.put("minprice", map.get("0"));
+		   map.put("minprice", "0");
 	   }
 	   System.out.println(map.get("totalprice"));
 	   System.out.println(map.get("mc_no"));

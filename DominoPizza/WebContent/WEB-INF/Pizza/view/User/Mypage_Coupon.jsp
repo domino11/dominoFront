@@ -169,9 +169,9 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<input type="hidden" name="pageNo" id="pageNo" value="1">
 		<div class="tab tab_type4">
 			<ul class="btn_tab">
-				<li class="active"><a href="<c:url value='/User/MyPage_Mania.pz'/>">매니아 등급</a></li>
-				<li class=""><a href="/mypage/myOrderList">주문조회</a></li>
-				<li class=""><a href="<c:url value='/User/Mypage_coupon.pz'/>">쿠폰</a></li>
+				<li class=""><a href="<c:url value='/User/MyPage_Mania.pz'/>">매니아 등급</a></li>
+				<li class=""><a href="<c:url value='/User/Mypage_OrderHistory.pz'/>">주문조회</a></li>
+				<li class="active"><a href="<c:url value='/User/Mypage_coupon.pz'/>">쿠폰</a></li>
 				<li class=""><a href="<c:url value='/User/Mypage_ChangeSetting.pz'/>">설정변경</a></li>
 			</ul>
 			<div class="tab_content_wrap">
@@ -191,8 +191,8 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 
 							<div class="tab tab_type2">
 								<ul class="btn_tab">
-									<li class="active"><a href="/mypage/myCoupon?coupon_status=0">미사용 쿠폰 (${CountCoupon})</a></li>
-									<li class=""><a href="/mypage/myCoupon?coupon_status=1">사용/만료 쿠폰 (5)</a></li>
+									<li class="active"><a href="<c:url value='/User/Mypage_coupon.pz'/>">미사용 쿠폰 (${CountCoupon})</a></li>
+									<li class=""><a href="<c:url value='/User/Mypage_Uncoupon.pz'/>">사용/만료 쿠폰 (${CountUnCoupon})</a></li>
 								</ul>
 							</div>
 							<!-- //tab -->
@@ -210,11 +210,12 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${List}" var="dto">
 										<tr>
-												<td>${Coupon}</td>
-												<td>${CouponDate}</td>
+												<td>${dto.c_name}</td>
+												<td>${dto.c_sdate} ~ ${dto.c_edate}</td>
 										</tr>
-										<c:forEach begin="" end=""/>
+										</c:forEach>
 										</tbody>
 								</table>
 

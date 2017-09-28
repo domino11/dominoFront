@@ -1,6 +1,7 @@
 package pizza.web;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pizza.service.PizzaMenuList;
+import pizza.service.SMenuDTO;
+import pizza.service.SalesListDTO;
 import pizza.service.impl.ServiceImpl;
 import pizza.service.impl.UserDto;
 import pizza.service.impl.UserServiceImpl;
@@ -119,7 +122,6 @@ public class Android {
 		map.put("sel", sel);
 		map.put("fro", fro);
 		map.put("whe", whe);
-		List<Map> list = new Vector<>();
 		System.out.println("들어는 오냐2");
 		map.put("ty", "103");
 		List<PizzaMenuList> plist = service.menuRank(map);
@@ -130,6 +132,7 @@ public class Android {
 		System.out.println("??");
 		System.out.println(plist.get(0).getP_name());
 		String name="";
+		List<Map> list = new Vector<>();
 		int i=0;
 		for(PizzaMenuList dto : plist) {
 			i++;
@@ -148,6 +151,53 @@ public class Android {
 		System.out.println(JSONArray.toJSONString(list));
 		return JSONArray.toJSONString(list);
 	
+	}
+
+	
+	@ResponseBody
+	@RequestMapping(value="/AndroidMenu3.pz",produces="text/html;charset=UTF-8")
+	public String androidMenu3(@RequestParam Map map,HttpServletRequest req) 
+			throws Exception{
+		List<Map> list0 = new Vector<>();
+		
+		List<SalesListDTO> list = service.salesList(map);
+		if(list!=null && list.size()>0)
+		for(SalesListDTO dto : list) {
+			Map map2 = new HashMap<>();
+			map2.put("day", dto.getSa_date().substring(0,dto.getSa_date().length()-3));
+			map2.put("sa_no", dto.getSa_no());
+			List<SMenuDTO> mlist = service.callSalesMenu(map2);
+			String menuList="";
+			int idx=0;
+			for(SMenuDTO mdto : mlist) {
+				idx++;
+				menuList += " "+mdto.getMenu_name();
+				if(mdto.getMenu_kind().trim().equals("1"))
+					menuList += "피자";
+				if(idx!=mlist.size())
+					menuList+=", ";
+			}
+			String fprice = service.getfprice(map2);
+			DecimalFormat df = new DecimalFormat("#,###");
+			fprice = df.format(Integer.parseInt(fprice));
+			map2.put("sp_fprice", fprice+"원");
+			map2.put("menuList", menuList);
+			map2.put("sa_pro", dto.getSa_pro().replace("주문 상태 - ", "").replace("종료", "배달 완료"));
+			map2.put("nos", "");
+			list0.add(map2);
+		}
+		else {
+			map.put("day", "");
+			map.put("menuList", "");
+			map.put("sp_fprice","");
+			map.put("sa_pro", "");
+			map.put("nos", map.get("id")+"고객님 아직 주문 내역이 없습니다!");
+			list0.add(map);
+			
+		}
+				
+		System.out.println(JSONArray.toJSONString(list0));
+		return JSONArray.toJSONString(list0);
 	}
 	
 

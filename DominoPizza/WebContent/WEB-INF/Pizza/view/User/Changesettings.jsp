@@ -82,10 +82,10 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		
 		
 			<ul class="btn_tab" onclick="none" >
-				<li class="active"><a href="<c:url value='/User/MyPage_Mania.pz'/>">매니아 등급</a></li>
-				<li class=""><a href="/mypage/myOrderList">주문조회</a></li>
+				<li class=""><a href="<c:url value='/User/MyPage_Mania.pz'/>">매니아 등급</a></li>
+				<li class=""><a href="<c:url value='/User/Mypage_OrderHistory.pz'/>">주문조회</a></li>
 				<li class=""><a href="<c:url value='/User/Mypage_coupon.pz'/>">쿠폰</a></li>
-				<li class=""><a href="<c:url value='/User/Mypage_ChangeSetting.pz'/>">설정변경</a></li>
+				<li class="active"><a href="<c:url value='/User/Mypage_ChangeSetting.pz'/>">설정변경</a></li>
 			</ul>
 			<div class="tab_content_wrap">
 				<div class="tab_content">
@@ -102,9 +102,9 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 								<dd>회원정보를 정확히 기입하셔야 주문이나 이벤트에 대한 불이익이 없습니다.</dd>
 							</dl>
 						</div>
+						 <form class="form-horizontal" method="post" name="signup" id="signup"  action="<c:url value='/User/ChangeSetting.pz'/>" > 
 						<div class="join_form">
 							<ul>
-						 <form class="form-horizontal" method="post" name="signup" id="signup"  action="<c:url value='/User/ChangeSetting.pz'/>" > 
 								<li class="form_name">
 									<label for="">이름</label>
 									${NAME}
@@ -206,7 +206,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 						</div>			
 						<span id="CheckEmail" style="color: red; font-weight: 600;"></span>			
 								</li>
-								</form>
+								
 						<div class="btn_wrap">
 							<div class="btn_fix_center">
 								<a href="javascript:reload();" class="btn btn_mdle btn_blue btn_basic"><span class="btn_txt">초기화</span></a>
@@ -217,9 +217,11 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 						<div class="withdraw">
 							도미노피자를 더 이상 이용하지 않는다면 <a href="javascript:;"><em>회원탈퇴 바로가기<span class="ico ico_more"></span></em></a>
 						</div>
+						</ul>
 					</div>
+						</form>
 					<!-- //join_area -->
-					</form>
+					</div>
 				</div>
 				<!-- //tab_content -->
 			</div>

@@ -192,15 +192,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 					</dd>
 				</dl>
 				
-				<dl class="dl_phone">
-					<dt>
-						<span class="ico ico_cellphone"></span>
-						이메일로 찾기
-					</dt>
-					<dd>
-						<a href="javascript:openEmailByInside();" class="btn btn_mdle btn_red btn_basic"><span class="btn_txt">이메일로 본인인증</span></a>
-					</dd>
-				</dl>
+				
 				
 			</div>
 			<div class="lst_type v4">
@@ -231,7 +223,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 									<input type="text" id="name" name="name">
 								</li>
 								<li>
-									<label for="kg_id">변경할비밀번호</label>
+									<label for="kg_id">새 암호</label>
 									<input type="text" id="pwd" name="pwd">
 								</li>
 							</ul>
@@ -241,27 +233,6 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 					</dd>
 				</dl>
 
-				<dl>
-					<dt>
-						<span class="ico ico_cellphone"></span>
-						이메일 인증으로 찾기
-					</dt>
-					<dd>
-					
-						<div class="lst_type_dot">
-						<form class="form-horizontal" method="post" name="searchpwd_email" id="searchpwd_email"  action="<c:url value='/User/Search_id.pz'/>" >
-							<ul>
-								<li>
-									<label for="schid">아이디</label>
-									<input type="text" id="id" name="id">
-								</li>
-							</ul>
-							</form>
-						</div>
-						<a href="javascript:findPwdByEmail();" class="btn btn_mdle btn_red btn_basic"><span class="btn_txt">아이핀 인증</span></a>
-						<p>※ 회원가입 시 아이핀으로 가입하신 회원님께서는 아이핀으로 인증하세요.</p>
-					</dd>
-				</dl>
 			</div>
 			<div class="lst_type v4">
 				<ul>
@@ -460,7 +431,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 							<div class="form_group">
 								<div class="form_field">
 									<div class="form_item">
-										<input type="text" name="name" id="name" class="i_text" onkeyup="javascript:Name_Error()">
+										<input type="text" name="name_email" id="name_email" class="i_text" onkeyup="javascript:Name_Error()">
 									</div>
 									<span class="name_error" id="u_name_f"></span>
 								</div>
@@ -474,7 +445,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 							<div class="form_group">
 								<div class="form_field">
 									<div class="form_item">
-										<input type="email" name="email" id="email" maxlength="50" class="i_text">
+										<input type="email" name="email" id="email_email" maxlength="50" class="i_text">
 									</div>
 									<span class="i_error show" id="security_alert"></span>
 								</div>
@@ -617,6 +588,8 @@ function openEmailByInside(){
 	delSetting_email(); //초기화 메소드
 }
 
+//이메일 인증 
+
 
 
 // 회원정보 인증 아이디 찾기
@@ -632,6 +605,16 @@ function findIdByInside(){
 // 이메일 인증 아이디 찾기
 function findIdBy_EmailInside(){
 
+	$.ajax(
+			 {url: '<c:url value="/User/SendEmailBySearchID.pz"/>',
+		        type: 'POST',
+		        data:"email="+$("#email_email").val()&"name="+$("#name_email").val(),
+		        contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+		        success: function (result) {
+		        	alert("이메일 : "+$("#email_email").val());
+		        }        			 
+		
+			 });
 
 }
 

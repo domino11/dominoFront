@@ -15,8 +15,10 @@ import pizza.service.DrPnsDTO;
 import pizza.service.PNutrientDTO;
 import pizza.service.PizzaDTO;
 import pizza.service.PizzaMenuList;
+import pizza.service.SMenuDTO;
 import pizza.service.SNutrientDTO;
 import pizza.service.SaileCouponDTO;
+import pizza.service.SalesListDTO;
 import pizza.service.SideMenuList;
 import pizza.service.StoresDTO;
 import pizza.service.ToppingDTO;
@@ -183,6 +185,23 @@ public class Daotest {
 
 		public int inSalesPrice(Map map) {
 			return template.insert("mybatisinSalesPrice",map);
+		}
+
+
+
+
+		public List<SalesListDTO> salesList(Map map) {
+			return template.selectList("mybatissalesList",map);
+		}
+
+
+		public List<SMenuDTO> callSalesMenu(Map map) {
+			return template.selectList("mybatiscallSalesMenu",map);
+		}
+
+
+		public String getfprice(Map map) {
+			return template.selectOne("mybatisgetfprice",map);
 		}
 
 	

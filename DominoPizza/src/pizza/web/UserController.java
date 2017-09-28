@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -25,6 +28,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pizza.resource.UserDao;
+import pizza.service.impl.CouponDto;
+import pizza.service.impl.OrderDto;
 import pizza.service.impl.UserDto;
 
 import pizza.service.impl.UserServiceImpl;
@@ -65,9 +70,10 @@ public class UserController {
 	//나의정보_매니아 폼으로
 	@RequestMapping("/User/MyPage_Mania.pz")
 	public String Mania(HttpServletRequest req) throws Exception{
-		System.out.println("컨트롤러");
+		
 		req.getSession().getAttribute("NAME");
 		req.getSession().getAttribute("ID");
+		
 		return "/WEB-INF/Pizza/view/User/Mania.jsp";
 	}
 	
@@ -92,16 +98,47 @@ public class UserController {
 		return "/WEB-INF/Pizza/view/User/Changesettings.jsp";
 	}	
 	
-	//마이페이지 쿠폰 조회
+	//마이페이지 쿠폰 조회 및 폼 이동
 	@RequestMapping("/User/Mypage_coupon.pz")
-	public String Mycoupon(HttpServletRequest req,HttpServletResponse resp,UserDto dto) throws Exception{
-		Collection coupons = new Vector();
+	public String Mycoupon(HttpServletRequest req,HttpServletResponse resp,CouponDto Cdto,UserDto dto) throws Exception{
 		String id = (String)req.getSession().getAttribute("ID");
 		String name = (String)req.getSession().getAttribute("NAME");
+		Cdto.setId(id);
+		List<CouponDto> coupons= service.coupons(Cdto);
 		dto.setName(name);
 		dto.setId(id);
+		req.setAttribute("List",coupons);
+		req.setAttribute("CountUnCoupon",service.UnCouponnum(Cdto));	
 		req.setAttribute("CountCoupon",service.Couponnum(dto));		
 		return "/WEB-INF/Pizza/view/User/Mypage_Coupon.jsp";
+	}
+	
+	//사용기간 지난 쿠폰 조회 및 폼 이동
+	@RequestMapping("/User/Mypage_Uncoupon.pz")
+	public String UnCoupon(HttpServletRequest req,HttpServletResponse resp,CouponDto Cdto,UserDto dto) throws Exception{
+		String id = (String)req.getSession().getAttribute("ID");
+		String name = (String)req.getSession().getAttribute("NAME");
+		Cdto.setId(id);
+		List<CouponDto> coupons= service.Uncoupons(Cdto);
+		dto.setName(name);
+		dto.setId(id);
+		req.setAttribute("List",coupons);
+		req.setAttribute("CountUnCoupon",service.UnCouponnum(Cdto));	
+		req.setAttribute("CountCoupon",service.Couponnum(dto));						
+		return "/WEB-INF/Pizza/view/User/UnavailableCoupons.jsp";
+	}
+	
+	//주문조회 폼으로
+	@RequestMapping("/User/Mypage_OrderHistory.pz")
+	public String OrderHistory(HttpServletRequest req,HttpServletResponse resp,OrderDto Odto,UserDto dto) throws Exception{
+		String name = (String)req.getSession().getAttribute("NAME");
+		String id = (String)req.getSession().getAttribute("ID");
+		dto.setId(id);
+		dto.setName(name);
+		Odto.setId(id);
+		List<OrderDto> orders = service.Order(Odto);
+		req.setAttribute("List",orders);
+		return "/WEB-INF/Pizza/view/User/OrderHistory.jsp";
 	}
 	
 	//회원가입 Insert
@@ -150,6 +187,17 @@ public class UserController {
 			return "/WEB-INF/Pizza/view/User/Message.jsp";
 		}
 		
+	}
+	
+	//아이디 찾기-이메일 인증
+	@RequestMapping("/User/SendEmailBySearchID.pz")
+	public void SearchByIdOfEmail(HttpServletRequest req,HttpServletResponse resp,UserDto dto) throws Exception{
+		
+	String email = req.getParameter("email");
+	String name = req.getParameter("name");
+	String emails = (String)req.getAttribute("email");
+		System.out.println("이메일 파람 체크 입니s다 : "+email+"asdasd : "+emails);
+		System.out.println("이름 파람 체크 입니다 : "+name);
 	}
 	
 	//로그인-회원여부 판단 

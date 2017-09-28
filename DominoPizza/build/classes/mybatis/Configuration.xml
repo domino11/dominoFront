@@ -27,6 +27,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAlias alias="DrPnsDTO" type="pizza.service.DrPnsDTO"/>
 	<typeAlias alias="salDTO" type="pizza.service.salDTO"/>
 	<typeAlias alias="SMenuDTO" type="pizza.service.SMenuDTO"/>
+	<typeAlias alias="SalesListDTO" type="pizza.service.SalesListDTO"/>
+	
 	
 	
 	

@@ -122,7 +122,7 @@ END
 	<select id="mybatiscallUser" parameterType="java.lang.String" resultType="pizza.service.impl.UserDto" >
 		select name,r.r_name r_name,tel,
 	(select count(*) from customer c join my_cupon mc on c.id=mc.id where c.id='${id}' and
-	mc.mc_no not in ( SELECT mc.mc_no FROM my_cupon mc join use_sailcuppon uc on uc.mc_no=mc.mc_no where id=#{id} )
+	mc.mc_no not in ( SELECT mc.mc_no FROM my_cupon mc join USE_SAILECOUPON uc on uc.mc_no=mc.mc_no where id=#{id} )
 	) coupon
 	 from customer c join cr_join cj on c.id=cj.id 
 	join rating r on r.r_no=cj.r_no
@@ -139,7 +139,7 @@ END
 		</select>
 	
 		<select id="mybatiscallcoupon" parameterType="java.util.Map" resultType="SaileCouponDTO" >
-		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE MC.MC_NO NOT IN (SELECT MC.MC_NO FROM USE_SAILCUPPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) AND S.C_CON IN (0,1)
+		SELECT * FROM SAILE_COUPON S JOIN MY_CUPON MC ON MC.C_NO=S.C_NO WHERE MC.MC_NO NOT IN (SELECT MC.MC_NO FROM USE_SAILECOUPON UC JOIN MY_CUPON MC ON UC.MC_NO = MC.MC_NO WHERE ID = #{id}) AND S.C_CON IN (0,1)
 		</select>
 
 		<select id="mybatisgetdpns" parameterType="java.util.Map" resultType="DrPnsDTO" >
@@ -175,11 +175,11 @@ END
 		</select>
 		
 		<insert id="mybatisusecoupon" parameterType="java.util.Map" >
-		 INSERT INTO USE_SAILCUPPON VALUES(#{mc_no},#{st_no},sysdate)
+		 INSERT INTO USE_SAILECOUPON VALUES(#{mc_no},SEQ_SALES_SA_NO.CURRVAL,sysdate)
 		 </insert>  
 		
 		<insert id="mybatisinPizzaRank" parameterType="BasketDTO" >
-		INSERT INTO PIZZARANK VALUES((SELECT P.P_NO FROM PIZZA P JOIN PIZZA_DOUGH PD ON P.P_NO = PD.P_NO WHERE D_NO = #{no} ),#{de_no},SYSDATE)
+		INSERT INTO PIZZARANK VALUES((SELECT P.P_NO FROM PIZZA P JOIN PIZZA_DOUGH PD ON P.P_NO = PD.P_NO WHERE D_NO = #{no} ),SEQ_SALES_SA_NO.CURRVAL,SYSDATE)
 		 </insert>
 		
 		<insert id="mybatisinSalesPrice" parameterType="java.util.Map" >
@@ -190,47 +190,82 @@ END
 		#{fprice})
 		 </insert>
 
+		<select id="mybatissalesList" parameterType="java.util.Map" resultType="SalesListDTO" >
+		SELECT * FROM SALES WHERE ID = #{id}
+		</select>
+		
+		<select id="mybatiscallSalesMenu" parameterType="java.util.Map" resultType="SMenuDTO" >
+		SELECT * FROM SALES_MENU WHERE SA_NO = #{sa_no}
+		</select>
+		
+		<select id="mybatisgetfprice" parameterType="java.util.Map" resultType="java.lang.String" >
+		SELECT sp_fprice from sales_price WHERE SA_NO = #{sa_no}
+		</select>
+		
+		
+		
+	
+	
  <!--  어진 끝 -->
  
   <!--  동준 -->
-<update id="UpdatePwd" parameterType="pizza.service.impl.UserDto">
-	UPDATE CUSTOMER SET pass = #{pwd} WHERE id = #{id}
+ <update id="UpdatePwd" parameterType="pizza.service.impl.UserDto">
+   UPDATE CUSTOMER SET pass = #{pwd} WHERE id = #{id}
 </update>
 
 <update id="UpdateCustomer" parameterType="pizza.service.impl.UserDto">
-	UPDATE CUSTOMER SET birth = #{birth},tel = #{tel},email = #{email} WHERE id = #{id}
+   UPDATE CUSTOMER SET birth = #{birth},tel = #{tel},email = #{email} WHERE id = #{id}
 </update>
 
 
 <insert id="UserInsert" parameterType="pizza.service.impl.UserDto" >
-	INSERT INTO CUSTOMER VALUES(#{id},#{pwd},#{name},#{gender},#{birth},#{post},#{addr},#{email},#{tel})
+   INSERT INTO CUSTOMER VALUES(#{id},#{pwd},#{name},#{gender},#{birth},#{post},#{addr},#{email},#{tel})
 </insert>
  
  <select id="UserSelectOne" parameterType="pizza.service.impl.UserDto" resultType="java.lang.String" >
-	SELECT name FROM CUSTOMER WHERE id = #{id} and pass = #{pwd}
+   SELECT name FROM CUSTOMER WHERE id = #{id} and pass = #{pwd}
 </select>
   
 <select id="ShowMember" parameterType="pizza.service.impl.UserDto" resultType="int" >
-	SELECT count(*) FROM CUSTOMER WHERE id = #{id} 
+   SELECT count(*) FROM CUSTOMER WHERE id = #{id} 
 </select>
   
 <select id="SearchId" parameterType="pizza.service.impl.UserDto" resultType="java.lang.String">
-	SELECT ID FROM CUSTOMER WHERE EMAIL = #{email} and name = #{name} and tel = #{tel} and birth = #{birth}
+   SELECT ID FROM CUSTOMER WHERE EMAIL = #{email} and name = #{name} and tel = #{tel} and birth = #{birth}
 </select>  
  
 <update id="SearchPwd" parameterType="pizza.service.impl.UserDto">
-	UPDATE CUSTOMER SET pass = #{pwd} WHERE id = #{id} and name = #{name}
+   UPDATE CUSTOMER SET pass = #{pwd} WHERE id = #{id} and name = #{name}
 </update>
 
 <select id="CountCoupon" parameterType="pizza.service.impl.UserDto" resultType="int">
-	SELECT COUNT(*) FROM MY_CUPON WHERE id = #{id}
+   SELECT COUNT(*) FROM MY_CUPON WHERE id = #{id} AND<![CDATA[ C_EDATE > SYSDATE  ]]>
 </select>
  
- <select id="SelectMyCoupon_Name" parameterType="pizza.service.impl.UserDto">
- SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = #{id}
+<select id="CountUnCoupon" parameterType="pizza.service.impl.UserDto" resultType="int">
+   SELECT COUNT(*) FROM MY_CUPON WHERE id = #{id} AND<![CDATA[ C_EDATE < SYSDATE  ]]>
+</select>
+ 
+ <select id="SelectMyCoupon_Name" parameterType="java.util.Map" resultType="pizza.service.impl.CouponDto">
+ SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = '${id}' AND<![CDATA[  C_EDATE > SYSDATE  ]]>
  </select>
 
  
+ <select id="SelectUncoupon" parameterType="java.util.Map" resultType="pizza.service.impl.CouponDto">
+ SELECT S.C_NAME,M.C_SDATE,M.C_EDATE FROM MY_CUPON M JOIN SAILE_COUPON S ON M.C_NO = S.C_NO WHERE ID = '${id}' AND<![CDATA[  C_EDATE < SYSDATE  ]]>
+ </select>
+
+ <select id="SelectOrder" parameterType="java.util.List" resultType="pizza.service.impl.OrderDto">
+ SELECT S.SA_PRO,M.MENU_NAME,M.MENU_KIND,M.MENU_QTY,M.MENU_PRICE FROM SALES S JOIN SALES_MENU M ON S.SA_NO = M.SA_NO WHERE ID = '${id}'
+ </select>
+ 
+ <select id="CountSales" parameterType="java.util.Map" resultType="java.util.Map">
+ SELECT COUNT(*) FROM SALES WHERE ID = '${id}' AND SA_DATE = #{salesday}
+ </select>
+ 
+ <select id="Total" parameterType="java.util.List" resultType="pizza.service.impl.OrderDto">
+ SELECT SP_TOTALPRICE FROM SALES_PRICE WHERE ID = '${id}';
+ </select>
  
  
  

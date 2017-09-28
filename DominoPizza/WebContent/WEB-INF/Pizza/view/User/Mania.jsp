@@ -165,7 +165,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<div class="tab tab_type4">
 			<ul class="btn_tab">
 				<li class="active"><a href="<c:url value='/User/MyPage_Mania.pz'/>">매니아 등급</a></li>
-				<li class=""><a href="/mypage/myOrderList">주문조회</a></li>
+				<li class=""><a href="<c:url value='/User/Mypage_OrderHistory.pz'/>">주문조회</a></li>
 				<li class=""><a href="<c:url value='/User/Mypage_coupon.pz'/>">쿠폰</a></li>
 				<li class=""><a href="<c:url value='/User/Mypage_ChangeSetting.pz'/>">설정변경</a></li>
 			</ul>
