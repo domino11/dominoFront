@@ -190,7 +190,6 @@ public class Daotest {
 
 
 
-
 		public List<SalesListDTO> salesList(Map map) {
 			return template.selectList("mybatissalesList",map);
 		}

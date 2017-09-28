@@ -28,10 +28,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pizza.resource.UserDao;
-import pizza.service.TargetDTO;
 import pizza.service.impl.CouponDto;
 import pizza.service.impl.OrderDto;
-import pizza.service.impl.ServiceImpl;
 import pizza.service.impl.UserDto;
 
 import pizza.service.impl.UserServiceImpl;
@@ -42,9 +40,6 @@ public class UserController {
 	@Resource(name="userServiceImpl")
 	private UserServiceImpl service;
 	
-	@Resource(name="service")
-	private ServiceImpl service2;
-	   
 	
 	//회원가입 폼으로 
 	@RequestMapping("/User/Join.pz")
@@ -79,29 +74,14 @@ public class UserController {
 		req.getSession().getAttribute("NAME");
 		req.getSession().getAttribute("ID");
 		
-		
 			Map map = new HashMap();
-			String id = req.getSession().getAttribute("ID").toString();
+			String id = req.getession.getAttribute("ID").toString();
 			map.put("id", id);
-			TargetDTO dto = service2.getsalescount(map);
-   		   req.setAttribute("count", dto.getCount());
-		   req.setAttribute("target", dto.getTarget());
-		   req.setAttribute("price", dto.getPrice());
+			Map map2 = service.getsalescount(map);
+		   req.setAttribute("count", map2.get("count"));
+		   req.setAttribute("target", map2.get("target"));
 		   
-		   Date date = new Date();
-		   SimpleDateFormat smpl = new SimpleDateFormat("YYYY-MM");
-		   String date1 = smpl.format(date);
-		   int yy=Integer.parseInt((date1.split("-")[0]));
-		   int mm=Integer.parseInt((date1.split("-")[1]));
-		   if(Integer.parseInt((date1.split("-")[1]))<=3) {
-			   	yy+=-1;
-		   		mm=12+(Integer.parseInt((date1.split("-")[1]))-3);
-		   }
-		   String date2 = String.valueOf(yy)+"-";
-		   date2 += mm>9?String.valueOf(mm):"0"+String.valueOf(mm);
-		   req.setAttribute("date1", date1);
-		   req.setAttribute("date2", date2);
-		   
+		
 		return "/WEB-INF/Pizza/view/User/Mania.jsp";
 	}
 	
