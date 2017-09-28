@@ -83,6 +83,16 @@ public class UserServiceImpl implements UserService {
 		return dao.CountSales(map);
 	}
 
+	@Override
+	public List<String> MyRatingCoupon(CouponDto dto) throws SQLException {
+		return dao.MyRatingCoupon(dto);
+	}
+
+	@Override
+	public int MyCouponByRatingForDownLoad(CouponDto dto) throws SQLException {
+		return dao.MyCouponByRatingForDownLoad(dto);
+	}
+
 	
 
 	

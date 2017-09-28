@@ -69,11 +69,16 @@ public class UserController {
 	
 	//나의정보_매니아 폼으로
 	@RequestMapping("/User/MyPage_Mania.pz")
-	public String Mania(HttpServletRequest req) throws Exception{
+	public String Mania(HttpServletRequest req,CouponDto dto) throws Exception{
 		
 		req.getSession().getAttribute("NAME");
-		req.getSession().getAttribute("ID");
+		String id = (String)req.getSession().getAttribute("ID");
+		System.out.println("아이디 : "+id);
+		dto.setId(id);
 		
+		List<String> MyRatingCoupon = service.MyRatingCoupon(dto);
+		req.setAttribute("MyRatingCoupon",MyRatingCoupon);
+		System.out.println("레이팅 쿠폰: "+MyRatingCoupon);
 		return "/WEB-INF/Pizza/view/User/Mania.jsp";
 	}
 	
@@ -411,5 +416,44 @@ public class UserController {
 		return "/WEB-INF/Pizza/view/User/Message.jsp";
 	}
 	
+	//등급별 쿠폰 다운로드
+	@RequestMapping("/User/CouponDownLoad.pz")
+	public void CouponDownLoad(HttpServletRequest req,CouponDto dto,HttpServletResponse resp) throws Exception{
+		PrintWriter pw = resp.getWriter();
+		
+		//한글깨짐 방지
+		JSONObject json = new JSONObject();
+		
+		req.getSession().getAttribute("NAME");
+		String id = (String)req.getSession().getAttribute("ID");
+		dto.setId(id);
+		
+		List<String> MyRatingCoupon = service.MyRatingCoupon(dto);
+		List<CouponDto> MyCouponList = service.coupons(dto);
+		
+		boolean get = true;
+		for(CouponDto cdto  : MyCouponList) {
+			
+			for(String mrc : MyRatingCoupon) {
+				if(cdto.getC_name().trim().equals(mrc.trim()))
+					get=false;
+				if(!get)
+					break;
+			}
+			if(!get) break;
+		}
+		
+		
+		if(get == true) {
+			service.MyCouponByRatingForDownLoad(dto);
+		}
+		else {
+			pw.write("Get");
+		}
+		pw.flush();
+		pw.close();
+		System.out.println("쿠폰다운됨");
+		
+	}
 	
 }//// class

@@ -267,7 +267,20 @@ END
  SELECT SP_TOTALPRICE FROM SALES_PRICE WHERE ID = '${id}';
  </select>
  
+ <select id="MyCouponByRating" parameterType="pizza.service.impl.CouponDto" resultType="String">
+ SELECT C_NAME FROM SAILE_COUPON SC JOIN RATING_CUPPON RC ON RC.C_NO = SC.C_NO
+ JOIN RATING R ON R.R_NO = RC.R_NO 
+ JOIN CR_JOIN CJ ON CJ.R_NO = RC.R_NO
+ WHERE ID='${id}' 
+ </select>
  
+ <insert id="MyCouponByRatingForDownLoad" parameterType="pizza.service.impl.CouponDto">
+ INSERT INTO MY_CUPON VALUES(SEQ_MC_NO.NEXTVAL,'${id}',SYSDATE,SYSDATE+31,(
+ SELECT SC.C_NO FROM SAILE_COUPON SC JOIN RATING_CUPPON RC ON RC.C_NO = SC.C_NO
+ JOIN RATING R ON R.R_NO = RC.R_NO
+ JOIN CR_JOIN CJ ON CJ.R_NO = RC.R_NO
+ WHERE ID='${id}'))
+ </insert>
  
  <!--  미나 -->
  

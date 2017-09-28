@@ -223,7 +223,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 					<li>
 						<p class="grade_title"><em>${NAME}</em> <strong>님</strong>께서 받으실 수 있는<br> 스페셜한 혜택은?</p>
 						<ul class="ico_benefit_list">
-							<li class="pizza">배달주문 20% 할인쿠폰 2매</li>
+							<li class="pizza">${MyRatingCoupon}</li>
 							</ul>
 						<div class="btn_wrap">
 							<div class="btn_fix_rgt">
@@ -289,37 +289,25 @@ $(document).ready(function(){
 });
 
 var ajaxCupnRequest = null;
+
 //쿠폰 다운로드
 function myCouponDown(){
-	if(ajaxCupnRequest != null) {
-		alert("처리중인 작업이 있습니다. 잠시후에 다시 시도해 주세요.");
-		return;
-	}
 	
 	$.ajax({
 		type: "POST",
-		url: "/mypage/myCouponDownAjax",
-		dataType : "json",
-		success:function(data) {
-			if(data.msg == "SUCCESS"){
-				alert("쿠폰이 발급되었습니다. 나의 정보 > 쿠폰 페이지에서 확인 가능합니다.");
-			}else {
-				alert("당월 쿠폰을 이미 받으셨습니다. 나의 정보 > 쿠폰 페이지에서 확인해주시기 바랍니다.");
-			}
-		},
-		error: function (error){
-			alert("다시 시도해주세요.");
-		},
-		beforeSend: function() {
-			ajaxCupnRequest = "Y";
-			$("#defaultLoading").show();
-	    },
-	    complete: function() {
-	    	ajaxCupnRequest = null;
-	    	$("#defaultLoading").hide();
-	    }
+		url: "<c:url value='/User/CouponDownLoad.pz'/>",
+		data : "id",
+				success:function(data) {
+					if(data == "Get"){
+						alert("당월 쿠폰을 이미 받으셨습니다. 나의 정보 > 쿠폰 페이지에서 확인해주시기 바랍니다.");
+					}
+					else{
+						alert("쿠폰이 발급되었습니다. 나의 정보 > 쿠폰 페이지에서 확인 가능합니다.");
+					}
+				}	
 	});
-}
+	
+}//myCouponDown()
 </script>
 <!-- 로딩 이미지 -->
 		<div class="loading" id="defaultLoading" style="display:none;">
