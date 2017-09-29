@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+
 <mapper namespace="mybatis.mybatis">
 	<resultMap id="PizzaMenuListResult" type="PizzaMenuList">
 	    <result property="p_name" column="p_name"/>

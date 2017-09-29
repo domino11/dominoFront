@@ -12,6 +12,7 @@ public class UserDto {
 	private String post;
 	private String birth;
 	
+	
 	//메인페이지 등급 및 쿠폰용
 	private String r_name;
 	private String coupon;

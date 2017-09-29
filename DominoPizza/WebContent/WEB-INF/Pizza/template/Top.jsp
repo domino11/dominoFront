@@ -5,7 +5,6 @@
 	<!-- wrap  -->
 
 
-
 		<!-- header -->
 		<div id="header" style="background-color: white" >
 				<div class="logo_area">

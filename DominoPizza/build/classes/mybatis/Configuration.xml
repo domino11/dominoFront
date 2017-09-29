@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
      2]매퍼파일의 위치정보 설정
  -->
  
+ 
 <configuration>
 
    <!--마이바티스에서 사용할 .properties(리소스파일) 설정 -->

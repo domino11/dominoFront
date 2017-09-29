@@ -42,6 +42,7 @@ public class UserController {
 	@Resource(name="userServiceImpl")
 	private UserServiceImpl service;
 	
+	
 	@Resource(name="service")
 	private ServiceImpl service2;
 	   
