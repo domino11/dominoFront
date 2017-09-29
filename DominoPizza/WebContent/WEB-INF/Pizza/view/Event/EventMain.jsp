@@ -161,8 +161,9 @@ $(document).ready(function() {
 								    box-shadow: 1px 2px 3px rgba(69,52,27,0.56);">
 							<div class="event_card" id="${pageNo }_${eventmain.e_no}">
 								<div class="img_box">
-									<img src="https://cdn.dominos.co.kr/admin/upload/event/20170831_1OkQ02WS.jpg" alt="현대카드ZERO/M Edition2 신규발급시 피자할인쿠폰 증정!">
+									<img src="<c:url value='/Pizza/Image/event/${eventmain.e_timg}' />" alt="${eventmain.e_title }">
 								</div> 
+								
 								<!-- //img_box -->
 								<div class="card_content" style="padding: 20px ">
 									<div class="title" style="font-weight: 500; margin-bottom: 5px; font-size: 20px">${eventmain.e_title }</div>
