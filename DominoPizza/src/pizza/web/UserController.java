@@ -88,7 +88,7 @@ public class UserController {
 	      UserDto udto = new UserDto();
 	      map.put("id", id);
 	      udto = service2.callUser(map);
-	      
+
 	      // 유저의 구매횟수 및 다음등급 필요조건
 	      TargetDTO dto2 = service2.getsalescount(map);
 	      req.setAttribute("count", dto2.getCount());
@@ -230,6 +230,7 @@ public class UserController {
 			req.setAttribute("WHERE","EXIST");
 			req.setAttribute("SUC_FAIL",check);
 			service.insert(dto);
+			service.crjoin(dto);
 			return "/WEB-INF/Pizza/view/User/Message.jsp";
 		}
 		

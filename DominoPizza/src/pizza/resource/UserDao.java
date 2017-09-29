@@ -103,6 +103,11 @@ public class UserDao implements UserService {
 		return template.selectList("mybatisgetrcoupon",dto);
 	}
 
+	public void crjoin(UserDto dto) {
+		template.insert("mybatiscrjoin",dto);
+		
+	}
+
 	
 	
 	

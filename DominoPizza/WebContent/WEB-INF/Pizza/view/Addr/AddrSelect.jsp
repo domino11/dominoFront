@@ -439,7 +439,7 @@ var addBranchComplete = function(param) {
 								</label>
 							</span>
 						</div>
-						<div class="form_field">
+				<!-- 		<div class="form_field">
 							<span class="custom_form">
 								<input type="radio" id="way_rdo2" name="order_gubun_radio" value="W"   onchange="selectOG();">
 								<label for="way_rdo2" class="ip_rdo2 ">
@@ -454,7 +454,8 @@ var addBranchComplete = function(param) {
 									<em></em><span>선물하기</span>
 								</label>
 							</span>
-						</div>
+						</div> -->
+						
 					</div>
 				</div>
 				<!-- // 주문방법 -->

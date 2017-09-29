@@ -88,8 +88,10 @@
 <script>
 
 $(function(){
-   
-   
+   	
+		<c:if test="${!empty ratingUp}" >
+   		alert("감사합니다 고객님! 고객님의 등급이 ${ratingUp} 이 되었습니다.");
+		</c:if>
    
       var a= function(){
          $(".test").fade

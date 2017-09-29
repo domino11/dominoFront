@@ -13,7 +13,7 @@
 						<a href="javascript:;" class="btn_ico btn_menu">GNB</a>
 						<ul class="util_menu">
 							<li style=""><a href="<c:url value='/User/Mypage_coupon.pz' />">쿠폰 <span id="gnbCoupon"></span></a></li>
-							<li><a href="/mypage/myOrderList">주문조회 <span id="gnbOrderCnt"></span></a></li>
+							<li><a href="<c:url value='/User/Mypage_OrderHistory.pz' />">주문조회 <span id="gnbOrderCnt"></span></a></li>
 						</ul>
 					</div>
 					<h1 class="logo"><a href="<c:url value='/Pizza/MainPage.pz' />"><img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/logo.png" alt="Domino"></a></h1>

@@ -240,6 +240,14 @@ END
 		UPDATE CR_JOIN SET R_NO=#{r_no}, R_NAME=#{r_name}
 		</update>	
 	
+		<insert id="mybatiscrjoin" parameterType="pizza.service.impl.UserDto"  >
+		INSERT INTO CR_JOIN VALUES
+		(#{id},
+		(SELECT MIN(R_NO) FROM RATING),
+		(SELECT R_NAME FROM RATING WHERE R_NO=(SELECT MIN(R_NO) FROM RATING))
+		)
+		</insert>
+	
  <!--  어진 끝 -->
  
   <!--  동준 -->

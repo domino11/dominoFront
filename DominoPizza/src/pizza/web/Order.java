@@ -485,8 +485,9 @@ public class Order {
 	   map.put("r_name", dto2.getR_name());
 	   
 	   if(tar-cnt<=0) {
+		   //등급 업
 		   service.nextRatingUpd(map);
-		   
+		   req.setAttribute("ratingUp", map.get("r_name"));
 	   }
 	   
 	   

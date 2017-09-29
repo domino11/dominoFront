@@ -97,6 +97,10 @@ public class UserServiceImpl implements UserService {
 		return dao.getrcoupon(dto);
 	}
 
+	public void crjoin(UserDto dto) {
+		dao.crjoin(dto);
+	}
+
 	
 
 	
