@@ -267,7 +267,7 @@ $(document).ready(function() {
 			addBasketComplete(choicePizza, qtyVal, choiceToppingsize_no);
 		</c:if>
 	};
-	 
+
 	var addBasketComplete = function(choicePizza, qtyVal, choiceToppingsize_no) {
 		//var no = ;
 		var name = $("#pizza_select1").val() +"/"+ $("#pizza_select2").val();
