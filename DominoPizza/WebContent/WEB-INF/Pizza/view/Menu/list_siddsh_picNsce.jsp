@@ -363,21 +363,27 @@ var chocolatChk = function() {
 							<c:if test="${empty DE_ADDR }" var="idc" >
 							location.href="<c:url value='/AddrSelect.pz' />";
 							</c:if>
-							location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=5";
+							//로딩이미지 추가 
+							window.setTimeout( function() {
+								$(".loading").css("display","none");
+								location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=5";
+							}, 800); 
+							$(".loading").css("display","block");
+							//location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=5";
 							</c:if>
 						}
 			function pbasket(ids){
 				var spn = document.getElementById(ids+"_pqty");
 				var qty = parseInt(spn.value);
 				<c:if test="${empty ID }" var="idc" >
-				alert("로그인 후 이용가능합니다.");
-				location.href="<c:url value='/User/Login.pz' />";
+					alert("로그인 후 이용가능합니다.");
+					location.href="<c:url value='/User/Login.pz' />";
 				</c:if>
 				<c:if test="${!idc}" >
-				<c:if test="${empty DE_ADDR }" var="idc" >
-				location.href="<c:url value='/AddrSelect.pz' />";
-				</c:if>
-				location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=4";
+					<c:if test="${empty DE_ADDR }" var="idc" >
+					location.href="<c:url value='/AddrSelect.pz' />";
+					</c:if>
+					location.href="<c:url value='/DrinkPncBuy.pz'/>?size=&no="+ids+"&qty="+qty+"&kind=4";
 				</c:if>
 			}
 			
@@ -428,9 +434,10 @@ var chocolatChk = function() {
     _TRK_CP = "/메뉴/사이드디시/"+goods_ctgr_nm;	// 카테고리명 전달
 </script>
 <!-- // LOGGER 환경변수 설정 -->
+
 <!-- 로딩 이미지 -->
 		<div class="loading" id="defaultLoading" style="display:none;">
-			<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif" alt="loading">
+			<img src="<c:url value='/Pizza/Image/loading.gif'/>" alt="loading">
 			<div class="dim"></div>
 		</div>
 		<!-- // 로딩 이미지 -->

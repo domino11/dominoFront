@@ -259,7 +259,13 @@ var chocolatChk = function() {
                         <c:if test="${empty DE_ADDR }" var="idc" >
                            location.href="<c:url value='/AddrSelect.pz'/>";
                         </c:if>
-                        location.href="<c:url value='/DrinkPncBuy.pz'/>?size= &no="+ids+"&qty="+qty+"&kind=3";
+						//로딩이미지 추가 
+						window.setTimeout( function() {
+							$(".loading").css("display","none");
+							location.href="<c:url value='/DrinkPncBuy.pz'/>?size= &no="+ids+"&qty="+qty+"&kind=3";
+						}, 800); 
+						$(".loading").css("display","block");
+                        //location.href="<c:url value='/DrinkPncBuy.pz'/>?size= &no="+ids+"&qty="+qty+"&kind=3";
                      </c:if>
                   }   
                
@@ -306,13 +312,13 @@ var chocolatChk = function() {
     _TRK_CP = "/메뉴/사이드디시/"+goods_ctgr_nm;   // 카테고리명 전달
 </script>
    <!-- // LOGGER 환경변수 설정 -->
-   <!-- 로딩 이미지 -->
-   <div class="loading" id="defaultLoading" style="display: none;">
-      <img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif"
-         alt="loading">
-      <div class="dim"></div>
-   </div>
-   <!-- // 로딩 이미지 -->
+
+<!-- 로딩 이미지 -->
+		<div class="loading" id="defaultLoading" style="display:none;">
+			<img src="<c:url value='/Pizza/Image/loading.gif'/>" alt="loading">
+			<div class="dim"></div>
+		</div>
+		<!-- // 로딩 이미지 -->
 
    <!-- 장바구니 담기 토스트 팝업(s) -->
    <div class="pop_toast" id="card_add">

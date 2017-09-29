@@ -505,7 +505,13 @@ function share(optn) {
 						img = img.replace("&","%26");
 						var price = priceDom.innerHTML;
 						var qty = qtyDom.value;
-						location.href="<c:url value='/AddrSelect.pz' />?size=&kind=2&na="+na+"&price="+price+"&img="+img+"&no=${dto.s_no}&qty="+qty;					
+						//로딩이미지 추가 
+						window.setTimeout( function() {
+							$(".loading").css("display","none");
+							location.href="<c:url value='/AddrSelect.pz' />?size=&kind=2&na="+na+"&price="+price+"&img="+img+"&no=${dto.s_no}&qty="+qty;
+						}, 800); 
+						$(".loading").css("display","block");
+						//location.href="<c:url value='/AddrSelect.pz' />?size=&kind=2&na="+na+"&price="+price+"&img="+img+"&no=${dto.s_no}&qty="+qty;					
 						
 						</c:if>
 					}
@@ -654,9 +660,10 @@ function share(optn) {
 </script>
 <!-- // LOGGER 환경변수 설정 -->
 
+
 <!-- 로딩 이미지 -->
 		<div class="loading" id="defaultLoading" style="display:none;">
-			<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif" alt="loading">
+			<img src="<c:url value='/Pizza/Image/loading.gif'/>" alt="loading">
 			<div class="dim"></div>
 		</div>
 		<!-- // 로딩 이미지 -->

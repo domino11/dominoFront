@@ -702,7 +702,13 @@ function share(optn) {
 						var qty = qtyDom.value;
 						var ts_no = document.getElementById('toppingSize_no');
 						var tsno = ts_no.value;
-						location.href="<c:url value='/AddrSelect.pz' />?kind=1&na=${dto.p_name}&no=${dto.p_no}&size="+size+"&dough="+dough+"&price="+price+"&img=${dto.p_img}&namez="+"&qty="+qty+"&topping="+tsno+"&doughno="+doughno;
+						//로딩이미지 추가 
+						window.setTimeout( function() {
+							$(".loading").css("display","none");
+							location.href="<c:url value='/AddrSelect.pz' />?kind=1&na=${dto.p_name}&no=${dto.p_no}&size="+size+"&dough="+dough+"&price="+price+"&img=${dto.p_img}&namez="+"&qty="+qty+"&topping="+tsno+"&doughno="+doughno;
+						}, 800); 
+						$(".loading").css("display","block");
+						//location.href="<c:url value='/AddrSelect.pz' />?kind=1&na=${dto.p_name}&no=${dto.p_no}&size="+size+"&dough="+dough+"&price="+price+"&img=${dto.p_img}&namez="+"&qty="+qty+"&topping="+tsno+"&doughno="+doughno;
 						</c:if>
 					}
 			</script>
@@ -897,7 +903,7 @@ function share(optn) {
 
 <!-- 로딩 이미지 -->
 		<div class="loading" id="defaultLoading" style="display:none;">
-			<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif" alt="loading">
+			<img src="<c:url value='/Pizza/Image/loading.gif'/>" alt="loading">
 			<div class="dim"></div>
 		</div>
 		<!-- // 로딩 이미지 -->

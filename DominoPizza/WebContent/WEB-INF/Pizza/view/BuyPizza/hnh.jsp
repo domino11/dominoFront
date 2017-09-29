@@ -724,7 +724,7 @@ var closeLayer = function() {
 
 <!-- 로딩 이미지 -->
 		<div class="loading" id="defaultLoading" style="display:none;">
-			<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif" alt="loading">
+			<img src="<c:url value='/Pizza/Image/loading.gif'/>" alt="loading">
 			<div class="dim"></div>
 		</div>
 		<!-- // 로딩 이미지 -->
