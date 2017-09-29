@@ -13,4 +13,5 @@ public interface BranchService {
 	int insert(BranchDTO dto);
 	int update(BranchDTO dto);
 	int delete(BranchDTO dto);
+	int count(Map map);
 }

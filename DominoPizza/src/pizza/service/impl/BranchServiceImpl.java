@@ -47,6 +47,11 @@ public class BranchServiceImpl implements BranchService{
 		return dao.delete(dto);
 	}
 
+	@Override
+	public int count(Map map) {
+		return dao.count(map);
+	}
+
 
 
 

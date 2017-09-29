@@ -47,6 +47,11 @@ public class BranchDAO implements BranchService{
 		return 0;
 	}
 
+	@Override
+	public int count(Map map) {
+		return template.selectOne("count", map);
+	}
+
 
 
 	

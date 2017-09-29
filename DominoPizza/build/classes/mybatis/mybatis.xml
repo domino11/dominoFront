@@ -446,19 +446,26 @@ END
 
 <!-- 매장찾기 전체 -->
 <select id="branch" parameterType="java.util.Map" resultType="BranchDTO">
-	SELECT * FROM STORES 
+	SELECT * FROM STORES ${where}  
 </select>
-
-<!-- 매장정보 -->
-<!-- <select id="branchShow" parameterType="java.util.Map" resultType="BranchDTO">
-	SELECT * FROM STORES WHERE ST_NO = '${st_no}'
-</select>
- -->
 
 <!-- 같은 '구/군'에 위치한 매장 출력용 -->
 <select id="shoplist" resultType="BranchDTO" parameterType="String">
-	SELECT * FROM STORES WHERE ST_ADDR LIKE '%${sido2}%'
+	SELECT * FROM STORES WHERE ST_ADDR LIKE '%${#sido1}%' AND ST_ADDR LIKE '%${#sido2}%' OR ST_NAME LIKE '%${#sido3}%' 
 </select>
+
+<!-- 같은 '구/군'에 위치한 매장 갯수 출력용 -->
+<select id="count" resultType="int" parameterType="java.util.Map">
+	SELECT COUNT(*) FROM STORES 
+</select>
+
+<!-- user와 가까운 매장 찾기 -->
+<select id="nearStore" resultType="BranchDTO" parameterType="java.util.Map">
+	 select s.* , sqrt(power(ABS(st_xpos-${wido})*100000,2)+power(ABS(st_ypos-${gndo})*100000,2)) st from stores s 
+	 where sqrt(power(ABS(st_xpos-${wido})*100000,2)+power(ABS(st_ypos-${gndo})*100000,2)) <![CDATA[ < ]]> 1200 
+	 and rownum=1 order by st
+</select>
+
 
  
  

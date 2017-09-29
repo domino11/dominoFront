@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
 	<meta charset="euc-kr">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>µµ¹Ì³ëÇÇÀÚ</title>
+	<title>ë„ë¯¸ë…¸í”¼ì</title>
 	<meta name="viewport" id="viewport" content="width=1119px, user-scalable=yes">
 	<meta http-equiv='cache-control' content='no-cache'>
 	<meta http-equiv='expires' content='0'>
@@ -14,14 +14,13 @@
 	<link rel="shortcut icon" href="https://cdn.dominos.co.kr/renewal2016/ko/w/img/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/Pizza/css/font.css' />">
 	
-	<!-- Style - ¸ğµç ¿¹Á¦ °øÅë »ç¿ëÇÏ´Â css-->
+	<!-- Style - ëª¨ë“  ì˜ˆì œ ê³µí†µ ì‚¬ìš©í•˜ëŠ” css-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/Pizza/css/style.css'/>" />
-	<!--  basic ¿ë css -->
-	
+	<!--  basic ìš© css -->
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value='https://cdn.dominos.co.kr/renewal2016/ko/w/css/layout.css' />">
 	
-	<!--  º£³Ê¿ë -->
+	<!--  ë² ë„ˆìš© -->
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="<c:url value='/Pizza/js/jquery.jcarousel.min.js'/>"></script>
 	
@@ -29,10 +28,12 @@
 	<script type="text/javascript" src="<c:url value='/Pizza/js/jcarousel.connected-carousels.js' /> "></script>
 	
 	
+	
+	
 	<script type="text/javascript" src="<c:url value='/Pizza/js/jquery1.11.1.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/Pizza/js/ui.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/Pizza/js/jquery.flexslider.js' />"></script>
-	<script type="text/javascript" src="<c:url value='/Pizza/js/selectbox.js' />"></script><!-- js ¼öÁ¤ÇÔ. -->
+	<script type="text/javascript" src="<c:url value='/Pizza/js/selectbox.js' />"></script><!-- js ìˆ˜ì •í•¨. -->
 	<script type="text/javascript" src="<c:url value='/Pizza/js/d2CommonUtil.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/Pizza/js/Cookie.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/Pizza/js/basket_w.js' />"></script>
@@ -40,36 +41,154 @@
 	var CON_DOMAIN_URL = "http://web.dominos.co.kr";
 	var CON_SSL_URL = "https://web.dominos.co.kr";
 	var CON_STATIC_URL = "https://cdn.dominos.co.kr/renewal2016/ko/w";
-
+	var store_no;
 	$(document).ready(function() {
-		$.ajaxSetup({cache:false});
-
-		setBasketCnt();
 		
-		//$('.sido2').val() == '±İÃµ±¸';
+		$.ajaxSetup({cache:false});
+		setBasketCnt();
 		$('.sido2').hide();
 		$('#region_code_01').show();
-		
-		// ¸¶ÀÌÄíÆù Á¤º¸ Á¶È¸(°¡ÀÔÈ¸¿ø)
-		
+		//alert('${sido1}');
 
-		// ÁÖ¹®&ÁÖ¹®Æ®·¹Ä¿ Á¶È¸(°¡ÀÔÈ¸¿ø/ÀÎÁõÈ¸¿ø)
+		//$(':select option[value=${gugun}]').attr('selected','selected');
+		//$(':select option[value=${sido}]').attr('selected','selected');
 		
+	    <c:if test="${sido1 !=null}">
+	    //alert("ì—¬ê¸°ë¡œ ë“¤ì–´ì˜¤ë‚˜:${sido1}");
+	    $('#region_code_01').hide();
+	    $('#region_code_${sido1}').show();
+	    
+	    </c:if>
+		// ë§ˆì´ì¿ í° ì •ë³´ ì¡°íšŒ(ê°€ì…íšŒì›)
+		// ì£¼ë¬¸&ì£¼ë¬¸íŠ¸ë ˆì»¤ ì¡°íšŒ(ê°€ì…íšŒì›/ì¸ì¦íšŒì›)
 	});
+	
+	
+	
+	// ê°€ê¹Œìš´ ë§¤ì¥ ì°¾ê¸°
+	function getLocation() {
 
-	//½Ã/µµ¿¡ µû¶ó ¼¿·ºÆ® ¹Ú½º¿¡ ±¸/±º ¸ñ·Ï ³ëÃâ
+		
+		if (navigator.geolocation) { // GPSë¥¼ ì§€ì›í•˜ë©´
+			navigator.geolocation.getCurrentPosition(function(position) {
+			var wido = position.coords.latitude;
+			var gndo = position.coords.longitude;
+			//alert(position.coords.latitude + ' ' + position.coords.longitude);
+			//alert(wido + ' ' + gndo);
+			alert('ìœ„ì¹˜ì°¨ì´ê°€ ë‹¤ì†Œ ìˆì„ìˆ˜ë„ ìˆìŠµë‹ˆë‹¤.');
+			location.href='<c:url value="/branch.pz?"/>xpos='+wido+'&ypos='+gndo+'&slist=1';
+			
+			
+		}, function(error) {
+			console.error(error);
+		}, {
+			enableHighAccuracy: false,
+			maximumAge: 0,
+			timeout: Infinity
+		});
+		} else {
+			alert('GPSë¥¼ ì§€ì›í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤');
+		}
+		
+	}
+	
+	// ë§¤ì¥ ìƒì„¸ë³´ê¸°
+	function showDetail(no){
+		
+
+		$('.detdiv').hide();
+		$('#de'+no).show();
+
+		$('#storeview_detail').addClass('open');
+		
+		location.href= '#storeview_detail';
+	}
+	// ë§¤ì¥ê²€ìƒ‰
+	function findStore() {
+		pageNo = 1;
+		
+		var paramArr = [];
+		paramArr[0] = 'pageNo=' + pageNo;
+	
+		var sido1 = $('.sido1 option:selected').val();
+		
+	
+		
+		
+//		alert($('.sido2 option[value='+sido2+']').html());
+			//var gugun = $('.sido2 option:selected').html();
+		var sido = $('#region_code_1 option:selected').val();
+		var si = $('#region_code_1 option:selected').text();
+		var sido2 = $('#region_code_'+sido+' option:selected').val();
+		var gugun = $('#region_code_'+sido+' option:selected').text();
+		
+		
+		//alert(si+"++"+gugun);
+		//location.href = "<c:url value='/branch.pz' />?si="+si+"&gugun="+gugun+"&sido1="+sido1+"&sido2="+sido2;
+		location.href = "<c:url value='/branch.pz' />?si="+si+"&gugun="+gugun;
+		
+	}
+	
+	// ë§¤ì¥ ì´ë¦„ìœ¼ë¡œ ê²€ìƒ‰
+	function findStoreName(){
+		pageNo = 1;
+		
+		var paramArr = [];
+		paramArr[0] = 'pageNo=' + pageNo;
+		
+		var sido3 = $('.sido3').val();
+		var nameSearch = $('#store_name').val();
+		//alert(sido3+":"+nameSearch);
+		
+		location.href = "<c:url value='/branch.pz' />?nameSearch="+nameSearch;
+		
+	}
+		/* $('#region_code_1').val(si);
+		$('#region_code_'+sido+' option:selected').val(gugun); */
+		
+ 		/* if(optn == 'address'){
+			if($('#region_code_1').val() == '00'){
+				alert('ì‹œ/ë„ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.');
+				return false;
+			}else if($('#region_code_'+sido).val() == ''){
+				alert('êµ¬/êµ°ì„ ì„ íƒí•´ì£¼ì„¸ìš”.');
+				return false;
+			}
+			paramArr[1] = 'region_code_'+$('.sido1 option:selected').val()+'=' + $('#region_code_'+sido).val();
+			alert(paramArr[1]);
+		
+		}
+		else if(optn == 'name'){
+			if($('#name').val().length == 0){
+				alert('ë§¤ì¥ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.');
+				return false;
+			}
+			paramArr[1] = 'name=' + encodeURIComponent(encodeURIComponent($('#name').val()));
+		}else {
+			return false;
+		}
+			// location.href="/branch.pz?sido1="+sido1+"&sido2="+sido2;
+			//location.href="/branch.pz";
+			appendBranch(paramArr);
+			return true;
+			 */
+		
+		
+
+	
+	
+	//ì‹œ/ë„ì— ë”°ë¼ ì…€ë ‰íŠ¸ ë°•ìŠ¤ì— êµ¬/êµ° ëª©ë¡ ë…¸ì¶œ
 	function getRegion() {
 		var sido = $('#region_code_1 option:selected').val();
+		
 		$('.sido2').hide();
 		$('#region_code_'+sido).show();
 	}
-	
 	
 	function setBasketCnt() {
 		var basketCnt = cookieManager.getCookie("BASKETCNT");
 		var basket = cookieManager.getCookie("BASKET");
 		var finish_basket = cookieManager.getCookie("FINISH_BASKET");
-
 		if(basketCnt == "") basketCnt = "0";
 		else if(basket != "" && basket == finish_basket) basketCnt = "0";
 		if(basketCnt != "0")
@@ -89,34 +208,100 @@
 		location.href="/mypage/myOrderView?order_no="+order_no+"&pageNo=1"
 	};
 	
-	//ÆäÀÌÄÚ È¸¿ø °¡ÀÔ
+	//í˜ì´ì½” íšŒì› ê°€ì…
 	function goLoginPop() 
 	{
 		if(location.pathname !== '/global/login')
 			location.href = '/global/login';
 	}
 	
-	var shopsido = $('#sido2').text(st_addr);
 	
 </script>
-<!-- Naver Anlytics °øÅë-->
+<!-- Naver Anlytics ê³µí†µ-->
 <script>
 var WCSLOG_URL = location.protocol == "https:" ? "https://wcs.naver.net/wcslog.js" : "http://wcs.naver.net/wcslog.js";
 document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"' %3E%3C/script%3E"));
 </script>
-<!-- // Naver Anlytics °øÅë-->
+<!-- // Naver Anlytics ê³µí†µ-->
 
-<!-- Ä«ÀÌÁ¨ °øÅë-->
+<!-- ì¹´ì´ì   ê³µí†µ-->
 <script data-kz-key="7944084e2b522564"
 data-kz-namespace="kzs"
 src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 </script> 
-<!-- Ä«ÀÌÁ¨ °øÅë-->
+<!-- ì¹´ì´ì   ê³µí†µ-->
+
+<script>
+
+
+
+function navTabs(thisArea) {
+		// ì„œìš¸ ê¸ˆì²œêµ¬ë¡œ ì…€ë ‰íŠ¸ë°•ìŠ¤ ì´ˆê¸°í™” í›„ ê²€ìƒ‰
+		var sido = $('#region_code_1 option:selected').val();
+		var si = $('#region_code_1 option:selected').text();
+		var gugun = $('#region_code_'+sido+' option:selected').text();
+		
+		
+/* 		$('#region_code_1').val('01');
+		getRegion(function() {
+			$('#region_code_'+sido).val('0122');
+			findStore();
+		}); */
+		findStore();
+
+		$('#div_name_srch').hide();
+		$('#div_addr_srch').show();
+
+	$('ul.btn_tab li').removeClass('active');
+	$(thisArea).parent().addClass('active');
+}
+
+
+
+function navname(thisArea){
+	//alert("!!");
+	
+	
+	var nametext = $('#store_name').text();
+	// ë§¤ì¥ëª… ê²€ìƒ‰ì–´ ì´ˆê¸°í™”
+	$('#store_name').val('');
+
+	// ê²€ìƒ‰ íŒŒë¼ë¯¸í„° ì„¤ì •
+
+	// ì„œìš¸ ì¤‘êµ¬ë¥¼ ë””í´íŠ¸ ëª©ë¡ìœ¼ë¡œ ë…¸ì¶œ
+
+	$('#div_addr_srch').hide();
+	$('#div_name_srch').show();
+	
+
+$('ul.btn_tab li').removeClass('active');
+$(thisArea).parent().addClass('active');
+
+
+	
+}
+</script>
+
+
 
 </head>
 <body>
+
+<script>
+$(function(){
+	$("map").mouseenter(function(){
+	$(".mapcontent").parent().parent().css("background","rgba(255,255,255,0)");
+	$(".mapcontent").parent().parent().css("height","1px");
+	$(".mapcontent").parent().parent().css("border","none");
+//	alert($(".mapcontent").parent().parent().css("background"));
+	});
+});
+
+</script>
+
+
 	<!-- top_event_bnr -->
-	<div class="top_bnr top_event" id="lineBanner">
+	<div class="top_bnr top_event"   id="lineBanner">
 		<div class="top_event_wrap">
 			<a href="javascript:;" class="btn_ico btn_event_close" onclick="lineBannerClose(); return false;">close</a>
 		</div>
@@ -139,32 +324,33 @@ var pageNo = 1;
 var largeMap,
 	detailMap;
 	
-/* 	Æ¯º°ÇÒÀÎ
+/* 	íŠ¹ë³„í• ì¸
 window.onload = function() {
-	// Æ¯º° ÇÒÀÎ ·¹ÀÌ¾îÆË¾÷ html »ı¼º
-	// iframe ºÒ·¯¿À´Â µ¥¿¡ ¿À·¡ °É·Á¼­ ½Ã/µµ, ±¸/±º ¼¿·ºÆ® ¹Ú½º ¿É¼Ç °ªÀÌ °ø¹éÀ¸·Î ³ª¿À´Â Çö»ó ¹ß»ıÇÏ¿© onload·Î À§Ä¡ ¿Å±è.
+	// íŠ¹ë³„ í• ì¸ ë ˆì´ì–´íŒì—… html ìƒì„±
+	// iframe ë¶ˆëŸ¬ì˜¤ëŠ” ë°ì— ì˜¤ë˜ ê±¸ë ¤ì„œ ì‹œ/ë„, êµ¬/êµ° ì…€ë ‰íŠ¸ ë°•ìŠ¤ ì˜µì…˜ ê°’ì´ ê³µë°±ìœ¼ë¡œ ë‚˜ì˜¤ëŠ” í˜„ìƒ ë°œìƒí•˜ì—¬ onloadë¡œ ìœ„ì¹˜ ì˜®ê¹€.
 	$('#popup_promotion').html("<iframe src='/branch/lsmLayer' width='100%' height='100%' frameborder='0'></iframe>");
 };
  */
 $(function() {
-	initMaps(st_xpos, st_ypos);	// ÀüÃ¼ ¸ÅÀå Áöµµ Ç¥½Ã
+	initMaps(st_xpos, st_ypos);	// ì „ì²´ ë§¤ì¥ ì§€ë„ í‘œì‹œ
 	/*
-		´Ù¸¥ ÆäÀÌÁö·Î ÀÌµ¿Çß´Ù°¡ µÚ·Î °¡±â·Î ÇØ´ç ÆäÀÌÁö Á¢±Ù ½Ã,
-		½Ã/µµ ±¸ºĞ ¾ø¾î¼­ ¸ÅÀå ¸®½ºÆ® ¸ø ºÒ·¯¿À´Â Çö»ó ¶§¹®¿¡ Ãß°¡
+		ë‹¤ë¥¸ í˜ì´ì§€ë¡œ ì´ë™í–ˆë‹¤ê°€ ë’¤ë¡œ ê°€ê¸°ë¡œ í•´ë‹¹ í˜ì´ì§€ ì ‘ê·¼ ì‹œ,
+		ì‹œ/ë„ êµ¬ë¶„ ì—†ì–´ì„œ ë§¤ì¥ ë¦¬ìŠ¤íŠ¸ ëª» ë¶ˆëŸ¬ì˜¤ëŠ” í˜„ìƒ ë•Œë¬¸ì— ì¶”ê°€
 	*/
 	if($('#region_code_1').val() == ""){
 		$('#region_code_1').val('01');
 		getRegion(function() {
-			$('#region_code_2').val('0122');
-			findBranch('st_addr');	// ÁÖ¼Ò·Î °Ë»öÇÑ ¸ñ·Ï È£Ãâ
+			$('#region_code_01').val('0122');
+			findBranch('address');	// ì£¼ì†Œë¡œ ê²€ìƒ‰í•œ ëª©ë¡ í˜¸ì¶œ
 		});
 	}else{
-		findBranch('st_addr');	// ÁÖ¼Ò·Î °Ë»öÇÑ ¸ñ·Ï È£Ãâ
+		findBranch('address');	// ì£¼ì†Œë¡œ ê²€ìƒ‰í•œ ëª©ë¡ í˜¸ì¶œ
+		
 	}
 
-	$('#st_name').on('keydown', function(key) {
+	$('#name').on('keydown', function(key) {
 		if(key.keyCode == 13) {
-			findBranch('st_name');
+			findBranch('name');
 		}
 	});
 
@@ -172,45 +358,14 @@ $(function() {
 });
 
 
-//¸ÅÀå Ã£±â °Ë»ö ¿µ¿ª ÅÇ º¯°æ
-//@param		optn	ÁÖ¼Ò·Î °Ë»ö(address), ¸ÅÀå¸í °Ë»ö(name) ±¸ºĞ °ª
+//ë§¤ì¥ ì°¾ê¸° ê²€ìƒ‰ ì˜ì—­ íƒ­ ë³€ê²½
+//@param		optn	ì£¼ì†Œë¡œ ê²€ìƒ‰(address), ë§¤ì¥ëª… ê²€ìƒ‰(name) êµ¬ë¶„ ê°’
 //@thisArea
-function navTabs(optn, thisArea) {
-	if (optn == 'st_addr') {
-		// ¼­¿ï ±İÃµ±¸·Î ¼¿·ºÆ®¹Ú½º ÃÊ±âÈ­ ÈÄ °Ë»ö
-		$('#region_code_1').val('01');
-		getRegion(function() {
-			$('#region_code_2').val('0122');
-			findBranch('st_addr');
-		});
 
-		$('#div_name_srch').hide();
-		$('#div_addr_srch').show();
-	} else if (optn == 'st_name') {
-		// ¸ÅÀå¸í °Ë»ö¾î ÃÊ±âÈ­
-		$('#st_name').val('');
-
-		// °Ë»ö ÆÄ¶ó¹ÌÅÍ ¼³Á¤
-		var paramArr = [];
-		paramArr[0] = 'pageNo=' + pageNo;
-		paramArr[1] = 'region_code_2=0122';
-
-		// ¼­¿ï Áß±¸¸¦ µğÆúÆ® ¸ñ·ÏÀ¸·Î ³ëÃâ
-		appendBranch(paramArr);
-
-		$('#div_addr_srch').hide();
-		$('#div_name_srch').show();
-	} else {
-		return;
-	}
-
-	$('ul.btn_tab li').removeClass('active');
-	$(thisArea).parent().addClass('active');
-}
- function getRegion(callbackFunc) {
+/*  function getRegion(callbackFunc) {
  	if ($('#region_code_1').val() == '') return;
  	if ($('#region_code_1').val() == '01'){
-		var htmlStr = '<option value="">±¸/±º</option>'; 
+		var htmlStr = '<option value="">êµ¬/êµ°</option>'; 
 		
  	}
 
@@ -221,7 +376,7 @@ function navTabs(optn, thisArea) {
 		dataType: 'json',
 		success: function(data) {
 			if (data.status == 'success') {
-				var htmlStr = '<option value="">±¸/±º</option>';
+				var htmlStr = '<option value="">êµ¬/êµ°</option>';
 				$.each(data.resultData, function(index, addrObj) {
 					htmlStr += '<option value="'+ addrObj.region_code_2 +'">'+ addrObj.region_sub_nm +'</option>';
 				});
@@ -236,22 +391,23 @@ function navTabs(optn, thisArea) {
 		    }
 		},
 		error: function() {
-			// alert('Ã³¸®µµÁß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');
+			// alert('ì²˜ë¦¬ë„ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');
 		}
 	});  
  
-} 
+}  */
 
-//·¹ÀÌ¾î ÆË¾÷ ¿­±â
-//@param	optn	Æ¯º° ÇÒÀÎ(promotion), ¸ÅÀåÁöµµ ÀüÃ¼º¸±â(detail_map), ¸ÅÀå »ó¼¼º¸±â(detail_view) ±¸ºĞ °ª
-function openLayerPopup(optn) {
-	/*	Æ¯º°ÇÒÀÎX
+
+//ë ˆì´ì–´ íŒì—… ì—´ê¸°
+//@param	optn	íŠ¹ë³„ í• ì¸(promotion), ë§¤ì¥ì§€ë„ ì „ì²´ë³´ê¸°(detail_map), ë§¤ì¥ ìƒì„¸ë³´ê¸°(detail_view) êµ¬ë¶„ ê°’
+/* function openLayerPopup(optn) {
+		
 	 if (optn == 'promotion') {
  		$('html, body').css({'overflow-y': 'hidden', 'height' : '100%'});
 		$('#popup_promotion').addClass('open');
 	} else
 
-		*/ 
+		
 	if (optn == 'detail_map') {
 		if (largeMap.markerList.length == 0) {
 			markAllBranchs();
@@ -260,16 +416,16 @@ function openLayerPopup(optn) {
 		$('#storeview_map').addClass('open');
 		location.href = '#storeview_map';
 
-		// ¸ÅÀå Ã£±â ¸ñ·ÏÀÇ Ã¹¹øÂ° ¸ÅÀåÀ» Áß½ÉÁ¡À¸·Î ÀâÀ½.
-		if ($(map.markerLayer).find('.marker_box').length > 0) {
+		// ë§¤ì¥ ì°¾ê¸° ëª©ë¡ì˜ ì²«ë²ˆì§¸ ë§¤ì¥ì„ ì¤‘ì‹¬ì ìœ¼ë¡œ ì¡ìŒ.
+ 		if ($(map.markerLayer).find('.marker_box').length > 0) {
 			var map_st_xpos = $(map.markerLayer).find('.marker_box').find('.marker_info').data('st_ypos');
 			var map_st_ypos = $(map.markerLayer).find('.marker_box').find('.marker_info').data('st_xpos');
 			largeMap.setCenter(map_st_ypos, map_st_xpos, 13);
 		} else {
 			largeMap.setZoomLevel(13);
 		}
-
-		// Áöµµ°¡ ¿©·¯°³ÀÏ °æ¿ì, addMarker ÈÄ ·¹ÀÌ¾î ÆË¾÷ ¶ç¿ì¸é Áöµµ¿Í ¸¶Ä¿°Ô º¸ÀÌÁö ¾Ê´Â Çö»ó ¹ß»ı. -> ·¹ÀÌ¾î ÆË¾÷ ¶ç¿î ÈÄ¿¡ Áöµµ¿Í ¸¶Ä¿¸¦ ´Ù½Ã ºÒ·¯¿Í¾ß ÇÔ.
+ 
+		// ì§€ë„ê°€ ì—¬ëŸ¬ê°œì¼ ê²½ìš°, addMarker í›„ ë ˆì´ì–´ íŒì—… ë„ìš°ë©´ ì§€ë„ì™€ ë§ˆì»¤ê²Œ ë³´ì´ì§€ ì•ŠëŠ” í˜„ìƒ ë°œìƒ. -> ë ˆì´ì–´ íŒì—… ë„ìš´ í›„ì— ì§€ë„ì™€ ë§ˆì»¤ë¥¼ ë‹¤ì‹œ ë¶ˆëŸ¬ì™€ì•¼ í•¨.
 		largeMap.reloadMarker();
 		largeMap.redrawMap();
 
@@ -277,44 +433,48 @@ function openLayerPopup(optn) {
 		$('#storeview_detail').addClass('open');
 		location.href = '#storeview_detail';
 	}
-}
+} */
 
 function closeLayer() {
  	$('html, body').css('overflow-y', '');
 	$('#popup_promotion').removeClass('open');
 };
 
-//Áöµµ ÃÊ±âÈ­
+//ì§€ë„ ì´ˆê¸°í™”
 function initMaps(param_st_xpos, param_st_ypos) {
-	var mapOptions = {
-		startx : param_st_ypos, // Áöµµ ½ÃÀÛÁÂÇ¥X (°æµµ)
-		starty : param_st_xpos, // Áöµµ ½ÃÀÛÁÂÇ¥Y (À§µµ)
-		startlevel : 14	// Áöµµ ÃàÃ´ ½ÃÀÛ ·¹º§
-	};
- 
-	// ¸ŞÀÎ Áöµµ  (ÀüÃ¼ ¸ÅÀå)
-	map = new gcen.api.maps.Map(document.getElementById("map_canvas"), "https://dmap.gcen.co.kr/dmap201702/tile.png", mapOptions);
-	map.setActionControl("markerclick"); // Áöµµ Á¦¾î¸¦ ¸¶Ä¿Å¬¸¯À» ¹Ù²Ş
-	//map.levelBarShow(); // ·¹º§¹Ù º¸¿©ÁÖ±â -> ·¹º§¹Ù¸¦ »ı¼ºÇÏ¸é id·Î ÀÌº¥Æ®°¡ µ¿ÀÛÇÏ°Ô µÇ¾îÀÖ¾î¼­ 3°³ÀÇ ¸Ê¿¡ ´ëÇØ¼­ Àû¿ëÀÌ ºÒ°¡´ÉÇÔ 
+	 var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 																																		
+	    mapOption = {
+	        center: new daum.maps.LatLng(${centerX}, ${centerY}), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+	        level: ${mapsize}, // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+	        mapTypeId : daum.maps.MapTypeId.ROADMAP // ì§€ë„ì¢…ë¥˜
+	    }; 
+	// ë©”ì¸ ì§€ë„  (ì „ì²´ ë§¤ì¥)
+/* 	map = new gcen.api.maps.Map(document.getElementById("map_canvas"), "https://dmap.gcen.co.kr/dmap201702/tile.png", mapOptions);
+	map.setActionControl("markerclick"); // ì§€ë„ ì œì–´ë¥¼ ë§ˆì»¤í´ë¦­ì„ ë°”ê¿ˆ */
+	//map.levelBarShow(); // ë ˆë²¨ë°” ë³´ì—¬ì£¼ê¸° -> ë ˆë²¨ë°”ë¥¼ ìƒì„±í•˜ë©´ idë¡œ ì´ë²¤íŠ¸ê°€ ë™ì‘í•˜ê²Œ ë˜ì–´ìˆì–´ì„œ 3ê°œì˜ ë§µì— ëŒ€í•´ì„œ ì ìš©ì´ ë¶ˆê°€ëŠ¥í•¨ 
 
-	// È®´ëº¸±â Áöµµ (ÀüÃ¼ ¸ÅÀå)
+	// í™•ëŒ€ë³´ê¸° ì§€ë„ (ì „ì²´ ë§¤ì¥)
 	largeMap = new gcen.api.maps.Map(document.getElementById("map_large_canvas"), "https://dmap.gcen.co.kr/dmap201702/tile.png", mapOptions);
-	largeMap.setActionControl("markerclick"); // Áöµµ Á¦¾î¸¦ ¸¶Ä¿Å¬¸¯À» ¹Ù²Ş
+	largeMap.setActionControl("markerclick"); // ì§€ë„ ì œì–´ë¥¼ ë§ˆì»¤í´ë¦­ì„ ë°”ê¿ˆ
 	//largeMap.levelBarShow();
 
-	// »ó¼¼º¸±â Áöµµ (¸ÅÀå 1°³¿¡ ´ëÇÑ Áöµµ Ç¥½Ã)
-	detailMap = new gcen.api.maps.Map(document.getElementById("map_detail_canvas"), "https://dmap.gcen.co.kr/dmap201702/tile.png", mapOptions);
-	detailMap.setActionControl("markerclick"); // Áöµµ Á¦¾î¸¦ ¸¶Ä¿Å¬¸¯À» ¹Ù²Ş
+	// ìƒì„¸ë³´ê¸° ì§€ë„ (ë§¤ì¥ 1ê°œì— ëŒ€í•œ ì§€ë„ í‘œì‹œ)
+	/* detailMap = new gcen.api.maps.Map(document.getElementById("map_detail_canvas"), "https://dmap.gcen.co.kr/dmap201702/tile.png", mapOptions); */
+	detailMap = new daum.maps.Map(document.getElementById("map_detail_canvas"), "//dapi.kakao.com/v2/maps/sdk.js?appkey=d2da6f30f4df7d35993f892c831fc0ee", mapOptions);
+	detailMap.setActionControl("markerclick"); // ì§€ë„ ì œì–´ë¥¼ ë§ˆì»¤í´ë¦­ì„ ë°”ê¿ˆ
 	//detailMap.levelBarShow();
 }
 
+
+
+
 /*
- Æ¯º°ÇÒÀÎX
+ íŠ¹ë³„í• ì¸X
  
- Æ¯º°ÇÒÀÎ ÁøÇà ¸ÅÀå Ã£±â.
+ íŠ¹ë³„í• ì¸ ì§„í–‰ ë§¤ì¥ ì°¾ê¸°.
 function schAllPrmt() {
 	$('#region_code_1, #region_code_2, #branch_name').val('');
-	$('#schPrmt').addClass('active');	// Æ¯º° ÇÁ·Î¸ğ¼Ç
+	$('#schPrmt').addClass('active');	// íŠ¹ë³„ í”„ë¡œëª¨ì…˜
 
 	var paramArr = [];
 	paramArr[0] = 'pageNo=1';
@@ -322,11 +482,11 @@ function schAllPrmt() {
 	appendBranch(paramArr);
 }
 
-// Æ¯º° ÇÁ·Î¸ğ¼Ç on/off ¹öÆ° Åä±Û ¹× °Ë»ö
+// íŠ¹ë³„ í”„ë¡œëª¨ì…˜ on/off ë²„íŠ¼ í† ê¸€ ë° ê²€ìƒ‰
 function toggleSpclPrmtn(thisArea) {
 	$(thisArea).toggleClass('active');
 
-	// °Ë»ö¾î°¡ ¿Ã¹Ù¸£Áö ¾ÊÀ» °æ¿ì, Æ¯º° ÇÁ·Î¸ğ¼Ç °Ë»ö ±â´É µ¿ÀÛ ¾ÈÇÔ
+	// ê²€ìƒ‰ì–´ê°€ ì˜¬ë°”ë¥´ì§€ ì•Šì„ ê²½ìš°, íŠ¹ë³„ í”„ë¡œëª¨ì…˜ ê²€ìƒ‰ ê¸°ëŠ¥ ë™ì‘ ì•ˆí•¨
 	var schGubun = $('ul.btn_tab > li.active').data('val');
 	var result = findBranch(schGubun);
 	if (!result) {
@@ -334,56 +494,56 @@ function toggleSpclPrmtn(thisArea) {
 	}
 } */
 
-//Áöµµ °´Ã¼¿¡ ¸¶Ä¿ À§Ä¡ ¼³Á¤ÇÏ±â.
-//@param mapObj			¸¶Ä¿ Ãß°¡ÇÒ Áöµµ °´Ã¼
-//@param branchObj		¸ÅÀå »ó¼¼ Á¤º¸
-//@param detailBtnYn	»ó¼¼º¸±â ¹öÆ° ³ëÃâ À¯¹«
-function addMarker(mapObj, branchObj, detailBtnYn) {
-/*	ÇÒÀÎ X
+//ì§€ë„ ê°ì²´ì— ë§ˆì»¤ ìœ„ì¹˜ ì„¤ì •í•˜ê¸°.
+//@param mapObj			ë§ˆì»¤ ì¶”ê°€í•  ì§€ë„ ê°ì²´
+//@param branchObj		ë§¤ì¥ ìƒì„¸ ì •ë³´
+//@param detailBtnYn	ìƒì„¸ë³´ê¸° ë²„íŠ¼ ë…¸ì¶œ ìœ ë¬´
+/* function addMarker(mapObj, branchObj, detailBtnYn) {
+	í• ì¸ X
 	var onSale = branchObj.wrapp_sales;
 	var offSale = (!!!branchObj.off_wrapp_sale) ? onSale : branchObj.off_wrapp_sale;
- */
-	// ¸¶Ä¿ Á¤º¸Ã¢ ¼³Á¤
+ 
+	// ë§ˆì»¤ ì •ë³´ì°½ ì„¤ì •
 	var infoDiv = '<c:forEach items="${shoplist }" var="shoplist" varStatus="loop">';
-	infoDiv += '<div class="marker_info" data-gmapx="'+${shoplist.st_xpos}+'" data-gmapy="'+${shoplist.st_ypos}+'" style="display: none;">';
+	infoDiv += '<div class="marker_info" data-gmapx="'+st_xpos+'" data-gmapy="'+st_ypos+'" style="display: none;">';
 	infoDiv += '<strong>' + ${shoplist.st_name} + '</strong>'
-			/* ¹æ¹®Æ÷ÀåÇÒÀÎ X
+		
 			+'<div>'
 			+'	<ul>'
-			+'		<li>¿Â¶óÀÎ ¹æ¹®Æ÷Àå '+ onSale +'%</li>'
-			+'		<li>¿ÀÇÁ¶óÀÎ ¹æ¹®Æ÷Àå '+ offSale +'%</li>'
+			+'		<li>ì˜¨ë¼ì¸ ë°©ë¬¸í¬ì¥ '+ onSale +'%</li>'
+			+'		<li>ì˜¤í”„ë¼ì¸ ë°©ë¬¸í¬ì¥ '+ offSale +'%</li>'
 			+'	</ul>'
 			+'</div>';
-			 */
+			 
 	if (detailBtnYn) {
 		infoDiv += '<div class="btn_wrap">'
 		+'	<div class="btn_fix_rgt">'
-		+'		<a href="javascript:openDetailPop(\'' + ${shoplist.st_no} + '\');" class="btn"><span class="btn_txt">»ó¼¼º¸±â</span></a>'
+		+'		<a href="javascript:openDetailPop(\'' + ${shoplist.st_no} + '\');" class="btn"><span class="btn_txt">ìƒì„¸ë³´ê¸°</span></a>'
 		+'	</div>'
 		+'</div>';
 	}
 	infoDiv += '</div>';
 	infoDiv += '</c:forEach>';
 
-	// ¸¶Ä¿ Å¬¸¯ ÀÌº¥Æ® µî·Ï
-	var branchMarker = new gcen.api.maps.Marker(branchObj.st_ypos, branchObj.st_xpos, markerImg, 77, 68); // ¸¶Ä¿»ı¼º
+	// ë§ˆì»¤ í´ë¦­ ì´ë²¤íŠ¸ ë“±ë¡
+	var branchMarker = new gcen.api.maps.Marker(branchObj.st_ypos, branchObj.st_xpos, markerImg, 77, 68); // ë§ˆì»¤ìƒì„±
 	$(branchMarker.markerbox).append(infoDiv);
 	branchMarker.attach('click', function() {
 		var markerboxObj = this.markerbox;
 		if ($(markerboxObj).find('.marker_info').is(":visible")) {
-			// ´Ù½Ã ÇÉ ¼±ÅÃ ½Ã, Á¤º¸Ã¢ ´İÀ½
+			// ë‹¤ì‹œ í•€ ì„ íƒ ì‹œ, ì •ë³´ì°½ ë‹«ìŒ
 			$(markerboxObj).find('.marker_info').hide();
 		} else {
-			// ÇÉ ¼±ÅÃ ½Ã, ´Ù¸¥ ¸ÅÀå Á¤º¸ Ã¢ ´İ°í ÇØ´ç ÇÉ¿¡ ´ëÇÑ Á¤º¸Ã¢ ³ëÃâ
+			// í•€ ì„ íƒ ì‹œ, ë‹¤ë¥¸ ë§¤ì¥ ì •ë³´ ì°½ ë‹«ê³  í•´ë‹¹ í•€ì— ëŒ€í•œ ì •ë³´ì°½ ë…¸ì¶œ
 			$(markerboxObj).parent().find('.marker_info').hide();
 			$(markerboxObj).find('.marker_info').show();
 		}
 	});
 
-	mapObj.addMarker(branchMarker); // ¸ŞÀÎ Áöµµ¿¡ ¸¶Ä¿ Ãß°¡
-}
+	mapObj.addMarker(branchMarker); // ë©”ì¸ ì§€ë„ì— ë§ˆì»¤ ì¶”ê°€
+} */
 
-//¸ğµç ¸ÅÀå Áöµµ Ç¥½Ã
+//ëª¨ë“  ë§¤ì¥ ì§€ë„ í‘œì‹œ
 function markAllBranchs() {
 	largeMap.clearMarkers();
 
@@ -394,7 +554,7 @@ function markAllBranchs() {
 		async: false,
 		success: function(data) {
 			$.each(jQuery.parseJSON(data.resultData.positionListStr), function(index, branch) {
-				addMarker(largeMap, branch, true);	// È®´ë º¸±â Áöµµ¿¡ ¸¶Ä¿ Ãß°¡
+				addMarker(largeMap, branch, true);	// í™•ëŒ€ ë³´ê¸° ì§€ë„ì— ë§ˆì»¤ ì¶”ê°€
 			});
 		}
 	});
@@ -402,35 +562,35 @@ function markAllBranchs() {
 
 
 
-//¸ÅÀå Ã£±â
-//@param optn	ÁÖ¼Ò·Î °Ë»ö(address), ¸ÅÀå¸í °Ë»ö(name) ±¸ºĞ °ª
+//ë§¤ì¥ ì°¾ê¸°
+//@param optn	ì£¼ì†Œë¡œ ê²€ìƒ‰(address), ë§¤ì¥ëª… ê²€ìƒ‰(name) êµ¬ë¶„ ê°’
 function findBranch(optn) {
 	if (!!!optn) return false;
 
-	// °Ë»ö ½Ã ÆäÀÌÁö ¹øÈ£ ÃÊ±âÈ­
+	// ê²€ìƒ‰ ì‹œ í˜ì´ì§€ ë²ˆí˜¸ ì´ˆê¸°í™”
 	pageNo = 1;
 
-	// °Ë»ö ÆÄ¶ó¹ÌÅÍ ¼³Á¤
+	// ê²€ìƒ‰ íŒŒë¼ë¯¸í„° ì„¤ì •
 	var paramArr = [];
 	paramArr[0] = 'pageNo=' + pageNo;
 
-	if (optn == 'st_addr') {
+	if (optn == 'address') {
 		if ($('#region_code_1').val() == '') {
-			alert('½Ã/µµ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.');
+			alert('ì‹œ/ë„ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.');
 			return false;
 		} else if ($('#region_code_2').val() == '') {
-			alert('±¸/±ºÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.');
+			alert('êµ¬/êµ°ì„ ì„ íƒí•´ì£¼ì„¸ìš”.');
 			return false;
 		}
 
 		paramArr[1] = 'region_code_2=' + $('#region_code_2').val();
 	} else if (optn == 'name') {
-		if ($('#name').val().length == 0) {
-			alert('¸ÅÀå¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.');
+		if ($('#store_name').val().length == 0) {
+			alert('ë§¤ì¥ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.');
 			return false;
 		}
 
-		paramArr[1] = 'name=' + encodeURIComponent(encodeURIComponent($('#name').val()));
+		paramArr[1] = 'name=' + encodeURIComponent(encodeURIComponent($('#store_name').val()));
 	} else {
 		return false;
 	}
@@ -441,7 +601,7 @@ function findBranch(optn) {
 }
 
 
-//»ó¼¼ º¸±â ·¹ÀÌ¾î ÆË¾÷ ¿­±â
+//ìƒì„¸ ë³´ê¸° ë ˆì´ì–´ íŒì—… ì—´ê¸°
 function openDetailPop(st_no) {
 	$.ajax({
 		url: '/branch/detail',
@@ -462,8 +622,8 @@ function openDetailPop(st_no) {
 				}
 
 				var businessHours = '';
-				if (branch.branch_code == '86614') {// °­¿ø ÆòÃ¢±º ¾ËÆæ½Ã¾ÆÁ¡
-					businessHours = 'ÆòÀÏ 11:00~21:00 / ÁÖ¸» 11:00~22:00';
+				if (branch.branch_code == '86614') {// ê°•ì› í‰ì°½êµ° ì•Œíœì‹œì•„ì 
+					businessHours = 'í‰ì¼ 11:00~21:00 / ì£¼ë§ 11:00~22:00';
 				} else {
 					businessHours = branch.trade_start + ' ~ ' + branch.trade_end;
 				}
@@ -504,7 +664,7 @@ function openDetailPop(st_no) {
 				$('#detail_photos').html(photosHtml);
 				$('#detail_off_sale').html(offSale);
 				$('#detail_on_sale').html(onSale);
-				$('#detail_name').text('µµ¹Ì³ëÇÇÀÚ ' + branch.branch_name);
+				$('#detail_name').text('ë„ë¯¸ë…¸í”¼ì ' + branch.branch_name);
 				$("#detail_basket_wrapp").attr('href', 'javascript:goBasketWrapp("'+branch.branch_code+'")');
 
 
@@ -522,7 +682,7 @@ function openDetailPop(st_no) {
 					$('#detail_parking_info').html("");
 				}
 
-				// notice&event ¿µ¿ª
+				// notice&event ì˜ì—­
 				var contentsHtml = '';
 				$.each(contentsList, function (index, contents) {
 					if (index > 0) {
@@ -538,28 +698,28 @@ function openDetailPop(st_no) {
 					$('#detail_notice').parent().parent().show();
 				}
 
-				// ·¹ÀÌ¾î ÆË¾÷ ¿­±â
+				// ë ˆì´ì–´ íŒì—… ì—´ê¸°
 				if(branch.branch_code == "86508"){
-					alert('"Ã»´ãÁ¡ + »ï¼ºÁ¡ ÇÕº´¿î¿µ ¾È³»"\n2017.08.21(¿ù)ºÎÅÍ ±âÁ¸ µµ¹Ì³ëÇÇÀÚ Ã»´ãÁ¡ Æ÷Àå°í°´ µµ¹Ì³ëÇÇÀÚ »ï¼ºÁ¡À¸·Î ÀÌ¿ë ºÎÅ¹µå¸³´Ï´Ù.');
+					alert('"ì²­ë‹´ì  + ì‚¼ì„±ì  í•©ë³‘ìš´ì˜ ì•ˆë‚´"\n2017.08.21(ì›”)ë¶€í„° ê¸°ì¡´ ë„ë¯¸ë…¸í”¼ì ì²­ë‹´ì  í¬ì¥ê³ ê° ë„ë¯¸ë…¸í”¼ì ì‚¼ì„±ì ìœ¼ë¡œ ì´ìš© ë¶€íƒë“œë¦½ë‹ˆë‹¤.');
 					location.href = "/main";
 				}else{
 					openLayerPopup('detail_view');
 
 					detailMap.clearMarkers();
-					addMarker(detailMap, branch, false);	// Áöµµ¿¡ ¸¶Ä¿ Ãß°¡
-					detailMap.setCenter(branch.st_ypos, branch.st_xpos, 14);
+					addMarker(detailMap, branch, false);	// ì§€ë„ì— ë§ˆì»¤ ì¶”ê°€
+					detailMap.setCenter(st_ypos, st_xpos, 14);
 				}
 			}
 		},
 		error: function() {
-			// alert('Ã³¸®µµÁß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');
+			// alert('ì²˜ë¦¬ë„ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');
 		}
 	});
 }
 
-//¸ÅÀå Á¤º¸ Á¶È¸ ÈÄ html ±×¸®±â
-//@param	paramArr	 °Ë»öÀ» À§ÇÑ ÆÄ¶ó¹ÌÅÍ(ÇÊ¼ö)
-function appendBranch(paramArr) {
+//ë§¤ì¥ ì •ë³´ ì¡°íšŒ í›„ html ê·¸ë¦¬ê¸°
+//@param	paramArr	 ê²€ìƒ‰ì„ ìœ„í•œ íŒŒë¼ë¯¸í„°(í•„ìˆ˜)
+/* function appendBranch(paramArr) {
 	if (paramArr == null || paramArr.length == 0) return;
 
 	if($('#schPrmt').hasClass('active'))
@@ -578,7 +738,7 @@ function appendBranch(paramArr) {
 					htmlStr = '';
 
 				if (pageNo == 1) {
-					// ÀüÃ¼ ¸ñ·Ï °³¼ö
+					// ì „ì²´ ëª©ë¡ ê°œìˆ˜
 					$('#em_total_count').text(totalCount);
 
 					// redraw marker
@@ -587,53 +747,53 @@ function appendBranch(paramArr) {
 
 				if (totalCount == 0) {
 					$('#div_has_result').hide();
-					$('#div_no_result').show(); // ¸ÅÀå°Ë»ö °á°ú°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.
+					$('#div_no_result').show(); // ë§¤ì¥ê²€ìƒ‰ ê²°ê³¼ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 				} else {
 					$('#div_no_result').hide();
 					$('#div_has_result').show();
 
 					$.each(branchList, function(index, branch) {
 
-						// Áöµµ¿¡ ¸¶Ä¿ Ç¥½Ã.
+						// ì§€ë„ì— ë§ˆì»¤ í‘œì‹œ.
 						addMarker(map, branch, true);
 
-						// ¸ÅÀå ¸ñ·Ï html
-						var st_addr = '';
+						// ë§¤ì¥ ëª©ë¡ html
+						var address = '';
 						if (branch.road_addr_ba != null) {
-							st_addr = branch.road_addr_ba + ((!!branch.road_addr_de) ? ' ' + branch.road_addr_de : '');
+							address = branch.road_addr_ba + ((!!branch.road_addr_de) ? ' ' + branch.road_addr_de : '');
 						} else if (branch.addr_ba != null) {
-							st_addr = branch.addr_ba + ((!!branch.addr_de) ? ' ' + branch.addr_de : '');
+							address = branch.addr_ba + ((!!branch.addr_de) ? ' ' + branch.addr_de : '');
 						}
-/* 						ÇÒÀÎ X
+ 						í• ì¸ X
 						var onSale = branch.wrapp_sales,
 							offSale = (!!!branch.off_wrapp_sale) ? onSale : branch.off_wrapp_sale;
- */
+ 
 						htmlStr += '<li>';
 						htmlStr += '	<div class="shopcard">';
 						htmlStr += '	<c:forEach items="${shoplist }" var="shoplist" varStatus="loop">';
 						htmlStr += '		<div class="shopcard_content">';
 						
-/* 						¹æ¹®Æ÷ÀåÇÒÀÎ X
+ 						ë°©ë¬¸í¬ì¥í• ì¸ X
 						htmlStr += '			<div class="shopcard_tag">';
 						htmlStr += '				<div class="store_tag online_tag">';
-						htmlStr += '					<p class="tag_title">¹æ¹®Æ÷Àå</p>';
+						htmlStr += '					<p class="tag_title">ë°©ë¬¸í¬ì¥</p>';
 						htmlStr += '					<span class="tag_info">ON<br>LINE</span>';
 						htmlStr += '					<span class="tag_sale">'+onSale+'<em>%</em></span>';
 						htmlStr += '				</div>';
 						htmlStr += '				<div class="store_tag offline_tag">';
-						htmlStr += '					<p class="tag_title">¹æ¹®Æ÷Àå</p>';
+						htmlStr += '					<p class="tag_title">ë°©ë¬¸í¬ì¥</p>';
 						htmlStr += '					<span class="tag_info">OFF<br>LINE</span>';
 						htmlStr += '					<span class="tag_sale">'+offSale+'<em>%</em></span>';
 						htmlStr += '				</div>';
-						htmlStr += '			</div>'; */
+						htmlStr += '			</div>'; 
 						
 						htmlStr += '			<p class="title">'+ ${shoplist.st_name} +'</p>';
-						htmlStr += '			<p class="st_addr">'+ ${shoplist.st_addr} +'</p>';
+						htmlStr += '			<p class="address">'+ ${shoplist.st_addr} +'</p>';
 						//htmlStr += '			<p class="distance">15 KM</p>';
 						htmlStr += '			<p class="phone_num"><span class="ico ico_s_phone"></span>'+ ${shoplist.st_tel} +'</p>';
 						htmlStr += '			<div class="btn_box">';
-						htmlStr += '				<a href="#none" onclick="openDetailPop('+ ${shoplist.st_no} +');" class="btn"><span class="btn_txt">»ó¼¼º¸±â</span></a>';
-/* 			ÇÒÀÎX		htmlStr += '				<a href="javascript:goBasketWrapp('+branch.branch_code+');" class="btn btn_red"><span class="btn_txt">¹æ¹®Æ÷Àå</span></a>'; */
+						htmlStr += '				<a href="#none" onclick="openDetailPop('+ ${shoplist.st_no} +');" class="btn"><span class="btn_txt">ìƒì„¸ë³´ê¸°</span></a>';
+ 						htmlStr += '				<a href="javascript:goBasketWrapp('+branch.branch_code+');" class="btn btn_red"><span class="btn_txt">ë°©ë¬¸í¬ì¥</span></a>'; 
 						htmlStr += '			</div>';
 						htmlStr += '		</c:forEach>';						
 						htmlStr += '		</div>';
@@ -647,7 +807,7 @@ function appendBranch(paramArr) {
 							}
 
 							htmlStr += '		<div class="shopcard_bottom">';
-							htmlStr += '			<p class="sale_txt">Æ¯º°ÇÒÀÎ</p>';
+							htmlStr += '			<p class="sale_txt">íŠ¹ë³„í• ì¸</p>';
 							htmlStr += '			<ul class="sale_list">';
 							htmlStr += lsmStr;
 							htmlStr += '			</ul>';
@@ -663,7 +823,7 @@ function appendBranch(paramArr) {
 					$('#ul_shop_list').html(htmlStr);
 
 					if (totalCount > 0) {
-						// °Ë»ö °á°ú Ã¹¹øÂ° ¸ÅÀåÀ» Áöµµ¿¡ Ç¥½Ã
+						// ê²€ìƒ‰ ê²°ê³¼ ì²«ë²ˆì§¸ ë§¤ì¥ì„ ì§€ë„ì— í‘œì‹œ
 						map.setCenter(branchList[0].st_ypos, branchList[0].st_xpos, 13);
 					}
 				} else {
@@ -671,7 +831,7 @@ function appendBranch(paramArr) {
 				}
 
 				var navi = data.resultData.navi;
-				if (navi.pageNo < navi.lastPageNo && navi.lastPageNo > 1) { // ajax ´õº¸±â ±â´É
+				if (navi.pageNo < navi.lastPageNo && navi.lastPageNo > 1) { // ajax ë”ë³´ê¸° ê¸°ëŠ¥
 					document.getElementById('ul_shop_list').onscroll = function() {
 						if ($(this)[0].scrollHeight - $(this)[0].scrollTop == $(this).outerHeight()) {
 							var pageNoIndex = paramArr.indexOf('pageNo=' + pageNo);
@@ -683,7 +843,7 @@ function appendBranch(paramArr) {
 							appendBranch(paramArr);
 						}
 					};
-				} else if (navi.pageNo != 1) { // ÆäÀÌÂ¡ ±â´É ¸ØÃã.
+				} else if (navi.pageNo != 1) { // í˜ì´ì§• ê¸°ëŠ¥ ë©ˆì¶¤.
 					document.getElementById('ul_shop_list').onscroll = null;
 				}
 			}
@@ -696,19 +856,14 @@ function appendBranch(paramArr) {
 		}
 	});
 }
+ */
+function goBasketWrapp(branch_no) {
+		/* if(!confirm("ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤.\në¡œê·¸ì¸ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
+			return;
+		}
+		
+		location.href = "/delivery/branchWrappProc?branch_code="+branch_code; */
 
-function goBasketWrapp(branch_code) {
-	if(branch_code == '86508'){
-		alert('"Ã»´ãÁ¡ + »ï¼ºÁ¡ ÇÕº´¿î¿µ ¾È³»"\n2017.08.21(¿ù)ºÎÅÍ ±âÁ¸ µµ¹Ì³ëÇÇÀÚ Ã»´ãÁ¡ Æ÷Àå°í°´ µµ¹Ì³ëÇÇÀÚ »ï¼ºÁ¡À¸·Î ÀÌ¿ë ºÎÅ¹µå¸³´Ï´Ù.');
-		location.href = "/main";
-	}else{
-		
-			if(!confirm("·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù.\n·Î±×ÀÎ ÇÏ½Ã°Ú½À´Ï±î?")) {
-				return;
-			}
-		
-		location.href = "/delivery/branchWrappProc?branch_code="+branch_code;
-	}
 }
 
 </script>
@@ -719,384 +874,480 @@ function goBasketWrapp(branch_code) {
 	<div id="content" class="store">
 		<div class="sub_title">
 			<ul class="sub_nav">
-				<li><a href="/main">HOME</a></li>
-				<li><span>¸ÅÀåÃ£±â</span></li>
+				<li><a href="<c:url value='/Pizza/MainPage.pz'/>">HOME</a></li>
+				<li><span>ë§¤ì¥ì°¾ê¸°</span></li>
 			</ul>
 			<div class="sub_title_wrap">
-				<h2>¸ÅÀåÃ£±â</h2>
+				<h2>ë§¤ì¥ì°¾ê¸°</h2>
 			</div>
 		</div>
 		<!-- //sub_title -->
 
 		<div class="tab_type">
 			<ul class="btn_tab">
-				<li class="active" data-val="st_addr"><a href="#" onclick="navTabs('st_addr', this); return false;">ÁÖ¼Ò·Î °Ë»ö</a></li>
-				<li data-val="st_name"><a href="#" onclick="navTabs('st_name', this); return false;">¸ÅÀå¸í °Ë»ö</a></li>
+				<c:if test="${names==null || names!=1 }">
+					<li class="active" data-val="address"><a href="#"
+						onclick="navTabs(this); return false;">ì£¼ì†Œë¡œ ê²€ìƒ‰</a></li>
+					<li data-val="name"><a href="#"
+						onclick="navname(this); return false;">ë§¤ì¥ëª… ê²€ìƒ‰</a></li>
+				</c:if>
+
+				<c:if test="${!(names==null || names!=1 )}">
+					<li data-val="address"><a href="#"
+						onclick="navTabs(this); return false;">ì£¼ì†Œë¡œ ê²€ìƒ‰</a></li>
+					<li class="active" data-val="name"><a href="#"
+						onclick="navname(this); return false;">ë§¤ì¥ëª… ê²€ìƒ‰</a></li>
+				</c:if>
 			</ul>
 			<div class="tab_content_wrap">
 				<div class="tab_content active">
-
-
-					<div class="form_container">
-						<!-- ÁÖ¼Ò·Î Ã£±â °Ë»ö ¿µ¿ª -->
+				<!-- form_container ì—¬ê¸°ì— ë„£ê¸° -->
+				
+				
+									<div class="form_container">
+					
+					
+						<!-- ì£¼ì†Œë¡œ ì°¾ê¸° ê²€ìƒ‰ ì˜ì—­ -->
+					<c:if test="${names==null || names!=1 }" var="named" >
 						<div class="form_group selbox" id="div_addr_srch">
+					</c:if>
+					<c:if test="${!named }">
+						<div class="form_group selbox" id="div_addr_srch" style="display:none; " >
+					</c:if>
+							<!-- form_field ì´ ì¤„ ì´í•˜ë¡œ ë„£ê¸° -->
 							<div class="form_field">
 								<div class="sel_box">
-									<select id="region_code_1" onchange="getRegion();">
-										<option value="">½Ã/µµ</option>
-										<option value="01"  selected >¼­¿ï</option>
-										<option value="02" >ÀÎÃµ</option>
-										<option value="03" >°æ±â</option>
-										<option value="04" >°­¿ø</option>
-										<option value="05" >Ãæ³²</option>
-										<option value="06" >ÃæºÏ</option>
-										<option value="07" >´ëÀü</option>
-										<option value="08" >°æ³²</option>
-										<option value="09" >°æºÏ</option>
-										<option value="10" >´ë±¸</option>
-										<option value="11" >Àü³²</option>
-										<option value="12" >ÀüºÏ</option>
-										<option value="13" >±¤ÁÖ</option>
-										<option value="14" >¿ï»ê</option>
-										<option value="15" >ºÎ»ê</option>
-										<option value="16" >Á¦ÁÖ</option>
-										<option value="17" >¼¼Á¾Æ¯º°ÀÚÄ¡½Ã</option>
+									<select class="sido1" id="region_code_1" onchange="getRegion();">
+										<option value="00" >ì‹œ/ë„</option>
+										<option value="01" <c:if test="${requestScope.si=='ì„œìš¸' }">selected </c:if>>ì„œìš¸</option>
+										<option value="02" <c:if test="${requestScope.si=='ì¸ì²œ' }">selected </c:if>>ì¸ì²œ</option>
+										<option value="03" <c:if test="${requestScope.si=='ê²½ê¸°' }">selected </c:if>>ê²½ê¸°</option>
+										<option value="04" <c:if test="${requestScope.si=='ê°•ì›' }">selected </c:if>>ê°•ì›</option>
+										<option value="05" <c:if test="${requestScope.si=='ì¶©ë‚¨' }">selected </c:if>>ì¶©ë‚¨</option>
+										<option value="06" <c:if test="${requestScope.si=='ì¶©ë¶' }">selected </c:if>>ì¶©ë¶</option>
+										<option value="07" <c:if test="${requestScope.si=='ëŒ€ì „' }">selected </c:if>>ëŒ€ì „</option>
+										<option value="08" <c:if test="${requestScope.si=='ê²½ë‚¨' }">selected </c:if>>ê²½ë‚¨</option>
+										<option value="09" <c:if test="${requestScope.si=='ê²½ë¶' }">selected </c:if>>ê²½ë¶</option>
+										<option value="10" <c:if test="${requestScope.si=='ëŒ€êµ¬' }">selected </c:if>>ëŒ€êµ¬</option>
+										<option value="11" <c:if test="${requestScope.si=='ì „ë‚¨' }">selected </c:if>>ì „ë‚¨</option>
+										<option value="12" <c:if test="${requestScope.si=='ì „ë¶' }">selected </c:if>>ì „ë¶</option>
+										<option value="13" <c:if test="${requestScope.si=='ê´‘ì£¼' }">selected </c:if>>ê´‘ì£¼</option>
+										<option value="14" <c:if test="${requestScope.si=='ìš¸ì‚°' }">selected </c:if>>ìš¸ì‚°</option>
+										<option value="15" <c:if test="${requestScope.si=='ë¶€ì‚°' }">selected </c:if>>ë¶€ì‚°</option>
+										<option value="16" <c:if test="${requestScope.si=='ì œì£¼' }">selected </c:if>>ì œì£¼</option>
+										<option value="17" <c:if test="${requestScope.si=='ì„¸ì¢…íŠ¹ë³„ìì¹˜ì‹œ' }">selected </c:if>>ì„¸ì¢…íŠ¹ë³„ìì¹˜ì‹œ</option>
 									</select>
 								</div>
 							</div>
+							
 							<div class="form_field">
 								<div class="sel_box">
+									<select class="sido2" id="region_code_00">
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected</c:if>>êµ¬/êµ°</option>								
+									</select>
+									
 									<select class="sido2" id="region_code_01" >
-										<option value="">±¸/±º</option>
-										<option value="0111" >°­³²±¸</option>
-										<option value="0110" >°­µ¿±¸</option>
-										<option value="0117" >°­ºÏ±¸</option>
-										<option value="0124" >°­¼­±¸</option>
-										<option value="0120" >°ü¾Ç±¸</option>
-										<option value="0118" >±¤Áø±¸</option>
-										<option value="0121" >±¸·Î±¸</option>
-										<option value="0122" selected>±İÃµ±¸</option>
-										<option value="0115" >³ë¿ø±¸</option>
-										<option value="0108" >µµºÀ±¸</option>
-										<option value="0106" >µ¿´ë¹®±¸</option>
-										<option value="0123" >µ¿ÀÛ±¸</option>
-										<option value="0104" >¸¶Æ÷±¸</option>
-										<option value="0103" >¼­´ë¹®±¸</option>
-										<option value="0113" >¼­ÃÊ±¸</option>
-										<option value="0109" >¼ºµ¿±¸</option>
-										<option value="0112" >¼ººÏ±¸</option>
-										<option value="0114" >¼ÛÆÄ±¸</option>
-										<option value="0125" >¾çÃµ±¸</option>
-										<option value="0119" >¿µµîÆ÷±¸</option>
-										<option value="0116" >¿ë»ê±¸</option>
-										<option value="0105" >ÀºÆò±¸</option>
-										<option value="0102" >Á¾·Î±¸</option>
-										<option value="0101" >Áß±¸</option>
-										<option value="0107" >Áß¶û±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>
+										<option value="0111" <c:if test="${requestScope.gugun=='ê°•ë‚¨êµ¬' }">selected </c:if>>ê°•ë‚¨êµ¬</option>
+										<option value="0110" <c:if test="${requestScope.gugun=='ê°•ë™êµ¬' }">selected </c:if>>ê°•ë™êµ¬</option>
+										<option value="0117" <c:if test="${requestScope.gugun=='ê°•ë¶êµ¬' }">selected </c:if>>ê°•ë¶êµ¬</option>
+										<option value="0124" <c:if test="${requestScope.gugun=='ê°•ì„œêµ¬' }">selected </c:if>>ê°•ì„œêµ¬</option>
+										<option value="0120" <c:if test="${requestScope.gugun=='ê´€ì•…êµ¬' }">selected </c:if>>ê´€ì•…êµ¬</option>
+										<option value="0118" <c:if test="${requestScope.gugun=='ê´‘ì§„êµ¬' }">selected </c:if>>ê´‘ì§„êµ¬</option>
+										<option value="0121" <c:if test="${requestScope.gugun=='êµ¬ë¡œêµ¬' }">selected </c:if>>êµ¬ë¡œêµ¬</option>
+										<option value="0122" <c:if test="${requestScope.gugun=='ê¸ˆì²œêµ¬' }">selected</c:if>>ê¸ˆì²œêµ¬</option>
+										<option value="0115" <c:if test="${requestScope.gugun=='ë…¸ì›êµ¬' }">selected </c:if>>ë…¸ì›êµ¬</option>
+										<option value="0108" <c:if test="${requestScope.gugun=='ë„ë´‰êµ¬' }">selected </c:if>>ë„ë´‰êµ¬</option>
+										<option value="0106" <c:if test="${requestScope.gugun=='ë™ëŒ€ë¬¸êµ¬'}">selected </c:if>>ë™ëŒ€ë¬¸êµ¬</option>
+										<option value="0123" <c:if test="${requestScope.gugun=='ë™ì‘êµ¬' }">selected </c:if>>ë™ì‘êµ¬</option>
+										<option value="0104" <c:if test="${requestScope.gugun=='ë§ˆí¬êµ¬' }">selected </c:if>>ë§ˆí¬êµ¬</option>
+										<option value="0103" <c:if test="${requestScope.gugun=='ì„œëŒ€ë¬¸êµ¬'}">selected </c:if>>ì„œëŒ€ë¬¸êµ¬</option>
+										<option value="0113" <c:if test="${requestScope.gugun=='ì„œì´ˆêµ¬' }">selected </c:if>>ì„œì´ˆêµ¬</option>
+										<option value="0109" <c:if test="${requestScope.gugun=='ì„±ë™êµ¬' }">selected </c:if>>ì„±ë™êµ¬</option>
+										<option value="0112" <c:if test="${requestScope.gugun=='ì„±ë¶êµ¬' }">selected </c:if>>ì„±ë¶êµ¬</option>
+										<option value="0114" <c:if test="${requestScope.gugun=='ì†¡íŒŒêµ¬' }">selected </c:if>>ì†¡íŒŒêµ¬</option>
+										<option value="0125" <c:if test="${requestScope.gugun=='ì–‘ì²œêµ¬' }">selected </c:if>>ì–‘ì²œêµ¬</option>
+										<option value="0119" <c:if test="${requestScope.gugun=='ì˜ë“±í¬êµ¬'}">selected </c:if>>ì˜ë“±í¬êµ¬</option>
+										<option value="0116" <c:if test="${requestScope.gugun=='ìš©ì‚°êµ¬'}">selected </c:if>>ìš©ì‚°êµ¬</option>
+										<option value="0105" <c:if test="${requestScope.gugun=='ì€í‰êµ¬'}">selected </c:if>>ì€í‰êµ¬</option>
+										<option value="0102" <c:if test="${requestScope.gugun=='ì¢…ë¡œêµ¬'}">selected </c:if>>ì¢…ë¡œêµ¬</option>
+										<option value="0101" <c:if test="${requestScope.gugun=='ì¤‘êµ¬' }">selected </c:if>>ì¤‘êµ¬</option>
+										<option value="0107" <c:if test="${requestScope.gugun=='ì¤‘ë‘êµ¬'}">selected </c:if>>ì¤‘ë‘êµ¬</option>
 									</select>
 									
 									<select class="sido2" id="region_code_02" >
-										<option value="">±¸/±º</option>
-										<option value="0202">°è¾ç±¸</option>
-										<option value="0203">³²±¸</option>
-										<option value="0204">³²µ¿±¸</option>
-										<option value="0206">ºÎÆò±¸</option>
-										<option value="0207">¼­±¸</option>
-										<option value="0208">¿¬¼ö±¸</option>
-										<option value="0210">Áß±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>
+										<option value="0202" <c:if test="${requestScope.gugun=='0202' }">selected </c:if>>ê³„ì–‘êµ¬</option>
+										<option value="0203" <c:if test="${requestScope.gugun=='ë‚¨êµ¬' }">selected </c:if>>ë‚¨êµ¬</option>
+										<option value="0204" <c:if test="${requestScope.gugun=='ë‚¨ë™êµ¬' }">selected </c:if>>ë‚¨ë™êµ¬</option>
+										<option value="0206" <c:if test="${requestScope.gugun=='ë¶€í‰êµ¬' }">selected </c:if>>ë¶€í‰êµ¬</option>
+										<option value="0207" <c:if test="${requestScope.gugun=='ì„œêµ¬' }">selected </c:if>>ì„œêµ¬</option>
+										<option value="0208" <c:if test="${requestScope.gugun=='ì—°ìˆ˜êµ¬' }">selected </c:if>>ì—°ìˆ˜êµ¬</option>
+										<option value="0210" <c:if test="${requestScope.gugun=='ì¤‘êµ¬' }">selected </c:if>>ì¤‘êµ¬</option>
 									</select>
 									<select class="sido2" id="region_code_03">
-										<option value="">±¸/±º</option>									
-										<option value="0301">°í¾ç½Ã</option>
-										<option value="0302">°úÃµ½Ã</option>
-										<option value="0303">±¤¸í½Ã</option>
-										<option value="0304">±¤ÁÖ½Ã</option>
-										<option value="0305">±¸¸®½Ã</option>
-										<option value="0306">±ºÆ÷½Ã</option>
-										<option value="0307">±èÆ÷½Ã</option>
-										<option value="0308">³²¾çÁÖ½Ã</option>
-										<option value="0309">µ¿µÎÃµ½Ã</option>
-										<option value="0310">ºÎÃµ½Ã</option>
-										<option value="0311">¼º³²½Ã</option>
-										<option value="0312">¼ö¿ø½Ã</option>
-										<option value="0313">½ÃÈï½Ã</option>
-										<option value="0314">¾È»ê½Ã</option>
-										<option value="0315">¾È¼º½Ã</option>
-										<option value="0316">¾È¾ç½Ã</option>
-										<option value="0327">¾çÁÖ½Ã</option>
-										<option value="0317">¾çÆò±º</option>
-										<option value="0318">¿©ÁÖ±º</option>
-										<option value="0320">¿À»ê½Ã</option>
-										<option value="0321">¿ëÀÎ½Ã</option>
-										<option value="0322">ÀÇ¿Õ½Ã</option>
-										<option value="0323">ÀÇÁ¤ºÎ½Ã</option>
-										<option value="0324">ÀÌÃµ½Ã</option>
-										<option value="0325">ÆÄÁÖ½Ã</option>
-										<option value="0328">ÆòÅÃ½Ã</option>
-										<option value="0329">Æ÷Ãµ½Ã</option>
-										<option value="0330">ÇÏ³²½Ã</option>
-										<option value="0331">È­¼º½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>									
+										<option value="0301" <c:if test="${requestScope.gugun=='ê³ ì–‘ì‹œ' }">selected </c:if>>ê³ ì–‘ì‹œ</option>
+										<option value="0302" <c:if test="${requestScope.gugun=='ê³¼ì²œì‹œ' }">selected </c:if>>ê³¼ì²œì‹œ</option>
+										<option value="0303" <c:if test="${requestScope.gugun=='ê´‘ëª…ì‹œ' }">selected </c:if>>ê´‘ëª…ì‹œ</option>
+										<option value="0304" <c:if test="${requestScope.gugun=='ê´‘ì£¼ì‹œ' }">selected </c:if>>ê´‘ì£¼ì‹œ</option>
+										<option value="0305" <c:if test="${requestScope.gugun=='êµ¬ë¦¬ì‹œ' }">selected </c:if>>êµ¬ë¦¬ì‹œ</option>
+										<option value="0306" <c:if test="${requestScope.gugun=='êµ°í¬ì‹œ' }">selected </c:if>>êµ°í¬ì‹œ</option>
+										<option value="0307" <c:if test="${requestScope.gugun=='ê¹€í¬ì‹œ' }">selected </c:if>>ê¹€í¬ì‹œ</option>
+										<option value="0308" <c:if test="${requestScope.gugun=='ë‚¨ì–‘ì£¼ì‹œ' }">selected </c:if>>ë‚¨ì–‘ì£¼ì‹œ</option>
+										<option value="0309" <c:if test="${requestScope.gugun=='ë™ë‘ì²œì‹œ' }">selected </c:if>>ë™ë‘ì²œì‹œ</option>
+										<option value="0310" <c:if test="${requestScope.gugun=='ë¶€ì²œì‹œ' }">selected </c:if>>ë¶€ì²œì‹œ</option>
+										<option value="0311" <c:if test="${requestScope.gugun=='ì„±ë‚¨ì‹œ' }">selected </c:if>>ì„±ë‚¨ì‹œ</option>
+										<option value="0312" <c:if test="${requestScope.gugun=='ìˆ˜ì›ì‹œ' }">selected </c:if>>ìˆ˜ì›ì‹œ</option>
+										<option value="0313" <c:if test="${requestScope.gugun=='ì‹œí¥ì‹œ' }">selected </c:if>>ì‹œí¥ì‹œ</option>
+										<option value="0314" <c:if test="${requestScope.gugun=='ì•ˆì‚°ì‹œ' }">selected </c:if>>ì•ˆì‚°ì‹œ</option>
+										<option value="0315" <c:if test="${requestScope.gugun=='ì•ˆì„±ì‹œ' }">selected </c:if>>ì•ˆì„±ì‹œ</option>
+										<option value="0316" <c:if test="${requestScope.gugun=='ì•ˆì–‘ì‹œ' }">selected </c:if>>ì•ˆì–‘ì‹œ</option>
+										<option value="0327" <c:if test="${requestScope.gugun=='ì–‘ì£¼ì‹œ' }">selected </c:if>>ì–‘ì£¼ì‹œ</option>
+										<option value="0317" <c:if test="${requestScope.gugun=='ì–‘í‰êµ°' }">selected </c:if>>ì–‘í‰êµ°</option>
+										<option value="0318" <c:if test="${requestScope.gugun=='ì—¬ì£¼êµ°' }">selected </c:if>>ì—¬ì£¼êµ°</option>
+										<option value="0320" <c:if test="${requestScope.gugun=='ì˜¤ì‚°ì‹œ' }">selected </c:if>>ì˜¤ì‚°ì‹œ</option>
+										<option value="0321" <c:if test="${requestScope.gugun=='ìš©ì¸ì‹œ' }">selected </c:if>>ìš©ì¸ì‹œ</option>
+										<option value="0322" <c:if test="${requestScope.gugun=='ì˜ì™•ì‹œ' }">selected </c:if>>ì˜ì™•ì‹œ</option>
+										<option value="0323" <c:if test="${requestScope.gugun=='ì˜ì •ë¶€ì‹œ' }">selected </c:if>>ì˜ì •ë¶€ì‹œ</option>
+										<option value="0324" <c:if test="${requestScope.gugun=='ì´ì²œì‹œ' }">selected </c:if>>ì´ì²œì‹œ</option>
+										<option value="0325" <c:if test="${requestScope.gugun=='íŒŒì£¼ì‹œ' }">selected </c:if>>íŒŒì£¼ì‹œ</option>
+										<option value="0328" <c:if test="${requestScope.gugun=='í‰íƒì‹œ' }">selected </c:if>>í‰íƒì‹œ</option>
+										<option value="0329" <c:if test="${requestScope.gugun=='í¬ì²œì‹œ' }">selected </c:if>>í¬ì²œì‹œ</option>
+										<option value="0330" <c:if test="${requestScope.gugun=='í•˜ë‚¨ì‹œ' }">selected </c:if>>í•˜ë‚¨ì‹œ</option>
+										<option value="0331" <c:if test="${requestScope.gugun=='í™”ì„±ì‹œ' }">selected </c:if>>í™”ì„±ì‹œ</option>
 									</select>
 									<select class="sido2" id="region_code_04">
-										<option value="">±¸/±º</option>																			
-										<option value="0401">°­¸ª½Ã</option>
-										<option value="0403">µ¿ÇØ½Ã</option>
-										<option value="0404">»ïÃ´½Ã</option>
-										<option value="0405">¼ÓÃÊ½Ã</option>
-										<option value="0408">¿µ¿ù±º</option>
-										<option value="0409">¿øÁÖ½Ã</option>
-										<option value="0410">ÀÎÁ¦±º</option>
-										<option value="0411">Á¤¼±±º</option>
-										<option value="0412">Ã¶¿ø±º</option>
-										<option value="0413">ÃáÃµ½Ã</option>
-										<option value="0414">ÅÂ¹é½Ã</option>
-										<option value="0415">ÆòÃ¢±º</option>
-										<option value="0416">È«Ãµ±º</option>
-										<option value="0418">È¾¼º±º</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>																			
+										<option value="0401" <c:if test="${requestScope.gugun=='ê°•ë¦‰ì‹œ' }">selected </c:if>>ê°•ë¦‰ì‹œ</option>
+										<option value="0403" <c:if test="${requestScope.gugun=='ë™í•´ì‹œ' }">selected </c:if>>ë™í•´ì‹œ</option>
+										<option value="0404" <c:if test="${requestScope.gugun=='ì‚¼ì²™ì‹œ' }">selected </c:if>>ì‚¼ì²™ì‹œ</option>
+										<option value="0405" <c:if test="${requestScope.gugun=='ì†ì´ˆì‹œ' }">selected </c:if>>ì†ì´ˆì‹œ</option>
+										<option value="0408" <c:if test="${requestScope.gugun=='ì˜ì›”êµ°' }">selected </c:if>>ì˜ì›”êµ°</option>
+										<option value="0409" <c:if test="${requestScope.gugun=='ì›ì£¼ì‹œ' }">selected </c:if>>ì›ì£¼ì‹œ</option>
+										<option value="0410" <c:if test="${requestScope.gugun=='ì¸ì œêµ°' }">selected </c:if>>ì¸ì œêµ°</option>
+										<option value="0411" <c:if test="${requestScope.gugun=='ì •ì„ êµ°' }">selected </c:if>>ì •ì„ êµ°</option>
+										<option value="0412" <c:if test="${requestScope.gugun=='ì² ì›êµ°' }">selected </c:if>>ì² ì›êµ°</option>
+										<option value="0413" <c:if test="${requestScope.gugun=='ì¶˜ì²œì‹œ' }">selected </c:if>>ì¶˜ì²œì‹œ</option>
+										<option value="0414" <c:if test="${requestScope.gugun=='íƒœë°±ì‹œ' }">selected </c:if>>íƒœë°±ì‹œ</option>
+										<option value="0415" <c:if test="${requestScope.gugun=='í‰ì°½êµ°' }">selected </c:if>>í‰ì°½êµ°</option>
+										<option value="0416" <c:if test="${requestScope.gugun=='í™ì²œêµ°' }">selected </c:if>>í™ì²œêµ°</option>
+										<option value="0418" <c:if test="${requestScope.gugun=='íš¡ì„±êµ°' }">selected </c:if>>íš¡ì„±êµ°</option>
 									</select>
 									<select class="sido2" id="region_code_05">
-										<option value="">±¸/±º</option>									
-										<option value="0501">°è·æ½Ã</option>
-										<option value="0502">°øÁÖ½Ã</option>
-										<option value="0504">³í»ê½Ã</option>
-										<option value="0505">´çÁø±º</option>
-										<option value="0506">º¸·É½Ã</option>
-										<option value="0508">¼­»ê½Ã</option>
-										<option value="0510">¾Æ»ê½Ã</option>
-										<option value="0513">Ãµ¾È½Ã</option>
-										<option value="0516">È«¼º±º</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>									
+										<option value="0501" <c:if test="${requestScope.gugun=='ê³„ë£¡ì‹œ' }">selected </c:if>>ê³„ë£¡ì‹œ</option>
+										<option value="0502" <c:if test="${requestScope.gugun=='ê³µì£¼ì‹œ' }">selected </c:if>>ê³µì£¼ì‹œ</option>
+										<option value="0504" <c:if test="${requestScope.gugun=='ë…¼ì‚°ì‹œ' }">selected </c:if>>ë…¼ì‚°ì‹œ</option>
+										<option value="0505" <c:if test="${requestScope.gugun=='ë‹¹ì§„êµ°' }">selected </c:if>>ë‹¹ì§„êµ°</option>
+										<option value="0506" <c:if test="${requestScope.gugun=='ë³´ë ¹ì‹œ' }">selected </c:if>>ë³´ë ¹ì‹œ</option>
+										<option value="0508" <c:if test="${requestScope.gugun=='ì„œì‚°ì‹œ' }">selected </c:if>>ì„œì‚°ì‹œ</option>
+										<option value="0510" <c:if test="${requestScope.gugun=='ì•„ì‚°ì‹œ' }">selected </c:if>>ì•„ì‚°ì‹œ</option>
+										<option value="0513" <c:if test="${requestScope.gugun=='ì²œì•ˆì‹œ' }">selected </c:if>>ì²œì•ˆì‹œ</option>
+										<option value="0516" <c:if test="${requestScope.gugun=='í™ì„±êµ°' }">selected </c:if>>í™ì„±êµ°</option>
 									</select>
 									<select class="sido2" id="region_code_06">	
-										<option value="">±¸/±º</option>										
-										<option value="0606">À½¼º±º</option>
-										<option value="0607">Á¦Ãµ½Ã</option>
-										<option value="0608">ÁõÆò±º</option>
-										<option value="0610">Ã»¿ø±º</option>
-										<option value="0611">Ã»ÁÖ½Ã</option>
-										<option value="0612">ÃæÁÖ½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="0606" <c:if test="${requestScope.gugun=='ìŒì„±êµ°' }">selected </c:if>>ìŒì„±êµ°</option>
+										<option value="0607" <c:if test="${requestScope.gugun=='ì œì²œì‹œ' }">selected </c:if>>ì œì²œì‹œ</option>
+										<option value="0608" <c:if test="${requestScope.gugun=='ì¦í‰êµ°' }">selected </c:if>>ì¦í‰êµ°</option>
+										<option value="0610" <c:if test="${requestScope.gugun=='ì²­ì›êµ°' }">selected </c:if>>ì²­ì›êµ°</option>
+										<option value="0611" <c:if test="${requestScope.gugun=='ì²­ì£¼ì‹œ' }">selected </c:if>>ì²­ì£¼ì‹œ</option>
+										<option value="0612" <c:if test="${requestScope.gugun=='ì¶©ì£¼ì‹œ' }">selected </c:if>>ì¶©ì£¼ì‹œ</option>
 									</select>
 									<select class="sido2" id="region_code_07">	
-										<option value="">±¸/±º</option>										
-										<option value="0701">´ë´ö±¸</option>
-										<option value="0702">µ¿±¸</option>
-										<option value="0703">¼­±¸</option>
-										<option value="0704">À¯¼º±¸</option>
-										<option value="0705">Áß±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="0701" <c:if test="${requestScope.gugun=='ëŒ€ë•êµ¬' }">selected </c:if>>ëŒ€ë•êµ¬</option>
+										<option value="0702" <c:if test="${requestScope.gugun=='ë™êµ¬' }">selected </c:if>>ë™êµ¬</option>
+										<option value="0703" <c:if test="${requestScope.gugun=='ì„œêµ¬' }">selected </c:if>>ì„œêµ¬</option>
+										<option value="0704" <c:if test="${requestScope.gugun=='ìœ ì„±êµ¬' }">selected </c:if>>ìœ ì„±êµ¬</option>
+										<option value="0705" <c:if test="${requestScope.gugun=='ì¤‘êµ¬' }">selected </c:if>>ì¤‘êµ¬</option>
 									</select>
 									<select class="sido2" id="region_code_08">	
-										<option value="">±¸/±º</option>										
-										<option value="0801">°ÅÁ¦½Ã</option>
-										<option value="0802">°ÅÃ¢±º</option>
-										<option value="0804">±èÇØ½Ã</option>
-										<option value="0806">¸¶»ê½Ã</option>
-										<option value="0807">¹Ğ¾ç½Ã</option>
-										<option value="0808">»çÃµ½Ã</option>
-										<option value="0810">¾ç»ê½Ã</option>
-										<option value="0812">ÁøÁÖ½Ã</option>
-										<option value="0813">ÁøÇØ½Ã</option>
-										<option value="0815">Ã¢¿ø½Ã</option>
-										<option value="0816">Åë¿µ½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="0801" <c:if test="${requestScope.gugun=='ê±°ì œì‹œ' }">selected </c:if>>ê±°ì œì‹œ</option>
+										<option value="0802" <c:if test="${requestScope.gugun=='ê±°ì°½êµ°' }">selected </c:if>>ê±°ì°½êµ°</option>
+										<option value="0804" <c:if test="${requestScope.gugun=='ê¹€í•´ì‹œ' }">selected </c:if>>ê¹€í•´ì‹œ</option>
+										<option value="0806" <c:if test="${requestScope.gugun=='ë§ˆì‚°ì‹œ' }">selected </c:if>>ë§ˆì‚°ì‹œ</option>
+										<option value="0807" <c:if test="${requestScope.gugun=='ë°€ì–‘ì‹œ' }">selected </c:if>>ë°€ì–‘ì‹œ</option>
+										<option value="0808" <c:if test="${requestScope.gugun=='ì‚¬ì²œì‹œ' }">selected </c:if>>ì‚¬ì²œì‹œ</option>
+										<option value="0810" <c:if test="${requestScope.gugun=='ì–‘ì‚°ì‹œ' }">selected </c:if>>ì–‘ì‚°ì‹œ</option>
+										<option value="0812" <c:if test="${requestScope.gugun=='ì§„ì£¼ì‹œ' }">selected </c:if>>ì§„ì£¼ì‹œ</option>
+										<option value="0813" <c:if test="${requestScope.gugun=='ì§„í•´ì‹œ' }">selected </c:if>>ì§„í•´ì‹œ</option>
+										<option value="0815" <c:if test="${requestScope.gugun=='ì°½ì›ì‹œ' }">selected </c:if>>ì°½ì›ì‹œ</option>
+										<option value="0816" <c:if test="${requestScope.gugun=='í†µì˜ì‹œ' }">selected </c:if>>í†µì˜ì‹œ</option>
 									</select>
 									<select class="sido2" id="region_code_09">
-										<option value="">±¸/±º</option>											
-										<option value="0901">°æ»ê½Ã</option>
-										<option value="0902">°æÁÖ½Ã</option>
-										<option value="0904">±¸¹Ì½Ã</option>
-										<option value="0906">±èÃµ½Ã</option>
-										<option value="0907">¹®°æ½Ã</option>
-										<option value="0909">»óÁÖ½Ã</option>
-										<option value="0911">¾Èµ¿½Ã</option>
-										<option value="0914">¿µÁÖ½Ã</option>
-										<option value="0915">¿µÃµ½Ã</option>
-										<option value="0922">Ä¥°î±º</option>
-										<option value="0923">Æ÷Ç×½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>											
+										<option value="0901" <c:if test="${requestScope.gugun=='ê²½ì‚°ì‹œ' }">selected </c:if>>ê²½ì‚°ì‹œ</option>
+										<option value="0902" <c:if test="${requestScope.gugun=='ê²½ì£¼ì‹œ' }">selected </c:if>>ê²½ì£¼ì‹œ</option>
+										<option value="0904" <c:if test="${requestScope.gugun=='êµ¬ë¯¸ì‹œ' }">selected </c:if>>êµ¬ë¯¸ì‹œ</option>
+										<option value="0906" <c:if test="${requestScope.gugun=='ê¹€ì²œì‹œ' }">selected </c:if>>ê¹€ì²œì‹œ</option>
+										<option value="0907" <c:if test="${requestScope.gugun=='ë¬¸ê²½ì‹œ' }">selected </c:if>>ë¬¸ê²½ì‹œ</option>
+										<option value="0909" <c:if test="${requestScope.gugun=='ìƒì£¼ì‹œ' }">selected </c:if>>ìƒì£¼ì‹œ</option>
+										<option value="0911" <c:if test="${requestScope.gugun=='ì•ˆë™ì‹œ' }">selected </c:if>>ì•ˆë™ì‹œ</option>
+										<option value="0914" <c:if test="${requestScope.gugun=='ì˜ì£¼ì‹œ' }">selected </c:if>>ì˜ì£¼ì‹œ</option>
+										<option value="0915" <c:if test="${requestScope.gugun=='ì˜ì²œì‹œ' }">selected </c:if>>ì˜ì²œì‹œ</option>
+										<option value="0922" <c:if test="${requestScope.gugun=='ì¹ ê³¡êµ°' }">selected </c:if>>ì¹ ê³¡êµ°</option>
+										<option value="0923" <c:if test="${requestScope.gugun=='í¬í•­ì‹œ' }">selected </c:if>>í¬í•­ì‹œ</option>
 									</select>
 									<select class="sido2" id="region_code_10">	
-										<option value="">±¸/±º</option>										
-										<option value="1001">³²±¸</option>
-										<option value="1002">´Ş¼­±¸</option>
-										<option value="1003">´Ş¼º±º</option>
-										<option value="1004">µ¿±¸</option>
-										<option value="1005">ºÏ±¸</option>
-										<option value="1007">¼ö¼º±¸</option>
-										<option value="1008">Áß±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1001" <c:if test="${requestScope.gugun=='ë‚¨êµ¬' }">selected </c:if>>ë‚¨êµ¬</option>
+										<option value="1002" <c:if test="${requestScope.gugun=='ë‹¬ì„œêµ¬' }">selected </c:if>>ë‹¬ì„œêµ¬</option>
+										<option value="1003" <c:if test="${requestScope.gugun=='ë‹¬ì„±êµ°' }">selected </c:if>>ë‹¬ì„±êµ°</option>
+										<option value="1004" <c:if test="${requestScope.gugun=='ë™êµ¬' }">selected </c:if>>ë™êµ¬</option>
+										<option value="1005" <c:if test="${requestScope.gugun=='ë¶êµ¬' }">selected </c:if>>ë¶êµ¬</option>
+										<option value="1007" <c:if test="${requestScope.gugun=='ìˆ˜ì„±êµ¬' }">selected </c:if>>ìˆ˜ì„±êµ¬</option>
+										<option value="1008" <c:if test="${requestScope.gugun=='ì¤‘êµ¬' }">selected </c:if>>ì¤‘êµ¬</option>
 									</select>
 									<select class="sido2" id="region_code_11">	
-										<option value="">±¸/±º</option>										
-										<option value="1104">±¤¾ç½Ã</option>
-										<option value="1106">³ªÁÖ½Ã</option>
-										<option value="1108">¸ñÆ÷½Ã</option>
-										<option value="1109">¹«¾È±º</option>
-										<option value="1111">¼øÃµ½Ã</option>
-										<option value="1113">¿©¼ö½Ã</option>
-										<option value="1122">È­¼ø±º</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1104" <c:if test="${requestScope.gugun=='ê´‘ì–‘ì‹œ' }">selected </c:if>>ê´‘ì–‘ì‹œ</option>
+										<option value="1106" <c:if test="${requestScope.gugun=='ë‚˜ì£¼ì‹œ' }">selected </c:if>>ë‚˜ì£¼ì‹œ</option>
+										<option value="1108" <c:if test="${requestScope.gugun=='ëª©í¬ì‹œ' }">selected </c:if>>ëª©í¬ì‹œ</option>
+										<option value="1109" <c:if test="${requestScope.gugun=='ë¬´ì•ˆêµ°' }">selected </c:if>>ë¬´ì•ˆêµ°</option>
+										<option value="1111" <c:if test="${requestScope.gugun=='ìˆœì²œì‹œ' }">selected </c:if>>ìˆœì²œì‹œ</option>
+										<option value="1113" <c:if test="${requestScope.gugun=='ì—¬ìˆ˜ì‹œ' }">selected </c:if>>ì—¬ìˆ˜ì‹œ</option>
+										<option value="1122" <c:if test="${requestScope.gugun=='í™”ìˆœêµ°' }">selected </c:if>>í™”ìˆœêµ°</option>
 									</select>
 									<select class="sido2" id="region_code_12">	
-										<option value="">±¸/±º</option>										
-										<option value="1202">±º»ê½Ã</option>
-										<option value="1203">±èÁ¦½Ã</option>
-										<option value="1204">³²¿ø½Ã</option>
-										<option value="1205">¹«ÁÖ±º</option>
-										<option value="1209">ÀÍ»ê½Ã</option>
-										<option value="1212">ÀüÁÖ½Ã</option>
-										<option value="1213">Á¤À¾½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1202" <c:if test="${requestScope.gugun=='êµ°ì‚°ì‹œ' }">selected </c:if>>êµ°ì‚°ì‹œ</option>
+										<option value="1203" <c:if test="${requestScope.gugun=='ê¹€ì œì‹œ' }">selected </c:if>>ê¹€ì œì‹œ</option>
+										<option value="1204" <c:if test="${requestScope.gugun=='ë‚¨ì›ì‹œ' }">selected </c:if>>ë‚¨ì›ì‹œ</option>
+										<option value="1205" <c:if test="${requestScope.gugun=='ë¬´ì£¼êµ°' }">selected </c:if>>ë¬´ì£¼êµ°</option>
+										<option value="1209" <c:if test="${requestScope.gugun=='ìµì‚°ì‹œ' }">selected </c:if>>ìµì‚°ì‹œ</option>
+										<option value="1212" <c:if test="${requestScope.gugun=='ì „ì£¼ì‹œ' }">selected </c:if>>ì „ì£¼ì‹œ</option>
+										<option value="1213" <c:if test="${requestScope.gugun=='ì •ìì‹œ' }">selected </c:if>>ì •ìì‹œ</option>
 									</select>
 									<select class="sido2" id="region_code_13">	
-										<option value="">±¸/±º</option>										
-										<option value="1301">±¤»ê±¸</option>
-										<option value="1302">³²±¸</option>
-										<option value="1303">µ¿±¸</option>
-										<option value="1304">ºÏ±¸</option>
-										<option value="1305">¼­±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1301" <c:if test="${requestScope.gugun=='ê´‘ì‚°êµ¬' }">selected </c:if>>ê´‘ì‚°êµ¬</option>
+										<option value="1302" <c:if test="${requestScope.gugun=='ë‚¨êµ¬' }">selected </c:if>>ë‚¨êµ¬</option>
+										<option value="1303" <c:if test="${requestScope.gugun=='ë™êµ¬' }">selected </c:if>>ë™êµ¬</option>
+										<option value="1304" <c:if test="${requestScope.gugun=='ë¶êµ¬' }">selected </c:if>>ë¶êµ¬</option>
+										<option value="1305" <c:if test="${requestScope.gugun=='ì„œêµ¬' }">selected </c:if>>ì„œêµ¬</option>
 									</select>
 									<select class="sido2" id="region_code_14">	
-										<option value="">±¸/±º</option>										
-										<option value="1401">³²±¸</option>
-										<option value="1402">µ¿±¸</option>
-										<option value="1403">ºÏ±¸</option>
-										<option value="1404">¿ïÁÖ±º</option>
-										<option value="1405">Áß±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1401" <c:if test="${requestScope.gugun=='ë‚¨êµ¬' }">selected </c:if>>ë‚¨êµ¬</option>
+										<option value="1402" <c:if test="${requestScope.gugun=='ë™êµ¬' }">selected </c:if>>ë™êµ¬</option>
+										<option value="1403" <c:if test="${requestScope.gugun=='ë¶êµ¬' }">selected </c:if>>ë¶êµ¬</option>
+										<option value="1404" <c:if test="${requestScope.gugun=='ìš¸ì£¼êµ°' }">selected </c:if>>ìš¸ì£¼êµ°</option>
+										<option value="1405" <c:if test="${requestScope.gugun=='ì¤‘êµ¬' }">selected </c:if>>ì¤‘êµ¬</option>
 									</select>
 									<select class="sido2" id="region_code_15">	
-										<option value="">±¸/±º</option>										
-										<option value="1501">°­¼­±¸</option>
-										<option value="1502">±İÁ¤±¸</option>
-										<option value="1503">±âÀå±º</option>
-										<option value="1504">³²±¸</option>
-										<option value="1506">µ¿·¡±¸</option>
-										<option value="1507">ºÎ»êÁø±¸</option>
-										<option value="1508">ºÏ±¸</option>
-										<option value="1509">»ç»ó±¸</option>
-										<option value="1510">»çÇÏ±¸</option>
-										<option value="1511">¼­±¸</option>
-										<option value="1512">¼ö¿µ±¸</option>
-										<option value="1513">¿¬Á¦±¸</option>
-										<option value="1514">¿µµµ±¸</option>
-										<option value="1516">ÇØ¿î´ë±¸</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1501" <c:if test="${requestScope.gugun=='ê°•ì„œêµ¬' }">selected </c:if>>ê°•ì„œêµ¬</option>
+										<option value="1502" <c:if test="${requestScope.gugun=='ê¸ˆì •êµ¬' }">selected </c:if>>ê¸ˆì •êµ¬</option>
+										<option value="1503" <c:if test="${requestScope.gugun=='ê¸°ì¥êµ°' }">selected </c:if>>ê¸°ì¥êµ°</option>
+										<option value="1504" <c:if test="${requestScope.gugun=='ë‚¨êµ¬' }">selected </c:if>>ë‚¨êµ¬</option>
+										<option value="1506" <c:if test="${requestScope.gugun=='ë™ë˜êµ¬' }">selected </c:if>>ë™ë˜êµ¬</option>
+										<option value="1507" <c:if test="${requestScope.gugun=='ë¶€ì‚°ì§„êµ¬' }">selected </c:if>>ë¶€ì‚°ì§„êµ¬</option>
+										<option value="1508" <c:if test="${requestScope.gugun=='ë¶êµ¬' }">selected </c:if>>ë¶êµ¬</option>
+										<option value="1509" <c:if test="${requestScope.gugun=='ì‚¬ìƒêµ¬' }">selected </c:if>>ì‚¬ìƒêµ¬</option>
+										<option value="1510" <c:if test="${requestScope.gugun=='ì‚¬í•˜êµ¬' }">selected </c:if>>ì‚¬í•˜êµ¬</option>
+										<option value="1511" <c:if test="${requestScope.gugun=='ì„œêµ¬' }">selected </c:if>>ì„œêµ¬</option>
+										<option value="1512" <c:if test="${requestScope.gugun=='ìˆ˜ì˜êµ¬' }">selected </c:if>>ìˆ˜ì˜êµ¬</option>
+										<option value="1513" <c:if test="${requestScope.gugun=='ì—°ì œêµ¬' }">selected </c:if>>ì—°ì œêµ¬</option>
+										<option value="1514" <c:if test="${requestScope.gugun=='ì˜ë„êµ¬' }">selected </c:if>>ì˜ë„êµ¬</option>
+										<option value="1516" <c:if test="${requestScope.gugun=='í•´ìš´ëŒ€êµ¬' }">selected </c:if>>í•´ìš´ëŒ€êµ¬</option>
 									</select>
 									<select class="sido2" id="region_code_16">	
-										<option value="">±¸/±º</option>										
-										<option value="1601">¼­±ÍÆ÷½Ã</option>
-										<option value="1602">Á¦ÁÖ½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1601" <c:if test="${requestScope.gugun=='ì„œê·€í¬ì‹œ' }">selected </c:if>>ì„œê·€í¬ì‹œ</option>
+										<option value="1602" <c:if test="${requestScope.gugun=='ì œì£¼ì‹œ' }">selected </c:if>>ì œì£¼ì‹œ</option>
 									</select>
 									<select class="sido2" id="region_code_17">	
-										<option value="">±¸/±º</option>										
-										<option value="1701">¼¼Á¾½Ã</option>
+										<option value="" <c:if test="${requestScope.gugun=='êµ¬/êµ°' }">selected </c:if>>êµ¬/êµ°</option>										
+										<option value="1701" <c:if test="${requestScope.gugun=='ì„¸ì¢…ì‹œ' }">selected </c:if>>ì„¸ì¢…ì‹œ</option>
 									</select>
 									
 								</div>
 							</div>
+																
 							<div class="form_field">
-								<a href="#" class="btn btn_red btn_srch" onclick="findBranch('st_addr'); return false;"><span class="btn_txt">°Ë»ö</span></a>
+								<a href="#" class="btn btn_red btn_srch" onclick="findStore();"><span class="btn_txt">ê²€ìƒ‰</span></a>
 							</div>
 						</div>
-						<!-- // ÁÖ¼Ò·Î Ã£±â °Ë»ö ¿µ¿ª -->
-						<!-- ¸ÅÀå¸íÀ¸·Î Ã£±â °Ë»ö ¿µ¿ª -->
+						<!-- // ì£¼ì†Œë¡œ ì°¾ê¸° ê²€ìƒ‰ ì˜ì—­ -->
+						<!-- ë§¤ì¥ëª…ìœ¼ë¡œ ì°¾ê¸° ê²€ìƒ‰ ì˜ì—­ -->
+					
+					<c:if test="${!named }">
+						<div class="form_group selbox" id="div_name_srch">
+					</c:if>
+				
+					<c:if test="${named }">
 						<div class="form_group selbox" id="div_name_srch" style="display: none;">
+					</c:if>
+				
+					
 							<div class="form_field">
 								<div class="form_item">
-									<label for="st_name" class="i_label">¸ÅÀå¸í °Ë»ö</label>
-									<input type="text" id="st_name" class="i_text">
+									<label for="st_name" class="i_label" style="position: absolute; visibility: hidden;">ë§¤ì¥ëª… ê²€ìƒ‰</label>
+									<input type="text" id="store_name" class="sido3" placeholder="ë§¤ì¥ëª… ê²€ìƒ‰" >
 								</div>
 							</div>
 							<div class="form_field">
-								<a href="#" class="btn btn_red btn_srch" onclick="findBranch('st_name'); return false;"><span class="btn_txt">°Ë»ö</span></a>
+								<a href="#" class="btn btn_red btn_srch" onclick="findStoreName();"><span class="btn_txt">ê²€ìƒ‰</span></a>
 							</div>
 						</div>
-						<!-- // ¸ÅÀå¸íÀ¸·Î Ã£±â °Ë»ö ¿µ¿ª -->
+						<!-- // ë§¤ì¥ëª…ìœ¼ë¡œ ì°¾ê¸° ê²€ìƒ‰ ì˜ì—­ -->
 					</div>
-					<!-- //form_container -->
-<!-- 
-				Æ¯º°ÇÒÀÎX
+					<!-- //form_container -->	
+				
+				
+				
 					<div class="special_offer">
-						<a href="#" onclick="schAllPrmt(); return false;" class="btn btn2"><span class="btn_txt">Æ¯º°ÇÒÀÎ ÁøÇà ¸ÅÀåÃ£±â</span></a>
-						<p onclick="openLayerPopup('promotion'); return false;"><span class="ico ico_ex_mark"></span><em>Æ¯º°ÇÒÀÎ ¾È³»</em></p>
+						<a href="#" onclick="getLocation(); return false;" class="btn btn2"><span class="btn_txt">ë‚˜ì™€ ê°€ê¹Œìš´ ë§¤ì¥ì°¾ê¸°</span></a>
 					</div>
-					 -->
+					 
 				</div>
-
 			</div>
 		</div>
 		<!-- //tab_menu -->
 
 		<div class="shop_totalnum">
-			<p>ÃÑ <em id="em_total_count">0</em>°³ÀÇ ¸ÅÀå</p>
-<!-- Æ¯º°ÇÒÀÎX <span>Æ¯º° ÇÁ·Î¸ğ¼Ç<a href="#" class="btn_ico btn_on_off" onclick="toggleSpclPrmtn(this); return false;" id="schPrmt"></a></span> -->
+			<p>ì´ <em id="em_total_count"  >${count}</em>ê°œì˜ ë§¤ì¥</p>
+<!-- íŠ¹ë³„í• ì¸X <span>íŠ¹ë³„ í”„ë¡œëª¨ì…˜<a href="#" class="btn_ico btn_on_off" onclick="toggleSpclPrmtn(this); return false;" id="schPrmt"></a></span> -->
 		</div>
 		<!-- //shop_totalnum -->
-
-		<div class="findresult_map" id="div_no_result" style="display: none;">
+		
+		
+		<c:if test="${count==0}" var="result">
+		<div class="findresult_map" id="div_no_result">
 			<div class="result_empty">
 				<span class="ico ico_findmap_null"></span>
-				<p>ÁË¼ÛÇÕ´Ï´Ù.<br>¸ÅÀå°Ë»ö °á°ú°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.</p>
-				<!-- 2016-10-13 // ÀüÃ¼¸ÅÀåº¸±â ¹öÆ° Ãß°¡(s) -->
-				<a href="#" onclick="openLayerPopup('detail_map'); return false;" class="btn btn_mdle btn_gray btn_basic"><span class="btn_txt">ÀüÃ¼ ¸ÅÀåº¸±â</span></a>
-				<!-- 2016-10-13 // ÀüÃ¼¸ÅÀåº¸±â ¹öÆ° Ãß°¡(e) -->
+				<p>ì£„ì†¡í•©ë‹ˆë‹¤.<br>ë§¤ì¥ê²€ìƒ‰ ê²°ê³¼ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</p>
 			</div>
 		</div>
-
+		</c:if>
+		<c:if test="${not result}">
 		<div class="shop_find" id="div_has_result">
 			<div class="shop_map">
-				<div id="map" style="height:660px; position: relative; top:0px; background-color: rgb(229, 227, 223); overflow: auto;">
+				<div id="map">
 					<div id="map_canvas" style="height:660px; position: relative; top:0px; background-color: rgb(229, 227, 223); overflow: auto;"> 
 						<div id="map_canvas_GcenMaps_viewport" style="position: relative; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
-					 	<c:forEach items="${shoplist }" var="shoplist" varStatus="loop"> 
 							<div id="map_canvas_GcenMaps_markerlayer" style="position: absolute; width: 100%; height: 100%; z-index: 700; overflow: hidden;">
 								<div class="marker_box" style="position: absolute; left: 206.5px; top: 262px;">
-									<div class="marker_info" data-gmapx="${shoplist.st_xpos }" data-gmapy="${shoplist.st_ypos }" style="display: block;">
-											<strong>${shoplist.st_name }</strong>
+<!-- 									<div class="marker_info" data-gmapx="st_xpos" data-gmapy="st_ypos" style="display: block;">
+											<strong></strong>
 											<div class="btn_wrap">	
 												<div class="btn_fix_rgt">		
-												<a href="javascript:openDetailPop('86520');" class="btn"><span class="btn_txt">»ó¼¼º¸±â</span></a>	
+												<a href="#" class="btn"><span class="btn_txt">ìƒì„¸ë³´ê¸°</span></a>	
 												</div>
 											</div>
-									</div> <!-- marker_info -->	
+									</div> 	 -->
 										
 										
 										
 										<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2da6f30f4df7d35993f892c831fc0ee"></script>
 											<script>
-												var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
-													st_xpos = 37.4783093 * 1.0,
-													st_ypos = 126.89102460000004 * 1.0,
+												var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 																																		
 												    mapOption = {
-												        center: new daum.maps.LatLng(st_xpos, st_ypos), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-												        level: 3, // ÁöµµÀÇ È®´ë ·¹º§
-												        mapTypeId : daum.maps.MapTypeId.ROADMAP // ÁöµµÁ¾·ù
+												        center: new daum.maps.LatLng(${centerX}, ${centerY}), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+												        level: ${mapsize}, // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+												        mapTypeId : daum.maps.MapTypeId.ROADMAP // ì§€ë„ì¢…ë¥˜
 												    }; 
-												// Áöµµ¸¦ »ı¼ºÇÑ´Ù 
+												// ì§€ë„ë¥¼ ìƒì„±í•œë‹¤ 
 												var map = new daum.maps.Map(mapContainer, mapOption); 
-												// ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ ÁÖ¼Ò ½ÇÆĞ½Ã 'http://i66.tinypic.com/28ovbk.png' ÀÔ·Â
+												// ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì£¼ì†Œ ì‹¤íŒ¨ì‹œ 'http://i66.tinypic.com/28ovbk.png' ì…ë ¥
 												var markerImageUrl = 'http://imageshack.com/a/img922/3816/bBfeoC.png', 
-												    markerImageSize = new daum.maps.Size(70, 78), // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ Å©±â
+												    markerImageSize = new daum.maps.Size(70, 78), // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ í¬ê¸°
 												    markerImageOptions = { 
-												        offset : new daum.maps.Point(20, 42)// ¸¶Ä¿ ÁÂÇ¥¿¡ ÀÏÄ¡½ÃÅ³ ÀÌ¹ÌÁö ¾ÈÀÇ ÁÂÇ¥
+												        offset : new daum.maps.Point(20, 42)// ë§ˆì»¤ ì¢Œí‘œì— ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ì•ˆì˜ ì¢Œí‘œ
 												    };
-												// ¸¶Ä¿ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÑ´Ù
+												// ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•œë‹¤
 												var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
-										
-												// Áöµµ¿¡ ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Ç¥½ÃÇÑ´Ù
-												var marker = new daum.maps.Marker({
-												    position: new daum.maps.LatLng(st_xpos, st_ypos), // ¸¶Ä¿ÀÇ ÁÂÇ¥
-												    image : markerImage, // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö
-												    map: map // ¸¶Ä¿¸¦ Ç¥½ÃÇÒ Áöµµ °´Ã¼
-												});
-										
-												// ¸¶Ä¿¿¡ mouseover ÀÌº¥Æ®¸¦ µî·ÏÇÑ´Ù
-												daum.maps.event.addListener(marker, 'mouseover', function() {
-												    console.log('¸¶Ä¿¿¡ mouseover ÀÌº¥Æ®°¡ ¹ß»ıÇß½À´Ï´Ù!');
-												});
-										
-												// ¸¶Ä¿¿¡ mouseout ÀÌº¥Æ® µî·Ï
-												daum.maps.event.addListener(marker, 'mouseout', function() {
-												    console.log('¸¶Ä¿¿¡ mouseout ÀÌº¥Æ®°¡ ¹ß»ıÇß½À´Ï´Ù!');
-												});
+										 
+												// ì§€ë„ì— ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  í‘œì‹œí•œë‹¤
+/* 												var marker = new daum.maps.Marker({
+												    position: new daum.maps.LatLng(37.4961476, 126.90789819999998), // ë§ˆì»¤ì˜ ì¢Œí‘œ
+												
+												    image : markerImage, // ë§ˆì»¤ì˜ ì´ë¯¸ì§€
+												    map: map // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ì§€ë„ ê°ì²´
+												}); */
+												
+												var positions = [
+													<c:forEach items="${shoplist }" var="shoplist" varStatus="loop" >
+													{
+												        
+												        content: '<div class="mapcontent" style="display: position: absolute; z-index: 1; bottom: 1px; left: 10%; width: 150px; margin-left: 30px; padding: 11px; background-color: #fff; border: 1px solid #bfbfbf; border-radius: 8px; font-size: 1.1em;"><strong>${shoplist.st_name}</strong></div>', 
+												        latlng: new daum.maps.LatLng(${shoplist.st_xpos}, ${shoplist.st_ypos})
+												    }
+													<c:if test="${!loop.last}">
+													,
+													</c:if>
+													</c:forEach>
+														
+												];
+												for (var i = 0; i < positions.length; i ++) {
+												    
+												    // ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
+												   // var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+												    
+												    // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+												    var marker = new daum.maps.Marker({
+												        map: map, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ì§€ë„
+												        position: positions[i].latlng, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìœ„ì¹˜
+												        image : markerImage // ë§ˆì»¤ ì´ë¯¸ì§€ 
+												    });
+												    var infowindow = new daum.maps.InfoWindow({
+												        content: positions[i].content // ì¸í¬ìœˆë„ìš°ì— í‘œì‹œí•  ë‚´ìš©
+												    });
+												    
+												    daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+												    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+												}
+												// ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•˜ëŠ” í´ë¡œì €ë¥¼ ë§Œë“œëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤ 
+												function makeOverListener(map, marker, infowindow) {
+												    return function() {
+												        infowindow.open(map, marker);
+												    };
+												}
+
+												// ì¸í¬ìœˆë„ìš°ë¥¼ ë‹«ëŠ” í´ë¡œì €ë¥¼ ë§Œë“œëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤ 
+												function makeOutListener(infowindow) {
+												    return function() {
+												        infowindow.close();
+												    };
+												}
+												/*  var iwContents = [
+													<c:forEach items="${shoplist }" var="shoplist" varStatus="loop" >
+													{
+														'<div style="padding:5px;">${shoplist.st_name} <br><a href="<c:url value=''/>" style="color:blue" target="_blank">ìƒì„¸ë³´ê¸°</a></div>', // ì¸í¬ìœˆë„ìš°ì— í‘œì¶œë  ë‚´ìš©ìœ¼ë¡œ HTML ë¬¸ìì—´ì´ë‚˜ document elementê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤
+												    	iwPosition : new daum.maps.LatLng(${shoplist.st_xpos}, ${shoplist.st_ypos}) //ì¸í¬ìœˆë„ìš° í‘œì‹œ ìœ„ì¹˜ì…ë‹ˆë‹¤
+													}<c:if test="${!loop.last}">
+													,
+													</c:if>
+											    			
+											    	</c:forEach>
+												];  */
+												
+											    // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì´ë¯¸ì§€ í¬ê¸° ì…ë‹ˆë‹¤
+											    var imageSize = new daum.maps.Size(24, 35); 
+											    
+												
+												
+												
+										/* 	// ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+											var infowindow = new daum.maps.InfoWindow({
+											    position : iwPosition[i].latlng, 
+											    content : iwContent[i].content 
+											});
+											  
+											// ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤. ë‘ë²ˆì§¸ íŒŒë¼ë¯¸í„°ì¸ markerë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì§€ë„ ìœ„ì— í‘œì‹œë©ë‹ˆë‹¤
+											infowindow.open(map, marker);  */
+												
+												
+												
 											</script>
-									<a href="#" class="btn_screen" onclick="openLayerPopup('detail_map'); return false;"><span class="ico ico_screen2"></span></a>
+									
 									
 								</div>	<!-- marker_box -->
 							</div>	<!-- map_canvas_GcenMaps_markerlayer -->
-							</c:forEach> 
+
 						</div> <!-- map_canvas_GcenMaps_viewport -->
 					</div>
 					<!-- //map_canvas -->
@@ -1105,160 +1356,128 @@ function goBasketWrapp(branch_code) {
 			<!-- //shop_map -->
 			<div class="shop_list">
 				<ul id="ul_shop_list">
-				<c:forEach items="${shoplist }" var="shoplist" varStatus="loop">
-					<li>	
-						<div class="shopcard">		
+				<c:forEach items="${shoplist }" var="shoplist" >
+					<li>
+						<div class="shopcard">
 							<div class="shopcard_content">
-<!-- 							Æ÷ÀåÇÒÀÎX			
-								<div class="shopcard_tag">				
-									<div class="store_tag online_tag">					
-										<p class="tag_title">¹æ¹®Æ÷Àå</p>					
-										<span class="tag_info">ON<br>LINE</span>					
-										<span class="tag_sale">20<em>%</em></span>				
-									</div>				
-									<div class="store_tag offline_tag">					
-										<p class="tag_title">¹æ¹®Æ÷Àå</p>					
-										<span class="tag_info">OFF<br>LINE</span>					
-										<span class="tag_sale">20<em>%</em></span>				
-									</div>			
-								</div>	 -->		
-								<p class="title">${shoplist.st_name }</p>			
-								<p class="st_addr">${shoplist.st_addr }</p>			
+								<p class="title">${shoplist.st_name }</p>
+								<p class="addr">${shoplist.st_addr }</p>
 								<p class="phone_num">
 									<span class="ico ico_s_phone"></span>${shoplist.st_tel }
-								</p>			
-								<div class="btn_box">				
-									<a href="#none" onclick="openDetailPop(86296);" class="btn">
-										<span class="btn_txt">»ó¼¼º¸±â</span>
-									</a>				
-									<a href="javascript:goBasketWrapp(86296);" class="btn btn_red">
-										<span class="btn_txt">¹æ¹®Æ÷Àå</span>
-									</a>			
-								</div>		
-							</div>	
+								</p>
+								<div class="btn_box">
+									<a href="#" onclick="showDetail(${shoplist.st_no});" class="btn">
+										<span class="btn_txt">ìƒì„¸ë³´ê¸°</span>
+									</a>
+								</div>
+							</div>
 						</div>
 					</li>
-				</c:forEach>	
+				</c:forEach>
 				</ul><!-- CALL AJAX -->
-			
 			</div>
 			<!-- //shop_map -->
-
 		</div>
 		<!-- //shop_find -->
-
+		</c:if>
 	</div>
 	<!-- //content -->
 </div>
+
 <!-- //container -->
 
-<!-- Æ¯º°ÇÒÀÎX 
-	Æ¯º°ÇÒÀÎ ÆË¾÷(s)
-<div class="pop_layer" id="popup_promotion"></div>
-//Æ¯º°ÇÒÀÎ ÆË¾÷(e)
- -->
-<!-- ¸ÅÀåÁöµµ ÀüÃ¼º¸±â ÆË¾÷(s)) -->
-<div class="pop_layer pop_type" id="storeview_map">
-	<div class="bg"></div>
-	<div class="pop_wrap">
-		<div class="pop_header">
-			<h2>¸ÅÀåÁöµµ ÀüÃ¼º¸±â</h2>
-		</div>
-		<div class="pop_content">
-			<div class="map_view">
-				<div id="map">
-					<div id="map_large_canvas" style="height:835px; position: relative; top:0px; background-color: rgb(229, 227, 223); overflow: auto;"></div>
-				</div>
-			</div>
-		</div>
-		<a href="#" onclick="$('.marker_info').hide(); return false;" class="btn_ico btn_close">´İ±â</a>
-	</div>
-</div>
-<!-- //¸ÅÀåÁöµµ ÀüÃ¼º¸±â ÆË¾÷(e) -->
-
-<!-- ¸ÅÀå »ó¼¼º¸±â ÆË¾÷(s)) -->
+<!-- ë§¤ì¥ ìƒì„¸ë³´ê¸° íŒì—…(s)) -->
 <div class="pop_layer pop_type" id="storeview_detail">
 	<div class="bg"></div>
 	<div class="pop_wrap">
 		<div class="pop_header">
-			<h2>¸ÅÀå »ó¼¼º¸±â</h2>
+			<h2>ë§¤ì¥ ìƒì„¸ë³´ê¸°</h2>
 		</div>
 		<div class="pop_content">
-			<input type="hidden" id="st_no" value="" />
+			<c:forEach items="${shoplist }" var="shoplist" varStatus="loop">
+			<div id="de${shoplist.st_no}" class="detdiv"  style="display: none;"  >
+			
 			<div class="storeview_title">
-				<p id="detail_name">µµ¹Ì³ëÇÇÀÚ ÀÀ¾ÏÁ¡</p>
-<!-- 				
-				¹æ¹®Æ÷ÀåÇÒÀÎ
-				<div class="sale_tag">
-					<div class="store_tag online_tag">
-						<p class="tag_title">¹æ¹®Æ÷Àå</p>
-						<span class="tag_info">ON<br>LINE</span>
-						<span class="tag_sale"><span id="detail_on_sale"></span><em>%</em></span>
-					</div>
-					<div class="store_tag offline_tag">
-						<p class="tag_title">¹æ¹®Æ÷Àå</p>
-						<span class="tag_info">OFF<br>LINE</span>
-						<span class="tag_sale"><span id="detail_off_sale"></span><em>%</em></span>
-					</div>
-				</div> -->
+				<p id="detail_name">${shoplist.st_name }</p>
 			</div>
+			
 			<!-- //title -->
-
 			<div class="btn_wrap">
-				<div class="btn_fix_lft">
-					<a href="#" class="btn btn_mdle btn_red" id="detail_basket_wrapp"><span class="btn_txt">¹æ¹®Æ÷Àå ÁÖ¹®ÇÏ±â</span></a>
-				</div>
+
 			</div>
 			<!-- //button -->
-
-<!-- 
-			Æ¯º°ÇÒÀÎX
-			<div class="sale_area">
-				<div class="pop_content_wrapper">
-					<p class="sale_txt">Æ¯º°ÇÒÀÎ</p>
-					<p class="sale_list" id="detail_sale_info">
-						Æ¯Á¤ÇÇÀÚ(L)¹è´Ş 30%, Å¬·¡½Ä 5Á¾ ¹æ¹®Æ÷Àå, Å¬·¡½Ä 5Á¾ ¹æ¹®Æ÷Àå
-					</p>
-				</div>
-			</div>
- -->
 			<div class="store_information">
 				<div class="pop_content_wrapper">
 					<div class="store_infobox">
-						<div class="store_map">
+						<div class="store_map" id="detail_map">
 							<div id="map_detail_canvas" style="width: 420px; height:330px; position: relative; top:0px; background-color: rgb(229, 227, 223); overflow: auto;"></div>
-						</div>
+								<div id="map_detail_canvas_GcenMaps_viewport" style="position: relative; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+									<div id="map_detail_canvas_GcenMaps_markerlayer" style="position: absolute; width: 100%; height: 100%; z-index: 700; overflow: hidden;">
+										<div class="marker_box" style="position: absolute; left: 171.5px; top: 97px;">
+											<!-- <div class="marker_info" data-gmapx="37.564732" data-gmapy="126.993168" style="display: none;"> -->
+											<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2da6f30f4df7d35993f892c831fc0ee"></script>
+											<script>
+												var mapContainer = document.getElementById('detail_map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 																																		
+											    	mapOption = {
+											        center: new daum.maps.LatLng(${shoplist.st_xpos}, ${shoplist.st_ypos}), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+											        level: 2, // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+											        mapTypeId : daum.maps.MapTypeId.ROADMAP // ì§€ë„ì¢…ë¥˜
+											    	}; 
+											    // ì§€ë„ë¥¼ ìƒì„±í•œë‹¤ 
+												var detail_map = new daum.maps.Map(mapContainer, mapOption);
+												// ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì£¼ì†Œ ì‹¤íŒ¨ì‹œ 'http://i66.tinypic.com/28ovbk.png' ì…ë ¥
+												var markerImageUrl = 'http://imageshack.com/a/img922/3816/bBfeoC.png', 
+												    markerImageSize = new daum.maps.Size(70, 78), // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ í¬ê¸°
+												    markerImageOptions = { 
+												        offset : new daum.maps.Point(20, 42)// ë§ˆì»¤ ì¢Œí‘œì— ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ì•ˆì˜ ì¢Œí‘œ
+												    };
+												// ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•œë‹¤
+												var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);																																   		    
+																																																																									
+												// ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
+												// var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+												    
+											    // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+											    var marker = new daum.maps.Marker({
+											        map: detail_map, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ì§€ë„
+											        position: new daum.maps.LatLng(${shoplist.st_xpos}, ${shoplist.st_ypos}), // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìœ„ì¹˜												       
+											        image : markerImage // ë§ˆì»¤ ì´ë¯¸ì§€ 
+											    });
+												   
+												
+											</script>
+											<!-- </div> -->
+										</div>
+									</div>
+								</div>
+							</div>
 						<!-- //store_map -->
 						<div class="store_information_lst">
 							<ul>
-								<!-- <li>
-									<div class="info_title"><span class="ico ico_store_info2"></span><span class="txt_store">°Å¸®</span></div>
-									<div class="info_desc">15 Km</div>
-								</li> -->
 								<li>
-									<div class="info_title"><span class="ico ico_store_info"></span><span class="txt_store">ÀüÈ­¹øÈ£</span></div>
-									<div class="info_desc" id="detail_tel">${st_tel }</div>
+									<div class="info_title"><span class="ico ico_store_info"></span><span class="txt_store">ì „í™”ë²ˆí˜¸</span></div>
+									<div class="info_desc" id="detail_tel">${shoplist.st_tel }</div>
 								</li>
 								<li>
-									<div class="info_title"><span class="ico ico_store_info3"></span><span class="txt_store">ÁÖ¼Ò</span></div>
-									<div class="info_desc" id="detail_address">${st_addr }</div>
+									<div class="info_title"><span class="ico ico_store_info3"></span><span class="txt_store">ì£¼ì†Œ</span></div>
+									<div class="info_desc" id="detail_address">${shoplist.st_addr }</div>
 								</li>
 								<li>
-									<div class="info_title"><span class="ico ico_store_info4"></span><span class="txt_store">¿µ¾÷½Ã°£</span></div>
-									<div class="info_desc" id="detail_business_hours">${st_time }</div>
+									<div class="info_title"><span class="ico ico_store_info4"></span><span class="txt_store">ì˜ì—…ì‹œê°„</span></div>
+									<div class="info_desc" id="detail_business_hours">${shoplist.st_time }</div>
+								</li>
+								<li>
+									<div class="info_title"><span class="ico ico_store_info5"></span><span class="txt_store">ìœ„ì¹˜ì •ë³´</span></div>
+									<div class="info_desc" id="detail_location_info">${shoplist.st_road }</div>
+								</li>
+								<li>
+									<div class="info_title"><span class="ico ico_store_info6"></span><span class="txt_store">ì£¼ì°¨ì •ë³´</span></div>
+									<div class="info_desc" id="detail_parking_info">${shoplist.st_parkin }</div>
 								</li>
 <!-- 								<li>
-									<div class="info_title"><span class="ico ico_store_info5"></span><span class="txt_store">À§Ä¡Á¤º¸</span></div>
-									<div class="info_desc" id="detail_location_info">ÁöÇÏÃ¶ 6È£¼± Áõ»ê¿ª 3¹øÃâ±¸¾Õ</div>
+									 ë§¤ì¥ í• ì¸ X <div class="info_title"><span class="ico ico_store_info7"></span><span class="txt_store">Notice &amp;<br>Event</span></div> 
+									 ë§¤ì¥ë³„ í• ì¸ X <div class="info_desc"><em id="detail_notice">ë°°ë‹¬ì£¼ë¬¸ 25% í• ì¸</em></div>
 								</li> -->
-								<li>
-									<div class="info_title"><span class="ico ico_store_info6"></span><span class="txt_store">ÁÖÂ÷Á¤º¸</span></div>
-									<div class="info_desc" id="detail_parking_info">${st_parkin }</div>
-								</li>
-								<li>
-									<!-- ¸ÅÀå ÇÒÀÎ X <div class="info_title"><span class="ico ico_store_info7"></span><span class="txt_store">Notice &amp;<br>Event</span></div> -->
-									<!-- ¸ÅÀåº° ÇÒÀÎ X <div class="info_desc"><em id="detail_notice">¹è´ŞÁÖ¹® 25% ÇÒÀÎ</em></div> -->
-								</li>
 							</ul>
 						</div>
 						<!-- //store_information_lst -->
@@ -1273,45 +1492,48 @@ function goBasketWrapp(branch_code) {
 					<ul class="slides" id="detail_photos"></ul>
 				</div>
 			</div>
-			<!-- //slide -->
 
+			<!-- //slide -->
+			</div>
+			</c:forEach>
 		</div>
-		<a href="#" class="btn_ico btn_close">´İ±â</a>
+		
+		<a href="#" class="btn_ico btn_close">ë‹«ê¸°</a>
 	</div>
 </div>
-<!-- //¸ÅÀå »ó¼¼º¸±â ÆË¾÷(e) -->
+<!-- //ë§¤ì¥ ìƒì„¸ë³´ê¸° íŒì—…(e) -->
 
-<!-- ·Îµù ÀÌ¹ÌÁö -->
+<!-- ë¡œë”© ì´ë¯¸ì§€ -->
 		<div class="loading" id="defaultLoading" style="display:none;">
 			<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif" alt="loading">
 			<div class="dim"></div>
 		</div>
-		<!-- // ·Îµù ÀÌ¹ÌÁö -->
+		<!-- // ë¡œë”© ì´ë¯¸ì§€ -->
 
-		<!-- Àå¹Ù±¸´Ï ´ã±â Åä½ºÆ® ÆË¾÷(s) -->
+		<!-- ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸° í† ìŠ¤íŠ¸ íŒì—…(s) -->
 		<div class="pop_toast" id="card_add">
 			<div class="bg"></div>
 			<div class="pop_wrap">
 				<div class="pop_content">
-					<p>Àå¹Ù±¸´Ï¿¡ ´ã¾Ò½À´Ï´Ù.</p>
+					<p>ì¥ë°”êµ¬ë‹ˆì— ë‹´ì•˜ìŠµë‹ˆë‹¤.</p>
 				</div>
 			</div>
 		</div>
 
-		<!-- //Àå¹Ù±¸´Ï ´ã±â Åä½ºÆ® ÆË¾÷(e) -->
+		<!-- //ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸° í† ìŠ¤íŠ¸ íŒì—…(e) -->
 
-		<!-- Àå¹Ù±¸´Ï(s) -->
+		<!-- ì¥ë°”êµ¬ë‹ˆ(s) -->
 		<div class="pop_layer pop_type" id="cart_pop">
 			<div class="bg"></div>
 			<div class="pop_wrap">
 				<div class="pop_header">
-					<h2>Àå¹Ù±¸´Ï</h2>
+					<h2>ì¥ë°”êµ¬ë‹ˆ</h2>
 				</div>
-				<!-- iframe src="100_cart_pop_frame.html" width="1000" height="832" frameborder="0"></iframe><!-- 2016-10-05//¾ÆÀÌÇÁ·¹ÀÓ´ëÃ¼ -->
-				<a href="javascript:;" onclick="setBasketCnt();" class="btn_ico btn_close">´İ±â</a>
+				<!-- iframe src="100_cart_pop_frame.html" width="1000" height="832" frameborder="0"></iframe><!-- 2016-10-05//ì•„ì´í”„ë ˆì„ëŒ€ì²´ -->
+				<a href="javascript:;" onclick="setBasketCnt();" class="btn_ico btn_close">ë‹«ê¸°</a>
 			</div>
 		</div>
-		<!-- //Àå¹Ù±¸´Ï(e) -->
+		<!-- //ì¥ë°”êµ¬ë‹ˆ(e) -->
 
 		<jsp:include page="/WEB-INF/Pizza/template/foot.jsp"></jsp:include>
 		<!-- //footer -->
@@ -1338,7 +1560,7 @@ function goBasketWrapp(branch_code) {
 	<script type="text/javascript" src="/resources/js/acecounter.js"></script>
 	<!-- AceCounter Log Gathering Script End -->
 	
-	<!-- Naver Anlytics °øÅë-->
+	<!-- Naver Anlytics ê³µí†µ-->
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
 	<script type="text/javascript">
 	if (!wcs_add) var wcs_add={};
@@ -1347,7 +1569,7 @@ function goBasketWrapp(branch_code) {
 	wcs.inflow("dominos.co.kr");
 	wcs_do(_nasa);
 	</script>
-	<!-- // Naver Anlytics °øÅë -->
+	<!-- // Naver Anlytics ê³µí†µ -->
 
 	<!-- Google Tag Manager : dominos_web -->
 	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TR97KL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1358,16 +1580,16 @@ function goBasketWrapp(branch_code) {
 	})(window,document,'script','dataLayer','GTM-TR97KL');</script>
 	<!-- End Google Tag Manager -->
 
-<!-- 2017-05-08 // Ãªº¿ Ãß°¡(s) -->
+<!-- 2017-05-08 // ì±—ë´‡ ì¶”ê°€(s) -->
 
 <div class="layer_chat">
 	<div class="dim"></div>
 	<div class="layer_content">
 		<iframe id="chatUrl" src="" frameborder="0"></iframe>
-		<a href="#" class="btn_close">´İ±â</a>
+		<a href="#" class="btn_close">ë‹«ê¸°</a>
 	</div>
 </div>
-<!-- 2017-05-08 // Ãªº¿ Ãß°¡(e) -->
+<!-- 2017-05-08 // ì±—ë´‡ ì¶”ê°€(e) -->
 		
 </body>
 <script>
