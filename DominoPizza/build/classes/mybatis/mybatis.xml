@@ -121,7 +121,7 @@ END
 	</select>
 	
 	<select id="mybatiscallUser" parameterType="java.lang.String" resultType="pizza.service.impl.UserDto" >
-		select name,r.r_name r_name,tel,
+		select name,r.r_name r_name,r_img,tel,
 	(select count(*) from customer c join my_cupon mc on c.id=mc.id where c.id='${id}' and
 	mc.mc_no not in ( SELECT mc.mc_no FROM my_cupon mc join USE_SAILECOUPON uc on uc.mc_no=mc.mc_no where id=#{id} )
 	AND <![CDATA[  C_EDATE > SYSDATE  ]]> ) coupon

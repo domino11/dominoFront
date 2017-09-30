@@ -1188,12 +1188,11 @@ function goBasketWrapp(branch_no) {
 					<c:if test="${named }">
 						<div class="form_group selbox" id="div_name_srch" style="display: none;">
 					</c:if>
-				
 					
 							<div class="form_field">
 								<div class="form_item">
 									<label for="st_name" class="i_label" style="position: absolute; visibility: hidden;">매장명 검색</label>
-									<input type="text" id="store_name" class="sido3" placeholder="매장명 검색" >
+									<input type="text" id="store_name" class="sido3" value="${nameSearch}" placeholder="매장명 검색" >
 								</div>
 							</div>
 							<div class="form_field">

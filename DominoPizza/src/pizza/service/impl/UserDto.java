@@ -16,6 +16,8 @@ public class UserDto {
 	//메인페이지 등급 및 쿠폰용
 	private String r_name;
 	private String coupon;
+	private String r_img;
+	
 	
 	
 	public String getR_name() {
@@ -84,6 +86,12 @@ public class UserDto {
 	}
 	public void setBirth(String birth) {
 		this.birth = birth;
+	}
+	public String getR_img() {
+		return r_img;
+	}
+	public void setR_img(String r_img) {
+		this.r_img = r_img;
 	}
 	
 	

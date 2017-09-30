@@ -7,6 +7,8 @@ public class TargetDTO {
 	private String price;
 	private String r_no;
 	private String r_name;
+	private String r_img;
+	
 	
 	
 	public String getTarget() {
@@ -38,6 +40,12 @@ public class TargetDTO {
 	}
 	public void setR_name(String r_name) {
 		this.r_name = r_name;
+	}
+	public String getR_img() {
+		return r_img;
+	}
+	public void setR_img(String r_img) {
+		this.r_img = r_img;
 	}
 	
 	

@@ -48,6 +48,7 @@ public class BranchController {
 			where += " and st_name like ('%"+nameSearch+"%')";
 			System.out.println(where);
 			System.out.println("sido3"+nameSearch);
+			req.setAttribute("nameSearch", nameSearch);
 			
 		}
 		

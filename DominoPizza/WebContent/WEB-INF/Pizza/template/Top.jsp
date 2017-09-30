@@ -57,7 +57,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="<c:url value='/branch.pz'/>" class="menu03">매장찾기</a>
+						<a href="<c:url value='/branch.pz?si=서울&gugun=금천구'/>" class="menu03">매장찾기</a>
 						<!--div class="depth2">
 							<ul class="list_depth2">
 								<li><a href="/event/list?gubun=E0100">오늘의 핫딜</a></li>

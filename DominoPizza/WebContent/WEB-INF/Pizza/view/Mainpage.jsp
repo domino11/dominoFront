@@ -296,7 +296,7 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 				</li>
 				</c:if>
 				<li>
-					<a href="<c:url value='/branch.pz'/>">
+					<a href="<c:url value='/branch.pz?si=서울&gugun=금천구'/>">
 						<div class="img_info">
 							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info3_2.png" alt="">
 						</div>

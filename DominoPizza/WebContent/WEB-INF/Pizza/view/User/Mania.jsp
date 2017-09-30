@@ -202,7 +202,9 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<div class="container">
 			<div class="wrapper">
 				<div class="grade_intro">
-					<span class="ico_grade ${fn:toLowerCase(dto.r_name) }">${dto.r_name }</span>
+					<%-- <span class="ico_grade ${fn:toLowerCase(dto.r_name) }">${dto.r_name }</span> --%>
+					<img style="bottom: 0px;padding-top: 10px" alt="${dto.r_name }" src="<c:url value='/Pizza/Image/rating/${dto.r_img }' />">
+					
 					<p class="grade_desc">
 						9월, <strong>${NAME} 님</strong>의<br>
 						온라인등급은 <em>${dto.r_name }</em>입니다.
@@ -257,7 +259,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 					 <div class="upgrade_title">다음 달, <em>${NAME}</em> 님은 <em>${r_name }등급</em> 으로 업그레이드 가능합니다.</div>
 					 <ul class="upgarde_condition">
 					 	<li class="condition_list">
-					 		<p class="title"><em>등급</em>으로 업그레이드 하려면?</p>
+					 		<p class="title"><em>${r_name }등급</em>으로 업그레이드 하려면?</p>
 					 		
 					 		<div class="lst_type">
 								<ul>

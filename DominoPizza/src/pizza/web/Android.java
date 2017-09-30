@@ -125,6 +125,7 @@ public class Android {
 		System.out.println("들어는 오냐2");
 		map.put("ty", "103");
 		List<PizzaMenuList> plist = service.menuRank(map);
+		System.out.println(req.getServletContext().getRealPath("/Pizza/Image/pizzalist"));
 		
 		int lidx=req.getRequestURL().toString().lastIndexOf("/");
 		String url = req.getRequestURL().toString().substring(0,lidx);
@@ -142,17 +143,17 @@ public class Android {
 			rank = "[Best"+i+"]";
 			String rankimg="";
 			if(i==1)
-				rankimg="Gold.png";
+				rankimg="gold.png";
 			else if(i==2)
-				rankimg="Silv.png";
+				rankimg="silv.png";
 			else if(i==3)
-				rankimg="Bron.png";
+				rankimg="bron.png";
 			else
-				rankimg=i+".png";
+				rankimg=i+""+i+".png";
 
 			System.out.println(name);
 			Map map2 = new HashMap<>();
-			map2.put("rank", url+"/pizza/Image/pizzalist/"+rankimg);
+			map2.put("rank", url+"/Pizza/Image/pizzalist/"+rankimg);
 			map2.put("name", name);
 			map2.put("url", url+"/Pizza/Image/pizzalist/"+dto.getP_himg());
 			list.add(map2);
