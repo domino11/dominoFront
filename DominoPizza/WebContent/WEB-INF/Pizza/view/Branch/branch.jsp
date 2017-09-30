@@ -26,7 +26,14 @@
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value='/Pizza/css/jcarousel.connected-carousels.css' /> ">
 	<script type="text/javascript" src="<c:url value='/Pizza/js/jcarousel.connected-carousels.js' /> "></script>
-	
+	<style>
+	.shopcard_content {
+	font-size: 16px;
+    font-family: 'Noto Sans KR',Tahoma,sans-serif;
+    font-weight: 400;
+    color: #717171;
+	}
+	</style>
 	
 	
 	
@@ -1196,6 +1203,7 @@ function goBasketWrapp(branch_no) {
 						<!-- // 매장명으로 찾기 검색 영역 -->
 					</div>
 					<!-- //form_container -->	
+	
 				
 				
 				
@@ -1360,16 +1368,13 @@ function goBasketWrapp(branch_no) {
 					<li>
 						<div class="shopcard">
 							<div class="shopcard_content">
-								<p class="title">${shoplist.st_name }</p>
-								<p class="addr">${shoplist.st_addr }</p>
-								<p class="phone_num">
-									<span class="ico ico_s_phone"></span>${shoplist.st_tel }
-								</p>
-								<div class="btn_box">
-									<a href="#" onclick="showDetail(${shoplist.st_no});" class="btn">
-										<span class="btn_txt">상세보기</span>
-									</a>
-								</div>
+								<p class="title" style="font-size: 18px;">${shoplist.st_name }</p>
+								<p class="addr"><span class="ico ico_store_info3"></span>&nbsp;&nbsp;&nbsp;${shoplist.st_addr }</p>
+								<p class="phone_num"><span class="ico ico_store_info"></span>&nbsp;&nbsp;&nbsp;${shoplist.st_tel }</p>
+								<p class="time"><span class="ico ico_store_info4"></span>&nbsp;&nbsp;&nbsp;&nbsp;${shoplist.st_time }</p>
+								<p class="parkin"><span class="ico ico_store_info6"></span>&nbsp;&nbsp;&nbsp;${shoplist.st_parkin }</p>
+
+									
 							</div>
 						</div>
 					</li>
@@ -1387,7 +1392,7 @@ function goBasketWrapp(branch_no) {
 <!-- //container -->
 
 <!-- 매장 상세보기 팝업(s)) -->
-<div class="pop_layer pop_type" id="storeview_detail">
+<%-- <div class="pop_layer pop_type" id="storeview_detail">
 	<div class="bg"></div>
 	<div class="pop_wrap">
 		<div class="pop_header">
@@ -1474,10 +1479,10 @@ function goBasketWrapp(branch_no) {
 									<div class="info_title"><span class="ico ico_store_info6"></span><span class="txt_store">주차정보</span></div>
 									<div class="info_desc" id="detail_parking_info">${shoplist.st_parkin }</div>
 								</li>
-<!-- 								<li>
+ 								<li>
 									 매장 할인 X <div class="info_title"><span class="ico ico_store_info7"></span><span class="txt_store">Notice &amp;<br>Event</span></div> 
 									 매장별 할인 X <div class="info_desc"><em id="detail_notice">배달주문 25% 할인</em></div>
-								</li> -->
+								</li>
 							</ul>
 						</div>
 						<!-- //store_information_lst -->
@@ -1500,7 +1505,7 @@ function goBasketWrapp(branch_no) {
 		
 		<a href="#" class="btn_ico btn_close">닫기</a>
 	</div>
-</div>
+</div> --%>
 <!-- //매장 상세보기 팝업(e) -->
 
 <!-- 로딩 이미지 -->

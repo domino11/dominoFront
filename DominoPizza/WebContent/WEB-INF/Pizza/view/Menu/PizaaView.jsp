@@ -685,9 +685,9 @@ function share(optn) {
 						location.href="<c:url value='/User/Login.pz' />";
 						</c:if>
 						<c:if test="${!idc}">
-						<c:if test="${empty DE_ADDR }" var="idc" >
+						/* <c:if test="${empty DE_ADDR }" var="idc" >
 						location.href="<c:url value='/AddrSelect.pz' />";
-						</c:if>
+						</c:if> */
 						var priceDom = document.getElementById("price");
 						var price = priceDom.innerHTML;
 						var doughDom = document.getElementById("dough");

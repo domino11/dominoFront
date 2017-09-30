@@ -197,7 +197,7 @@ $(document).ready(function() {
 		var topping = $("#toppingSize_no").val();
  		window.setTimeout( function() {
 			$(".loading").css("display","none");
-		location.href="<c:url value='/AddrSelect.pz' />?na='마이키친'&no=0&kind=1&size="+size+"&dough="+dough+"&mkSauce="+mkSauce+"&price="+price+"&img="+img+"&qty="+qty+"&topping="+topping;
+		location.href="<c:url value='/AddrSelect.pz' />?mck=mck&doughno=&na='마이키친'&no=0&kind=1&size="+size+"&dough="+dough+"&mkSauce="+mkSauce+"&price="+price+"&img="+img+"&qty="+qty+"&topping="+topping;
 		}, 800); 
 		$(".loading").css("display","block");
 	};

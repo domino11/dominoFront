@@ -281,7 +281,7 @@ $(document).ready(function() {
 		var topping = choiceToppingsize_no;
  		window.setTimeout( function() {
 			$(".loading").css("display","none");
-			location.href="<c:url value='/AddrSelect.pz' />?no=1&kind=1&na="+name+"&size="+size+"&dough="+dough+"&price="+price+"&qty="+qty+"&topping="+topping+"&img="+img;
+			location.href="<c:url value='/AddrSelect.pz' />?hnh=hnh&doughno=&no=1&kind=1&na="+name+"&size="+size+"&dough="+dough+"&price="+price+"&qty="+qty+"&topping="+topping+"&img="+img;
 		}, 800); 
 		$(".loading").css("display","block");
 /* 		

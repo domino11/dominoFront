@@ -1,0 +1,292 @@
+					<div class="form_container">
+					
+					
+						<!-- 주소로 찾기 검색 영역 -->
+					<c:if test="${names==null || names!=1 }" var="named" >
+						<div class="form_group selbox" id="div_addr_srch">
+					</c:if>
+					<c:if test="${!named }">
+						<div class="form_group selbox" id="div_addr_srch" style="display:none; " >
+					</c:if>
+							<!-- form_field 이 줄 이하로 넣기 -->
+							<div class="form_field">
+								<div class="sel_box">
+									<select class="sido1" id="region_code_1" onchange="getRegion();">
+										<option value="00" >시/도</option>
+										<option value="01" <c:if test="${requestScope.si=='서울' }">selected </c:if>>서울</option>
+										<option value="02" <c:if test="${requestScope.si=='인천' }">selected </c:if>>인천</option>
+										<option value="03" <c:if test="${requestScope.si=='경기' }">selected </c:if>>경기</option>
+										<option value="04" <c:if test="${requestScope.si=='강원' }">selected </c:if>>강원</option>
+										<option value="05" <c:if test="${requestScope.si=='충남' }">selected </c:if>>충남</option>
+										<option value="06" <c:if test="${requestScope.si=='충북' }">selected </c:if>>충북</option>
+										<option value="07" <c:if test="${requestScope.si=='대전' }">selected </c:if>>대전</option>
+										<option value="08" <c:if test="${requestScope.si=='경남' }">selected </c:if>>경남</option>
+										<option value="09" <c:if test="${requestScope.si=='경북' }">selected </c:if>>경북</option>
+										<option value="10" <c:if test="${requestScope.si=='대구' }">selected </c:if>>대구</option>
+										<option value="11" <c:if test="${requestScope.si=='전남' }">selected </c:if>>전남</option>
+										<option value="12" <c:if test="${requestScope.si=='전북' }">selected </c:if>>전북</option>
+										<option value="13" <c:if test="${requestScope.si=='광주' }">selected </c:if>>광주</option>
+										<option value="14" <c:if test="${requestScope.si=='울산' }">selected </c:if>>울산</option>
+										<option value="15" <c:if test="${requestScope.si=='부산' }">selected </c:if>>부산</option>
+										<option value="16" <c:if test="${requestScope.si=='제주' }">selected </c:if>>제주</option>
+										<option value="17" <c:if test="${requestScope.si=='세종특별자치시' }">selected </c:if>>세종특별자치시</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form_field">
+								<div class="sel_box">
+									<select class="sido2" id="region_code_00">
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected</c:if>>구/군</option>								
+									</select>
+									
+									<select class="sido2" id="region_code_01" >
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>
+										<option value="0111" <c:if test="${requestScope.gugun=='강남구' }">selected </c:if>>강남구</option>
+										<option value="0110" <c:if test="${requestScope.gugun=='강동구' }">selected </c:if>>강동구</option>
+										<option value="0117" <c:if test="${requestScope.gugun=='강북구' }">selected </c:if>>강북구</option>
+										<option value="0124" <c:if test="${requestScope.gugun=='강서구' }">selected </c:if>>강서구</option>
+										<option value="0120" <c:if test="${requestScope.gugun=='관악구' }">selected </c:if>>관악구</option>
+										<option value="0118" <c:if test="${requestScope.gugun=='광진구' }">selected </c:if>>광진구</option>
+										<option value="0121" <c:if test="${requestScope.gugun=='구로구' }">selected </c:if>>구로구</option>
+										<option value="0122" <c:if test="${requestScope.gugun=='금천구' }">selected</c:if>>금천구</option>
+										<option value="0115" <c:if test="${requestScope.gugun=='노원구' }">selected </c:if>>노원구</option>
+										<option value="0108" <c:if test="${requestScope.gugun=='도봉구' }">selected </c:if>>도봉구</option>
+										<option value="0106" <c:if test="${requestScope.gugun=='동대문구'}">selected </c:if>>동대문구</option>
+										<option value="0123" <c:if test="${requestScope.gugun=='동작구' }">selected </c:if>>동작구</option>
+										<option value="0104" <c:if test="${requestScope.gugun=='마포구' }">selected </c:if>>마포구</option>
+										<option value="0103" <c:if test="${requestScope.gugun=='서대문구'}">selected </c:if>>서대문구</option>
+										<option value="0113" <c:if test="${requestScope.gugun=='서초구' }">selected </c:if>>서초구</option>
+										<option value="0109" <c:if test="${requestScope.gugun=='성동구' }">selected </c:if>>성동구</option>
+										<option value="0112" <c:if test="${requestScope.gugun=='성북구' }">selected </c:if>>성북구</option>
+										<option value="0114" <c:if test="${requestScope.gugun=='송파구' }">selected </c:if>>송파구</option>
+										<option value="0125" <c:if test="${requestScope.gugun=='양천구' }">selected </c:if>>양천구</option>
+										<option value="0119" <c:if test="${requestScope.gugun=='영등포구'}">selected </c:if>>영등포구</option>
+										<option value="0116" <c:if test="${requestScope.gugun=='용산구'}">selected </c:if>>용산구</option>
+										<option value="0105" <c:if test="${requestScope.gugun=='은평구'}">selected </c:if>>은평구</option>
+										<option value="0102" <c:if test="${requestScope.gugun=='종로구'}">selected </c:if>>종로구</option>
+										<option value="0101" <c:if test="${requestScope.gugun=='중구' }">selected </c:if>>중구</option>
+										<option value="0107" <c:if test="${requestScope.gugun=='중랑구'}">selected </c:if>>중랑구</option>
+									</select>
+									
+									<select class="sido2" id="region_code_02" >
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>
+										<option value="0202" <c:if test="${requestScope.gugun=='0202' }">selected </c:if>>계양구</option>
+										<option value="0203" <c:if test="${requestScope.gugun=='남구' }">selected </c:if>>남구</option>
+										<option value="0204" <c:if test="${requestScope.gugun=='남동구' }">selected </c:if>>남동구</option>
+										<option value="0206" <c:if test="${requestScope.gugun=='부평구' }">selected </c:if>>부평구</option>
+										<option value="0207" <c:if test="${requestScope.gugun=='서구' }">selected </c:if>>서구</option>
+										<option value="0208" <c:if test="${requestScope.gugun=='연수구' }">selected </c:if>>연수구</option>
+										<option value="0210" <c:if test="${requestScope.gugun=='중구' }">selected </c:if>>중구</option>
+									</select>
+									<select class="sido2" id="region_code_03">
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>									
+										<option value="0301" <c:if test="${requestScope.gugun=='고양시' }">selected </c:if>>고양시</option>
+										<option value="0302" <c:if test="${requestScope.gugun=='과천시' }">selected </c:if>>과천시</option>
+										<option value="0303" <c:if test="${requestScope.gugun=='광명시' }">selected </c:if>>광명시</option>
+										<option value="0304" <c:if test="${requestScope.gugun=='광주시' }">selected </c:if>>광주시</option>
+										<option value="0305" <c:if test="${requestScope.gugun=='구리시' }">selected </c:if>>구리시</option>
+										<option value="0306" <c:if test="${requestScope.gugun=='군포시' }">selected </c:if>>군포시</option>
+										<option value="0307" <c:if test="${requestScope.gugun=='김포시' }">selected </c:if>>김포시</option>
+										<option value="0308" <c:if test="${requestScope.gugun=='남양주시' }">selected </c:if>>남양주시</option>
+										<option value="0309" <c:if test="${requestScope.gugun=='동두천시' }">selected </c:if>>동두천시</option>
+										<option value="0310" <c:if test="${requestScope.gugun=='부천시' }">selected </c:if>>부천시</option>
+										<option value="0311" <c:if test="${requestScope.gugun=='성남시' }">selected </c:if>>성남시</option>
+										<option value="0312" <c:if test="${requestScope.gugun=='수원시' }">selected </c:if>>수원시</option>
+										<option value="0313" <c:if test="${requestScope.gugun=='시흥시' }">selected </c:if>>시흥시</option>
+										<option value="0314" <c:if test="${requestScope.gugun=='안산시' }">selected </c:if>>안산시</option>
+										<option value="0315" <c:if test="${requestScope.gugun=='안성시' }">selected </c:if>>안성시</option>
+										<option value="0316" <c:if test="${requestScope.gugun=='안양시' }">selected </c:if>>안양시</option>
+										<option value="0327" <c:if test="${requestScope.gugun=='양주시' }">selected </c:if>>양주시</option>
+										<option value="0317" <c:if test="${requestScope.gugun=='양평군' }">selected </c:if>>양평군</option>
+										<option value="0318" <c:if test="${requestScope.gugun=='여주군' }">selected </c:if>>여주군</option>
+										<option value="0320" <c:if test="${requestScope.gugun=='오산시' }">selected </c:if>>오산시</option>
+										<option value="0321" <c:if test="${requestScope.gugun=='용인시' }">selected </c:if>>용인시</option>
+										<option value="0322" <c:if test="${requestScope.gugun=='의왕시' }">selected </c:if>>의왕시</option>
+										<option value="0323" <c:if test="${requestScope.gugun=='의정부시' }">selected </c:if>>의정부시</option>
+										<option value="0324" <c:if test="${requestScope.gugun=='이천시' }">selected </c:if>>이천시</option>
+										<option value="0325" <c:if test="${requestScope.gugun=='파주시' }">selected </c:if>>파주시</option>
+										<option value="0328" <c:if test="${requestScope.gugun=='평택시' }">selected </c:if>>평택시</option>
+										<option value="0329" <c:if test="${requestScope.gugun=='포천시' }">selected </c:if>>포천시</option>
+										<option value="0330" <c:if test="${requestScope.gugun=='하남시' }">selected </c:if>>하남시</option>
+										<option value="0331" <c:if test="${requestScope.gugun=='화성시' }">selected </c:if>>화성시</option>
+									</select>
+									<select class="sido2" id="region_code_04">
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>																			
+										<option value="0401" <c:if test="${requestScope.gugun=='강릉시' }">selected </c:if>>강릉시</option>
+										<option value="0403" <c:if test="${requestScope.gugun=='동해시' }">selected </c:if>>동해시</option>
+										<option value="0404" <c:if test="${requestScope.gugun=='삼척시' }">selected </c:if>>삼척시</option>
+										<option value="0405" <c:if test="${requestScope.gugun=='속초시' }">selected </c:if>>속초시</option>
+										<option value="0408" <c:if test="${requestScope.gugun=='영월군' }">selected </c:if>>영월군</option>
+										<option value="0409" <c:if test="${requestScope.gugun=='원주시' }">selected </c:if>>원주시</option>
+										<option value="0410" <c:if test="${requestScope.gugun=='인제군' }">selected </c:if>>인제군</option>
+										<option value="0411" <c:if test="${requestScope.gugun=='정선군' }">selected </c:if>>정선군</option>
+										<option value="0412" <c:if test="${requestScope.gugun=='철원군' }">selected </c:if>>철원군</option>
+										<option value="0413" <c:if test="${requestScope.gugun=='춘천시' }">selected </c:if>>춘천시</option>
+										<option value="0414" <c:if test="${requestScope.gugun=='태백시' }">selected </c:if>>태백시</option>
+										<option value="0415" <c:if test="${requestScope.gugun=='평창군' }">selected </c:if>>평창군</option>
+										<option value="0416" <c:if test="${requestScope.gugun=='홍천군' }">selected </c:if>>홍천군</option>
+										<option value="0418" <c:if test="${requestScope.gugun=='횡성군' }">selected </c:if>>횡성군</option>
+									</select>
+									<select class="sido2" id="region_code_05">
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>									
+										<option value="0501" <c:if test="${requestScope.gugun=='계룡시' }">selected </c:if>>계룡시</option>
+										<option value="0502" <c:if test="${requestScope.gugun=='공주시' }">selected </c:if>>공주시</option>
+										<option value="0504" <c:if test="${requestScope.gugun=='논산시' }">selected </c:if>>논산시</option>
+										<option value="0505" <c:if test="${requestScope.gugun=='당진군' }">selected </c:if>>당진군</option>
+										<option value="0506" <c:if test="${requestScope.gugun=='보령시' }">selected </c:if>>보령시</option>
+										<option value="0508" <c:if test="${requestScope.gugun=='서산시' }">selected </c:if>>서산시</option>
+										<option value="0510" <c:if test="${requestScope.gugun=='아산시' }">selected </c:if>>아산시</option>
+										<option value="0513" <c:if test="${requestScope.gugun=='천안시' }">selected </c:if>>천안시</option>
+										<option value="0516" <c:if test="${requestScope.gugun=='홍성군' }">selected </c:if>>홍성군</option>
+									</select>
+									<select class="sido2" id="region_code_06">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="0606" <c:if test="${requestScope.gugun=='음성군' }">selected </c:if>>음성군</option>
+										<option value="0607" <c:if test="${requestScope.gugun=='제천시' }">selected </c:if>>제천시</option>
+										<option value="0608" <c:if test="${requestScope.gugun=='증평군' }">selected </c:if>>증평군</option>
+										<option value="0610" <c:if test="${requestScope.gugun=='청원군' }">selected </c:if>>청원군</option>
+										<option value="0611" <c:if test="${requestScope.gugun=='청주시' }">selected </c:if>>청주시</option>
+										<option value="0612" <c:if test="${requestScope.gugun=='충주시' }">selected </c:if>>충주시</option>
+									</select>
+									<select class="sido2" id="region_code_07">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="0701" <c:if test="${requestScope.gugun=='대덕구' }">selected </c:if>>대덕구</option>
+										<option value="0702" <c:if test="${requestScope.gugun=='동구' }">selected </c:if>>동구</option>
+										<option value="0703" <c:if test="${requestScope.gugun=='서구' }">selected </c:if>>서구</option>
+										<option value="0704" <c:if test="${requestScope.gugun=='유성구' }">selected </c:if>>유성구</option>
+										<option value="0705" <c:if test="${requestScope.gugun=='중구' }">selected </c:if>>중구</option>
+									</select>
+									<select class="sido2" id="region_code_08">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="0801" <c:if test="${requestScope.gugun=='거제시' }">selected </c:if>>거제시</option>
+										<option value="0802" <c:if test="${requestScope.gugun=='거창군' }">selected </c:if>>거창군</option>
+										<option value="0804" <c:if test="${requestScope.gugun=='김해시' }">selected </c:if>>김해시</option>
+										<option value="0806" <c:if test="${requestScope.gugun=='마산시' }">selected </c:if>>마산시</option>
+										<option value="0807" <c:if test="${requestScope.gugun=='밀양시' }">selected </c:if>>밀양시</option>
+										<option value="0808" <c:if test="${requestScope.gugun=='사천시' }">selected </c:if>>사천시</option>
+										<option value="0810" <c:if test="${requestScope.gugun=='양산시' }">selected </c:if>>양산시</option>
+										<option value="0812" <c:if test="${requestScope.gugun=='진주시' }">selected </c:if>>진주시</option>
+										<option value="0813" <c:if test="${requestScope.gugun=='진해시' }">selected </c:if>>진해시</option>
+										<option value="0815" <c:if test="${requestScope.gugun=='창원시' }">selected </c:if>>창원시</option>
+										<option value="0816" <c:if test="${requestScope.gugun=='통영시' }">selected </c:if>>통영시</option>
+									</select>
+									<select class="sido2" id="region_code_09">
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>											
+										<option value="0901" <c:if test="${requestScope.gugun=='경산시' }">selected </c:if>>경산시</option>
+										<option value="0902" <c:if test="${requestScope.gugun=='경주시' }">selected </c:if>>경주시</option>
+										<option value="0904" <c:if test="${requestScope.gugun=='구미시' }">selected </c:if>>구미시</option>
+										<option value="0906" <c:if test="${requestScope.gugun=='김천시' }">selected </c:if>>김천시</option>
+										<option value="0907" <c:if test="${requestScope.gugun=='문경시' }">selected </c:if>>문경시</option>
+										<option value="0909" <c:if test="${requestScope.gugun=='상주시' }">selected </c:if>>상주시</option>
+										<option value="0911" <c:if test="${requestScope.gugun=='안동시' }">selected </c:if>>안동시</option>
+										<option value="0914" <c:if test="${requestScope.gugun=='영주시' }">selected </c:if>>영주시</option>
+										<option value="0915" <c:if test="${requestScope.gugun=='영천시' }">selected </c:if>>영천시</option>
+										<option value="0922" <c:if test="${requestScope.gugun=='칠곡군' }">selected </c:if>>칠곡군</option>
+										<option value="0923" <c:if test="${requestScope.gugun=='포항시' }">selected </c:if>>포항시</option>
+									</select>
+									<select class="sido2" id="region_code_10">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1001" <c:if test="${requestScope.gugun=='남구' }">selected </c:if>>남구</option>
+										<option value="1002" <c:if test="${requestScope.gugun=='달서구' }">selected </c:if>>달서구</option>
+										<option value="1003" <c:if test="${requestScope.gugun=='달성군' }">selected </c:if>>달성군</option>
+										<option value="1004" <c:if test="${requestScope.gugun=='동구' }">selected </c:if>>동구</option>
+										<option value="1005" <c:if test="${requestScope.gugun=='북구' }">selected </c:if>>북구</option>
+										<option value="1007" <c:if test="${requestScope.gugun=='수성구' }">selected </c:if>>수성구</option>
+										<option value="1008" <c:if test="${requestScope.gugun=='중구' }">selected </c:if>>중구</option>
+									</select>
+									<select class="sido2" id="region_code_11">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1104" <c:if test="${requestScope.gugun=='광양시' }">selected </c:if>>광양시</option>
+										<option value="1106" <c:if test="${requestScope.gugun=='나주시' }">selected </c:if>>나주시</option>
+										<option value="1108" <c:if test="${requestScope.gugun=='목포시' }">selected </c:if>>목포시</option>
+										<option value="1109" <c:if test="${requestScope.gugun=='무안군' }">selected </c:if>>무안군</option>
+										<option value="1111" <c:if test="${requestScope.gugun=='순천시' }">selected </c:if>>순천시</option>
+										<option value="1113" <c:if test="${requestScope.gugun=='여수시' }">selected </c:if>>여수시</option>
+										<option value="1122" <c:if test="${requestScope.gugun=='화순군' }">selected </c:if>>화순군</option>
+									</select>
+									<select class="sido2" id="region_code_12">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1202" <c:if test="${requestScope.gugun=='군산시' }">selected </c:if>>군산시</option>
+										<option value="1203" <c:if test="${requestScope.gugun=='김제시' }">selected </c:if>>김제시</option>
+										<option value="1204" <c:if test="${requestScope.gugun=='남원시' }">selected </c:if>>남원시</option>
+										<option value="1205" <c:if test="${requestScope.gugun=='무주군' }">selected </c:if>>무주군</option>
+										<option value="1209" <c:if test="${requestScope.gugun=='익산시' }">selected </c:if>>익산시</option>
+										<option value="1212" <c:if test="${requestScope.gugun=='전주시' }">selected </c:if>>전주시</option>
+										<option value="1213" <c:if test="${requestScope.gugun=='정읍시' }">selected </c:if>>정읍시</option>
+									</select>
+									<select class="sido2" id="region_code_13">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1301" <c:if test="${requestScope.gugun=='광산구' }">selected </c:if>>광산구</option>
+										<option value="1302" <c:if test="${requestScope.gugun=='남구' }">selected </c:if>>남구</option>
+										<option value="1303" <c:if test="${requestScope.gugun=='동구' }">selected </c:if>>동구</option>
+										<option value="1304" <c:if test="${requestScope.gugun=='북구' }">selected </c:if>>북구</option>
+										<option value="1305" <c:if test="${requestScope.gugun=='서구' }">selected </c:if>>서구</option>
+									</select>
+									<select class="sido2" id="region_code_14">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1401" <c:if test="${requestScope.gugun=='남구' }">selected </c:if>>남구</option>
+										<option value="1402" <c:if test="${requestScope.gugun=='동구' }">selected </c:if>>동구</option>
+										<option value="1403" <c:if test="${requestScope.gugun=='북구' }">selected </c:if>>북구</option>
+										<option value="1404" <c:if test="${requestScope.gugun=='울주군' }">selected </c:if>>울주군</option>
+										<option value="1405" <c:if test="${requestScope.gugun=='중구' }">selected </c:if>>중구</option>
+									</select>
+									<select class="sido2" id="region_code_15">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1501" <c:if test="${requestScope.gugun=='강서구' }">selected </c:if>>강서구</option>
+										<option value="1502" <c:if test="${requestScope.gugun=='금정구' }">selected </c:if>>금정구</option>
+										<option value="1503" <c:if test="${requestScope.gugun=='기장군' }">selected </c:if>>기장군</option>
+										<option value="1504" <c:if test="${requestScope.gugun=='남구' }">selected </c:if>>남구</option>
+										<option value="1506" <c:if test="${requestScope.gugun=='동래구' }">selected </c:if>>동래구</option>
+										<option value="1507" <c:if test="${requestScope.gugun=='부산진구' }">selected </c:if>>부산진구</option>
+										<option value="1508" <c:if test="${requestScope.gugun=='북구' }">selected </c:if>>북구</option>
+										<option value="1509" <c:if test="${requestScope.gugun=='사상구' }">selected </c:if>>사상구</option>
+										<option value="1510" <c:if test="${requestScope.gugun=='사하구' }">selected </c:if>>사하구</option>
+										<option value="1511" <c:if test="${requestScope.gugun=='서구' }">selected </c:if>>서구</option>
+										<option value="1512" <c:if test="${requestScope.gugun=='수영구' }">selected </c:if>>수영구</option>
+										<option value="1513" <c:if test="${requestScope.gugun=='연제구' }">selected </c:if>>연제구</option>
+										<option value="1514" <c:if test="${requestScope.gugun=='영도구' }">selected </c:if>>영도구</option>
+										<option value="1516" <c:if test="${requestScope.gugun=='해운대구' }">selected </c:if>>해운대구</option>
+									</select>
+									<select class="sido2" id="region_code_16">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1601" <c:if test="${requestScope.gugun=='서귀포시' }">selected </c:if>>서귀포시</option>
+										<option value="1602" <c:if test="${requestScope.gugun=='제주시' }">selected </c:if>>제주시</option>
+									</select>
+									<select class="sido2" id="region_code_17">	
+										<option value="" <c:if test="${requestScope.gugun=='구/군' }">selected </c:if>>구/군</option>										
+										<option value="1701" <c:if test="${requestScope.gugun=='세종시' }">selected </c:if>>세종시</option>
+									</select>
+									
+								</div>
+							</div>
+																
+							<div class="form_field">
+								<a href="#" class="btn btn_red btn_srch" onclick="findStore();"><span class="btn_txt">검색</span></a>
+							</div>
+						</div>
+						<!-- // 주소로 찾기 검색 영역 -->
+						<!-- 매장명으로 찾기 검색 영역 -->
+					
+					<c:if test="${!named }">
+						<div class="form_group selbox" id="div_name_srch">
+					</c:if>
+				
+					<c:if test="${named }">
+						<div class="form_group selbox" id="div_name_srch" style="display: none;">
+					</c:if>
+				
+					
+							<div class="form_field">
+								<div class="form_item">
+									<label for="st_name" class="i_label" style="position: absolute; visibility: hidden;">매장명 검색</label>
+									<input type="text" id="store_name" class="sido3" placeholder="매장명 검색" >
+								</div>
+							</div>
+							<div class="form_field">
+								<a href="#" class="btn btn_red btn_srch" onclick="findStoreName();"><span class="btn_txt">검색</span></a>
+							</div>
+						</div>
+						<!-- // 매장명으로 찾기 검색 영역 -->
+					</div>
+					<!-- //form_container -->	

@@ -42,7 +42,11 @@ public class Order {
    @RequestMapping("/AddrSelect.pz")
    public String AddrSelect(@RequestParam Map map, Model model,HttpServletRequest req , HttpSession session) throws Exception{
 	  
-	   
+	  String kind="";
+	  
+	  
+	  String dough="";
+	  
       String id = session.getAttribute("ID").toString();
       map.put("id", id);
       String url="";
@@ -54,6 +58,7 @@ public class Order {
          BasketDTO dto = new BasketDTO();
          dto.setNo(map.get("no").toString());
          if(map.get("dough")!=null) {
+        	 dough=map.get("doughno").toString();
         	 //피자류는 p_no 대신 d_no를 sal테이블에 저장
         	 dto.setDough(map.get("dough").toString());
         	 String d_no = service.getd_no(map);
@@ -98,7 +103,12 @@ public class Order {
 
             dto.setToppingList(tlist);
          }
-         if(map.get("kind")!=null) dto.setKind(map.get("kind").toString());
+         
+         if(map.get("kind")!=null) {
+        	 dto.setKind(map.get("kind").toString());
+        	 kind = map.get("kind").toString();
+        	 
+         }
          List<BasketDTO> list = new Vector<>();
          
          if(session.getAttribute("BUYLIST")!=null)
@@ -111,9 +121,29 @@ public class Order {
          totprice += Integer.parseInt(price);
          session.setAttribute("TOTALPRICE", totprice);
          req.setAttribute("SUC_FAIL", 1);
+       
+         
+         /// 장바구니 누른 페이지로 이동
+         if(map.get("hnh")!=null)
+         req.setAttribute("page", "/Pizza/BuyPizza/hnh.pz");
+         else if(map.get("mck")!=null)
+        	 req.setAttribute("page", "/Pizza/BuyPizza/mykitchen.pz");
+         else {
+        	 switch (kind) {
+			case "1": req.setAttribute("page", "/menuList.pz?ty=101"); break;
+			case "2": req.setAttribute("page", "/menuList.pz?ty=104"); break;  
+			default:
+			 req.setAttribute("page", "/Pizza/MainPage.pz");
+				break;
+			} 
+         }
+        	 
+        
+         req.setAttribute("SUC_FAIL", "7");
+         
          req.setAttribute("WHERE", "SID");
 
-         url= "/WEB-INF/Pizza/view/Addr/Message.jsp";
+         url= "/WEB-INF/Pizza/view/Addr/Message2.jsp";
 
       }
       else {/// 매장 선택 안 되었을경우 매장선택으로
@@ -486,6 +516,8 @@ public class Order {
 	   map.put("r_name", dto2.getR_name());
 	   
 	   if(tar-cnt<=0) {
+		   // 등급 업 전에 이잔
+		   
 		   //등급 업
 		   service.nextRatingUpd(map);
 		   req.setAttribute("ratingUp", map.get("r_name"));

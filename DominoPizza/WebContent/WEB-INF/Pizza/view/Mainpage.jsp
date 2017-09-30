@@ -160,9 +160,9 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 <!--       <div class="quick_menu4 chat_order active">
 <a href="javascript:goChat()" class="quick_order4"></a>
       </div> --> <!-- 챗봇 -->
-      <div class="quick_menu3">
+    <!--   <div class="quick_menu3">
          <a href="/contents/present" class="quick_order3"></a>
-      </div>      
+      </div> -->      
       
       
 <!-- 2017-07-05 // 챗봇 수정(e) -->

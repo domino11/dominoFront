@@ -132,16 +132,31 @@ public class Android {
 		System.out.println("??");
 		System.out.println(plist.get(0).getP_name());
 		String name="";
+		String rank="";
 		List<Map> list = new Vector<>();
 		int i=0;
 		for(PizzaMenuList dto : plist) {
 			i++;
-			name = dto.getP_name()+" [BEST "+i+" ]\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+			if(i<=5) {
+			name = dto.getP_name()+"\r\n[L:"+dto.getP_lprice()+" M:"+dto.getP_sprice()+"]";
+			rank = "[Best"+i+"]";
+			String rankimg="";
+			if(i==1)
+				rankimg="Gold.png";
+			else if(i==2)
+				rankimg="Silv.png";
+			else if(i==3)
+				rankimg="Bron.png";
+			else
+				rankimg=i+".png";
+
 			System.out.println(name);
 			Map map2 = new HashMap<>();
+			map2.put("rank", url+"/pizza/Image/pizzalist/"+rankimg);
 			map2.put("name", name);
 			map2.put("url", url+"/Pizza/Image/pizzalist/"+dto.getP_himg());
 			list.add(map2);
+			}
 		}
 		//URL url = new URL(req.getServletContext().getRealPath("/Pizza/Image"));
 		//System.out.println(url);
