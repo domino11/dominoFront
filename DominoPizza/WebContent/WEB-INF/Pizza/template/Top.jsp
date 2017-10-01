@@ -92,7 +92,19 @@
 						</div>
 					</li>
 					
+
 					<li>
+						<a href="<c:url value='/BestList.pz' />?kind=1" class="menu07">베스트 메뉴</a>
+						<div class="depth2">
+							<ul class="list_depth2">
+								<li><a href="<c:url value='/BestList.pz' />?kind=1">베스트 메뉴</a></li>
+								<li><a href="<c:url value='/BestList.pz' />?kind=2">베스트 메뉴</a></li>
+<!-- 								<li><a href="/event/pizzaSchoolView">피자교실</a></li> -->
+							</ul>
+						</div>
+					</li>					
+					
+<%-- 					<li>
 						<a href="<c:url value='/BestList.pz' />" class="menu07">베스트 메뉴</a>
 						<div class="depth2">
 							<!-- <ul class="list_depth2">
@@ -100,7 +112,7 @@
 								<li><a href="/voucher/list?gubun=M">모바일상품권</a></li>
 							</ul> -->
 						</div>
-					</li>
+					</li> --%>
 				</ul>
 			</div>
 			

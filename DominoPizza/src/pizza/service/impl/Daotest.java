@@ -219,6 +219,26 @@ public class Daotest {
 			template.update("mybatisnextRatingUpd",map);
 		}
 
+
+		public void likeIn(Map map) {
+			template.insert("mybatislikeIn",map);
+		}
+
+
+		public void likeDel(Map map) {
+			template.delete("mybatislikeDel",map);
+		}
+
+
+		public int pizzalikeSel(Map map) {
+			return template.selectOne("mybatispizzalikeSel",map);
+		}
+
+
+		public List<PizzaMenuList> likeRank(Map map) {
+			return template.selectList("mybatislikeRank",map);
+		}
+
 	
 	
 }

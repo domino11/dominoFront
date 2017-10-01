@@ -268,7 +268,8 @@ var chocolatChk = function() {
 		<div class="tab_category">
 			<ul class="btn_tab">
 
-	<li class="C101"><a href="<c:url value='/BestList.pz' />">베스트 메뉴</a></li>
+	<li class="C101"><a href="<c:url value='/BestList.pz' />?kind=1">베스트 메뉴</a></li>
+	<li class="C101"><a href="<c:url value='/BestList.pz' />?kind=2">베스트 메뉴</a></li>
 		</ul>
 			<div class="tab_content_wrap">
 			

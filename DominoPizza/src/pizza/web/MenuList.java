@@ -62,12 +62,16 @@ public class MenuList {
 	
 	@RequestMapping("/BestList.pz")
 	public String BestList(Model model, HttpServletRequest req) throws Exception{
-		
 		String sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,P.P_HIMG ";
 		Map map = new HashMap<>();
 		map.put("sel", sel);
 		model.addAttribute("bimg", "BestMenu.png");
-		List<PizzaMenuList> list = service.menuRank(map);
+		List<PizzaMenuList> list = new Vector<>();
+		if(req.getParameter("kind").trim().equals("1"))
+		list = service.menuRank(map);
+		else
+			list = service.likeRank(map);
+		
 		model.addAttribute("dto",list);
 		return "/WEB-INF/Pizza/view/Menu/Pizza_Best.jsp";
 	}
@@ -183,6 +187,14 @@ public class MenuList {
 		listpn = service.pnutrient(map);
 		
 		list = service.doughlist(map);
+		
+		map.put("id", req.getSession().getAttribute("ID"));
+		int as=0;
+		
+		if(req.getSession().getAttribute("ID")!=null)
+			as = service.pizzalikeSel(map);
+		if(as>0)
+			model.addAttribute("like","1");
 		
 		model.addAttribute("listpn",listpn);
 		model.addAttribute("dto",dto);

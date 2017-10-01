@@ -117,6 +117,7 @@
 		location.href="/mypage/myOrderView?order_no="+order_no+"&pageNo=1"
 	};
 
+
 </script>
 <!-- Naver Anlytics 공통-->
 <script>
@@ -601,7 +602,28 @@ function share(optn) {
 				<div class="prd_order_view">
 					<form action="#">
 					<div class="prd_title">
-						${dto.p_name}${names}</div>
+						${dto.p_name}${names}
+						
+						</div>
+						<div class="prd_title" style="padding: 10px; margin-bottom: -15px" >
+						<c:if test="${empty ID}" var="nol" >
+						<a href="#" onclick="nologin()" >
+						<img style="height: 45px;" alt="" src="<c:url value='/Pizza/Image/UnLike.png' />">
+						</a>
+						</c:if>
+						<c:if test="${!nol }">
+						<c:if test="${empty like }">
+						<a href="<c:url value='/PizzaLike.pz'/>?p_no=${dto.p_no}${tag}&like=1 ">
+						<img style="height: 45px;" alt="" src="<c:url value='/Pizza/Image/UnLike.png' />">
+						</a>
+						</c:if>
+						<c:if test="${!empty like}">
+						<a href="<c:url value='/PizzaLike.pz'/>?p_no=${dto.p_no}${tag}&like=">
+						<img style="height: 45px;" alt="" src="<c:url value='/Pizza/Image/Like.png' />">
+						</a>
+						</c:if>
+						</c:if>
+						</div>
 					<div class="prd_price">
 					
 					<c:if test="${listval==4}" var="te" >
@@ -672,13 +694,22 @@ function share(optn) {
 						<input type="hidden" value="${dto.p_name}${names}" name="p_name" >
 						<input type="hidden" value="${dto.p_no}" name="p_no" >
 						
-					<a href="#" onclick="smt();" class="btn btn_mdle btn_red" id=""><span class="btn_txt">장바구니 담기</span></a>
+					<a href="#" onclick="smt();" style="margin-top: -28px" class="btn btn_mdle btn_red" id=""><span class="btn_txt">장바구니 담기</span></a>
 					
 						</form>
 					</form>
 					</div>
 			</div>
+			
+			
 			<script>
+			
+					function nologin(){
+						alert("로그인 후 가능합니다!!");
+					}
+
+			
+			
 					function smt(){
 						<c:if test="${empty ID }" var="idc" >
 						alert("로그인 후 이용가능합니다.");

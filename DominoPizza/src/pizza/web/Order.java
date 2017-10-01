@@ -565,6 +565,25 @@ public class Order {
       return "/WEB-INF/Pizza/view/BuyPizza/toppingLayer_LEJ.jsp";
    }   
    
-   
+   @RequestMapping("/PizzaLike.pz")
+   public String pizzaLike(@RequestParam Map map, HttpServletRequest req) throws Exception{
+	   String p_no=map.get("p_no").toString();
+	   String gok=map.get("gok")==null?"":map.get("gok").toString();
+	   String like=map.get("like").toString();
+	   /// 좋아요 여부 저장 및 반환
+	   String as="";
+	   map.put("id", req.getSession().getAttribute("ID"));
+	   /// 좋아요 등록
+	   if(like.trim().equals("1")) {
+		   service.likeIn(map);
+		   as="1";
+	   }
+	   else {
+		   //좋아요 취소
+		   service.likeDel(map);
+	   }
+	   req.setAttribute("like", as);
+	   return "/PizzaView.pz?p_no="+p_no+"&gok="+gok;
+   }
    
 }

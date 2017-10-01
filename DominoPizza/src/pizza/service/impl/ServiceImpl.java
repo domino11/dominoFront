@@ -191,6 +191,24 @@ public class ServiceImpl implements pizza.service.Service {
 		dao.nextRatingUpd(map);
 	}
 
+	public void likeIn(Map map) {
+		dao.likeIn(map);
+		
+	}
+
+	public void likeDel(Map map) {
+		dao.likeDel(map);
+		
+	}
+
+	public int pizzalikeSel(Map map) {
+		return dao.pizzalikeSel(map);
+	}
+
+	public List<PizzaMenuList> likeRank(Map map) {
+		return dao.likeRank(map);
+	}
+
 
 	
 

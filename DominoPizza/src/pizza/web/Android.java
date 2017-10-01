@@ -194,6 +194,7 @@ public class Android {
 					menuList+=", ";
 			}
 			String fprice = service.getfprice(map2);
+			System.out.println(fprice+"@@@");
 			DecimalFormat df = new DecimalFormat("#,###");
 			fprice = df.format(Integer.parseInt(fprice));
 			map2.put("sp_fprice", fprice+"원");
