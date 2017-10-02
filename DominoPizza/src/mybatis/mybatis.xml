@@ -35,6 +35,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select ${sel} FROM  ${fro} where  ${whe} 
  </select>
  
+ <select id="mybatisNewPizza" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
+ 	SELECT * FROM PIZZADATE WHERE PD_DATE > TO_DATE(SYSDATE-31)
+ </select>
+ 
+ <select id="mybatsmybest" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
+ 	SELECT ${sel} FROM PIZZA P JOIN PIZZALIKE PL ON PL.P_NO = P.P_NO	
+ 	 WHERE ID=#{id}
+ </select>
+ 
+ 
+ 
+ 
   <select id="mybatismenuRank" parameterType="java.util.Map" resultMap="PizzaMenuListResult" >
  	SELECT ${sel}  FROM PIZZA P
  WHERE P.P_NO IN (SELECT P_NO FROM (SELECT P_NO,COUNT(*) CT FROM PIZZARANK GROUP BY P_NO ORDER BY CT DESC) WHERE  ROWNUM BETWEEN  0 AND 10  )
@@ -244,6 +256,10 @@ END
 		<insert id="mybatisinPizzaRank" parameterType="BasketDTO" >
 		INSERT INTO PIZZARANK VALUES((SELECT P.P_NO FROM PIZZA P JOIN PIZZA_DOUGH PD ON P.P_NO = PD.P_NO WHERE D_NO = #{no} ),SEQ_SALES_SA_NO.CURRVAL,SYSDATE)
 		 </insert>
+		 
+		 
+		 
+		 
 		
 		<insert id="mybatisinSalesPrice" parameterType="java.util.Map" >
 		INSERT INTO SALES_PRICE VALUES(

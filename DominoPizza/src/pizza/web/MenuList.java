@@ -71,9 +71,17 @@ public class MenuList {
 		if(req.getParameter("kind").trim().equals("1")) {
 			list = service.menuRank(map);
 			model.addAttribute("bimg", "BestMenu.png");
+			req.setAttribute("kind", "1");
+		}
+		else if(req.getParameter("kind").trim().equals("2")) {
+			list = service.likeRank(map);
+			req.setAttribute("kind", "2");
+			model.addAttribute("bimg", "BestLike.png");
 		}
 		else {
-			list = service.likeRank(map);
+			map.put("id", req.getSession().getAttribute("ID"));
+			list = service.mybest(map);
+			req.setAttribute("kind", "3");
 			model.addAttribute("bimg", "BestLike.png");
 		}
 		
@@ -90,7 +98,6 @@ public class MenuList {
 				if(best.getP_no().equals(pl.getP_no())) {
 					pl.setBest("1");
 				}
-				
 			}
 			
 			plist = service.likeRank(map);
@@ -98,8 +105,17 @@ public class MenuList {
 				if(best.getP_no().equals(pl.getP_no())) {
 					pl.setLike("1");
 				}
-				
 			}
+			
+			plist = service.newPizza(map);
+			for(PizzaMenuList best : plist) {
+				if(best.getP_no().equals(pl.getP_no())) {
+					pl.setNewpizza("1");
+					
+				}
+			}
+			
+			
 		}
 		
 		model.addAttribute("dto",list);
@@ -155,6 +171,8 @@ public class MenuList {
 		System.out.println("dao 전");
 		if(ty!=104) {
 		List<PizzaMenuList> list = service.menuList(map);
+		
+		//// 
 		for(PizzaMenuList pl : list) {
 			if(pl.getD_price()!=null) {
 			pl.setP_lprice((Integer.parseInt(pl.getP_lprice())+Integer.parseInt(pl.getD_price()))+"");
@@ -162,22 +180,31 @@ public class MenuList {
 			}
 			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,P.P_HIMG ";
 			map.put("sel", sel);
-			List<PizzaMenuList> plist = service.menuRank(map);
 			
+			//많이팔린 메뉴
+			List<PizzaMenuList> plist = service.menuRank(map);
 			for(PizzaMenuList best : plist) {
 				if(best.getP_no().equals(pl.getP_no())) {
 					pl.setBest("1");
 				}
-				
 			}
 			
+			//좋아요 많이받은 메뉴
 			plist = service.likeRank(map);
 			for(PizzaMenuList best : plist) {
 				if(best.getP_no().equals(pl.getP_no())) {
 					pl.setLike("1");
 				}
-				
 			}
+			
+			//1달 동안 나온 신메뉴
+			plist = service.newPizza(map);
+			for(PizzaMenuList best : plist) {
+				if(best.getP_no().equals(pl.getP_no())) {
+					pl.setNewpizza("1");
+				}
+			}
+			
 		}
 			model.addAttribute("dto",list);
 			System.out.println("사이즈 : "+list.size());
@@ -216,6 +243,19 @@ public class MenuList {
 			if(dto.getP_no().equals(mdto.getP_no()))
 				req.setAttribute("best", "1");
 		}
+		
+		listdto = service.likeRank(map);
+		for(PizzaMenuList mdto : listdto) {
+			if(dto.getP_no().equals(mdto.getP_no()))
+				req.setAttribute("like", "1");
+		}
+		
+		listdto = service.newPizza(map);
+		for(PizzaMenuList mdto : listdto) {
+			if(dto.getP_no().equals(mdto.getP_no()))
+				req.setAttribute("newpizza", "1");
+		}
+		
 		
 		
 		List<DoughDTO> list = new Vector<DoughDTO>();

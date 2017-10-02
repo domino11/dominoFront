@@ -209,6 +209,14 @@ public class ServiceImpl implements pizza.service.Service {
 		return dao.likeRank(map);
 	}
 
+	public List<PizzaMenuList> newPizza(Map map) {
+		return dao.newPizza(map);
+	}
+
+	public List<PizzaMenuList> mybest(Map map) {
+		return dao.mybest(map);
+	}
+
 
 	
 

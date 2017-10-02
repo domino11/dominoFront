@@ -258,18 +258,39 @@ var chocolatChk = function() {
 		<div class="sub_title">
 			<ul class="sub_nav">
 				<li><a href="<c:url value= '/Pizza/MainPage.pz' />">HOME</a></li>
-				<li><a href="<c:url value='/BestList.pz' /> ">베스트 메뉴</a></li>
+				<c:if test="${kind==1 }">
+				<li><a href="<c:url value='/BestList.pz' />?kind=1 ">베스트 셀러</a></li>
+				</c:if>
+				<c:if test="${kind==2 }">
+				<li><a href="<c:url value='/BestList.pz' />?kind=2 ">베스트 메뉴</a></li>
+				</c:if>
+				<c:if test="${kind==3 }">
+				<li><a href="<c:url value='/BestList.pz' />?kind=3 ">좋아한 메뉴</a></li>
+				</c:if>
+				
 				</ul>
 			<div class="sub_title_wrap">
+			<c:if test="${kind==1 }">
+				<h2>베스트 셀러</h2>
+			</c:if>
+			<c:if test="${kind==2 }">
 				<h2>베스트 메뉴</h2>
+			</c:if>
+			<c:if test="${kind==3 }">
+				<h2>좋아한 메뉴</h2>
+			</c:if>
+				
 			</div>
 		</div>
 		<!-- //sub_title -->
 		<div class="tab_category">
 			<ul class="btn_tab">
 
-	<li class="C101"><a href="<c:url value='/BestList.pz' />?kind=1">베스트 메뉴</a></li>
+	<li class="C101"><a href="<c:url value='/BestList.pz' />?kind=1">베스트 셀러</a></li>
 	<li class="C101"><a href="<c:url value='/BestList.pz' />?kind=2">베스트 메뉴</a></li>
+	<c:if test="${!empty ID }">
+	<li class="C101"><a href="<c:url value='/BestList.pz' />?kind=3">좋아한 메뉴</a></li>
+	</c:if>
 		</ul>
 			<div class="tab_content_wrap">
 			
@@ -302,9 +323,14 @@ var chocolatChk = function() {
 								<div class="prd_img">
 										<div class="prd_tag">
 										
+										<c:if test="${!empty dtos.newpizza }">
+										<span class="ico ico_tag">NEW</span>
+										</c:if>
+																				
 										<c:if test="${!empty dtos.best }">
 										<span class="ico ico_tag2">BEST</span>
 										</c:if>
+
 										<c:if test="${!empty dtos.like }">
 										<span class="ico ico_tag4">LIKE</span>
 										</c:if>

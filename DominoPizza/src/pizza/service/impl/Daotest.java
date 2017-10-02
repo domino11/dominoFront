@@ -49,13 +49,14 @@ public class Daotest {
 		System.out.println(map.get("fro"));
 		System.out.println(map.get("sel"));
 		List<PizzaMenuList> count = null;
+		
 		if(map.get("ty").toString().equals("104")) {
-			
 			count = template.selectList("mybatisSideMenu",map);
 		}
 		else {
 			count = template.selectList("mybatisMenu",map);
 		}
+		
 		System.out.println("바티스 내부"+count.size());
 	/*	else if(map.get("ty").toString().equals("2"))
 			count = template.selectList("mybatisMen2",map);
@@ -237,6 +238,17 @@ public class Daotest {
 
 		public List<PizzaMenuList> likeRank(Map map) {
 			return template.selectList("mybatislikeRank",map);
+		}
+
+
+		public List<PizzaMenuList> newPizza(Map map) {
+			return template.selectList("mybatisNewPizza",map);
+					
+		}
+
+
+		public List<PizzaMenuList> mybest(Map map) {
+			return template.selectList("mybatsmybest",map);
 		}
 
 	

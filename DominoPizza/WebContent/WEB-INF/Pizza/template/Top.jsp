@@ -97,8 +97,11 @@
 						<a href="<c:url value='/BestList.pz' />?kind=1" class="menu07">베스트 메뉴</a>
 						<div class="depth2">
 							<ul class="list_depth2">
-								<li><a href="<c:url value='/BestList.pz' />?kind=1">베스트 메뉴</a></li>
+								<li><a href="<c:url value='/BestList.pz' />?kind=1">베스트 셀러</a></li>
 								<li><a href="<c:url value='/BestList.pz' />?kind=2">베스트 메뉴</a></li>
+								<c:if test="${!empty ID }">
+								<li><a href="<c:url value='/BestList.pz' />?kind=3">좋아한 메뉴</a></li>
+								</c:if>
 <!-- 								<li><a href="/event/pizzaSchoolView">피자교실</a></li> -->
 							</ul>
 						</div>
@@ -154,9 +157,13 @@
 							</ul>
 						</li>
 						<li>
-							<a href="<c:url value='/BestList.pz' />">베스트 메뉴</a>
+							<a href="<c:url value='/BestList.pz' />?kind=1">베스트 메뉴</a>
 							<ul class="list_depth2">
-								<li><a href="<c:url value='/BestList.pz' />">베스트 메뉴</a></li>
+								<li><a href="<c:url value='/BestList.pz' />?kind=2">베스트 셀러</a></li>
+								<li><a href="<c:url value='/BestList.pz' />?kind=2">베스트 메뉴</a></li>
+								<c:if test="${!empty ID }">
+								<li><a href="<c:url value='/BestList.pz' />?kind=2">좋아한 메뉴</a></li>
+								</c:if>
 							</ul>
 
 

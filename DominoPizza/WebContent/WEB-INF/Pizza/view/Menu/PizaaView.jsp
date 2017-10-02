@@ -567,11 +567,16 @@ function share(optn) {
 				<div class="prd_img_view">
 					<div class="prd_tag">
 					<!-- <span class="ico ico_big_tag">NEW</span> -->
-					<c:if test="${!empty best}">
-					<h2>
-					<span class="ico ico_tag2">BEST</span>
-					</h2>
-					</c:if>
+										<c:if test="${!empty newpizza}">
+										<span class="ico ico_tag">NEW</span>
+										</c:if>
+																				
+										<c:if test="${!empty best }">
+										<span class="ico ico_tag2">BEST</span>
+										</c:if>
+										<c:if test="${!empty like }">
+										<span class="ico ico_tag4">LIKE</span>
+										</c:if>
 					</div>
 					<!-- SNS 공유  -->
 					<div class="prd_sns">
