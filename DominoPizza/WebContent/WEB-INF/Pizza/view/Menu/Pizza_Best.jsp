@@ -302,7 +302,12 @@ var chocolatChk = function() {
 								<div class="prd_img">
 										<div class="prd_tag">
 										
+										<c:if test="${!empty dtos.best }">
 										<span class="ico ico_tag2">BEST</span>
+										</c:if>
+										<c:if test="${!empty dtos.like }">
+										<span class="ico ico_tag4">LIKE</span>
+										</c:if>
 										
 										<!-- <span class="ico ico_tag">NEW</span> -->
 										</div>

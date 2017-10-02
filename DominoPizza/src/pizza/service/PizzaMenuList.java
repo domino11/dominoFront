@@ -11,6 +11,8 @@ public class PizzaMenuList {
 	private String d_price;
 	private String p_himg;
 	private String best;
+	private String like;
+	
 	
 	public String getId() {
 		return id;
@@ -65,6 +67,12 @@ public class PizzaMenuList {
 	}
 	public void setBest(String best) {
 		this.best = best;
+	}
+	public String getLike() {
+		return like;
+	}
+	public void setLike(String like) {
+		this.like = like;
 	}
 	
 
