@@ -272,11 +272,12 @@ public class UserController {
 		if(result.length() > 0) {	
 			req.getSession().setAttribute("ID",dto.getId());
 			req.getSession().setAttribute("NAME",result);
-			pw.write("http://localhost:8080/DominoPizza/Pizza/MainPage.pz");
+			
+			pw.write(req.getContextPath()+"/Pizza/MainPage.pz");
 		}
 		else {
 			System.out.println("asdsad");
-			pw.write("http://localhost:8080/DominoPizza/User/Login.pz");
+			pw.write(req.getContextPath()+"/User/Login.pz");
 		}
 		pw.flush();
 		pw.close();
@@ -364,11 +365,11 @@ public class UserController {
 	if(result != "") {
 		System.out.println("쿼리문 값 : "+result);
 		System.out.println("if");
-		pw.write("http://localhost:8080/DominoPizza/User/Changesettings.jsp");
+		pw.write(req.getContextPath()+"/User/Changesettings.jsp");
 	}
 	else {
 		System.out.println("else");
-		pw.write("http://localhost:8080/DominoPizza/User/ChangeSettingGate.jsp");
+		pw.write(req.getContextPath()+"/User/ChangeSettingGate.jsp");
 	}
 	pw.flush();
 	pw.close();

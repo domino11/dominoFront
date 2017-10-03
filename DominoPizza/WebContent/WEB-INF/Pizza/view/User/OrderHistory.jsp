@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -241,7 +242,7 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 												<td>${dto.sa_pro}</td>
 												<td>${dto.menu_kind}</td>
 												<td>${dto.menu_qty}</td>
-												<td>${dto.menu_price}</td>
+												<td><fmt:formatNumber>${dto.menu_price}</fmt:formatNumber></td>
 										</tr>
 										</c:forEach>
 								 </c:if>

@@ -757,6 +757,13 @@ var goBranch = function(){
 		<input type="hidden" name="pay_method_chk" id="pay_method_chk" value="" />
 		<input type="hidden" name="settlement_method" id="settlement_method" value="" />
 	</div>
+	
+		<div class="loading" id="defaultLoading" style="display:none;">
+			<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/img/loading.gif" alt="loading">
+			<div class="dim"></div>
+		</div>
+	
+	
 	<div id="content" class="cart_payment">
 		<div class="sub_title">
 			<ul class="sub_nav">
@@ -1104,8 +1111,14 @@ function finalsa(){
 		if(pay_no=="0"){
 			alert('결제수단을 선택해주세요!!');
 		}
-		else
-		location.href="<c:url value='/finalsa.pz' />?totalprice=${totalprice}&sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no+"&sa_sname="+sname+"&mc_no="+mc_no;
+		else{
+	 		window.setTimeout( function() {
+				$(".loading").css("display","none");
+				location.href="<c:url value='/finalsa.pz' />?totalprice=${totalprice}&sa_recipt="+nam+"&sa_rectel="+tel1+"-"+tel2+"-"+tel3+"&fprice="+fpr+"&minprice="+minpr+"&sa_request="+req+"&pay_no="+pay_no+"&sa_sname="+sname+"&mc_no="+mc_no;
+	 		}, 800); 
+			$(".loading").css("display","block");
+			
+		}
 		
 }
 

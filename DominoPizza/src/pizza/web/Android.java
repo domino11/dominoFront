@@ -124,11 +124,15 @@ public class Android {
 		map.put("whe", whe);
 		System.out.println("들어는 오냐2");
 		map.put("ty", "103");
+		
 		List<PizzaMenuList> plist = service.menuRank(map);
+		
 		System.out.println(req.getServletContext().getRealPath("/Pizza/Image/pizzalist"));
 		
 		int lidx=req.getRequestURL().toString().lastIndexOf("/");
+		
 		String url = req.getRequestURL().toString().substring(0,lidx);
+		
 		System.out.println(url+"/Pizza/Image/pizzalist/");
 		System.out.println("??");
 		System.out.println(plist.get(0).getP_name());
@@ -149,7 +153,7 @@ public class Android {
 			else if(i==3)
 				rankimg="bron.png";
 			else
-				rankimg=i+""+i+".png";
+				rankimg=i+""+i+""+i+".png";
 
 			System.out.println(name);
 			Map map2 = new HashMap<>();
