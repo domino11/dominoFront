@@ -153,9 +153,22 @@ $(document).ready(function() {
 					<div class="desc">최근 3개월간 온라인 주문내역을 바탕으로 다양한 할인혜택을 드리고 있으며,<br>상위 일부 고객님께는 최고등급 및 <em style="color:red;">혜택(매월 제공)</em>을 제공하고 있습니다.</div>
 					<div class="mania_grade_check">
 						<div class="mania_sub_title">매월 1일, 나의 온라인 매니아 등급을 확인하세요.</div>
-						<a href="/mypage/myLevel" class="btn"><span class="btn_txt">이달의 등급 확인하기</span></a>
+						<c:if test="${!empty ID }">
+						<a href="<c:url value='/User/MyPage_Mania.pz' />" class="btn"><span class="btn_txt">이달의 등급 확인하기</span></a>
+						</c:if>
+						<c:if test="${empty ID }">
+						<a href="#" onclick="mes();" class="btn"><span class="btn_txt">이달의 등급 확인하기</span></a>
+						</c:if>
 					</div>
 				</div>
+				
+				<script>
+				function mes(){
+					alert("로그인 후 확인해주세요.");
+					location.href="<c:url value='/User/Login.pz' />";
+				}
+				</script>
+				
 				<!-- 2017-03-27 // 문구 수정(e) -->
 
 

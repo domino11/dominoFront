@@ -365,7 +365,7 @@ public class UserController {
 	if(result != "") {
 		System.out.println("쿼리문 값 : "+result);
 		System.out.println("if");
-		pw.write(req.getContextPath()+"/User/Changesettings.jsp");
+		pw.write("loginok");
 	}
 	else {
 		System.out.println("else");

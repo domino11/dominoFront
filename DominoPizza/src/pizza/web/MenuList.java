@@ -1,5 +1,6 @@
 package pizza.web;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -142,25 +143,35 @@ public class MenuList {
 			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO,D_PRICE ";
 			fro = " pizza p join pizza_dough pd on p.p_no = pd.p_no join dough d on d.dough_no = pd.dough_no ";
 			whe = " d.dough_no=4 AND P_KIND != '마이키친' AND P_KIND != '하프앤하프' ";
+			req.setAttribute("lin", "곡물도우");
 			req.setAttribute("gok", 1);
 			req.setAttribute("bimg", "곡물베너.png");
 		}
 		else if(ty==102) {
+			req.setAttribute("lin", "프리미엄");
 			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO ";
 			fro = " PIZZA P ";
 			whe = " p_kind = '프리미엄' ";
 			req.setAttribute("bimg", "프리미엄베너.png");
 		}else if(ty==103) {
+			req.setAttribute("lin", "글래식");
 			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO ";
 			fro = " PIZZA P ";
 			whe = " p_kind = '클래식' ";
 			req.setAttribute("bimg", "클래식베너.png");
 		}else if(ty==104) {
+			req.setAttribute("lin", "104");
 			sel = " S_NAME,S_PRICE,S_IMG,S_NO ";
 			fro = " SIDE S ";
 			req.setAttribute("bimg", "사이드베너.png");
+		}else if(ty==100)
+		{
+			req.setAttribute("lin", "NEW");
+			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO ";
+			fro = " PIZZA P ";
+			whe += " p_no in (select p_no from pizzadate where pd_date > sysdate-31 ) ";
+			req.setAttribute("bimg", "프리미엄베너.png");
 		}
-		
 		Map map = new HashMap();
 		String a = "1";
 		map.put("P_LIST", "1");

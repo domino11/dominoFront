@@ -41,10 +41,10 @@
 			<div class="menu_area">
 				<ul class="gnb_menu">
 					<li>
-						<a href="<c:url value='/menuList.pz' />?ty=101" class="menu01">피자</a>
+						<a href="<c:url value='/menuList.pz' />?ty=100" class="menu01">피자</a>
 						<div class="depth2">
 							<ul class="list_depth2">
-							
+								<li><a href="<c:url value='/menuList.pz' />?ty=100">NEW</a></li>
 								<li><a href="<c:url value='/menuList.pz' />?ty=101">곡물도우</a></li>
 								<li><a href="<c:url value='/menuList.pz' />?ty=102">프리미엄</a></li>
 								<li><a href="<c:url value='/menuList.pz' />?ty=103">클래식</a></li>

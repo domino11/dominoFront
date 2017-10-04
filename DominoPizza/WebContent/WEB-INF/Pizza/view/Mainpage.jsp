@@ -178,12 +178,11 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
                 
                     <div class="carousel carousel-stage" style="width: 100%; height:500px" >
                         <ul>
-                            <li><a href="#"><img src="<c:url value='/Pizza/Image/1.jpg' />"  style="width:100%" height="500" alt=""></a></li>
-                            <li><a href="#"><img src="<c:url value='/Pizza/Image/2.jpg' />"  style="width:100%" height="500" alt=""></a></li>
-                            <li><a href="#"><img src="<c:url value='/Pizza/Image/3.jpg' />"  style="width:100%" height="500" alt=""></a></li>
-                            <li><a href="#"><img src="<c:url value='/Pizza/Image/4.jpg' />"  style="width:100%" height="500" alt=""></a></li>
-                           <li><a href="#"><img src="<c:url value='/Pizza/Image/5.jpg' />"  style="width:100%" height="500" alt=""></a></li>
-                        
+                            <li><a href="#"><img src="<c:url value='/Pizza/Image/1.jpg' />"  style="width:100%; height: 500px; " alt=""></a></li>
+                            <li><a href="#"><img src="<c:url value='/Pizza/Image/2.jpg' />"   style="width:100%; height: 500px; " alt=""></a></li>
+                            <li><a href="#"><img src="<c:url value='/Pizza/Image/3.jpg' />"   style="width:100%; height: 500px; " alt=""></a></li>
+                            <li><a href="#"><img src="<c:url value='/Pizza/Image/4.jpg' />"   style="width:100%; height: 500px; " alt=""></a></li>
+                           <li><a href="#"><img src="<c:url value='/Pizza/Image/5.jpg' />"   style="width:100%; height: 500px; " alt=""></a></li>
                         </ul>
                     </div>
 <!--                      
@@ -301,7 +300,7 @@ document.write(unescape("%3Cscript type='text/javascript' src='" + WCSLOG_URL +"
 							<img src="https://cdn.dominos.co.kr/renewal2016/ko/w/images/img_customer_info3_2.png" alt="">
 						</div>
 						<div class="txt_info">
-							<p>내 주변<br>이벤트 매장 찾기</p>
+							<p>내 주변<br> 매장 찾기</p>
 							<div class="txt_info_right">
 								<span class="ico ico_store"></span>
 							</div>

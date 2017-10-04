@@ -520,7 +520,7 @@ var closeLayer = function() {
 		<!-- sub_title -->
 		<div class="sub_title">
 			<ul class="sub_nav">
-				<li><a href="/main">HOME</a></li>
+				<li><a href="<c:url value='/Pizza/MainPage.pz' />">HOME</a></li>
 				<li><a href="<c:url value='/Pizza/BuyPizza/hnh.pz'/>">내맘대로 피자</a></li>
 				<li><span>하프&amp;하프</span></li>
 			</ul>

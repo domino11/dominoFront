@@ -68,8 +68,8 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<!-- sub_title -->
 		<div class="sub_title">
 			<ul class="sub_nav">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/mypage/myOrderList">나의 정보</a></li>
+				<li><a href="<c:url value='/Pizza/MainPage.pz' />">HOME</a></li>
+				<li><a href="<c:url value='/User/MyPage_Mania.pz' />">나의 정보</a></li>
 				<li><span>설정변경</span></li>
 			</ul>
 			<div class="sub_title_wrap">

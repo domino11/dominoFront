@@ -157,7 +157,7 @@ var chocolatChk = function() {
          <!-- sub_title -->
          <div class="sub_title">
             <ul class="sub_nav">
-               <li><a href="/main">HOME</a></li>
+               <li><a href="<c:url value='/Pizza/MainPage.pz' />">HOME</a></li>
                <li><a href="<c:url value='/menuList.pz?ty=104' />">사이드디시</a></li>
                
                <li><span>음료</span></li>

@@ -256,9 +256,9 @@ var chocolatChk = function() {
 		<!-- sub_title -->
 		<div class="sub_title">
 			<ul class="sub_nav">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/goods/list?dsp_ctgr=C0101">피자</a></li>
-				<li><span>곡물도우</span></li>
+				<li><a href="<c:url value='/Pizza/MainPage.pz' />">HOME</a></li>
+				<li><a href="<c:url value='/menuList.pz?ty=100' />">피자</a></li>
+				<li><span>${lin }</span></li>
 				</ul>
 			<div class="sub_title_wrap">
 				<h2>피자</h2>
@@ -267,8 +267,8 @@ var chocolatChk = function() {
 		<!-- //sub_title -->
 		<div class="tab_category">
 			<ul class="btn_tab">
-
-	<li class="C101"><a href="<c:url value='/menuList.pz?ty=101' />">곡물도우</a></li>
+				<li class="C100"><a href="<c:url value='/menuList.pz?ty=100' />">NEW</a></li>
+				<li class="C101"><a href="<c:url value='/menuList.pz?ty=101' />">곡물도우</a></li>
 				<li class="C102"><a href="<c:url value='/menuList.pz?ty=102' />">프리미엄</a></li>
 				<li class="C103"><a href="<c:url value='/menuList.pz?ty=103' />">클래식</a></li>
 		</ul>

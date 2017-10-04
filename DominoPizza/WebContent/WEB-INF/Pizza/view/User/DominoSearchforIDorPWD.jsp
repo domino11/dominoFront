@@ -161,8 +161,8 @@ src="//cdn.kaizenplatform.net/s/79/44084e2b522564.js" charset="utf-8">
 		<!-- sub_title -->
 		<div class="sub_title">
 			<ul class="sub_nav">
-				<li><a href="/main">HOME</a></li>
-				<li><a href="/global/login">로그인</a></li>
+				<li><a href="<c:url value='/Pizza/MainPage.pz' />">HOME</a></li>
+				<li><a href="<c:url value='/User/Login.pz' />">로그인</a></li>
 				<li><span>아이디/비밀번호 찾기</span></li>
 			</ul>
 			<div class="sub_title_wrap">
