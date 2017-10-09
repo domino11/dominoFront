@@ -617,12 +617,12 @@ function share(optn) {
 						</a>
 						</c:if>
 						<c:if test="${!nol }">
-						<c:if test="${empty like }">
+						<c:if test="${empty like2 }">
 						<a href="<c:url value='/PizzaLike.pz'/>?p_no=${dto.p_no}${tag}&like=1 ">
 						<img style="height: 45px;" alt="" src="<c:url value='/Pizza/Image/UnLike.png' />">
 						</a>
 						</c:if>
-						<c:if test="${!empty like}">
+						<c:if test="${!empty like2}">
 						<a href="<c:url value='/PizzaLike.pz'/>?p_no=${dto.p_no}${tag}&like=">
 						<img style="height: 45px;" alt="" src="<c:url value='/Pizza/Image/Like.png' />">
 						</a>

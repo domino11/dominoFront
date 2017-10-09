@@ -232,6 +232,8 @@ public class Daotest {
 
 
 		public int pizzalikeSel(Map map) {
+			System.out.println("???");
+			System.out.println("@@@"+map.get("id")+"!!"+map.get("p_no"));
 			return template.selectOne("mybatispizzalikeSel",map);
 		}
 

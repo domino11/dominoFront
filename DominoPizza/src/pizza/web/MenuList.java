@@ -71,19 +71,19 @@ public class MenuList {
 		List<PizzaMenuList> list = new Vector<>();
 		if(req.getParameter("kind").trim().equals("1")) {
 			list = service.menuRank(map);
-			model.addAttribute("bimg", "BestMenu.png");
+			model.addAttribute("bimg", "bestmenu1.png");
 			req.setAttribute("kind", "1");
 		}
 		else if(req.getParameter("kind").trim().equals("2")) {
 			list = service.likeRank(map);
 			req.setAttribute("kind", "2");
-			model.addAttribute("bimg", "BestLike.png");
+			model.addAttribute("bimg", "bestmenu2.png");
 		}
 		else {
 			map.put("id", req.getSession().getAttribute("ID"));
 			list = service.mybest(map);
 			req.setAttribute("kind", "3");
-			model.addAttribute("bimg", "BestLike.png");
+			model.addAttribute("bimg", "bestmenu3.png");
 		}
 		
 		for(PizzaMenuList pl : list) {
@@ -170,7 +170,7 @@ public class MenuList {
 			sel = " P_NAME,P_SPRICE,P_LPRICE,P_IMG,P.P_NO ";
 			fro = " PIZZA P ";
 			whe += " p_no in (select p_no from pizzadate where pd_date > sysdate-31 ) ";
-			req.setAttribute("bimg", "프리미엄베너.png");
+			req.setAttribute("bimg", "newmenub.png");
 		}
 		Map map = new HashMap();
 		String a = "1";
@@ -278,12 +278,14 @@ public class MenuList {
 		
 		map.put("id", req.getSession().getAttribute("ID"));
 		int as=0;
-		
-		if(req.getSession().getAttribute("ID")!=null)
+		System.out.println("!!");
+		if(req.getSession().getAttribute("ID")!=null) {
 			as = service.pizzalikeSel(map);
+			System.out.println("?@@@");
+		}
 		if(as>0)
-			model.addAttribute("like","1");
-		
+			model.addAttribute("like2","1");
+		System.out.println(as+"????");
 		model.addAttribute("listpn",listpn);
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);

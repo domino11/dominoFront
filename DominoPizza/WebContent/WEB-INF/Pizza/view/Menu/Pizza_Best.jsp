@@ -311,6 +311,13 @@ var chocolatChk = function() {
 						<c:if test="${gok==1 }">
 						<c:set var="namegok" value=" 곡물 도우" />
 						</c:if>
+						<c:if test="${empty dto }">
+						<br/>
+							<span style="font-size: 2em; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'좋아요' 를 누른 메뉴가 없습니다.
+							</span>
+						</c:if>
+						<c:if test="${!empty dto }">
+						
 						<c:forEach var="dtos" items="${dto }" varStatus="loop"  >
 						<c:if test="${(loop.count-1) % 4==0 }" var="pif" >
 						<c:set value="prd_list_rgt" var="pclass" />
@@ -351,7 +358,7 @@ var chocolatChk = function() {
 							</li>
 							
 						</c:forEach>
-	
+						</c:if>
 
 						</ul>
 					</div>
